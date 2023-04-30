@@ -1,0 +1,118 @@
+input[type='text'],[type='tel']{
+    width:30%;
+    padding: 10px;
+    margin-top:10px;
+    box-sizing: border-box;
+    background-color: rgba(146, 145, 145, 0.23);
+    border-radius: 5px;
+    direction: rtl;
+}
+
+input[type='email']{
+    width:30%;
+    padding: 10px;
+    margin-top:10px;
+    box-sizing: border-box;
+    background-color: rgba(146, 145, 145, 0.23);
+    border-radius: 5px;
+    direction: ltr;
+}
+
+input[type='submit']{
+    width:30%;
+    font-family:'B Traffic';
+}
+
+
+input[type='password']{
+    width:30%;
+    margin-top:10px;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: rgba(146, 145, 145, 0.23);
+    border-radius: 5px;}
+
+.dashbord{ 
+    background-color: cadetblue;
+    height: 700px;
+    width: 125px;
+    position: fixed;
+    left: 0px;
+    bottom: 1px;
+    top:1px
+}
+
+.dashbord li{  
+    list-style-type: none;
+    top: 5px;
+     }
+ .dashbord hr{width: 120px; right: 0px;}    
+
+ .dashbord ul   {left: 0px;}
+
+
+
+ 
+
+.box {
+    background-color:#cfeef0;
+        height: 550px;
+        width: 330px;
+        bottom:10px;
+        right: 10px;
+        position:fixed;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+       
+    }
+
+
+
+
+.boxtop {
+    background-color:#68bac0;
+        height: 80px;
+        width: 330px;
+        margin-top:0px;
+        position:fixed;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }    
+
+
+
+.box input {margin-top: 514px;  width: 320px; height: 30px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+
+}    
+
+
+
+.box h6{ margin-left: 100px; margin-top: 30px; color: #fcf5f5;}
+
+
+
+.homeimg {margin-top: 550px; margin-left: 1250px; width: 90px; height: 90px;}
+
+
+
+.maseg {
+    position: fixed;
+    margin-top: 100px;
+    left:1050px;
+
+}
+
+.imgclose {
+
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 15px;
+    border-top-left-radius: 60%;
+    border-top-right-radius: 60%;
+    border-bottom-left-radius: 60%;
+    border-bottom-right-radius: 60%;
+}
