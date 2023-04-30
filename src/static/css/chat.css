@@ -48,7 +48,7 @@ input[type='password']{
      }
  .dashbord hr{width: 120px; right: 0px;}    
 
- .dashbord ul   {left: 0px;}
+ .dashbord ul {left: 0px;}
 
 
 
@@ -83,9 +83,7 @@ input[type='password']{
 
 .box input {margin-top: 514px;  width: 320px; height: 30px;
     border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-
-}    
+    border-top-right-radius: 0px;}    
 
 
 
