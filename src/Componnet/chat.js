@@ -1,68 +1,27 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import "../static/css/chat.css";
+import { Avatar } from '@material-ui/core';
 
-function ChatApp() {
-  const [messages, setMessages] = useState([ 
-    { username: 'User 1', text: 'Hello!' }, 
-    { username: 'User 2', text: 'Hi there!' } 
-  ]);
-  const [username, setUsername] = useState('');
-  const [text, setText] = useState('');
+function Chat() {
+ 
+  return(
+    <div className='chat'>
+      <div className='chat_header'>
+        {Avatar}
+      </div>
+      <div className='chat_body'>
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMessages(messages => [
-        ...messages,
-        { username: 'User 1', text: 'Hello!' } 
-      ]);
-    },100000000000);
-    return () => clearInterval(interval);
-  }, []);
+      </div>
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setMessages(messages => [
-      ...messages, 
-      { username, text }
-    ]);
-    setText('');
-  }
+      <div className='chat_footer'>
 
-  function handleChange(e) {
-    if (e.target.name === 'username') {
-      setUsername(e.target.value);
-    } else {
-      setText(e.target.value);
-    }
-  }
+      </div>
 
-  return (
-    <div>
-      <h1>ChatApp</h1>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="username" 
-          placeholder="Username" 
-          value={username}
-          onChange={handleChange}
-        />
-        <input 
-          type="text" 
-          name="text" 
-          placeholder="Message" 
-          value={text}
-          onChange={handleChange}
-        />
-        <button type="submit">Send</button>
-      </form>
-      {messages.map(message => (
-        <p>
-          <strong>{message.username}: </strong> {message.text}
-        </p>
-      ))}
+
     </div>
-  );
+  )
+  
 
       }
-  export default ChatApp
+  export default Chat;

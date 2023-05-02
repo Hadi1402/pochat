@@ -29,7 +29,7 @@ import axios from 'axios';
     }
 
     if (isloggedIn) {
-         //replace Redirect with Navigate
+         //  ba hamkari bakend user be yeki az sfahate admin va ya support hedyat khahad shod.
         return <Redirect to={" "} replace={true} />;
     }
 

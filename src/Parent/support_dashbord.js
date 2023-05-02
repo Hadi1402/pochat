@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom';
 import close from "../static/img/close1.jpg";
 import { connect } from "react-redux";
 import dispalyBox from "../Actions/displayChatbox";
-import HomeChat from "./homeChat"
+import HomeChat from "./homeChat";
 import "../static/css/chat.css";
+import Sidebar from "./sidebar";
 
 
 
@@ -40,22 +41,33 @@ class SupportDashbord extends React.Component {
 
     render() {
       var chatHome = undefined
+      var sideBar = undefined
       if (this.props.display == "block") {
         chatHome = <HomeChat> </HomeChat>
+        sideBar = <Sidebar></Sidebar>
+
       }
 
 
         return(
-
+           /*
     <div className="box">  
      <div className="boxtop"> 
-       
-       <img className="imgclose" src={close} onClick={this.click} style={{display:this.props.display}}  /> 
-       {chatHome}
-      </div>
+     </div>
+      <div className="boxuser">         </div>
       <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
       <snap className="maseg">    </snap>
+      </div> */
 
+      <div className="dashbord_user_app"> 
+       
+        <div className="dashbord_user_body">
+         {sideBar}
+
+          { /*Chat */}
+
+        </div>
+      
       </div>
 
         )
@@ -70,3 +82,12 @@ function mapDispatchToProps(state) {
 
 
 export default connect(mapDispatchToProps)(SupportDashbord);
+
+
+
+
+
+
+// div.box 
+//<img className="imgclose" src={close} onClick={this.click} style={{display:this.props.display}}  /> 
+// {chatHome}
