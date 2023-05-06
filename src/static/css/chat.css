@@ -252,8 +252,11 @@ input[type='password']{
 }
 
 
-.chat_footer form input button{
-    display: none;
+.chat_footer form  button{
+    background-color: #a19cf0;
+    width: 55px;
+    height: 36px;
+    margin: auto;
 }
 
 .chat_body{

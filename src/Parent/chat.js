@@ -35,8 +35,8 @@ class Chat extends React.Component {
   sendMessage(e){
     e.preventDefault();
     console.log(" your message:" , this.state.input)
-
-    this.inputRef.current.append(<div> <p> {this.inputRef.current} </p> </div>)
+ //   this.setState({value:e.target.value}).push(<p> {value} </p>)
+  //  this.state.value.push(<p> {value} </p>) 
      
   }
 
@@ -104,10 +104,11 @@ class Chat extends React.Component {
 
       <div className='chat_footer'>
         <form>
-        <MicNone style={{ "display": this.state.MicNone }} />
-         <input  ref={this.inputRef} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
       <button  ref={this.btn_send} onClick={this.sendMessage} style={{ "display": this.state.btn_send_display }}
-      type="submit">  ارسال پیام </button>
+      type="submit">  ارسال  </button>
+        <MicNone style={{"display": this.state.MicNone}} />
+         <input  ref={this.inputRef} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
+     
 
         </form>
 
