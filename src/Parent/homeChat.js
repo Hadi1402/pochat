@@ -3,7 +3,8 @@ import img1 from "../static/img/img1.jpg"
 import React from "react";
 import { connect } from "react-redux";
 import dispalyBox from "../Actions/displayChatbox";
-import SupportDashbord from "./support_dashbord";
+import SupportDashbord from "./chatBox";
+import ChatBox from "./chatBox";
 
 class HomeChat extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class HomeChat extends React.Component {
   render() {
     var chat = undefined
     if (this.props.display == "none") {
-      chat = <SupportDashbord> </SupportDashbord>
+      chat = <ChatBox> </ChatBox>
     }
     return (
       <div>

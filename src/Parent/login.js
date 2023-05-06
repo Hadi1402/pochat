@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {NavLink,Redirect} from "react-router-dom";
 import axios from 'axios';
+import Sidebar from './supportUser';
 
 //import {UseAuth} from "../context/auth";
 
@@ -50,9 +51,11 @@ import axios from 'axios';
                                setPassword(e.target.value);
                            }}
                            placeholder={'کلمه عبور'}/> <br/>
-                    <button onClick={PostLogin}>
-                        ورود اعضاء
-                    </button>
+
+                 <NavLink exact to={'/SupportUser'}>   ورود    </NavLink>
+
+
+                  
                     <br/> <br/>
                     <NavLink exact to={'/registeruser'}>  ثبت نام نکرده ام </NavLink>
 

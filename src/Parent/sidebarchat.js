@@ -17,7 +17,7 @@ function SidebarChat(){
             <Avatar src={''}/>
           <div className="sidebarchat_info">
             <h3> ?????? </h3>
-            <p>  ???????? </p>
+            <p>  userName </p>
           
             
           </div>    

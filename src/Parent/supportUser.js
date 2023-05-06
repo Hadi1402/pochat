@@ -6,12 +6,12 @@ import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { SearchOutlined } from "@material-ui/icons";
 import SidebarChat from "./sidebarchat";
-import Chat from "../Componnet/chat";
+import Chat from "./chat";
 
 
-class Sidebar extends React.Component {
+class SupportUser extends React.Component {
 
-    constructor() {
+    constructor(props) {
         super();
       }
     
@@ -19,7 +19,6 @@ class Sidebar extends React.Component {
         return(
           <div className="app">
            <div className="app_body"> 
-            
             <div className="sidebar">
 
                 <div className="sidebar_header">
@@ -46,8 +45,6 @@ class Sidebar extends React.Component {
                     <SearchOutlined/>
                     <input placeholder=" search ... " />
                     </div>
-                    
-
                 </div>
 
                 <div className="sidebar_chats">
@@ -55,9 +52,11 @@ class Sidebar extends React.Component {
                     <SidebarChat />                    
                     <SidebarChat />                    
                 </div>
-            
+           
+
             </div>
-            </div>
+            <Chat/>
+          </div>
           </div>
 
         )
@@ -67,4 +66,4 @@ class Sidebar extends React.Component {
 
 
 
-export default Sidebar;
+export default SupportUser;

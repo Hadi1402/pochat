@@ -6,12 +6,13 @@ import { connect } from "react-redux";
 import dispalyBox from "../Actions/displayChatbox";
 import HomeChat from "./homeChat";
 import "../static/css/chat.css";
-import Sidebar from "./sidebar";
+import Sidebar from "./supportUser";
+import Chat from "./chat"
 
 
 
 
-class SupportDashbord extends React.Component {
+class ChatBox extends React.Component {
     constructor(){
        super(); 
     }
@@ -50,26 +51,24 @@ class SupportDashbord extends React.Component {
 
 
         return(
-           /*
+           
     <div className="box">  
      <div className="boxtop"> 
      </div>
-      <div className="boxuser">         </div>
       <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
       <snap className="maseg">    </snap>
-      </div> */
-
+      </div> 
+/*
       <div className="dashbord_user_app"> 
        
         <div className="dashbord_user_body">
-         {sideBar}
+      //   {sideBar}
+       //   {Chat}
 
-          { /*Chat */}
-
-        </div>
+      //  </div>   
       
-      </div>
-
+    //  </div>
+*/
         )
     }
 
@@ -81,7 +80,7 @@ function mapDispatchToProps(state) {
 }
 
 
-export default connect(mapDispatchToProps)(SupportDashbord);
+export default connect(mapDispatchToProps)(ChatBox);
 
 
 

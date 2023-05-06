@@ -23,8 +23,8 @@ class Home extends React.Component {
 
 
         <div className="pic-chat">
-          <img className="logo" src={logo}/>
-          <img className="welcome" src={welcome}/>
+          <img className="logo" src={''}/>
+          <img className="welcome" src={''}/>
         </div>
         
 

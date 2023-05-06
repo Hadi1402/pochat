@@ -57,7 +57,7 @@ input[type='password']{
 .box {
     background-color:#aee9be;
         height: 600px;
-        width: 660px;
+        width: 400px;
         bottom:10px;
         right: 10px;
         position:fixed;
@@ -72,7 +72,7 @@ input[type='password']{
 .boxtop {
     background-color:#dbe2e2;
         height: 60px;
-        width: 660px;
+        width: 400px;
         margin-top:0px;
         position:fixed;
     }    
@@ -97,7 +97,7 @@ input[type='password']{
 }
 
 
-.homeimg {margin-top: 550px; margin-left: 1250px; width: 90px; height: 90px;}
+.homeimg {margin-top: 700px; margin-left: 1550px; width: 90px; height: 90px;}
 
 
 
@@ -131,18 +131,19 @@ input[type='password']{
 .welcome { position: fixed; top:280px; right: 50px; height: 400px;}
 
 
-
+/**************************** Start CSS for sidebar similator wattsap ***************************/
 
 .sidebar {
     display: flex;
     flex-direction: column;
-    flex: 0.35;}
+    flex: 0.2;}
 
 
 .sidebar_header{
     display:flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 2px;
+    margin-left: 5px;
     border-right: 1px solid lightgray;
 }
 
@@ -150,7 +151,7 @@ input[type='password']{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 10vw;
+    min-width: 10px;
 }
 
 
@@ -171,7 +172,7 @@ input[type='password']{
     border-radius: 20px;
 }
 
-.sidedar_searchContainer input{border: 0px; margin-left: 10px;}
+.sidedar_searchContainer input{border: 0px; margin-left: 20px;}
 
 
 .sidebar_chats{
@@ -191,7 +192,7 @@ input[type='password']{
 .sidebarchat:hover{ background-color: #ebebeb;}
 
 .app {
-    display: grid;
+    display:grid;
     place-items:center;
     background-color: #dadbd3;
     height: 100vw;
@@ -209,5 +210,85 @@ input[type='password']{
 
 
 
-.chat {flex: 0.65; background-color: #466bd3;}
+.chat {
+    flex: 0.65;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat_header {display: flex; padding: 20px; align-items: center; border-bottom: 1px solid lightgray;}
+
+.chat_headerInfo {flex: 1; padding-left: 20px;}
+
+
+.chat_headerInfo h3{ margin-bottom: 3px; font-weight: 500;}
+
+
+.chat_headerRight {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100px;
+}
+.chat_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+
+
+.chat_footer form{
+    flex:1;
+    display: flex;
+}
+
+.chat_footer form input{
+    flex:1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+
+.chat_footer form input button{
+    display: none;
+}
+
+.chat_body{
+    flex: 1;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    background-repeat: repeat;
+    background-position: center;
+    padding: 30px;
+    overflow:'';
+}   
+
+
+.chat_message {
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #fcfbfb;
+    width: fit-content;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.chat_reciever {
+    background-color: #ccf1c7;
+    width: fit-content;
+    border-radius: 10px
+}
+
+
+.chat_time {
+    margin-left: 10px;
+    font-size: xx-small;
+}
+
+
+
+/**************************** End CSS for sidebar similator wattsap ***************************/
 
