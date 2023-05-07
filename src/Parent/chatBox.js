@@ -20,9 +20,9 @@ class ChatBox extends React.Component {
 
     HandleKeyDown = (event) => {  
       if (event.key === 'Enter') {
-        var id  = 1
-        var e = ("<div>  data-id="+ id +">"+ inputtext + "</div>")
-        var b = (" <br> </br> ")
+       // var id  = 1
+       // var e = ("<div>  data-id="+ id +">"+ inputtext + "</div>")
+       // var b = (" <br> </br> ")
         var inputtext=document.getElementById("inputt");
         var  maseeg=document.getElementsByClassName('maseg')[0]
         ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value);

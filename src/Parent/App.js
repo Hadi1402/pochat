@@ -9,6 +9,7 @@ import AdminDashbord from "./admin_dashbord";
 import Home from "../Componnet/pochat";
 import SupportUser from "./supportUser"
 import Sidebar from "./supportUser";
+import ChatBox from "./chatBox";
 
 
 
@@ -18,8 +19,6 @@ function App() {
 
      
      <div className="App">
-
-   
 
    <BrowserRouter>   
    <Switch>
