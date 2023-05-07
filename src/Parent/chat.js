@@ -34,8 +34,6 @@ class Chat extends React.Component {
   }
     
 
-  
-
   sendMessage(e){
     e.preventDefault();
     console.log(" your message:" , this.state.input)
@@ -54,12 +52,6 @@ class Chat extends React.Component {
    ReactDOM.findDOMNode(mass).appendChild(new_p);
    new_p.className = "chat_message";
   */
-
-
-
- 
-
-    //this.setState({value:""})
     
   }
 
@@ -81,11 +73,6 @@ class Chat extends React.Component {
       this.setState({MicNone:'block'})
     }
     }
-  
-
-  
-
-
  
   render(){
 
@@ -95,8 +82,8 @@ class Chat extends React.Component {
         <Avatar/>
 
         <div className='chat_headerInfo'>
-          <h3> Room name</h3>
-          <p> last seen ....</p>
+          <h3> user name ... </h3>
+          <p> last visit .... </p>
         </div>
 
         <div className='chat_headerRight'>
