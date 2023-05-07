@@ -24,9 +24,9 @@ class Chat extends React.Component {
     this.MicNone = React.createRef();
     this.state = {
       input:"",
-      btn_send_display: "none",
+      btn_send_display:"none",
       MicNone :"block",
-      span_display:"none"
+      p_display:"none"
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -39,12 +39,28 @@ class Chat extends React.Component {
   sendMessage(e){
     e.preventDefault();
     console.log(" your message:" , this.state.input)
-    this.setState({span_display:"block"})
+    const time_system=new Date().toLocaleString()
+    this.setState({p_display:"block"})
     const inputt = this.inputRef.current.value;
+    const br = document.createElement("br")
     var mass = document.getElementsByClassName('chat_message')[0];
     ReactDOM.findDOMNode(mass).append(inputt);
-  
+    ReactDOM.findDOMNode(mass).append(time_system);
+    ReactDOM.findDOMNode(mass).append(br);
 
+  
+/*
+   const new_p = document.createElement("p");
+   ReactDOM.findDOMNode(mass).appendChild(new_p);
+   new_p.className = "chat_message";
+  */
+
+
+
+ 
+
+    //this.setState({value:""})
+    
   }
 
   
@@ -102,16 +118,15 @@ class Chat extends React.Component {
 
       <div className='chat_body'>
 
-      <span className='chat_message' style={{"display":this.state.span_display}}>  </span>
-      
+      <p className='chat_message'  style={{"display":this.state.p_display}}>  </p>
       </div>
 
       <div className='chat_footer'>
         <form>
-      <button  ref={this.btn_send} onClick={this.sendMessage} style={{ "display": this.state.btn_send_display }}
+      <button  ref={this.btn_send} onClick={this.sendMessage} style={{ "display": this.state.btn_send_display}}
       type="submit">  ارسال  </button>
         <MicNone className='MicNone' style={{"display": this.state.MicNone}} />
-         <input  ref={this.inputRef} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
+         <input  ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
      
 
         </form>
