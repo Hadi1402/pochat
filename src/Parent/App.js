@@ -19,7 +19,7 @@ function App() {
 
      
      <div className="App">
-
+    <AdminDashbord/>
    <BrowserRouter>   
    <Switch>
    <Route exact path="/"  component={Home} />

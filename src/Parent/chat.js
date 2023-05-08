@@ -113,7 +113,7 @@ class Chat extends React.Component {
       <button  ref={this.btn_send} onClick={this.sendMessage} style={{ "display": this.state.btn_send_display}}
       type="submit">  ارسال  </button>
         <MicNone className='MicNone' style={{"display": this.state.MicNone}} />
-         <input  ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
+         <input ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
      
 
         </form>
