@@ -31,13 +31,13 @@ input[type='password']{
     box-sizing: border-box;
     background-color: rgba(146, 145, 145, 0.23);
     border-radius: 5px;}
-
+/***************************** admin dashbord css  *****************************/
 .dashbord{ 
-    background-color: cadetblue;
-    height: 700px;
-    width: 125px;
+    background-color: rgb(226, 206, 150);
+    height: 175px;
+    width: 130px;
     position: fixed;
-    left: 0px;
+    top: 0px;
     bottom: 1px;
     top:1px
 }
