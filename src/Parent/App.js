@@ -10,6 +10,7 @@ import Home from "../Componnet/pochat";
 import SupportUser from "./supportUser"
 import Sidebar from "./supportUser";
 import ChatBox from "./chatBox";
+import User from "./user"
 
 
 
@@ -19,6 +20,7 @@ function App() {
 
      
      <div className="App">
+
    <BrowserRouter>   
    <Switch>
    <Route exact path="/"  component={Home} />
@@ -26,6 +28,7 @@ function App() {
    <Route exact path='/RegisterUser'  component={RegisterUserPage} />
    <Route exact path='/supportuser' component={SupportUser}/>
    <Route exact path='/adminDashbord' component={AdminDashbord}/>
+   <Route exact path='/user' component={User}/>
    
    </Switch>
    </BrowserRouter>

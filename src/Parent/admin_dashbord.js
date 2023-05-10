@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import "../static/css/chat.css";
 import SupportUser from "./supportUser";
 import {Link} from "react-router-dom";
+import "../static/css/chat.css";
 
 
 const url= <p> {document.URL.slice(7,21)} </p>
@@ -11,23 +12,21 @@ class AdminDashbord extends Component{
     render() {
         return (
             <div>
-            
+              <menu>
                 <ul className={'dashbord'}>
                     
                     <li> {url} </li> 
-                    <hr/>
-                    <li>   user  </li>
-                    <hr/>
-                    <li> groups </li>
-                    <hr/>
+                    <br/>
+                    <li> <Link to="/user" > user </Link> </li>
 
-                   <li> <Link to="/supportuser" > chat </Link> </li>   
-
-                      
-                        
-                    
+                    <br/>
+                    <li> <Link to= " /">   groups </Link> </li>
+                    <br/>
+             
+                   <li> <Link to="/supportuser" > chat </Link> </li>        
                     
                 </ul>
+                </menu>
             </div>
 
 
