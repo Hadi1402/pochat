@@ -304,9 +304,10 @@ input[type='password']{
     display: flex;
     align-items: center;
     background-color: #f6f6f6;
-    margin-left: 750PX;
+    margin-left: 0PX;
+    top: 100px;
     height: 30px;
-    width: 750PX;
+    width: 250PX;
     padding: 10px;
 
 }
@@ -318,7 +319,7 @@ input[type='password']{
 
 
 .div_user{
-    background-color: #bebbbb;
+    background-color: #e4e4e4;
     height: 500px;
     width: 1180px;
     position:fixed;
@@ -330,17 +331,18 @@ input[type='password']{
 .user_table{
     direction:rtl;
     border: 0px solid #865e5e;
-    padding: 2px 8px 0;
-    border-collapse: collapse;
-    width: 1160px;
+    border-collapse:separate;
+    width: 1180px;
     height:40px;
     font-size: larger;
     font-family: '2  Homa';
     
 }
 
-.td_user_table {background-color: #cce; 
-      border-bottom: 2px solid #999;
+.td_user_table {
+    background-color: #cce; 
+    border-bottom: 3px solid #091453;
+    margin-right: 10px;
      }
 
 
@@ -362,3 +364,14 @@ input[type='password']{
      width: 150px;
      height: 50px;
  }    
+
+
+
+ .img_user{
+    
+    border-radius: 30px;
+ }
+
+
+
+ 
