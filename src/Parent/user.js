@@ -2,6 +2,7 @@ import React from "react";
 import "../static/css/chat.css";
 import {Avatar} from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
+import user_data from "./user_data";
 
 
 
@@ -22,9 +23,12 @@ class User extends React.Component{
         <div className="div_user">
             <table className="user_table">
                 <thead>
-                   
+        
+            
                 </thead>
                 <tbody>
+
+             
                 <tr> 
                         <td className="td_user_table" colspan="2"> ردیف   </td>
                         <td className="td_user_table" colspan="2"> <Avatar />  </td>

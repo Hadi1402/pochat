@@ -306,14 +306,14 @@ input[type='password']{
     background-color: #f6f6f6;
     margin-left: 750PX;
     height: 30px;
-    width: 250PX;
+    width: 750PX;
     padding: 10px;
 
 }
 
 
 
-.search_user input { width: 250px; height: 30px;}
+.search_user input { width: 650px; height: 30px;}
 
 
 
@@ -329,13 +329,14 @@ input[type='password']{
 
 .user_table{
     direction:rtl;
-    border: 0px solid #333;
+    border: 0px solid #865e5e;
     padding: 2px 8px 0;
     border-collapse: collapse;
-    width: 100%;
+    width: 1160px;
     height:40px;
     font-size: larger;
     font-family: '2  Homa';
+    
 }
 
 .td_user_table {background-color: #cce; 
