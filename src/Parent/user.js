@@ -21,43 +21,50 @@ class User extends React.Component{
         </div>
      
         <div className="div_user">
+
+          {user_data.map(u =>(
             <table className="user_table">
-                <thead>
+            <thead>
+    
         
+            </thead>
+            <tbody>
+
+         
+            <tr> 
+                    <td className="td_user_table" colspan="2"> نام کاربری </td>
+                    <td className="td_user_table" colspan="2">  ایمیل </td>
+                    <td className="td_user_table" colspan="2">  تاریخ ایجاد </td>
+                    <td className="td_user_table" colspan="2">  انتخاب</td>
+            </tr>
+
+
             
-                </thead>
-                <tbody>
+              <tr>  <td className="" colspan="2"> 
+               <img src={u.عکس}/>
+               <span> {u["نام کاربری "]} </span>
+               </td>    
+               <td className="" colspan="2"> {u["ایمیل "]} </td>  
+               <td className="" colspan="2">  {u["تاریخ ایجاد"]} </td>  
 
-             
-                <tr> 
-                        <td className="td_user_table" colspan="2"> ردیف   </td>
-                        <td className="td_user_table" colspan="2"> <Avatar />  </td>
-                        <td className="td_user_table" colspan="2"> نام کاربری </td>
-                        <td className="td_user_table" colspan="2">  ایمیل </td>
-                        <td className="td_user_table" colspan="2">  تاریخ ثبت نام </td>
-                        <td className="td_user_table" colspan="2">  انتخاب</td>
+               <td className="checkbox" colspan="2">  <input type="checkbox"/> </td>  
                 </tr>
+            </tbody>
+        </table>
 
-
-                
-                  <tr>  <td className="" colspan="2"> 1 </td>    
-                    <td className="" colspan="2"> ؟؟؟؟؟؟؟؟؟؟؟؟ </td>   
-                   <td className="" colspan="2">  ؟؟؟؟؟؟؟؟؟؟؟ </td>  
-                   <td className="" colspan="2">  ؟؟؟؟؟؟؟؟؟؟؟ </td>  
-                   <td className="" colspan="2">  ؟؟؟؟؟؟؟؟؟؟؟ </td>  
-
-                   <td className="checkbox" colspan="2">  <input type="checkbox"/> </td>  
-                    </tr>
-                </tbody>
-            </table>
+          ))}
+            
 
                </div>
-                 
+                    
+          
+              
                <input  className="Add_user" type='button' value = 'اضافه کردن'   />  
                <input className="del_user" type='button' value = 'حذف کردن'   /> 
         </div>
          
-
+          
+       
 
     )
    }
