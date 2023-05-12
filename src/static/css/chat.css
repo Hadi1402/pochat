@@ -1,0 +1,303 @@
+input[type='text'],[type='tel']{
+    width:30%;
+    padding: 10px;
+    margin-top:10px;
+    box-sizing: border-box;
+    background-color: rgba(146, 145, 145, 0.23);
+    border-radius: 5px;
+    direction: rtl;
+}
+
+input[type='email']{
+    width:30%;
+    padding: 10px;
+    margin-top:10px;
+    box-sizing: border-box;
+    background-color: rgba(146, 145, 145, 0.23);
+    border-radius: 5px;
+    direction: ltr;
+}
+
+input[type='submit']{
+    width:30%;
+    font-family:'B Traffic';
+}
+
+
+input[type='password']{
+    width:30%;
+    margin-top:10px;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: rgba(146, 145, 145, 0.23);
+    border-radius: 5px;}
+
+.dashbord{ 
+    background-color: cadetblue;
+    height: 100%;
+    width: 125px;
+    position: fixed;
+    left: 0px;
+    bottom: 1px;
+    display: none;
+    top:1px
+    
+}
+
+.dashbord li{  
+    list-style-type: none;
+    top: 5px;
+     }
+ .dashbord hr{width: 90%; right: 0px;}    
+
+ .dashbord ul {left: 0px;}
+
+
+
+ 
+
+.box {
+    background-color:#aee9be;
+        height: 600px;
+        width: 400px;
+        bottom:10px;
+        right: 10px;
+        position:fixed;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+       
+    }
+
+
+
+
+.boxtop {
+    background-color:#dbe2e2;
+        height: 60px;
+        width: 400px;
+        margin-top:0px;
+        position:fixed;
+    }    
+
+
+
+.box input {margin-top: 563px;  width: 390px; height: 30px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;}    
+
+
+
+.box h6{ margin-left: 100px; margin-top: 30px; color: #fcf5f5;}
+
+.boxuser { 
+    width: 260px;
+    height: 540px;
+    background-color: #f8f2f2;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+
+.homeimg {margin-top: 700px; margin-left: 1550px; width: 90px; height: 90px;}
+
+
+
+.maseg {
+    position: fixed;
+    margin-top: 100px;
+    left:1050px;
+
+}
+
+.imgclose {
+
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 15px;
+    border-top-left-radius: 60%;
+    border-top-right-radius: 60%;
+    border-bottom-left-radius: 60%;
+    border-bottom-right-radius: 60%;
+}
+
+.home {height:1900px; width: 1100px; }
+
+.heder { background-color: #466bd3; height: 60px; width: 100;top:10px;}
+
+.logo { height: 200px; width: 370px; position: fixed; right: 100px; top:40px;}
+
+
+.welcome { position: fixed; top:280px; right: 50px; height: 400px;}
+
+
+/**************************** Start CSS for sidebar similator wattsap ***************************/
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0.2;}
+
+
+.sidebar_header{
+    display:flex;
+    justify-content: space-between;
+    padding: 2px;
+    margin-left: 5px;
+    border-right: 1px solid lightgray;
+}
+
+.sidebar_headerRight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10px;
+}
+
+
+.sidebar_search {
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+    height: 38px;
+    padding: 10px;
+}
+
+.sidedar_searchContainer {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: 35px;
+    width: 210px;
+    border-radius: 20px;
+}
+
+.sidedar_searchContainer input{border: 0px; margin-left: 20px;}
+
+
+.sidebar_chats{
+    flex: 1;
+    background-color: white;
+    overflow: scroll;
+
+}
+
+.sidebarchat{
+    padding: 20px;
+    display: flex;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.sidebarchat:hover{ background-color: #ebebeb;}
+
+.app {
+    display:grid;
+    place-items:center;
+    background-color: #dadbd3;
+    height: 100vw;
+}
+
+.app_body {
+    display: flex;
+    background-color: #dadbde;
+    margin-top: -50px;
+    height: 90vh;
+    width: 90vw;
+    box-shadow: -1px 4px 20px -6px rgba(0,0,0);
+}
+
+
+
+
+.chat {
+    flex: 0.80;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat_header {display: flex; padding: 15px; align-items: center; border-bottom: 1px solid lightgray;
+ margin-bottom: 0px;}
+
+.chat_headerInfo {flex: 1; padding-left: 20px;}
+
+
+.chat_headerInfo h3{ margin-bottom: 3px; font-weight: 500;}
+
+
+.chat_headerRight {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100px;
+}
+.chat_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+
+
+.chat_footer form{
+    flex:1;
+    display: flex;
+}
+
+.chat_footer form input{
+    flex:1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+
+.chat_footer form  button{
+    background-color: #d3c2ce;
+    width: 40px;
+    height: 30px;
+    margin: auto;
+    border-radius: 30px;
+}
+
+.MicNone {margin: auto; background-color:#d3c2ce ; border-radius: 30px;}
+
+.chat_body{
+    flex: 1;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    background-repeat: repeat;
+    background-position: center;
+    padding: 30px;
+    overflow:'';
+}   
+
+
+.chat_message {
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #fcfbfb;
+    width: fit-content;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.chat_reciever {
+    background-color: #ccf1c7;
+    width: fit-content;
+    border-radius: 10px
+}
+
+
+.chat_time {
+    margin-left: 10px;
+    font-size: xx-small;
+}
+
+
+
+/**************************** End CSS for sidebar similator wattsap ***************************/
+
