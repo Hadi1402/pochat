@@ -11,6 +11,8 @@ import SupportUser from "./supportUser"
 import Sidebar from "./supportUser";
 import ChatBox from "./chatBox";
 import User from "./user"
+import WebSite from "./webSite";
+import webSite from "./webSite";
 
 
 
@@ -29,6 +31,8 @@ function App() {
    <Route exact path='/supportuser' component={SupportUser}/>
    <Route exact path='/adminDashbord' component={AdminDashbord}/>
    <Route exact path='/user' component={User}/>
+   <Route exact path='/website' component={webSite}/>
+
    
    </Switch>
    </BrowserRouter>

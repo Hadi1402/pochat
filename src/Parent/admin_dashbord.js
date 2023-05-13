@@ -15,7 +15,7 @@ class AdminDashbord extends Component{
               <menu>
                 <ul className={'dashbord'}>
                     
-                    <li> {url} </li> 
+                 <li> <Link to="/website" > website </Link> </li>
                     <br/>
                     <li> <Link to="/user" > user </Link> </li>
 

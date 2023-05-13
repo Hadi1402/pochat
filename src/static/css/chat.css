@@ -34,11 +34,11 @@ input[type='password']{
 /***************************** admin dashbord css  *****************************/
 .dashbord{ 
     background-color: rgb(226, 206, 150);
-    
     position: fixed;
-    top: 0px;
-    bottom: 1px;
-    top:1px
+    top:100px;
+    height: 25%;
+    width: 10%;
+    
 }
 
 .dashbord li{  
@@ -381,6 +381,15 @@ input[type='password']{
     border-radius: 30px;
  }
 
+/*******************  start website css *******************/
 
+.website{
+    margin-top: 200px;
+    margin-left:35%;
+    width: 1630px;
+}
 
- 
+ .Add_site {height: 40px; width: 120px; background-color:cornflowerblue ;}
+ .Active_site {height: 40px; width: 120px; background-color:rgb(9, 194, 34) ;}
+ .dActive_site {height: 40px; width: 120px; background-color:rgb(201, 109, 55) ;}
+ .del_site {height: 40px; width: 120px; background-color:rgb(255, 18, 10) ;}

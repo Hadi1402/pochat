@@ -19,7 +19,7 @@ export default [
  {
     "id":2,
     "img": my1,
-    "user name ": "sediiiii",
+    "user name": "sediiiii",
     "email": "test1@gmai.com",
     "data create": "فرودین 20, 1402",
     "status user":"فعال",
