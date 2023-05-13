@@ -7,6 +7,7 @@ import my3 from "../static/img/03.JPG";
 
 export default [
  {
+    "id": 1,
     "عکس": my,
     "نام کاربری ": "hadi000000",
     "ایمیل ": "test@gmai.com",
@@ -16,17 +17,20 @@ export default [
 
 
  {
+    "id":2,
     "عکس": my1,
     "نام کاربری ": "sediiiii",
     "ایمیل ": "test1@gmai.com",
     "تاریخ ایجاد": "فرودین 20, 1402",
     "وضعیت کاربر":"فعال",
+    "color" :"#ffff",
 
 
  },
 
 
  {
+   "id":3,   
     "عکس": my2,
     "نام کاربری ": "farhad 011",
     "ایمیل ": "test2@gmai.com",
@@ -37,6 +41,7 @@ export default [
  },
 
  {
+   "id":4,
     "عکس": my3,
     "نام کاربری ": "ashkann 011",
     "ایمیل ": "test3@gmai.com",
