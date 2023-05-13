@@ -347,20 +347,29 @@ input[type='password']{
 
 
 
- .Add_user{
+ .Active_user{
     position: fixed;
      margin-top: 650px;
-     margin-left:700px ;
+     margin-left:600px ;
     width: 150px;
     height: 50px;
     
 }  
      
+.dActive_user{
+    position: fixed;
+     margin-top: 650px;
+     margin-left:800px ;
+    width: 150px;
+    height: 50px;
+    
+}  
+  
      
  .del_user{ 
     position: fixed;
      margin-top: 650px;
-     margin-left:900px ;
+     margin-left:1000px ;
      width: 150px;
      height: 50px;
  }    

@@ -6,9 +6,6 @@ import user_data from "./user_data";
 
 
 
-
-
-
 class User extends React.Component {
 
   constructor(props) {
@@ -17,57 +14,47 @@ class User extends React.Component {
     this.check_Ref = React.createRef();
     this.state = {
       data: user_data,
-      row_display: 'block',
-      row_color: "#e4e4e4",
       select_checked: [],
-      id_user: "5",
-
-    }
+                 }
     this.onChange_disable = this.onChange_disable.bind(this)
     this.onClick = this.onClick.bind(this)
     this.onChange_enable = this.onChange_enable.bind(this)
     this.onChange_delete = this.onChange_delete.bind(this)
-  }
+         }
 
   onClick = (event) => {
     this.state.select_checked.push(event.target.getAttribute("data_value"))
     this.setState({ select_checked: this.state.select_checked });
     console.log(this.state.select_checked)
-  }
+           }
 
 
   onChange_disable = (e) => {
     this.state.data.forEach(element => {
-      console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-      if (this.state.select_checked.includes(element["id"].toString())) {
-        element["وضعیت کاربر"] = "غیر فعال"
-      }
-    });
+    console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+    if (this.state.select_checked.includes(element["id"].toString())){
+        element["status user"] = "غیر فعال" }
+        });
     this.setState({ data: this.state.data })
-  }
+           }
 
 
   onChange_enable = (e) => {
     this.state.data.forEach(element => {
-      console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-      if (this.state.select_checked.includes(element["id"].toString())) {
-        element["وضعیت کاربر"] = " فعال"
-
-      }
+    console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+    if (this.state.select_checked.includes(element["id"].toString())) {
+        element["status user"] = " فعال"}
       this.setState({ data: this.state.data })
-
     });
   }
 
 
   onChange_delete = (e) => {
     this.state.data.forEach(element => {
-      if (this.state.select_checked.includes(element["id"].toString())) {
-
+    if (this.state.select_checked.includes(element["id"].toString())) {
         //this.state.row_display = "none"
         element["display"] = "none";
         // call backend
-
       }
     });
     this.setState({ data: this.state.data })
@@ -97,20 +84,17 @@ class User extends React.Component {
                 <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
                 <th className="td_user_table" colspan="2">  وضعیت کاربر </th>
                 <th className="td_user_table" colspan="2">  انتخاب</th>
-
               </tr>
-
-
             </thead>
             {this.state.data.map(u => (
               <tbody>
 
                 <tr className="info_table" style={ {display:u["display"]} }>
                   <td colspan="2">  {u["id"]} </td>
-                  <td colspan="2"> <img className="img_user" src={u.عکس} /> <span> {u["نام کاربری "]} </span> </td>
-                  <td colspan="2"> {u["ایمیل"]} </td>
-                  <td colspan="2">  {u["تاریخ ایجاد"]} </td>
-                  <td ref={this.status_Ref} className="td_status" colspan="2"> {u["وضعیت کاربر"]}  </td>
+                  <td colspan="2"> <img className="img_user" src={u.img} /> <span> {u["user name"]} </span> </td>
+                  <td colspan="2"> {u["email"]} </td>
+                  <td colspan="2">  {u["data create"]} </td>
+                  <td ref={this.status_Ref} className="td_status" colspan="2"> {u["status user"]}  </td>
                   <td className="check_box" colspan="2">  <input
                     type="checkbox"
                     data_value={u["id"]}
@@ -126,9 +110,9 @@ class User extends React.Component {
 
         </div>
         <br></br>
-        <input className="Add_user" type='button' value='فعال کردن' onClick={this.onChange_enable} />
-        <input className="del_user" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-        <input className="" type='button' value='حذف کاربر' onClick={this.onChange_delete} />
+        <input className="Active_user" type='button' value='فعال کردن' onClick={this.onChange_enable} />
+        <input className="dActive_user" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
+        <input className="del_user" type='button' value='حذف کاربر' onClick={this.onChange_delete} />
 
       </div>
 

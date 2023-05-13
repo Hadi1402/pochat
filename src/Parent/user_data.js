@@ -8,45 +8,42 @@ import my3 from "../static/img/03.JPG";
 export default [
  {
     "id": 1,
-    "عکس": my,
-    "نام کاربری ": "hadi000000",
-    "ایمیل ": "test@gmai.com",
-    "تاریخ ایجاد": "اردیبهشت 15, 1402",
-    "وضعیت کاربر":"فعال",
+    "img": my,
+    "user name": "hadi000000",
+    "email": "test@gmai.com",
+    "data create": "اردیبهشت 15, 1402",
+    "status user":"فعال",
  },
 
 
  {
     "id":2,
-    "عکس": my1,
-    "نام کاربری ": "sediiiii",
-    "ایمیل ": "test1@gmai.com",
-    "تاریخ ایجاد": "فرودین 20, 1402",
-    "وضعیت کاربر":"فعال",
-    "color" :"#ffff",
-
-
+    "img": my1,
+    "user name ": "sediiiii",
+    "email": "test1@gmai.com",
+    "data create": "فرودین 20, 1402",
+    "status user":"فعال",
  },
 
 
  {
-   "id":3,   
-    "عکس": my2,
-    "نام کاربری ": "farhad 011",
-    "ایمیل ": "test2@gmai.com",
-    "تاریخ ایجاد": "خرداد 10, 1402",
-    "وضعیت کاربر":"فعال",
+    "id":3,   
+    "img": my2,
+    "user name": "farhad 011",
+    "email": "test2@gmai.com",
+    "data create": "خرداد 10, 1402",
+    "status user":"فعال",
 
 
  },
 
  {
-   "id":4,
-    "عکس": my3,
-    "نام کاربری ": "ashkann 011",
-    "ایمیل ": "test3@gmai.com",
-    "تاریخ ایجاد": "خرداد 12, 1402",
-    "وضعیت کاربر":"فعال",
+    "id":4,
+    "img": my3,
+    "user name": "ashkann 011",
+    "email": "test3@gmai.com",
+    "data create": "خرداد 12, 1402",
+    "status user":"فعال",
  },
 
 ];
