@@ -3,8 +3,32 @@ import {NavLink,Redirect,Route} from "react-router-dom";
 import axios from 'axios';
 import Sidebar from './supportUser';
 import registeruser from './registeruser';
-import './loginregister.css';
+import '../static/css/loginregister.css';
 //import {UseAuth} from "../context/auth";
+
+
+
+function example() {
+//   const userLanguage = navigator.language || navigator.userLanguage;
+//   let cssPath;
+//   if (userLanguage.startsWith('fa')) {
+//     console.log("شما با زبان فارسی وارد این سایت شده اید")
+//     cssPath = '/lang-css/fa.css';
+//   } else {
+//     console.log("you are entered to this site with other lanquage")
+//     cssPath = '/lang-css/en.css';
+//   }
+//   require(cssPath); // dynamically import the CSS file
+  return (
+    <div>
+    </div>
+  );
+}
+
+export default example;
+
+
+
 
 //   export default function LoginSet(props) {
 //     const [isloggedIn, setLoggedIn] = useState(false);
@@ -73,13 +97,13 @@ import './loginregister.css';
 // }
 
 
-class LoginUserPage extends Component {
-    constructor(props){
-     super(props)
-     this.username = React.createRef();
-     this.email = React.createRef();
-     this.password = React.createRef();
-    }
+// class LoginUserPage extends Component {
+//     constructor(props){
+//      super(props)
+//      this.username = React.createRef();
+//      this.email = React.createRef();
+//      this.password = React.createRef();
+//     }
     //  onHandleRegistration = (event) => {
     //      event.preventDefault(); 
     //       let code = this.code.value;
@@ -97,50 +121,50 @@ class LoginUserPage extends Component {
     //  }
         
     
-  render() {
-    return(
-      <div className="regiserform">
-           <h3>برای عضویت  فرم زیر را پر کنید</h3>
-          <form class="form">
-          <p class="title">Register </p>
-          <p class="message">Signup now and get full access to our app. </p>
-              <div class="flex">
-              <label>
-                  <input required="" placeholder="" type="text" class="input"/>
-                  <span>Firstname</span>
-              </label>
+//   render() {
+//     return(
+//       <div className="regiserform">
+//            <h3>برای عضویت  فرم زیر را پر کنید</h3>
+//           <form class="form">
+//           <p class="title">Register </p>
+//           <p class="message">Signup now and get full access to our app. </p>
+//               <div class="flex">
+//               <label>
+//                   <input required="" placeholder="" type="text" class="input"/>
+//                   <span>Firstname</span>
+//               </label>
       
-              <label>
-                  <input required="" placeholder="" type="text" class="input"/>
-                  <span>Lastname</span>
-              </label>
-          </div>  
+//               <label>
+//                   <input required="" placeholder="" type="text" class="input"/>
+//                   <span>Lastname</span>
+//               </label>
+//           </div>  
                   
-          <label>
-              <input required="" placeholder="" type="email" class="input"/>
-              <span>Email</span>
-          </label> 
+//           <label>
+//               <input required="" placeholder="" type="email" class="input"/>
+//               <span>Email</span>
+//           </label> 
               
-          <label>
-              <input required="" placeholder="" type="password" class="input"/>
-              <span>Password</span>
-          </label>
-          <label>
-              <input required="" placeholder="" type="password" class="input"/>
-              <span>Confirm password</span>
-          </label>
-          <button class="submit">Submit</button>
-          <p class="signin">Already have an acount ? <Route path="/login" Component="Loginuser"/> </p>
-      </form>
+//           <label>
+//               <input required="" placeholder="" type="password" class="input"/>
+//               <span>Password</span>
+//           </label>
+//           <label>
+//               <input required="" placeholder="" type="password" class="input"/>
+//               <span>Confirm password</span>
+//           </label>
+//           <button class="submit">Submit</button>
+//           <p class="signin">Already have an acount ? <Route path="/login" Component="Loginuser"/> </p>
+//       </form>
            
-      </div>
-    )
+//       </div>
+//     )
   
-    }
-    }
-  function mapStateToProps (state){
-    return {data_user:state.data_user}
-  }
+//     }
+//     }
+//   function mapStateToProps (state){
+//     return {data_user:state.data_user}
+//   }
 
 
 //export default {LoginSet};

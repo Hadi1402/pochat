@@ -7,12 +7,13 @@ import "../static/css/chat.css";
 import axios from "axios";
 import { BrowserRouter, Routes, Route, NavLink, Router } from "react-router-dom";
 import LoginSet from "../Parent/login.js"
-import './loginregister.css';
+import '../static/css/loginregister.css';
 
 
 class RegisterUserPage extends Component {
   constructor(props){
    super(props)
+   this.code = React.createRef();
    this.username = React.createRef();
    this.email = React.createRef();
    this.password = React.createRef();
@@ -37,72 +38,65 @@ class RegisterUserPage extends Component {
   
 render() {
   return(
-    <div className="regiserform">
-         <h3>برای عضویت  فرم زیر را پر کنید</h3>
-         <form>
-          <div>
-          <label> کد دعوت </label>
-            <input type="text" name="code"  placeholder={'کد دعوت '} ref={this.code} />
+    <div className="registerform">
+      <form class="form">
+        <p class="title">برای عضویت,فرم زیر را پر کنید</p>
+        <p class="message">ثبت نام کنید تا از قابلیت های بیشتر بهره مند شوید</p>
+          <label>
+              <input 
+              required="" 
+              type="text" 
+              class="input"
+              name="code"  
+              placeholder={''} 
+              ref={this.code}/>
+              <span>کد دعوت </span>
+          </label>
 
-          </div>
-          <div>
-            <label> نام کاربری </label>
-            <input type="text" name="username"  placeholder={'نام کاربری'} ref={this.username} />
-          </div>
-          <div>
-            <label> ایمیل </label>
-            <input type="email" name="email"  placeholder={'ایمیل'} ref={this.email}/>
-          </div>
-          
-          
-          <div>
-            <label> پسورد </label>
-            <input type="password" name="password"  placeholder={'کلمه عبور'} ref={this.password}/>
-          </div>
-          <div>
-            <label> تکرار پسورد</label>
-            <input type="password" name="repassword"  placeholder={'تکرار کلمه عبور'} ref={this.repassword}/>
-              
-          </div>
-          <div>
-            <input type='button' value = 'عضویت' onClick={this.onHandleRegistration} />
-            <NavLink exact to={'/login'}> قبلاً ثبت نام کرده ام </NavLink>
- 
-          
-          </div>
-        </form>
-        <form class="form">
-        <p class="title">Register </p>
-        <p class="message">Signup now and get full access to our app. </p>
-            <div class="flex">
-            <label>
-                <input required="" placeholder="" type="text" class="input"/>
-                <span>Firstname</span>
-            </label>
-    
-            <label>
-                <input required="" placeholder="" type="text" class="input"/>
-                <span>Lastname</span>
-            </label>
-        </div>  
-                
+          <label>
+              <input 
+              required=""
+              type="text"
+              class="input"
+              name="username"  
+              placeholder={''} 
+              ref={this.username}/>
+              <span>نام کاربری</span>
+          </label>
         <label>
-            <input required="" placeholder="" type="email" class="input"/>
-            <span>Email</span>
+            <input 
+            required="" 
+            type="email" 
+            class="input"
+            name="email"  
+            placeholder={''} 
+            ref={this.email}/>
+            <span>ایمیل</span>
         </label> 
             
         <label>
-            <input required="" placeholder="" type="password" class="input"/>
-            <span>Password</span>
+            <input 
+            required="" 
+            type="password" 
+            class="input"
+            name="password"  
+            placeholder={''} 
+            ref={this.password}/>
+            <span>کلمه عبور</span>
         </label>
         <label>
-            <input required="" placeholder="" type="password" class="input"/>
-            <span>Confirm password</span>
+            <input 
+            required="" 
+            type="password" 
+            class="input"
+            name="repassword"  
+            placeholder={''} 
+            ref={this.repassword}/>
+            <span>تکرار کلمه عبور</span>
         </label>
-        <button class="submit">Submit</button>
-        <p class="signin">Already have an acount ? <Route path="/login" Component="Loginuser"/> </p>
+        <button class="submit" value = 'عضویت' onClick={this.onHandleRegistration} >Submit</button>
+        <p class="signin">قبلاً ثبت نام کرده ام <NavLink exact to={'/login'}> ورود </NavLink></p>
     </form>
-         
     </div>
   )
 

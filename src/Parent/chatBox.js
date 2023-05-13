@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
-import close from "../static/img/close1.jpg";
+import close from "../static/img/close.png";
 import { connect } from "react-redux";
 import dispalyBox from "../Actions/displayChatbox";
 import HomeChat from "./homeChat";
