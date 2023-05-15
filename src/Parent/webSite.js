@@ -21,11 +21,6 @@ class WebSite extends React.Component{
       //  this.onChange_enable = this.onChange_enable.bind(this)
        // this.onChange_delete = this.onChange_delete.bind(this) 
              }
-  
-
-      
-
-
 
        handleInputDomain = event => {
         this.state.domain_name=event.target.value
@@ -41,7 +36,15 @@ class WebSite extends React.Component{
             };
         
        addInputSite = event => {
-        this.state.data.domain_name =this.state.domain_name
+        this.state.data.forEach(element => {
+            element["domain_name"]=this.state.domain_name;
+            console.log("domain name is:" ,element["domain_name"])
+            element["company_name"]=this.state.company_name;
+            console.log('company name is:',element["company_name"])
+
+        });
+    }
+       /* this.state.data.domain_name =this.state.domain_name
          this.state.data.company_name=this.state.company_name
          console.log("domain name is:" ,this.state.data.domain_name)
          console.log('company name is:' ,this.state.data.company_name)
@@ -78,10 +81,9 @@ class WebSite extends React.Component{
             <div className="website">
                 <input type='text' name='domain_name' site_value={u["domain_name"]} className="input_domain" onChange={this.handleInputDomain} placeholder="نام سایت" required/>
                 <br/>
-                <input type='text' name='company_name' company_value={u['company_name']} className="input_company_name"  onClick={this.handleInputCompany} placeholder="نام شرکت"/>
+                <input type='text' name='company_name' company_value={u["company_name"]} className="input_company_name"  onChange={this.handleInputCompany} placeholder="نام شرکت"/>
                  <br/>
                  <br/>
-
                  <input className="Add_site" type='button' value='افزودن سایت' onClick={this.addInputSite} />
                  <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
                  <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
