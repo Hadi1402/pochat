@@ -2,8 +2,8 @@
 export default [
     {
       
-       "domain name": "www.test.com",
-       "company name": "tesco"
+       "domain_name": "www.test.com",
+       "company_name": "tesco"
     },
    
    ];
