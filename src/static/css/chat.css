@@ -386,10 +386,42 @@ input[type='password']{
 .website{
     margin-top: 200px;
     margin-left:35%;
-    width: 1630px;
 }
 
- .Add_site {height: 40px; width: 120px; background-color:cornflowerblue ;}
+ .Add_site {height: 40px; width: 120px; margin-top: 600px; margin-left: 650px; background-color:cornflowerblue ;}
  .Active_site {height: 40px; width: 120px; background-color:rgb(9, 194, 34) ;}
  .dActive_site {height: 40px; width: 120px; background-color:rgb(201, 109, 55) ;}
  .del_site {height: 40px; width: 120px; background-color:rgb(255, 18, 10) ;}
+
+
+
+.input_domain {margin-left: 600px;}
+
+.input_company_name {margin-left: 600px;}
+
+.input_data_create {margin-left: 600px;}
+
+.input_status {margin-left: 600px;}
+
+.btnoky{
+    height: 40px; 
+    font-size:large; 
+    width: 120px;
+    margin-left: 750px;
+    margin-top: 10px;
+    background-color:rgb(218, 197, 196) ;
+    }
+
+.panle{
+   bottom: 200px;
+}
+
+
+.btncancel{
+    height: 40px; 
+    font-size:large; 
+    width: 120px;
+    margin-left: 50px;
+    margin-top: 10px;
+    background-color:rgb(218, 197, 196) ;
+}

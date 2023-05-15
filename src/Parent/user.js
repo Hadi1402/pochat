@@ -87,8 +87,8 @@ class User extends React.Component {
               </tr>
             </thead>
             {this.state.data.map(u => (
+              
               <tbody>
-
                 <tr className="info_table" style={ {display:u["display"]} }>
                   <td colspan="2">  {u["id"]} </td>
                   <td colspan="2"> <img className="img_user" src={u.img} /> <span> {u["user name"]} </span> </td>
