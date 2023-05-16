@@ -20,7 +20,7 @@ class AdminDashbord extends Component{
                     <li> <Link to="/user" > user </Link> </li>
 
                     <br/>
-                    <li> <Link to= " /">   groups </Link> </li>
+                    <li> <Link to= "group/">   groups </Link> </li>
                     <br/>
              
                    <li> <Link to="/supportuser" > chat </Link> </li>        

@@ -388,7 +388,7 @@ input[type='password']{
     margin-left:35%;
 }
 
- .Add_site {height: 40px; width: 120px; margin-top: 600px; margin-left: 650px; background-color:cornflowerblue ;}
+ .Add_site {height: 40px; width: 120px; margin-top: 500px; margin-left: 650px; background-color:cornflowerblue ;}
  .Active_site {height: 40px; width: 120px; background-color:rgb(9, 194, 34) ;}
  .dActive_site {height: 40px; width: 120px; background-color:rgb(201, 109, 55) ;}
  .del_site {height: 40px; width: 120px; background-color:rgb(255, 18, 10) ;}
@@ -413,7 +413,7 @@ input[type='password']{
     }
 
 .panle{
-   bottom: 200px;
+   margin-top: -400px;
 }
 
 
@@ -422,6 +422,15 @@ input[type='password']{
     font-size:large; 
     width: 120px;
     margin-left: 50px;
-    margin-top: 10px;
     background-color:rgb(218, 197, 196) ;
+}
+
+
+.div_site{
+    background-color: #e4e4e4;
+    height: 400px;
+    width: 1180px;
+    position:fixed;
+    top: 150px;
+    left: 350px;
 }

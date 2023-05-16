@@ -87,7 +87,7 @@ class User extends React.Component {
               </tr>
             </thead>
             {this.state.data.map(u => (
-              
+
               <tbody>
                 <tr className="info_table" style={ {display:u["display"]} }>
                   <td colspan="2">  {u["id"]} </td>

@@ -9,6 +9,7 @@ class WebSite extends React.Component{
         this.state = {
             data:website_data,
             display_panel:"none",
+            display_list:"block",
             select_checked: [],
                      }
     this.company_ref = createRef();
@@ -34,6 +35,7 @@ class WebSite extends React.Component{
    
       displayPanel = e =>{
         this.state.display_panel="block"
+        this.state.display_list="none"
         this.setState({style:this.state.display_panel})
       }
     
@@ -50,10 +52,12 @@ class WebSite extends React.Component{
             console.log("domain name is:" ,element["domain_name"])
             element["company_name"]=this.company_ref.current.value;
             console.log('company name is:',element["company_name"])
-            element["data create"]=this.company_ref.current.value;
-            console.log("data create is:" ,  element["data_create"])
-            element["status"]=this.company_ref.current.value;
+            element["data_create"]=this.data_ref.current.value;
+            console.log("data create is:", element["data_create"])
+            element["status"]=this.status_ref.current.value;
             console.log("status is:" ,  element["status"])
+            this.state.display_list = "block"
+            this.setState({style:this.state.display_list})
 
 
         });
@@ -98,9 +102,9 @@ class WebSite extends React.Component{
         return(
    
             <div>
-           <h1>        ***********************************************        مدیریت  سایت         ***********************************************</h1>
+           <h2>        ***********************************************        مدیریت  سایت         ***********************************************</h2>
            <hr/>
-           <div className="div_user">
+           <div className="div_site" style={{display:this.state.display_list}}>
            <table className="user_table">
             <thead>
               <tr>
@@ -110,8 +114,6 @@ class WebSite extends React.Component{
                 <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
                 <th className="td_user_table" colspan="2">  وضعیت  </th>
                 <th className="td_user_table" colspan="2">  انتخاب</th>
-
-
               </tr>
             </thead>
 
@@ -130,9 +132,6 @@ class WebSite extends React.Component{
                   /></td>
                 </tr>
                 </tbody>
-               
-             
-
                   ))}
 
             </table>
@@ -142,20 +141,19 @@ class WebSite extends React.Component{
               <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
               <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
               <input className="del_site" type='button' value='حذف سایت' onClick={this.onChange_delete} />
-    
 
 
               <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='domain_name'  className="input_domain" ref={this.domain_ref} placeholder="نام سایت" required/>
                 <br/>
-             <input type='text' name='company_name'  className="input_company_name"  ref={this.company_ref} placeholder="نام شرکت"/>
+             <input type='text' name='company_name'  className="input_company_name" ref={this.company_ref} placeholder="نام شرکت"/>
              <br/>
-             <input type='text' name='data_create'  className="input_data_create"  ref={this.data_ref} placeholder="تاریخ ایجاد "/>
+             <input type='text' name='data_create'  className="input_data_create" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
              <br/>
-             <input type='text' name='status'  className="input_status"  ref={this.status_ref} placeholder="وضعیت"/>
+             <input type='text' name='status'  className="input_status" ref={this.status_ref} placeholder="وضعیت"/>
              <br/>
              <input type='button' value='تایید' className="btnoky" onClick={this.addInputSite} />
-             <input type='button' value='لغو' className="btncancel" onClick={this.Cancel} />
+             <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
 
              </div>
             </div>
