@@ -9,10 +9,11 @@ export default [
  {
     "id": 1,
     "img": my,
-    "user name": "hadi000000",
+    "user_name": "hadi000000",
     "email": "test@gmai.com",
     "data create": "اردیبهشت 15, 1402",
     "status user":"فعال",
+    "field":"fanni"
  },
 
 
@@ -23,6 +24,8 @@ export default [
     "email": "test1@gmai.com",
     "data create": "فرودین 20, 1402",
     "status user":"فعال",
+    "field":"fanni"
+
  },
 
 
@@ -33,6 +36,7 @@ export default [
     "email": "test2@gmai.com",
     "data create": "خرداد 10, 1402",
     "status user":"فعال",
+    "field":"software"
 
 
  },
@@ -44,6 +48,8 @@ export default [
     "email": "test3@gmai.com",
     "data create": "خرداد 12, 1402",
     "status user":"فعال",
+    "field":"hardware"
+
  },
 
 ];

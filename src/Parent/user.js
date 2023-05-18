@@ -83,11 +83,12 @@ class User extends React.Component {
                 <th className="td_user_table" colspan="2">  ایمیل </th>
                 <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
                 <th className="td_user_table" colspan="2">  وضعیت کاربر </th>
+                <th className="td_user_table" colspan="2">  زمینه فعالیت  </th>
                 <th className="td_user_table" colspan="2">  انتخاب</th>
               </tr>
             </thead>
+            
             {this.state.data.map(u => (
-
               <tbody>
                 <tr className="info_table" style={ {display:u["display"]} }>
                   <td colspan="2">  {u["id"]} </td>
@@ -95,6 +96,7 @@ class User extends React.Component {
                   <td colspan="2"> {u["email"]} </td>
                   <td colspan="2">  {u["data create"]} </td>
                   <td ref={this.status_Ref} className="td_status" colspan="2"> {u["status user"]}  </td>
+                  <td colspan="2">  {u["field"]} </td>
                   <td className="check_box" colspan="2">  <input
                     type="checkbox"
                     data_value={u["id"]}
