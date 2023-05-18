@@ -24,8 +24,7 @@ function App() {
         {/* <AdminDashbord/> */}
    <BrowserRouter>   
    <Switch>
-   <Route exact path="/"  component={Home} >
-   </Route>
+   <Route exact path="/"  component={Home} />
    <Route exact path="/login" component={LoginSet}  />
    <Route exact path='/RegisterUser'  component={RegisterUserPage} />
    <Route exact path='/supportuser' component={SupportUser}/>
