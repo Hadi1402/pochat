@@ -403,6 +403,8 @@ input[type='password']{
 
 .input_status {margin-left: 600px;}
 
+.input_type {margin-left:600px}
+
 .btnoky{
     height: 40px; 
     font-size:large; 
@@ -440,6 +442,6 @@ input[type='password']{
     font-size:large; 
     width: 120px;
     margin-left: 50px;
-    margin-top:480PX;
+    margin-top:370PX;
     background-color:rgb(143, 140, 197) ;
 }

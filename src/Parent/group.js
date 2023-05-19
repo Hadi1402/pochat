@@ -15,18 +15,27 @@ class Group extends React.Component{
         this.state = {
         group:group_data,
         user:user_data,
+        website:website_data,
         re:r,
-         }     
-        // {this.state.data.map(u => (
+        select_checked: [],
+         }   
 
+this.group_ref = React.createRef();
+this.user_ref = React.createRef();
+this.domain_ref = React.createRef();
+this.data_ref = React.createRef();
+this.status_ref = React.createRef();
+this.CreateGroup = this.CreateGroup.bind(this)
+this.onChange_enable = this.onChange_enable.bind(this)
+this.onChange_disable = this.onChange_disable.bind(this) 
+this.onClick = this.onClick.bind(this)
+ }
 
-//this.showTableGroup=this.showTableGroup.bind(this)
-//this.id_ref = createRef();
-//this.group_name_ref = React.createRef();
-//this.user_name_ref = React.createRef();
-//this.data_create_ref = React.createRef();
-//this.status_group_ref = React.createRef();
-    }
+ onClick = (event) => {
+   this.state.select_checked.push(event.target.getAttribute("data_value"))
+   this.setState({ select_checked: this.state.select_checked });
+   console.log(this.state.select_checked)
+          }
 
     /*
       showTableGroup = (e) => {
@@ -41,6 +50,42 @@ class Group extends React.Component{
    console.log(r)
        }
       */
+    CreateGroup = e => {
+      this.state.re.forEach(element => {
+        element["group_name"]=this.group_ref.current.value;
+        console.log("group name is:" ,element["group_name"])
+        element["user_name"]=this.user_ref.current.value;
+        console.log("user_name:" ,element["user_name"])
+        element["domain_name"]=this.domain_ref.current.value;
+        console.log('domain name is:',element["domain_name"])
+        element["data_create"]=this.data_ref.current.value;
+        console.log("data create is:", element["data_create"])
+        element["status_group"]=this.status_ref.current.value;
+        console.log("status is:" ,  element["status_group"])
+       // this.state.display_list = "block"
+       // this.setState({style:this.state.display_list})
+           });
+          }
+       onChange_enable = (e) => {
+        this.state.re.forEach(element => {
+        console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+        if (this.state.select_checked.includes(element["id"].toString())) {
+            element["status_group"] = " فعال"}
+          this.setState({ re: this.state.re })
+            });
+            } 
+
+        onChange_disable = (e) => {
+          this.state.re.forEach(element => {
+          console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+          if (this.state.select_checked.includes(element["id"].toString())){
+           element["status_group"] = "غیر فعال" }
+                  });
+          this.setState({ re: this.state.re })
+          console.log({re:this.state.re})
+                     }
+
+
            
     render(){
         return(
@@ -57,6 +102,7 @@ class Group extends React.Component{
                  <th className="td_user_table" colspan="2"> ID </th>
                  <th className="td_user_table" colspan="2"> نام گروه </th>
                  <th className="td_user_table" colspan="2"> کاربران  </th>
+                 <th className="td_user_table" colspan="2"> نام سایت  </th>
                  <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
                  <th className="td_user_table" colspan="2">  وضعیت  </th>
                  <th className="td_user_table" colspan="2">  انتخاب</th>
@@ -65,10 +111,13 @@ class Group extends React.Component{
 
             { this.state.group.forEach((g) =>{
               this.state.user.forEach((u) =>{
-              if(g.group_name === u.field)
-              this.state.re.push({...g , ...u})
+                this.state.website.forEach((w) =>{
+              if(g.group_name === u.field && g.group_name === w.type)
+              this.state.re.push({...g , ...u , ...w})
                 })
                 })
+              })
+
             }
 
                {this.state.re.map(u =>( 
@@ -77,19 +126,41 @@ class Group extends React.Component{
                 <td colspan="2">  {u['id']}              </td>
                 <td colspan="2">  {u['group_name']}       </td>
                 <td colspan="2">  {u['user_name']}       </td>
+                <td colspan="2">  {u['domain_name']}       </td>
                 <td colspan="2">  {u['data_create']}       </td>
                 <td colspan="2">  {u['status_group']}       </td>
+                <td className="check_box" colspan="2">  <input
+                    type="checkbox"
+                    data_value={u["id"]}
+                    onChange={this.onClick}
+                  /></td>
               </tr>
-            </tbody>
+              </tbody>
               ))}
-            
-                  
-            
-
             
              </table>
                          
-            <input type="button" value='گروه ها' className="groupbtn" onClick={this.showTableGroup}/>
+            <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
+            <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
+            <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
+
+
+
+            <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
+            <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
+               
+            <input type='text' name='user_name'  className="" ref={this.user_ref} placeholder=" کاربر " required/>
+                   
+             <input type='text' name='domain_name'  className="" ref={this.domain_ref} placeholder="نام سایت"/>
+             
+             <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
+            
+             <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
+             
+             <input type='button' value='تایید' className="btnoky" onClick={this.CreateGroup} />
+             <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
+
+             </div>
 
              </div>
            

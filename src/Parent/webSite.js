@@ -14,6 +14,7 @@ class WebSite extends React.Component{
                      }
     this.company_ref = createRef();
     this.domain_ref = createRef();
+    this.type_ref = createRef();
     this.data_ref = createRef();
     this.status_ref = createRef();
     this.panel_ref = createRef();
@@ -50,6 +51,8 @@ class WebSite extends React.Component{
         this.state.data.forEach(element => {
             element["domain_name"]=this.domain_ref.current.value;
             console.log("domain name is:" ,element["domain_name"])
+            element["type"]=this.type_ref.current.value;
+            console.log("type:" ,element["type"])
             element["company_name"]=this.company_ref.current.value;
             console.log('company name is:',element["company_name"])
             element["data_create"]=this.data_ref.current.value;
@@ -110,6 +113,7 @@ class WebSite extends React.Component{
               <tr>
                 <th className="td_user_table" colspan="2"> ID </th>
                 <th className="td_user_table" colspan="2"> نام دامنه </th>
+                <th className="td_user_table" colspan="2"> نوع سایت  </th>
                 <th className="td_user_table" colspan="2">  اسم شرکت </th>
                 <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
                 <th className="td_user_table" colspan="2">  وضعیت  </th>
@@ -122,6 +126,7 @@ class WebSite extends React.Component{
                <tr style={ {display:u["display"]} }>
                   <td colspan="2">  {u["id"]} </td>
                   <td colspan="2">  {u["domain_name"]}    </td>
+                  <td colspan="2">  {u["type"]}    </td>
                   <td colspan="2">  {u['company_name']}   </td>
                   <td colspan="2">  {u["data_create"]}    </td>
                   <td colspan="2">  {u["status"]}         </td>
@@ -139,13 +144,15 @@ class WebSite extends React.Component{
  
               <input className="Add_site" type='button' value='افزودن سایت' onClick={this.displayPanel} />
               <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
-              <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
+
               <input className="del_site" type='button' value='حذف سایت' onClick={this.onChange_delete} />
 
 
               <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='domain_name'  className="input_domain" ref={this.domain_ref} placeholder="نام سایت" required/>
                 <br/>
+                <input type='text' name='domain_name'  className="input_type" ref={this.type_ref} placeholder="نوع سایت " required/>
+                <br/>    
              <input type='text' name='company_name'  className="input_company_name" ref={this.company_ref} placeholder="نام شرکت"/>
              <br/>
              <input type='text' name='data_create'  className="input_data_create" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
