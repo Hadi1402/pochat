@@ -28,7 +28,7 @@ class Group extends React.Component{
 //this.status_group_ref = React.createRef();
     }
 
-    
+    /*
       showTableGroup = (e) => {
       this.state.group.forEach((g) =>{
         this.state.user.forEach((u) =>{
@@ -40,7 +40,7 @@ class Group extends React.Component{
 
    console.log(r)
        }
-      
+      */
            
     render(){
         return(
@@ -63,6 +63,13 @@ class Group extends React.Component{
                </tr>
              </thead>
 
+            { this.state.group.forEach((g) =>{
+              this.state.user.forEach((u) =>{
+              if(g.group_name === u.field)
+              this.state.re.push({...g , ...u})
+                })
+                })
+            }
 
                {this.state.re.map(u =>( 
                 <tbody> 

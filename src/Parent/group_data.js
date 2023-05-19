@@ -8,4 +8,11 @@ export default [
         "data_create":"ordi 1402",
         "status_group":"فعال"
     },
+
+    {
+        "id":2,
+        "group_name":"software",
+        "data_create":"ordi 1402",
+        "status_group":"فعال"
+    },
 ]
