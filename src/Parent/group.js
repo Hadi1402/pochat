@@ -6,39 +6,42 @@ import website_data from "./website_data";
 import user_data from "./user_data";
 import { createRef } from "react";
 
-const Data = [{group_data} , {user_data}]
+//const data = [[group_data] , [user_data]]
+let r=[]
+
 class Group extends React.Component{
     constructor(props) {
         super(props)   
         this.state = {
         group:group_data,
         user:user_data,
-         }
+        re:r,
+         }     
+        // {this.state.data.map(u => (
 
-         {this.state.data.map(u => (
 
-
-this.showTableGroup=this.showTableGroup.bind(this)
-this.id_ref = createRef();
-this.group_name_ref = React.createRef();
-this.user_name_ref = React.createRef();
-this.data_create_ref = React.createRef();
-this.status_group_ref = React.createRef();
+//this.showTableGroup=this.showTableGroup.bind(this)
+//this.id_ref = createRef();
+//this.group_name_ref = React.createRef();
+//this.user_name_ref = React.createRef();
+//this.data_create_ref = React.createRef();
+//this.status_group_ref = React.createRef();
     }
 
     
       showTableGroup = (e) => {
-      
-         console.log("dataaaaaaaaaaaaaa");
-         Data.map(Data =>{
-        if(Data.field === Data.group_name)
-        ReactDOM.findDOMNode(this.id_ref).current.textContent = Data['id']
-        ReactDOM.findDOMNode(this.group_name_ref).current.textContent = Data['group_name'] 
-        ReactDOM.findDOMNode(this.user_name_ref).current.textContent = Data['user_name']
-   
-       })
-      
+      this.state.group.forEach((g) =>{
+        this.state.user.forEach((u) =>{
+          if(g.group_name === u.field)
+          this.state.re.push({...g , ...u})
+        })
+        this.setState({re:this.state.re})
+      })
 
+   console.log(r)
+       }
+      
+           
     render(){
         return(
 
@@ -60,23 +63,26 @@ this.status_group_ref = React.createRef();
                </tr>
              </thead>
 
+
+               {this.state.re.map(u =>( 
                 <tbody> 
+               <tr>
+                <td colspan="2">  {u['id']}              </td>
+                <td colspan="2">  {u['group_name']}       </td>
+                <td colspan="2">  {u['user_name']}       </td>
+                <td colspan="2">  {u['data_create']}       </td>
+                <td colspan="2">  {u['status_group']}       </td>
+              </tr>
+            </tbody>
+              ))}
             
-                 
-                 <tr> 
-                  <td ref={this.id_ref}>  </td> 
-                  <td ref={this.group_name_ref}>    </td>  
-                  <td ref={this.user_name_ref}>     </td>  
-                  <td ref={this.data_create_ref}>   </td>
-                  <td ref={this.status_group_ref}>  </td>
-                 </tr> 
-                
-                
-              
-             </tbody>
+                  
+            
+
+            
              </table>
                          
-            <input type="button" value='ok' className="Active_user" onClick={this.showTableGroup}/>
+            <input type="button" value='گروه ها' className="groupbtn" onClick={this.showTableGroup}/>
 
              </div>
            

@@ -20,7 +20,7 @@ export default [
  {
     "id":2,
     "img": my1,
-    "user name": "sediiiii",
+    "user_name": "sediiiii",
     "email": "test1@gmai.com",
     "data create": "فرودین 20, 1402",
     "status user":"فعال",
@@ -32,7 +32,7 @@ export default [
  {
     "id":3,   
     "img": my2,
-    "user name": "farhad 011",
+    "user_name": "farhad 011",
     "email": "test2@gmai.com",
     "data create": "خرداد 10, 1402",
     "status user":"فعال",
@@ -44,7 +44,7 @@ export default [
  {
     "id":4,
     "img": my3,
-    "user name": "ashkann 011",
+    "user_name": "ashkann 011",
     "email": "test3@gmai.com",
     "data create": "خرداد 12, 1402",
     "status user":"فعال",

@@ -434,3 +434,12 @@ input[type='password']{
     top: 150px;
     left: 350px;
 }
+
+.groupbtn{ 
+    height: 40px; 
+    font-size:large; 
+    width: 120px;
+    margin-left: 50px;
+    margin-top:480PX;
+    background-color:rgb(143, 140, 197) ;
+}

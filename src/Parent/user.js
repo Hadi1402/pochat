@@ -92,7 +92,7 @@ class User extends React.Component {
               <tbody>
                 <tr className="info_table" style={ {display:u["display"]} }>
                   <td colspan="2">  {u["id"]} </td>
-                  <td colspan="2"> <img className="img_user" src={u.img} /> <span> {u["user name"]} </span> </td>
+                  <td colspan="2"> <img className="img_user" src={u.img} /> <span> {u["user_name"]} </span> </td>
                   <td colspan="2"> {u["email"]} </td>
                   <td colspan="2">  {u["data create"]} </td>
                   <td ref={this.status_Ref} className="td_status" colspan="2"> {u["status user"]}  </td>
