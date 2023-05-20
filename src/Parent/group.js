@@ -5,6 +5,7 @@ import group_data from "./group_data";
 import website_data from "./website_data";
 import user_data from "./user_data";
 import { createRef } from "react";
+import { Avatar } from "@material-ui/core";
 
 //const data = [[group_data] , [user_data]]
 let r=[]
@@ -20,21 +21,25 @@ class Group extends React.Component{
         select_checked: [],
          }   
 
-this.group_ref = React.createRef();
-this.user_ref = React.createRef();
-this.domain_ref = React.createRef();
-this.data_ref = React.createRef();
-this.status_ref = React.createRef();
-this.CreateGroup = this.CreateGroup.bind(this)
+this.group_ref = createRef();
+this.user_ref = createRef();
+this.domain_ref = createRef();
+this.data_ref = createRef();
+this.status_ref = createRef();
+this.check_ref = createRef();
+this.createGroup = this.createGroup.bind(this)
 this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
  }
 
  onClick = (event) => {
+  
    this.state.select_checked.push(event.target.getAttribute("data_value"))
-   this.setState({ select_checked: this.state.select_checked });
-   console.log(this.state.select_checked)
+    this.setState({ select_checked: this.state.select_checked });
+   console.log(this.state.select_checked) 
+     //this.check_ref.current.checked.push(event.target.getAttribute("data_value"))
+
           }
 
     /*
@@ -50,7 +55,8 @@ this.onClick = this.onClick.bind(this)
    console.log(r)
        }
       */
-    CreateGroup = e => {
+
+    createGroup = e => {
       this.state.re.forEach(element => {
         element["group_name"]=this.group_ref.current.value;
         console.log("group name is:" ,element["group_name"])
@@ -84,8 +90,6 @@ this.onClick = this.onClick.bind(this)
           this.setState({ re: this.state.re })
           console.log({re:this.state.re})
                      }
-
-
            
     render(){
         return(
@@ -108,7 +112,6 @@ this.onClick = this.onClick.bind(this)
                  <th className="td_user_table" colspan="2">  انتخاب</th>
                </tr>
              </thead>
-
             { this.state.group.forEach((g) =>{
               this.state.user.forEach((u) =>{
                 this.state.website.forEach((w) =>{
@@ -117,27 +120,26 @@ this.onClick = this.onClick.bind(this)
                 })
                 })
               })
-
-            }
-
+            } 
                {this.state.re.map(u =>( 
-                <tbody> 
+                 <tbody>
                <tr>
                 <td colspan="2">  {u['id']}              </td>
                 <td colspan="2">  {u['group_name']}       </td>
-                <td colspan="2">  {u['user_name']}       </td>
+                <td colspan="2">  <img className="img_user" src={u.img} /> <span> {u["user_name"]} </span>    </td>
                 <td colspan="2">  {u['domain_name']}       </td>
                 <td colspan="2">  {u['data_create']}       </td>
                 <td colspan="2">  {u['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
-                    type="checkbox"
+                    type="checkbox" ref={this.check_ref}
                     data_value={u["id"]}
                     onChange={this.onClick}
                   /></td>
               </tr>
               </tbody>
-              ))}
-            
+            ))}
+           
+
              </table>
                          
             <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
@@ -157,7 +159,7 @@ this.onClick = this.onClick.bind(this)
             
              <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
              
-             <input type='button' value='تایید' className="btnoky" onClick={this.CreateGroup} />
+             <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
 
              </div>
