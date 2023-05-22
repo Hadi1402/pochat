@@ -5,7 +5,7 @@ import LoginSet from "./login";
 import HomeChat from "../Parent/homeChat";
 import {Switch, Route , Router, BrowserRouter } from "react-router-dom";
 import AdminDashbord from "./admin_dashbord";
-import Home from "../Componnet/pochat";
+import Home from "../Component/pochat";
 import SupportUser from "./supportUser"
 import Sidebar from "./supportUser";
 import ChatBox from "./chatBox";

@@ -1,13 +1,12 @@
-import React from "react";
+import React,{Component,useState} from "react";
 import RegisterUser from "../Actions/RegisterUser";
-import { Component } from "react";
-//import { render } from "@testing-library/react";
 import { connect } from "react-redux";
 import "../static/css/chat.css";
 import axios from "axios";
 import { BrowserRouter, Routes, Route, NavLink, Router } from "react-router-dom";
-import LoginSet from "../Parent/login.js"
-import '../static/css/loginregister.css';
+import LoginSet from "./login.js"
+import '../static/css/register.css';
+//import { render } from "@testing-library/react";
 
 
 class RegisterUserPage extends Component {
@@ -26,6 +25,7 @@ class RegisterUserPage extends Component {
         let email = this.email.value;
         let password = this.password.value;
         let repassword = this.repassword.value;
+        console.log(code , username , email , password , repassword)
         axios.post('http://192.168.1.113:8000/auth/users',{'username':username ,'email':email , 'password':password , 'code':code })
 
       const data={username,email,password,repassword};
@@ -94,6 +94,7 @@ render() {
             ref={this.repassword}/>
             <span>تکرار کلمه عبور</span>
         </label>
+        console.log(code , username , email , password , repassword)
         <button class="submit" value = 'عضویت' onClick={this.onHandleRegistration} >Submit</button>
         <p class="signin">قبلاً ثبت نام کرده ام <NavLink exact to={'/login'}> ورود </NavLink></p>
     </form>

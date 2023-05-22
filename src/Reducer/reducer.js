@@ -35,7 +35,6 @@ export function settingReducer(state=initialState,action)  {
 
 
 
-
 //export function settingDisplayBox(state=initialState,action)  {
    // console.log("state:", state)
    // if (){

@@ -1,23 +1,22 @@
 :root{
   --menu-color:rgb(139, 139, 139);
 }
+
+
 .menu{
-  height:100%;
-  width: 200px;
-  /* float: right; */
-  top: 0;
-  right:-137px;
+  height:92%;
+  width: 50px;
+  float: right;
+  margin-right: 0px;
   background-color:var(--menu-color);
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  position:fixed;
+  /* border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px; */
+  /* position:fixed; */
 }
 
-
-
 .menu-btn{
-  margin-left: 7px;
   margin-top: 10px;
+  margin-left: 10px;
   float:left;
   animation:both 0.3s ;
 }
@@ -27,18 +26,19 @@
 }
 
 .hamburger-label {
-  width: 70px;
-  height: 58px;
+  width: 30px;
+  height: 30px;
   display: block;
   cursor: pointer;
 }
 
 
 .hamburger-label div {
-  width: 50px;
+  width: 30px;
   height: 4px;
   background-color: #fff;
   position: absolute;
+  border-radius: 10px;
 }
 
 .line1 {
@@ -46,31 +46,29 @@
 }
 
 .line2 {
-  margin: 18px 0 0 0;
+  margin: 8px 0 0 0;
   transition: 0.3s;
 }
 
 .line3 {
-  margin: 36px 0 0 0;
+  margin: 16px 0 0 0;
   transition: 0.3s;
 }
 
 #label-check:checked + .menu{
-  right: 137px;
+  right: 130px;
 }
 
 #label-check:checked + .hamburger-label .line1 {
-  transform: rotate(35deg) scaleX(.55) translate(39px, -4.5px);
-  border-radius: 50px 50px 50px 0;
+  transform: rotate(35deg) scaleX(.55) translate(15px, -1px);
 }
-
-#label-check:checked + .hamburger-label .line3 {
-  transform: rotate(-35deg) scaleX(.55) translate(39px, 4.5px);
-  border-radius: 0 50px 50px 50px;
-}
-
 #label-check:checked + .hamburger-label .line2 {
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  width: 45px;
+  border-radius: 50px;
 }
+#label-check:checked + .hamburger-label .line3 {
+  transform: rotate(-35deg) scaleX(.55) translate(15px, 1px);
+}
+/* #label-check:checked + .menu{
+  width:100px;
+  margin-right: 100px;
+} */
