@@ -8,18 +8,29 @@ import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
 
 //const data = [[group_data] , [user_data]]
-let r=[]
 
 class Group extends React.Component{
+ 
     constructor(props) {
-        super(props)   
+      super(props)   
+
+      var re = []
+      group_data.forEach((g) =>{
+        user_data.forEach((u) =>{
+          website_data.forEach((w) =>{
+        if(g.group_name === u.field && g.group_name === w.type)
+        re.push({...g , ...u , ...w})
+          })
+          })
+        })
         this.state = {
         group:group_data,
         user:user_data,
         website:website_data,
-        re:r,
         select_checked: [],
-         }   
+        re  : re
+         }  
+        
 
 this.group_ref = createRef();
 this.user_ref = createRef();
@@ -31,6 +42,11 @@ this.createGroup = this.createGroup.bind(this)
 this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
+
+
+
+
+
  }
 
  onClick = (event) => {
@@ -42,35 +58,36 @@ this.onClick = this.onClick.bind(this)
 
           }
 
-    /*
-      showTableGroup = (e) => {
-      this.state.group.forEach((g) =>{
-        this.state.user.forEach((u) =>{
-          if(g.group_name === u.field)
-          this.state.re.push({...g , ...u})
-        })
-        this.setState({re:this.state.re})
-      })
+    
+      /*showTableGroup = (e) => {
+        this.state.group.forEach((g) =>{
+          this.state.user.forEach((u) =>{
+            this.state.website.forEach((w) =>{
+          if(g.group_name === u.field && g.group_name === w.type)
+          this.state.re.push({...g , ...u , ...w})
+            })
+            })
+          })
 
-   console.log(r)
-       }
-      */
+   console.log(this.state.re)
+       }*/
+      
 
     createGroup = e => {
-      this.state.re.forEach(element => {
-        element["group_name"]=this.group_ref.current.value;
-        console.log("group name is:" ,element["group_name"])
-        element["user_name"]=this.user_ref.current.value;
-        console.log("user_name:" ,element["user_name"])
-        element["domain_name"]=this.domain_ref.current.value;
-        console.log('domain name is:',element["domain_name"])
-        element["data_create"]=this.data_ref.current.value;
-        console.log("data create is:", element["data_create"])
-        element["status_group"]=this.status_ref.current.value;
-        console.log("status is:" ,  element["status_group"])
-       // this.state.display_list = "block"
-       // this.setState({style:this.state.display_list})
-           });
+      // this.state.re.forEach(element => {
+      //   element["group_name"]=this.group_ref.current.value;
+      //   console.log("group name is:" ,element["group_name"])
+      //   element["user_name"]=this.user_ref.current.value;
+      //   console.log("user_name:" ,element["user_name"])
+      //   element["domain_name"]=this.domain_ref.current.value;
+      //   console.log('domain name is:',element["domain_name"])
+      //   element["data_create"]=this.data_ref.current.value;
+      //   console.log("data create is:", element["data_create"])
+      //   element["status_group"]=this.status_ref.current.value;
+      //   console.log("status is:" ,  element["status_group"])
+      //  // this.state.display_list = "block"
+      //  // this.setState({style:this.state.display_list})
+      //      });
           }
        onChange_enable = (e) => {
         this.state.re.forEach(element => {
@@ -92,6 +109,16 @@ this.onClick = this.onClick.bind(this)
                      }
            
     render(){
+      console.log(this.state.re)
+      var re = []
+      this.state.group.forEach((g) =>{
+        this.state.user.forEach((u) =>{
+          this.state.website.forEach((w) =>{
+        if(g.group_name === u.field && g.group_name === w.type)
+        re.push({...g , ...u , ...w})
+          })
+          })
+        })
         return(
 
             <div>
@@ -112,27 +139,18 @@ this.onClick = this.onClick.bind(this)
                  <th className="td_user_table" colspan="2">  انتخاب</th>
                </tr>
              </thead>
-            { this.state.group.forEach((g) =>{
-              this.state.user.forEach((u) =>{
-                this.state.website.forEach((w) =>{
-              if(g.group_name === u.field && g.group_name === w.type)
-              this.state.re.push({...g , ...u , ...w})
-                })
-                })
-              })
-            } 
-               {this.state.re.map(u =>( 
+               {this.state.re.map(q =>( 
                  <tbody>
                <tr>
-                <td colspan="2">  {u['id']}              </td>
-                <td colspan="2">  {u['group_name']}       </td>
-                <td colspan="2">  <img className="img_user" src={u.img} /> <span> {u["user_name"]} </span>    </td>
-                <td colspan="2">  {u['domain_name']}       </td>
-                <td colspan="2">  {u['data_create']}       </td>
-                <td colspan="2">  {u['status_group']}       </td>
+                <td colspan="2">  {q['id']}              </td>
+                <td colspan="2">  {q['group_name']}       </td>
+                <td colspan="2">  <img className="img_user" src={q.img} /> <span> {q["user_name"]} </span>    </td>
+                <td colspan="2">  {q['domain_name']}       </td>
+                <td colspan="2">  {q['data_create']}       </td>
+                <td colspan="2">  {q['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
-                    data_value={u["id"]}
+                    data_value={q["id"]}
                     onChange={this.onClick}
                   /></td>
               </tr>
@@ -151,9 +169,15 @@ this.onClick = this.onClick.bind(this)
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
                
-            <input type='text' name='user_name'  className="" ref={this.user_ref} placeholder=" کاربر " required/>
+            <select type='text' name='user_name'  className="" ref={this.user_ref} placeholder=" کاربر " required> 
+            <option> 
+            {this.state.user.map(u =>(
+                  u["user_name"]
+            ))}
+             </option>
+            </select>
                    
-             <input type='text' name='domain_name'  className="" ref={this.domain_ref} placeholder="نام سایت"/>
+             <select type='text' name='domain_name'  className="" ref={this.domain_ref} placeholder="نام سایت"/>
              
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
             
@@ -165,6 +189,7 @@ this.onClick = this.onClick.bind(this)
              </div>
 
              </div>
+           
            
             
 
