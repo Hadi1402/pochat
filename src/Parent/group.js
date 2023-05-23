@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import  "../static/css/chat.css";
 import group_data from "./group_data";
-import website_data from "./website_data";
-import user_data from "./user_data";
 import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
 
@@ -13,23 +11,12 @@ class Group extends React.Component{
  
     constructor(props) {
       super(props)   
-
-      var re = []
-      group_data.forEach((g) =>{
-        user_data.forEach((u) =>{
-          website_data.forEach((w) =>{
-        if(g.group_name === u.field && g.group_name === w.type)
-        re.push({...g , ...u , ...w})
-          })
-          })
-        })
         this.state = {
         group:group_data,
-        user:user_data,
-        website:website_data,
         select_checked: [],
-        re  : re
+       
          }  
+        
         
 
 this.group_ref = createRef();
@@ -90,35 +77,25 @@ this.onClick = this.onClick.bind(this)
       //      });
           }
        onChange_enable = (e) => {
-        this.state.re.forEach(element => {
+        this.state.group.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
         if (this.state.select_checked.includes(element["id"].toString())) {
             element["status_group"] = " فعال"}
-          this.setState({ re: this.state.re })
+          this.setState({ group: this.state.group })
             });
             } 
 
         onChange_disable = (e) => {
-          this.state.re.forEach(element => {
+          this.state.group.forEach(element => {
           console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
           if (this.state.select_checked.includes(element["id"].toString())){
            element["status_group"] = "غیر فعال" }
                   });
-          this.setState({ re: this.state.re })
-          console.log({re:this.state.re})
+          this.setState({ group: this.state.group })
+          console.log({group:this.state.group})
                      }
            
     render(){
-      console.log(this.state.re)
-      var re = []
-      this.state.group.forEach((g) =>{
-        this.state.user.forEach((u) =>{
-          this.state.website.forEach((w) =>{
-        if(g.group_name === u.field && g.group_name === w.type)
-        re.push({...g , ...u , ...w})
-          })
-          })
-        })
         return(
 
             <div>
@@ -133,19 +110,17 @@ this.onClick = this.onClick.bind(this)
                  <th className="td_user_table" colspan="2"> ID </th>
                  <th className="td_user_table" colspan="2"> نام گروه </th>
                  <th className="td_user_table" colspan="2"> کاربران  </th>
-                 <th className="td_user_table" colspan="2"> نام سایت  </th>
                  <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
                  <th className="td_user_table" colspan="2">  وضعیت  </th>
                  <th className="td_user_table" colspan="2">  انتخاب</th>
                </tr>
              </thead>
-               {this.state.re.map(q =>( 
+               {this.state.group.map(q =>( 
                  <tbody>
                <tr>
                 <td colspan="2">  {q['id']}              </td>
                 <td colspan="2">  {q['group_name']}       </td>
-                <td colspan="2">  <img className="img_user" src={q.img} /> <span> {q["user_name"]} </span>    </td>
-                <td colspan="2">  {q['domain_name']}       </td>
+                <td colspan="2"> <span> {q["user_name"]} </span> </td>
                 <td colspan="2">  {q['data_create']}       </td>
                 <td colspan="2">  {q['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
@@ -169,12 +144,11 @@ this.onClick = this.onClick.bind(this)
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
                
-            <select type='text' name='user_name'  className="" ref={this.user_ref} placeholder=" کاربر " required> 
-            <option> 
-            {this.state.user.map(u =>(
-                  u["user_name"]
-            ))}
-             </option>
+            <select name='select' isMulti multiselectable-search="true" multiselect-select-all="true" className="" ref={this.user_ref} placeholder=" کاربر " required> 
+            <option> 11111111111 </option>
+            <option> 22222222222222 </option>
+            <option> 33333333333333 </option>
+            <option>  44444444444444 </option>
             </select>
                    
              <select type='text' name='domain_name'  className="" ref={this.domain_ref} placeholder="نام سایت"/>
@@ -189,7 +163,7 @@ this.onClick = this.onClick.bind(this)
              </div>
 
              </div>
-           
+   z        
            
             
 
