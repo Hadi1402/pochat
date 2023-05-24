@@ -139,18 +139,26 @@ this.onClick = this.onClick.bind(this)
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
 
-
-
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
-               
-            <select name='select' isMulti multiselectable-search="true" multiselect-select-all="true" className="" ref={this.user_ref} placeholder=" کاربر " required> 
-            <option> 11111111111 </option>
-            <option> 22222222222222 </option>
-            <option> 33333333333333 </option>
-            <option>  44444444444444 </option>
-            </select>
-                   
+            
+                      
+                    
+            <select name='select'  className="" ref={this.user_ref} placeholder=" کاربر " required > 
+           {this.state.group.map(user => (
+               <option>{user.user_name[0]}</option>
+                 ))}  
+
+           {this.state.group.map(user => (
+               <option>{user.user_name[1]}</option>
+                 ))}  
+
+            {this.state.group.map(user => (
+               <option>{user.user_name[2]}</option>
+                 ))}  
+
+                 
+                 </select>
              <select type='text' name='domain_name'  className="" ref={this.domain_ref} placeholder="نام سایت"/>
              
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
@@ -163,9 +171,8 @@ this.onClick = this.onClick.bind(this)
              </div>
 
              </div>
-   z        
-           
-            
+        
+          
 
              </div> 
         )

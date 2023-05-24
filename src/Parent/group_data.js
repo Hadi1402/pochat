@@ -9,9 +9,7 @@ export default [
         "status_group":"فعال",
          "user_name":[
             'ali14012',
-            '--',
             'hadi000000'   ,
-            '--',
             'farhadi'     
          ]
     },
@@ -23,9 +21,7 @@ export default [
         "status_group":"فعال",
         "user_name":[
             'hamed',
-            '--',
             'shahnor',
-            '--',
             'selin'   
          ]
     },
@@ -37,9 +33,7 @@ export default [
         "status_group":"فعال",
         "user_name":[
             'javid15',
-            '--',
             'hesam',
-            '--',
             'samad'
          ]
     },

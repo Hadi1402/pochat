@@ -3,6 +3,7 @@ import website_data from "./website_data";
 import "../static/css/chat.css"
 
 
+
 class WebSite extends React.Component{
     constructor(props) {
         super(props)   
@@ -26,6 +27,8 @@ class WebSite extends React.Component{
      this.onChange_enable = this.onChange_enable.bind(this)
      this.onChange_delete = this.onChange_delete.bind(this) 
      this.onClick = this.onClick.bind(this)
+
+
       }
 
       onClick = (event) => {
@@ -100,7 +103,7 @@ class WebSite extends React.Component{
     this.setState({ data: this.state.data })
   }
   
-
+  
     render(){
         return(
    
