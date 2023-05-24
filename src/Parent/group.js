@@ -14,7 +14,7 @@ class Group extends React.Component{
         this.state = {
         group:group_data,
         select_checked: [],
-       
+        new:[],
          }  
         
         
@@ -61,23 +61,26 @@ this.onClick = this.onClick.bind(this)
       
 
     createGroup = e => {
-      // this.state.re.forEach(element => {
-      //   element["group_name"]=this.group_ref.current.value;
-      //   console.log("group name is:" ,element["group_name"])
-      //   element["user_name"]=this.user_ref.current.value;
-      //   console.log("user_name:" ,element["user_name"])
-      //   element["domain_name"]=this.domain_ref.current.value;
+       this.state.new.push(element => {
+      element["group_name"]=this.group_ref.current.value;
+        console.log("group name is:" ,element["group_name"])
+        element["user_name"]=this.user_ref.current.value;
+        console.log("user_name:" ,element["user_name"])
+       // element["domain_name"]=this.domain_ref.current.value;
       //   console.log('domain name is:',element["domain_name"])
-      //   element["data_create"]=this.data_ref.current.value;
-      //   console.log("data create is:", element["data_create"])
-      //   element["status_group"]=this.status_ref.current.value;
-      //   console.log("status is:" ,  element["status_group"])
-      //  // this.state.display_list = "block"
-      //  // this.setState({style:this.state.display_list})
-      //      });
+         element["data_create"]=this.data_ref.current.value;
+       console.log("data create is:", element["data_create"])
+         element["status_group"]=this.status_ref.current.value;
+       console.log("status is:" ,  element["status_group"])
+       this.state.display_list = "block"
+       this.setState({style:this.state.display_list})
+            });
+            this.state.group.push(this.state.new)
+            this.setState({ group: this.state.group })
+
           }
        onChange_enable = (e) => {
-        this.state.group.forEach(element => {
+        this.group_data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
         if (this.state.select_checked.includes(element["id"].toString())) {
             element["status_group"] = " فعال"}
@@ -157,9 +160,7 @@ this.onClick = this.onClick.bind(this)
                <option>{user.user_name[2]}</option>
                  ))}  
 
-                 
                  </select>
-             <select type='text' name='domain_name'  className="" ref={this.domain_ref} placeholder="نام سایت"/>
              
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
             
