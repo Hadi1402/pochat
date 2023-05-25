@@ -31,6 +31,7 @@ this.gn_ref = createRef();
 this.un_ref = createRef();
 this.dcn_ref = createRef();
 this.sgn_ref = createRef();
+this.tr_ref = createRef();
 /********************************/
 this.createGroup = this.createGroup.bind(this)
 this.onChange_enable = this.onChange_enable.bind(this)
@@ -67,7 +68,7 @@ this.onClick = this.onClick.bind(this)
 
     createGroup = e => {
       var data_new = [
-      this.id_ref.current.value=this.id_ref.current.value+1,
+      this.id_ref.current.value,
       this.group_ref.current.value,
       this.user_ref.current.value,
       this.data_ref.current.value,
@@ -75,12 +76,29 @@ this.onClick = this.onClick.bind(this)
        group_data.push(data_new)
        console.log(group_data)
        console.log(this.state.group)
-       this.id_ref.current.value = +1
+      const new_id = document.createElement("tr")
+      const new_group = document.createElement("tr")
+      const new_user = document.createElement("tr")
+      const new_data = document.createElement("tr")
+      const new_status = document.createElement("tr")
+      document.getElementById('td_id').append(new_id)
+      document.getElementById('td_group').append(new_group)
+      document.getElementById('td_user').append(new_user)
+      document.getElementById('td_data').append(new_data)
+      document.getElementById('td_status').append(new_status)
+      new_id.innerHTML = data_new[0]
+      new_group.innerHTML = data_new[1]
+      new_user.innerHTML = data_new[2]
+      new_data.innerHTML = data_new[3]
+      new_status.innerHTML = data_new[4]
+
+       /*this.id_ref.current.value  = data_new[0]
        this.gn_ref.current.innerHTML = data_new[1]
        this.un_ref.current.innerHTML = data_new[2]
        this.dcn_ref.current.innerHTML = data_new[3]
        this.sgn_ref.current.innerHTML = data_new[4]
-      /* this.state.display_list = "block"
+
+       this.state.display_list = "block"
       this.setState({style:this.state.display_list})*/
             }
 
@@ -89,9 +107,10 @@ this.onClick = this.onClick.bind(this)
         this.group_data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
         if (this.state.select_checked.includes(element["id"].toString())) {
-            element["status_group"] = " فعال"}
-          this.setState({ group: this.state.group })
+            element["status_group"] = "فعال"}
+            this.setState({ group: this.state.group })
             });
+            
             } 
 
         onChange_disable = (e) => {
@@ -126,18 +145,21 @@ this.onClick = this.onClick.bind(this)
              </thead>
                {this.state.group.map(q =>( 
                  <tbody>
-               <tr>
-                <td colspan="2" ref={this.id_ref}>  {q['id']}              </td>
-                <td colspan="2"  ref={this.gn_ref}>  {q['group_name']}       </td>
-                <td colspan="2" ref={this.un_ref}> <span> {q["user_name"]} </span> </td>
-                <td colspan="2" ref={this.dcn_ref}>  {q['data_create']}       </td>
-                <td colspan="2" ref={this.sgn_ref}>  {q['status_group']}       </td>
+               <tr ref={this.tr_ref} id="tr_group">
+                <td colspan="2" id="td_id">  {q['id']}              </td>
+                <td colspan="2"  id="td_group">  {q['group_name']}       </td>
+                <td colspan="2" id="td_user"> <span> {q["user_name"]} </span> </td>
+                <td colspan="2"  id="td_data">  {q['data_create']}       </td>
+                <td colspan="2"  id="td_status">  {q['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
                     onChange={this.onClick}
-                  /></td>
+                  />                 
+                  </td>
+
               </tr>
+            
               </tbody>
             ))}
            
@@ -149,7 +171,7 @@ this.onClick = this.onClick.bind(this)
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
 
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
-
+            <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
 
             <select name='select'  className="" ref={this.user_ref} placeholder=" کاربر " required > 
