@@ -4,6 +4,7 @@ import  "../static/css/chat.css";
 import group_data from "./group_data";
 import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
+import { TimerSharp } from "@material-ui/icons";
 
 //const data = [[group_data] , [user_data]]
 
@@ -14,7 +15,6 @@ class Group extends React.Component{
         this.state = {
         group:group_data,
         select_checked: [],
-        new:[],
          }  
         
         
@@ -25,16 +25,21 @@ this.domain_ref = createRef();
 this.data_ref = createRef();
 this.status_ref = createRef();
 this.check_ref = createRef();
+//*******************************/
+this.id_ref =createRef();
+this.gn_ref = createRef();
+this.un_ref = createRef();
+this.dcn_ref = createRef();
+this.sgn_ref = createRef();
+/********************************/
 this.createGroup = this.createGroup.bind(this)
 this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 
 
+        }
 
-
-
- }
 
  onClick = (event) => {
   
@@ -61,24 +66,25 @@ this.onClick = this.onClick.bind(this)
       
 
     createGroup = e => {
-       this.state.new.push(element => {
-      element["group_name"]=this.group_ref.current.value;
-        console.log("group name is:" ,element["group_name"])
-        element["user_name"]=this.user_ref.current.value;
-        console.log("user_name:" ,element["user_name"])
-       // element["domain_name"]=this.domain_ref.current.value;
-      //   console.log('domain name is:',element["domain_name"])
-         element["data_create"]=this.data_ref.current.value;
-       console.log("data create is:", element["data_create"])
-         element["status_group"]=this.status_ref.current.value;
-       console.log("status is:" ,  element["status_group"])
-       this.state.display_list = "block"
-       this.setState({style:this.state.display_list})
-            });
-            this.state.group.push(this.state.new)
-            this.setState({ group: this.state.group })
+      var data_new = [
+      this.id_ref.current.value=this.id_ref.current.value+1,
+      this.group_ref.current.value,
+      this.user_ref.current.value,
+      this.data_ref.current.value,
+      this.status_ref.current.value]
+       group_data.push(data_new)
+       console.log(group_data)
+       console.log(this.state.group)
+       this.id_ref.current.value = +1
+       this.gn_ref.current.innerHTML = data_new[1]
+       this.un_ref.current.innerHTML = data_new[2]
+       this.dcn_ref.current.innerHTML = data_new[3]
+       this.sgn_ref.current.innerHTML = data_new[4]
+      /* this.state.display_list = "block"
+      this.setState({style:this.state.display_list})*/
+            }
 
-          }
+
        onChange_enable = (e) => {
         this.group_data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
@@ -121,11 +127,11 @@ this.onClick = this.onClick.bind(this)
                {this.state.group.map(q =>( 
                  <tbody>
                <tr>
-                <td colspan="2">  {q['id']}              </td>
-                <td colspan="2">  {q['group_name']}       </td>
-                <td colspan="2"> <span> {q["user_name"]} </span> </td>
-                <td colspan="2">  {q['data_create']}       </td>
-                <td colspan="2">  {q['status_group']}       </td>
+                <td colspan="2" ref={this.id_ref}>  {q['id']}              </td>
+                <td colspan="2"  ref={this.gn_ref}>  {q['group_name']}       </td>
+                <td colspan="2" ref={this.un_ref}> <span> {q["user_name"]} </span> </td>
+                <td colspan="2" ref={this.dcn_ref}>  {q['data_create']}       </td>
+                <td colspan="2" ref={this.sgn_ref}>  {q['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
@@ -143,10 +149,9 @@ this.onClick = this.onClick.bind(this)
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
 
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
+
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
-            
-                      
-                    
+
             <select name='select'  className="" ref={this.user_ref} placeholder=" کاربر " required > 
            {this.state.group.map(user => (
                <option>{user.user_name[0]}</option>
