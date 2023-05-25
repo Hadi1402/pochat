@@ -76,22 +76,31 @@ this.onClick = this.onClick.bind(this)
        group_data.push(data_new)
        console.log(group_data)
        console.log(this.state.group)
+  
       const new_id = document.createElement("tr")
       const new_group = document.createElement("tr")
       const new_user = document.createElement("tr")
       const new_data = document.createElement("tr")
       const new_status = document.createElement("tr")
+      const new_check = document.createElement('tr')
+      const new_checkbox = document.createElement('checkbox');
+
       document.getElementById('td_id').append(new_id)
       document.getElementById('td_group').append(new_group)
       document.getElementById('td_user').append(new_user)
       document.getElementById('td_data').append(new_data)
       document.getElementById('td_status').append(new_status)
+      document.getElementById('td_check').append(new_check)
+      console.log(new_check)
+     document.getElementById('checkbox').append(new_checkbox)
+     console.log(new_checkbox)
+
       new_id.innerHTML = data_new[0]
       new_group.innerHTML = data_new[1]
       new_user.innerHTML = data_new[2]
       new_data.innerHTML = data_new[3]
       new_status.innerHTML = data_new[4]
-
+      new_check.innerHTML = new_checkbox;
        /*this.id_ref.current.value  = data_new[0]
        this.gn_ref.current.innerHTML = data_new[1]
        this.un_ref.current.innerHTML = data_new[2]
@@ -99,10 +108,20 @@ this.onClick = this.onClick.bind(this)
        this.sgn_ref.current.innerHTML = data_new[4]
 
        this.state.display_list = "block"
-      this.setState({style:this.state.display_list})*/
-            }
+      this.setState({style:this.state.display_list})
 
 
+      this.group_data.forEach(element => {
+        element['id'] = data_new[0]
+        element['group_name'] = data_new[1]
+        element['user_name'] = data_new[2]
+        element['data_create'] = data_new[3]
+        element['status_group'] = data_new[3]
+           })
+          this.setState({ group: this.state.group })
+    
+     */////
+             }
        onChange_enable = (e) => {
         this.group_data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
@@ -151,10 +170,11 @@ this.onClick = this.onClick.bind(this)
                 <td colspan="2" id="td_user"> <span> {q["user_name"]} </span> </td>
                 <td colspan="2"  id="td_data">  {q['data_create']}       </td>
                 <td colspan="2"  id="td_status">  {q['status_group']}       </td>
-                <td className="check_box" colspan="2">  <input
+                <td className="check_box" colspan="2" id="td_check">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
                     onChange={this.onClick}
+                    id='checkbox'
                   />                 
                   </td>
 
