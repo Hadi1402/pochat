@@ -4,7 +4,8 @@ import  "../static/css/chat.css";
 import group_data from "./group_data";
 import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
-import { TimerSharp } from "@material-ui/icons";
+import { CheckBoxSelection, Inject, MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
+import "../App.css"
 
 //const data = [[group_data] , [user_data]]
 
@@ -15,9 +16,10 @@ class Group extends React.Component{
         this.state = {
         group:group_data,
         select_checked: [],
+        value: [''],
          }  
         
-        
+         
 
 this.group_ref = createRef();
 this.user_ref = createRef();
@@ -25,6 +27,7 @@ this.domain_ref = createRef();
 this.data_ref = createRef();
 this.status_ref = createRef();
 this.check_ref = createRef();
+this.username_ref = createRef();
 //*******************************/
 this.id_ref =createRef();
 this.gn_ref = createRef();
@@ -37,11 +40,12 @@ this.createGroup = this.createGroup.bind(this)
 this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
-
+this.handleChange = this.handleChange.bind(this)
 
         }
 
-
+   
+   
  onClick = (event) => {
   
    this.state.select_checked.push(event.target.getAttribute("data_value"))
@@ -83,7 +87,9 @@ this.onClick = this.onClick.bind(this)
       const new_data = document.createElement("tr")
       const new_status = document.createElement("tr")
       const new_check = document.createElement('tr')
-      const new_checkbox = document.createElement('checkbox');
+      const new_checkbox = document.createElement('input')
+      new_checkbox.type="checkbox";
+      console.log(new_checkbox.type)
 
       document.getElementById('td_id').append(new_id)
       document.getElementById('td_group').append(new_group)
@@ -91,9 +97,8 @@ this.onClick = this.onClick.bind(this)
       document.getElementById('td_data').append(new_data)
       document.getElementById('td_status').append(new_status)
       document.getElementById('td_check').append(new_check)
-      console.log(new_check)
      document.getElementById('checkbox').append(new_checkbox)
-     console.log(new_checkbox)
+
 
       new_id.innerHTML = data_new[0]
       new_group.innerHTML = data_new[1]
@@ -101,6 +106,9 @@ this.onClick = this.onClick.bind(this)
       new_data.innerHTML = data_new[3]
       new_status.innerHTML = data_new[4]
       new_check.innerHTML = new_checkbox;
+      console.log(new_check)
+
+        //new_checkbox.innerHTML = new_check;
        /*this.id_ref.current.value  = data_new[0]
        this.gn_ref.current.innerHTML = data_new[1]
        this.un_ref.current.innerHTML = data_new[2]
@@ -121,7 +129,25 @@ this.onClick = this.onClick.bind(this)
           this.setState({ group: this.state.group })
     
      */////
-             }
+
+          }
+
+     handleChange(event) {
+      let newVal = event.target.value
+      let stateVal = this.state.value
+  
+      console.log(stateVal)
+      console.log(newVal)
+  
+      stateVal.indexOf(newVal) === -1
+        ? stateVal.push(newVal)
+        : stateVal.length === 1
+          ? (stateVal = [])
+          : stateVal.splice(stateVal.indexOf(newVal), 1)
+  
+      this.setState({ value: stateVal })
+            }
+
        onChange_enable = (e) => {
         this.group_data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
@@ -167,7 +193,7 @@ this.onClick = this.onClick.bind(this)
                <tr ref={this.tr_ref} id="tr_group">
                 <td colspan="2" id="td_id">  {q['id']}              </td>
                 <td colspan="2"  id="td_group">  {q['group_name']}       </td>
-                <td colspan="2" id="td_user"> <span> {q["user_name"]} </span> </td>
+                <td colspan="2" ref={this.username_ref} id="td_user"> <span> {q["user_name"]} </span> </td>
                 <td colspan="2"  id="td_data">  {q['data_create']}       </td>
                 <td colspan="2"  id="td_status">  {q['status_group']}       </td>
                 <td className="check_box" colspan="2" id="td_check">  <input
@@ -193,21 +219,23 @@ this.onClick = this.onClick.bind(this)
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
+              
+                {this.state.group.map(user =>(
+                     <MultiSelectComponent 
+                     ref={this.user_ref} 
+                     dataSource={user["user_name"]}
+                     placeholder="کاربران"
+                      mode="CheckBox"
+                      selectAllText="Select All" 
+                      unSelectAllText="unSelect All"
+                       showSelectAll={true} >
+                    <Inject services={[CheckBoxSelection]}/>
+                </MultiSelectComponent>
+                ))}
+          
+           
 
-            <select name='select'  className="" ref={this.user_ref} placeholder=" کاربر " required > 
-           {this.state.group.map(user => (
-               <option>{user.user_name[0]}</option>
-                 ))}  
-
-           {this.state.group.map(user => (
-               <option>{user.user_name[1]}</option>
-                 ))}  
-
-            {this.state.group.map(user => (
-               <option>{user.user_name[2]}</option>
-                 ))}  
-
-                 </select>
+              
              
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
             

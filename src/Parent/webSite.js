@@ -51,6 +51,10 @@ class WebSite extends React.Component{
 
 
        addInputSite = e => {
+        
+
+
+        /*
         this.state.data.forEach(element => {
             element["domain_name"]=this.domain_ref.current.value;
             console.log("domain name is:" ,element["domain_name"])
@@ -63,11 +67,11 @@ class WebSite extends React.Component{
             element["status"]=this.status_ref.current.value;
             console.log("status is:" ,  element["status"])
             this.state.display_list = "block"
-            this.setState({style:this.state.display_list})
+            this.setState({style:this.state.display_list})*//////
 
 
-        });
-    }
+        }
+   
     onChange_disable = (e) => {
         this.state.data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
