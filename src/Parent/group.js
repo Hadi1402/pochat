@@ -48,8 +48,6 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
-this.MultiSelectDropdown = this.MultiSelectDropdown.bind(this)
-
         }
 
 
@@ -137,14 +135,6 @@ this.MultiSelectDropdown = this.MultiSelectDropdown.bind(this)
      */////
 
           }
-
-    MultiSelectDropdown = () => {
-      const [selectedOptions, setSelectedOptions] = useState([])
-      const handleMultiSelectChange = (selectedOptions) => {
-      setSelectedOptions(selectedOptions);
-            }
-           }  
-
 
 
      handleChange(event) {
@@ -234,13 +224,22 @@ this.MultiSelectDropdown = this.MultiSelectDropdown.bind(this)
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
             
-            <Select
-            ref={this.user_ref}
-           options={this.state.users}
-           isMulti
-           onChange={this.handleMultiSelectChange}
-           value={this.selectedOptions}
-                />
+          <Select ref={this.user_ref}  isMulti>
+              <options>{this.state.group.user_name}</options>
+          </Select>
+
+
+           <select name='select'  className="" ref={this.user_ref} placeholder=" کاربر " required > 
+           {this.state.group.map(user => (
+               <option>{user.user_name[0]}</option>
+                 ))}  
+           {this.state.group.map(user => (
+               <option>{user.user_name[1]}</option>
+                 ))}  
+            {this.state.group.map(user => (
+               <option>{user.user_name[2]}</option>
+                 ))}  
+                 </select>
             
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
             

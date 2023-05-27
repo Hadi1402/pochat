@@ -48,10 +48,51 @@ class WebSite extends React.Component{
         this.setState({style:this.state.display_panel})
     }
 
-
+   /* ref={this.domain_ref} placeholder="نام سایت" required/>
+    <br/>
+    <input type='text' name='domain_name'  className="input_type" ref={this.type_ref} placeholder="نوع سایت " required/>
+    <br/>    
+ <input type='text' name='company_name'  className="input_company_name" ref={this.company_ref} placeholder="نام شرکت"/>
+ <br/>
+ <input type='text' name='data_create'  className="input_data_create" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
+ <br/>
+ <input type='text' name='status'  className="input_status" ref={this.status_ref}*/
 
        addInputSite = e => {
-        
+        var data_new = [
+          this.domain_ref.current.value,
+          this.type_ref.current.value,
+          this.company_ref.current.value,
+          this.data_ref.current.value,
+          this.status_ref.current.value]
+           website_data.push(data_new)
+           console.log( website_data)
+           console.log(this.state.data)
+      
+          const new_domain = document.createElement("tr")
+          const new_type = document.createElement("tr")
+          const new_company = document.createElement("tr")
+          const new_data = document.createElement("tr")
+          const new_status = document.createElement("tr")
+          const new_check = document.createElement('tr')
+          const new_checkbox = document.createElement('input')
+          new_checkbox.type="checkbox";
+          console.log(new_checkbox.type)
+    
+          document.getElementById('td_domain').append(new_domain)
+          document.getElementById('td_type').append(new_type)
+          document.getElementById('td_company').append(new_type)
+          document.getElementById('td_data').append(new_data)
+          document.getElementById('td_status').append(new_status)
+  
+          new_domain.innerHTML = data_new[0]
+          new_type.innerHTML = data_new[1]
+          new_data.innerHTML = data_new[2]
+          new_status.innerHTML = data_new[3]
+          new_check.innerHTML = new_checkbox;
+          console.log(new_check)
+          this.state.display_list = "block"
+          this.setState({style:this.state.display_list})
 
 
         /*
@@ -131,12 +172,11 @@ class WebSite extends React.Component{
             {this.state.data.map(u =>(
              <tbody>  
                <tr style={ {display:u["display"]} }>
-                  <td colspan="2">  {u["id"]} </td>
-                  <td colspan="2">  {u["domain_name"]}    </td>
-                  <td colspan="2">  {u["type"]}    </td>
-                  <td colspan="2">  {u['company_name']}   </td>
-                  <td colspan="2">  {u["data_create"]}    </td>
-                  <td colspan="2">  {u["status"]}         </td>
+               <td colspan="2" id='td_domain'>  {u["domain_name"]}    </td>
+               <td colspan="2" id='td_type'>  {u["type"]}    </td>
+               <td colspan="2" id="td_company">  {u['company_name']}   </td>
+               <td colspan="2" id="td_data">  {u["data_create"]}    </td>
+               <td colspan="2" id='td_status'>  {u["status"]}         </td>
                   <td className="check_box" colspan="2">  <input
                     type="checkbox"
                     data_value={u["id"]}
