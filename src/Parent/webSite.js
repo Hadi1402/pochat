@@ -172,6 +172,7 @@ class WebSite extends React.Component{
             {this.state.data.map(u =>(
              <tbody>  
                <tr style={ {display:u["display"]} }>
+               <td colspan="2">  {u["id"]} </td>
                <td colspan="2" id='td_domain'>  {u["domain_name"]}    </td>
                <td colspan="2" id='td_type'>  {u["type"]}    </td>
                <td colspan="2" id="td_company">  {u['company_name']}   </td>
