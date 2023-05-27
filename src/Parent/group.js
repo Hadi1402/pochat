@@ -1,14 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import ReactDOM from 'react-dom';
 import  "../static/css/chat.css";
 import group_data from "./group_data";
 import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
-import { CheckBoxSelection, Inject, MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
-import "../App.css"
+import Select from 'react-select';
 
 //const data = [[group_data] , [user_data]]
 
+const option_users=[
+  {
+  'one':"hadi",
+  "two":"ali",
+  "three":"farha"
+  }
+   ]
 class Group extends React.Component{
  
     constructor(props) {
@@ -17,10 +23,11 @@ class Group extends React.Component{
         group:group_data,
         select_checked: [],
         value: [''],
+        users:option_users,
          }  
-        
-         
-
+  
+                 
+    
 this.group_ref = createRef();
 this.user_ref = createRef();
 this.domain_ref = createRef();
@@ -41,11 +48,11 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
+this.MultiSelectDropdown = this.MultiSelectDropdown.bind(this)
 
         }
 
-   
-   
+
  onClick = (event) => {
   
    this.state.select_checked.push(event.target.getAttribute("data_value"))
@@ -55,7 +62,6 @@ this.handleChange = this.handleChange.bind(this)
 
           }
 
-    
       /*showTableGroup = (e) => {
         this.state.group.forEach((g) =>{
           this.state.user.forEach((u) =>{
@@ -65,11 +71,11 @@ this.handleChange = this.handleChange.bind(this)
             })
             })
           })
-
    console.log(this.state.re)
        }*/
-      
 
+
+ 
     createGroup = e => {
       var data_new = [
       this.id_ref.current.value,
@@ -132,6 +138,15 @@ this.handleChange = this.handleChange.bind(this)
 
           }
 
+    MultiSelectDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = useState([])
+      const handleMultiSelectChange = (selectedOptions) => {
+      setSelectedOptions(selectedOptions);
+            }
+           }  
+
+
+
      handleChange(event) {
       let newVal = event.target.value
       let stateVal = this.state.value
@@ -170,7 +185,6 @@ this.handleChange = this.handleChange.bind(this)
            
     render(){
         return(
-
             <div>
             <h2>        ***********************************************        مدیریت  گروه ها         ***********************************************</h2>
             <hr/>
@@ -219,24 +233,15 @@ this.handleChange = this.handleChange.bind(this)
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
-              
-                {this.state.group.map(user =>(
-                     <MultiSelectComponent 
-                     ref={this.user_ref} 
-                     dataSource={user["user_name"]}
-                     placeholder="کاربران"
-                      mode="CheckBox"
-                      selectAllText="Select All" 
-                      unSelectAllText="unSelect All"
-                       showSelectAll={true} >
-                    <Inject services={[CheckBoxSelection]}/>
-                </MultiSelectComponent>
-                ))}
-          
-           
-
-              
-             
+            
+            <Select
+            ref={this.user_ref}
+           options={this.state.users}
+           isMulti
+           onChange={this.handleMultiSelectChange}
+           value={this.selectedOptions}
+                />
+            
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
             
              <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
