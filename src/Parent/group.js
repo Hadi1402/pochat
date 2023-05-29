@@ -24,12 +24,12 @@ class Group extends React.Component{
         select_checked: [],
         values: [''],
         users:user_options,
-        selectOption:['']
+        selectOption:''
          }  
                
 this.id_ref = createRef();    
 this.group_ref = createRef();
-this.user_name_ref = createRef();
+this.username_ref = createRef();
 this.domain_ref = createRef();
 this.data_ref = createRef();
 this.status_ref = createRef();
@@ -70,7 +70,8 @@ this.handleChange = this.handleChange.bind(this)
       this.state.group.forEach(element => {
         element['id'] = this.id_ref.current.value;
         element["group_name"]=this.group_ref.current.value;
-        element["user_name"]= this.user_name_ref.label;
+        element["user_name"].push(this.username_ref.value)
+        console.log(this.username_ref.value)
         console.log('selecttt uaers:', element["user_name"])
         element["data_create"]=this.data_ref.current.value;
         element["status_group"]=this.status_ref.current.value;
@@ -82,23 +83,7 @@ this.handleChange = this.handleChange.bind(this)
    })
   }
 
-  
-   /*  handleChange(event) {
-      let newVal = event.target.value
-      let stateVal = this.state.value
-  
-      console.log(stateVal)
-      console.log(newVal)
-  
-      stateVal.indexOf(newVal) === -1
-        ? stateVal.push(newVal)
-        : stateVal.length === 1
-          ? (stateVal = [])
-          : stateVal.splice(stateVal.indexOf(newVal), 1)
-  
-      this.setState({ value: stateVal })
-            }
-*////////////
+
             onChange_disable = (e) => {
               this.state.group.forEach(element => {
               console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
@@ -118,12 +103,11 @@ this.handleChange = this.handleChange.bind(this)
               });
             }
       
-            handleChange = (selected) => {
-              this.state.selectOption = selected
-            this.setState({selectOption:this.state.selectOption})
-            console.log(this.state.selectOption)
-
-                };
+            handleChange = selectOption => {
+              this.setState({ selectOption });
+              console.log(`Option selected:`, selectOption);
+            };
+                
            
     render(){
         return(
@@ -149,7 +133,7 @@ this.handleChange = this.handleChange.bind(this)
                <tr ref={this.tr_ref}>
                 <td colspan="2">  {q['id']}              </td>
                 <td colspan="2">  {q['group_name']}       </td>
-                <td colspan="2" > <span> {q["user_name"]} </span> </td>
+                <td colspan="2" >  {q["user_name"]}  </td>
                 <td colspan="2" >  {q['data_create']}       </td>
                 <td colspan="2"  >  {q['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
@@ -179,10 +163,10 @@ this.handleChange = this.handleChange.bind(this)
           <Select 
           onChange={this.handleChange}
          value={this.state.selectOption}
-          ref={this.user_name_ref} 
+          ref={this.username_ref} 
            isMulti 
            options={this.state.users}>
-      
+          
           </Select>
 
         
