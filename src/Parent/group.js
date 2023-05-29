@@ -9,12 +9,6 @@ import user_data from "./user_data";
 
 //const data = [[group_data] , [user_data]]
 
-function handleChange(props)
-{
- const [selectedValue, setSelectedValue] = useState([]);
- setSelectedValue(Array.isArray(e) ? e.map(x => x.value) : []);
-}  
-
 class Group extends React.Component{
     constructor(props) {
       super(props) 
@@ -30,7 +24,7 @@ class Group extends React.Component{
         select_checked: [],
         values: [''],
         users:user_options,
-        selectedValue:['']
+        selectOption:['']
          }  
                
 this.id_ref = createRef();    
@@ -76,7 +70,8 @@ this.handleChange = this.handleChange.bind(this)
       this.state.group.forEach(element => {
         element['id'] = this.id_ref.current.value;
         element["group_name"]=this.group_ref.current.value;
-        element["user_name"]=this.user_name_ref.current.value;
+        element["user_name"]= this.user_name_ref.label;
+        console.log('selecttt uaers:', element["user_name"])
         element["data_create"]=this.data_ref.current.value;
         element["status_group"]=this.status_ref.current.value;
      this.setState({group:this.state.group})
@@ -122,6 +117,13 @@ this.handleChange = this.handleChange.bind(this)
                 this.setState({ group: this.state.group })
               });
             }
+      
+            handleChange = (selected) => {
+              this.state.selectOption = selected
+            this.setState({selectOption:this.state.selectOption})
+            console.log(this.state.selectOption)
+
+                };
            
     render(){
         return(
@@ -147,7 +149,7 @@ this.handleChange = this.handleChange.bind(this)
                <tr ref={this.tr_ref}>
                 <td colspan="2">  {q['id']}              </td>
                 <td colspan="2">  {q['group_name']}       </td>
-                <td colspan="2" ref={this.user_name_ref} > <span> {q["user_name"]} </span> </td>
+                <td colspan="2" > <span> {q["user_name"]} </span> </td>
                 <td colspan="2" >  {q['data_create']}       </td>
                 <td colspan="2"  >  {q['status_group']}       </td>
                 <td className="check_box" colspan="2">  <input
@@ -174,15 +176,16 @@ this.handleChange = this.handleChange.bind(this)
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
             
-          <Select onChange={handleChange} 
+          <Select 
+          onChange={this.handleChange}
+         value={this.state.selectOption}
           ref={this.user_name_ref} 
            isMulti 
-           value={this.state.users.filter(obj => selectedValue.includes(obj.value))}
            options={this.state.users}>
+      
           </Select>
 
-
-         
+        
             
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
             
