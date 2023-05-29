@@ -41,6 +41,7 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
+this.editGroup = this.editGroup.bind(this)
 
         }
 
@@ -83,26 +84,31 @@ this.handleChange = this.handleChange.bind(this)
    })
   }
 
-
-            onChange_disable = (e) => {
-              this.state.group.forEach(element => {
-              console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-              if (this.state.select_checked.includes(element["id"].toString())){
-                  element["status_group"] = "غیر فعال" }
+  onChange_disable = (e) => {
+    this.state.group.forEach(element => {
+    console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+    if (this.state.select_checked.includes(element["id"].toString())){
+    element["status_group"] = "غیر فعال" }
                   });
-              this.setState({ group: this.state.group })
-                     }
+    this.setState({ group: this.state.group })
+           }
           
           
-            onChange_enable = (e) => {
-              this.state.group.forEach(element => {
-              console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-              if (this.state.select_checked.includes(element["id"].toString())) {
-                  element["status_group"] = " فعال"}
-                this.setState({ group: this.state.group })
+  onChange_enable = (e) => {
+    this.state.group.forEach(element => {
+    console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+    if (this.state.select_checked.includes(element["id"].toString())) {
+    element["status_group"] = " فعال"}
+    this.setState({ group: this.state.group })
               });
             }
       
+  editGroup =(e) =>{
+
+     } 
+
+
+
             handleChange = selectOption => {
               this.setState({ selectOption });
               console.log(`Option selected:`, selectOption);
@@ -155,6 +161,7 @@ this.handleChange = this.handleChange.bind(this)
             <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
+            <input type="button" value='ویرایش گروه' className="groupbtn" onClick={this.editGroup}/>
 
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
