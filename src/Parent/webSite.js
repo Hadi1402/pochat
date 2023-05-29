@@ -59,43 +59,6 @@ class WebSite extends React.Component{
  <input type='text' name='status'  className="input_status" ref={this.status_ref}*/
 
        addInputSite = e => {
-        var data_new = [
-          this.domain_ref.current.value,
-          this.type_ref.current.value,
-          this.company_ref.current.value,
-          this.data_ref.current.value,
-          this.status_ref.current.value]
-           website_data.push(data_new)
-           console.log( website_data)
-           console.log(this.state.data)
-      
-          const new_domain = document.createElement("tr")
-          const new_type = document.createElement("tr")
-          const new_company = document.createElement("tr")
-          const new_data = document.createElement("tr")
-          const new_status = document.createElement("tr")
-          const new_check = document.createElement('tr')
-          const new_checkbox = document.createElement('input')
-          new_checkbox.type="checkbox";
-          console.log(new_checkbox.type)
-    
-          document.getElementById('td_domain').append(new_domain)
-          document.getElementById('td_type').append(new_type)
-          document.getElementById('td_company').append(new_type)
-          document.getElementById('td_data').append(new_data)
-          document.getElementById('td_status').append(new_status)
-  
-          new_domain.innerHTML = data_new[0]
-          new_type.innerHTML = data_new[1]
-          new_data.innerHTML = data_new[2]
-          new_status.innerHTML = data_new[3]
-          new_check.innerHTML = new_checkbox;
-          console.log(new_check)
-          this.state.display_list = "block"
-          this.setState({style:this.state.display_list})
-
-
-        /*
         this.state.data.forEach(element => {
             element["domain_name"]=this.domain_ref.current.value;
             console.log("domain name is:" ,element["domain_name"])
@@ -107,11 +70,11 @@ class WebSite extends React.Component{
             console.log("data create is:", element["data_create"])
             element["status"]=this.status_ref.current.value;
             console.log("status is:" ,  element["status"])
-            this.state.display_list = "block"
-            this.setState({style:this.state.display_list})*//////
-
-
-        }
+       
+        this.state.display_list = "block"
+        this.setState({style:this.state.display_list}) 
+       })
+      }
    
     onChange_disable = (e) => {
         this.state.data.forEach(element => {
@@ -173,11 +136,11 @@ class WebSite extends React.Component{
              <tbody>  
                <tr style={ {display:u["display"]} }>
                <td colspan="2">  {u["id"]} </td>
-               <td colspan="2" id='td_domain'>  {u["domain_name"]}    </td>
-               <td colspan="2" id='td_type'>  {u["type"]}    </td>
-               <td colspan="2" id="td_company">  {u['company_name']}   </td>
-               <td colspan="2" id="td_data">  {u["data_create"]}    </td>
-               <td colspan="2" id='td_status'>  {u["status"]}         </td>
+               <td colspan="2">  {u["domain_name"]}    </td>
+               <td colspan="2">  {u["type"]}    </td>
+               <td colspan="2">  {u['company_name']}   </td>
+               <td colspan="2">  {u["data_create"]}    </td>
+               <td colspan="2">  {u["status"]}         </td>
                   <td className="check_box" colspan="2">  <input
                     type="checkbox"
                     data_value={u["id"]}
@@ -192,6 +155,7 @@ class WebSite extends React.Component{
  
               <input className="Add_site" type='button' value='افزودن سایت' onClick={this.displayPanel} />
               <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
+              <input className="Active_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
 
               <input className="del_site" type='button' value='حذف سایت' onClick={this.onChange_delete} />
 

@@ -9,7 +9,7 @@ export default [
         "status_group":"فعال",
          "user_name":[
             'ali14012',
-            'hadi000000'   ,
+            'hadi000000',
             'farhadi'     
          ]
     },
