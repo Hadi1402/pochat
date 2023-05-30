@@ -6,6 +6,7 @@ import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
 import Select from 'react-select';
 import user_data from "./user_data";
+import editGroup from "./editGroup"
 
 //const data = [[group_data] , [user_data]]
 
@@ -103,15 +104,13 @@ this.editGroup = this.editGroup.bind(this)
               });
             }
       
-  editGroup =(e) =>{
-
-     } 
 
 
 
-            handleChange = selectOption => {
-              this.setState({ selectOption });
-              console.log(`Option selected:`, selectOption);
+
+    handleChange = selectOption => {
+     this.setState({ selectOption });
+      console.log(`Option selected:`, selectOption);
             };
                 
            
@@ -137,11 +136,26 @@ this.editGroup = this.editGroup.bind(this)
                {this.state.group.map(q =>( 
                  <tbody>
                <tr ref={this.tr_ref}>
-                <td colspan="2">  {q['id']}              </td>
-                <td colspan="2">  {q['group_name']}       </td>
-                <td colspan="2" >  {q["user_name"]}  </td>
-                <td colspan="2" >  {q['data_create']}       </td>
-                <td colspan="2"  >  {q['status_group']}       </td>
+                <td colspan="2"> <input 
+                 value={q['id']} 
+                  name='id'
+                  onChange={(e) => this.editGroup(e)} /> </td>
+                <td colspan="2">  <input  
+                value={q['group_name']} 
+                 name='group_name'
+                 onChange={(e) => this.editGroup(e)} />     </td>
+                <td colspan="2" >  <input 
+                 value={q["user_name"]} 
+                  name='user_name'  
+                  onChange={(e) => this.editGroup(e)}/>     </td>
+                <td colspan="2" > <input  
+                value={q['data_create']} 
+                 name='data_create'
+                 onChange={(e) => this.editGroup(e)}  />  </td>
+                <td colspan="2"  > <input  
+                value={q['status_group']}  
+                name='status_group' 
+                onChange={(e) => this.editGroup(e)} />   </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}

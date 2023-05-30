@@ -1,0 +1,14 @@
+
+  editGroup =(e) =>{
+    const { name, value } = e.target
+    console.log('name', name)
+    console.log('value', value)
+    this.state.group.map((item) =>
+    item.id === id && name ?{ ...item, [name]: value}: item
+    this.setState({ group: this.state.group })
+       )}
+     
+             
+        
+            
+    
