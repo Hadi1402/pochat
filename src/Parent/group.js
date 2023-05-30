@@ -7,7 +7,7 @@ import { Avatar } from "@material-ui/core";
 import Select from 'react-select';
 import user_data from "./user_data";
 import editGroup from "./editGroup"
-
+import { NavLink } from "react-router-dom";
 //const data = [[group_data] , [user_data]]
 
 class Group extends React.Component{
@@ -42,7 +42,6 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
-this.editGroup = this.editGroup.bind(this)
 
         }
 
@@ -136,26 +135,11 @@ this.editGroup = this.editGroup.bind(this)
                {this.state.group.map(q =>( 
                  <tbody>
                <tr ref={this.tr_ref}>
-                <td colspan="2"> <input 
-                 value={q['id']} 
-                  name='id'
-                  onChange={(e) => this.editGroup(e)} /> </td>
-                <td colspan="2">  <input  
-                value={q['group_name']} 
-                 name='group_name'
-                 onChange={(e) => this.editGroup(e)} />     </td>
-                <td colspan="2" >  <input 
-                 value={q["user_name"]} 
-                  name='user_name'  
-                  onChange={(e) => this.editGroup(e)}/>     </td>
-                <td colspan="2" > <input  
-                value={q['data_create']} 
-                 name='data_create'
-                 onChange={(e) => this.editGroup(e)}  />  </td>
-                <td colspan="2"  > <input  
-                value={q['status_group']}  
-                name='status_group' 
-                onChange={(e) => this.editGroup(e)} />   </td>
+                <td colspan="2">   {q['id']} </td>
+                <td colspan="2">   {q['group_name']} </td>
+                <td colspan="2" >  {q["user_name"]}   </td>
+                <td colspan="2" >  {q['data_create']} </td>
+                <td colspan="2"  > {q['status_group']}    </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
@@ -175,7 +159,7 @@ this.editGroup = this.editGroup.bind(this)
             <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-            <input type="button" value='ویرایش گروه' className="groupbtn" onClick={this.editGroup}/>
+            <NavLink exact to={'editGroup'} > ویرایش گروه </NavLink>
 
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
