@@ -1,8 +1,5 @@
 import React,{useState} from "react";
 import Select from 'react-select';
-import {NavLink} from "react-router-dom";
-
-
 
 
 
@@ -29,29 +26,31 @@ class editGroup extends React.Component{
             <div>
             <h2>        ***********************************************  ویرایش  گروه ها ***********************************************</h2>
             <hr/>
-            <div className="div_user">
+            <div>
 
       
                          
-            <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
-            <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
-            <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-
+           
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
+            <br/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
-            
+            <br/>
+            <br/>
+
           <Select>
         
           
           </Select>
 
         
-            
+          <br/>
              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
-            
+             <br/>
+
              <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
-             
+             <br/>
+
              <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
 
