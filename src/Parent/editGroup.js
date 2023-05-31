@@ -1,4 +1,5 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
+import { useActionData } from "react-router";
 import Select from 'react-select';
 
 
@@ -6,11 +7,45 @@ import Select from 'react-select';
 
 
 
+
+
+class EditGroup extends React.Component() {
+
+
+  
+  render(){
+  return(
+    <div className="boxtop">
+      
+      <input type='text' name='id'  className="" placeholder="id " required/>
+            <br/>
+            <input type='text' name='group_name'  className="" placeholder="نام گروه" required/>
+            <br/>
+            <br/>
+
+          <Select>
+        
+          
+          </Select>
+
+        
+          <br/>
+             <input type='text' name='data_create'  className="" placeholder="تاریخ ایجاد "/>
+             <br/>
+
+             <input type='text' name='status_group'  className="" placeholder="وضعیت"/>
+             <br/>
+
+             <input type='button' value='تایید' className="btnoky" onClick={''} />
+             <input type='button' value='بستن' className="btncancel" onClick={''} />
+     </div>
+
+  )}
+
+/*
 class editGroup extends React.Component{
     constructor(props) {
       super(props) 
-     
-        
         this.state = {
       //  group:group_data,
     //    select_checked: [],
@@ -19,10 +54,14 @@ class editGroup extends React.Component{
        // selectOption:''
          }  
              }  
-                
+
+
+
+
+      
            
     render(){
-        return(
+       return(
             <div>
             <h2>        ***********************************************  ویرایش  گروه ها ***********************************************</h2>
             <hr/>
@@ -31,7 +70,8 @@ class editGroup extends React.Component{
       
                          
            
-            <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
+            <div className="panel">
+              
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <br/>
             <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
@@ -51,7 +91,7 @@ class editGroup extends React.Component{
              <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
              <br/>
 
-             <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
+             <input type='button' value='تایید' className="btnoky" onClick={''} />
              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
 
              </div>
@@ -66,8 +106,8 @@ class editGroup extends React.Component{
         
       }
 
-
-export default editGroup;
+*/
+export default EditGroup;
 
 
     
