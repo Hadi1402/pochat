@@ -25,7 +25,8 @@ class Group extends React.Component{
         select_checked: [],
         values: [''],
         users:user_options,
-        selectOption:''
+        selectOption:'',
+        newdata:''
          }  
                
 this.id_ref = createRef();    
@@ -67,7 +68,24 @@ this.handleChange = this.handleChange.bind(this)
        }*/
 
 
-    createGroup = e => {
+    createGroup = (event) => {
+      event.preventDefault();
+      const fieldName = event.target.getAttribute('name');
+      const fieldValue = event.target.value;
+      
+      const Newgroup = this.state.newdata
+       Newgroup[fieldName] = fieldValue
+       this.setState({newdata:this.state.newdata})
+
+       const newgroupadd = {
+        id:this.state.newdata.id,
+        group_name:this.state.newdata.group_name,
+        username_ref:this.newdata.user_name,
+        data_create:this.state.newdata.data_create,
+        status_group:this.state.newdata.status_group
+
+       }
+      /*
       this.state.group.forEach(element => {
         element['id'] = this.id_ref.current.value;
         element["group_name"]=this.group_ref.current.value;
@@ -81,7 +99,7 @@ this.handleChange = this.handleChange.bind(this)
      console.log({group:this.state.group})
      console.log({users:this.state.users})
 
-   })
+   })*/
   }
 
   onChange_disable = (e) => {

@@ -5,45 +5,7 @@ import Select from 'react-select';
 
 
 
-
-
-
-
-class EditGroup extends React.Component() {
-
-
-  
-  render(){
-  return(
-    <div className="boxtop">
-      
-      <input type='text' name='id'  className="" placeholder="id " required/>
-            <br/>
-            <input type='text' name='group_name'  className="" placeholder="نام گروه" required/>
-            <br/>
-            <br/>
-
-          <Select>
-        
-          
-          </Select>
-
-        
-          <br/>
-             <input type='text' name='data_create'  className="" placeholder="تاریخ ایجاد "/>
-             <br/>
-
-             <input type='text' name='status_group'  className="" placeholder="وضعیت"/>
-             <br/>
-
-             <input type='button' value='تایید' className="btnoky" onClick={''} />
-             <input type='button' value='بستن' className="btncancel" onClick={''} />
-     </div>
-
-  )}
-
-/*
-class editGroup extends React.Component{
+class EditGroup extends React.Component{
     constructor(props) {
       super(props) 
         this.state = {
@@ -54,6 +16,7 @@ class editGroup extends React.Component{
        // selectOption:''
          }  
              }  
+
 
 
 
@@ -106,8 +69,6 @@ class editGroup extends React.Component{
         
       }
 
-*/
-export default EditGroup;
 
 
     
@@ -122,6 +83,7 @@ export default EditGroup;
        )}
      */
              
-        
-            
-    
+  
+          
+  export default EditGroup;
+  
