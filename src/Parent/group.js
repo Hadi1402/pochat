@@ -26,7 +26,7 @@ class Group extends React.Component{
         values: [''],
         users:user_options,
         selectOption:'',
-        newdata:''
+        newdata:[]
          }  
                
 this.id_ref = createRef();    
@@ -69,37 +69,36 @@ this.handleChange = this.handleChange.bind(this)
 
 
     createGroup = (event) => {
-      event.preventDefault();
+      /*
       const fieldName = event.target.getAttribute('name');
       const fieldValue = event.target.value;
       
-      const Newgroup = this.state.newdata
+      const Newgroup = { ...newdata} 
        Newgroup[fieldName] = fieldValue
        this.setState({newdata:this.state.newdata})
 
        const newgroupadd = {
         id:this.state.newdata.id,
         group_name:this.state.newdata.group_name,
-        username_ref:this.newdata.user_name,
         data_create:this.state.newdata.data_create,
         status_group:this.state.newdata.status_group
-
-       }
-      /*
-      this.state.group.forEach(element => {
-        element['id'] = this.id_ref.current.value;
-        element["group_name"]=this.group_ref.current.value;
-        element["user_name"].push(this.username_ref.value)
-        console.log(this.username_ref.value)
-        console.log('selecttt uaers:', element["user_name"])
-        element["data_create"]=this.data_ref.current.value;
-        element["status_group"]=this.status_ref.current.value;
+       };
+      this.state.group = newgroupadd;
+      this.setState({group:this.state.group}) **/
+      event.preventDefault();
+       document.getElementById('id').innerHTML=this.id_ref.current.value;
+        //element['id'] = 
+        document.getElementById('group_name').innerHTML = this.group_ref.current.value;
+        document.getElementById('user_name').innerHTML = this.username_ref.value
+       console.log(this.username_ref.value)
+      //  console.log('selecttt uaers:', element["user_name"])
+      document.getElementById('data_create').innerHTML =this.data_ref.current.value;
+      document.getElementById('status_group').innerHTML =this.status_ref.current.value;
      this.setState({group:this.state.group})
-     this.setState({users:this.state.users})
-     console.log({group:this.state.group})
-     console.log({users:this.state.users})
+///console.log({group:this.state.group})
+   //  console.log({users:this.state.users})
 
-   })*/
+   
   }
 
   onChange_disable = (e) => {
@@ -153,11 +152,11 @@ this.handleChange = this.handleChange.bind(this)
                {this.state.group.map(q =>( 
                  <tbody>
                <tr ref={this.tr_ref}>
-                <td colspan="2">   {q['id']} </td>
-                <td colspan="2">   {q['group_name']} </td>
-                <td colspan="2" >  {q["user_name"]}   </td>
-                <td colspan="2" >  {q['data_create']} </td>
-                <td colspan="2"  > {q['status_group']}    </td>
+                <td colspan="2" id='id'>   {q['id']} </td>
+                <td colspan="2" id='group_name'>   {q['group_name']} </td>
+                <td colspan="2" id='user_name'>  {q["user_name"]}   </td>
+                <td colspan="2" id="data_create" >  {q['data_create']} </td>
+                <td colspan="2" id="status_group" > {q['status_group']}    </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
