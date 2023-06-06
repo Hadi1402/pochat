@@ -6,8 +6,10 @@ import { createRef } from "react";
 import { Avatar } from "@material-ui/core";
 import Select from 'react-select';
 import user_data from "./user_data";
-import editGroup from "./editGroup"
+//import editGroup from "./editGroup"
 import { NavLink } from "react-router-dom";
+import onChange_edit from "./editGroup"
+import { connect } from "react-redux";
 //const data = [[group_data] , [user_data]]
 
 class Group extends React.Component{
@@ -26,13 +28,11 @@ class Group extends React.Component{
         values: [''],
         users:user_options,
         selectOption:'',
-        newdata:[]
          }  
                
 this.id_ref = createRef();    
 this.group_ref = createRef();
 this.username_ref = createRef();
-this.domain_ref = createRef();
 this.data_ref = createRef();
 this.status_ref = createRef();
 this.check_ref = createRef();
@@ -43,6 +43,7 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
+//this.saveEdit = this.saveEdit.bind(this)
 
         }
 
@@ -70,6 +71,7 @@ this.handleChange = this.handleChange.bind(this)
 
     createGroup = (event) => {
       /*
+      event.preventDefault();
       const fieldName = event.target.getAttribute('name');
       const fieldValue = event.target.value;
       
@@ -85,27 +87,27 @@ this.handleChange = this.handleChange.bind(this)
        };
       this.state.group = newgroupadd;
       this.setState({group:this.state.group}) **/
-      event.preventDefault();
-       document.getElementById('id').innerHTML=this.id_ref.current.value;
-        //element['id'] = 
-        document.getElementById('group_name').innerHTML = this.group_ref.current.value;
-        document.getElementById('user_name').innerHTML = this.username_ref.value
-       console.log(this.username_ref.value)
-      //  console.log('selecttt uaers:', element["user_name"])
-      document.getElementById('data_create').innerHTML =this.data_ref.current.value;
-      document.getElementById('status_group').innerHTML =this.status_ref.current.value;
-     this.setState({group:this.state.group})
-///console.log({group:this.state.group})
-   //  console.log({users:this.state.users})
+      
+      this.state.group.forEach(element => {
+        element['id'] = this.id_ref.current.value;
+        element["group_name"]=this.group_ref.current.value;
+        element["user_name"]=this.state.selectOption
+        console.log(this.username_ref.value)
+        console.log('selecttt uaers:', element["user_name"])
+        element["data_create"]=this.data_ref.current.value;
+        element["status_group"]=this.status_ref.current.value;
+     console.log({group:this.state.group})
 
-   
+   })
+   this.setState({group:this.state.group})
+
   }
 
   onChange_disable = (e) => {
     this.state.group.forEach(element => {
     console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
     if (this.state.select_checked.includes(element["id"].toString())){
-    element["status_group"] = "غیر فعال" }
+      element["status_group"] = "غیر فعال" }
                   });
     this.setState({ group: this.state.group })
            }
@@ -128,7 +130,27 @@ this.handleChange = this.handleChange.bind(this)
      this.setState({ selectOption });
       console.log(`Option selected:`, selectOption);
             };
-                
+     
+    onChange_edit = (e) =>{
+      <NavLink exact to={'editGroup'}  />
+     this.state.group.forEach(element => {
+    if (this.state.select_checked.includes(element["id"].toString())) {
+     this.id_ref.current.value = element['id']
+     this.group_ref.current.value = element['group_name'] 
+     this.data_ref.current.value = element['data_create']
+     this.status_ref.current.value =  element["status_group"]}
+                       });
+        }
+   /**********************
+     saveEdit = (e) =>{
+      this.state.group.map(element => {
+       element['id'] = this.id_ref.current.value
+       element['group_name'] = this.group_ref.current.value
+       element['data_create'] = this.data_ref.current.value
+       element["status_group"] = this.status_ref.current.value
+         });           
+     this.setState({ group: this.state.group })
+        }  *////////////////////////////////////
            
     render(){
         return(
@@ -152,11 +174,11 @@ this.handleChange = this.handleChange.bind(this)
                {this.state.group.map(q =>( 
                  <tbody>
                <tr ref={this.tr_ref}>
-                <td colspan="2" id='id'>   {q['id']} </td>
-                <td colspan="2" id='group_name'>   {q['group_name']} </td>
-                <td colspan="2" id='user_name'>  {q["user_name"]}   </td>
-                <td colspan="2" id="data_create" >  {q['data_create']} </td>
-                <td colspan="2" id="status_group" > {q['status_group']}    </td>
+                <td colspan="2">   {q['id']} </td>
+                <td colspan="2">   {q['group_name']} </td>
+                <td colspan="2" >  {q["user_name"]}   </td>
+                <td colspan="2" >  {q['data_create']} </td>
+                <td colspan="2"  > {q['status_group']}    </td>
                 <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
@@ -176,17 +198,21 @@ this.handleChange = this.handleChange.bind(this)
             <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-            <NavLink exact to={'editGroup'} > ویرایش گروه </NavLink>
+            <input className="dActive_site" type='button'  value='eeeddddiiitt' onClick={this.onChange_edit} />
+            <input className="dActive_site" type='button'  value='Save' onClick={this.saveEdit} />
+
+
+
 
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
-            <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
+            <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
             
           <Select 
           onChange={this.handleChange}
-         value={this.state.selectOption}
+          value={this.state.selectOption}
           ref={this.username_ref} 
-           isMulti 
+          isMulti 
            options={this.state.users}>
           
           </Select>

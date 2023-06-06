@@ -84,4 +84,4 @@ function mapStateToProps (state){
 
 
 
-export default connect(mapStateToProps )(RegisterUserPage);
+export default connect(mapStateToProps)(RegisterUserPage);

@@ -7,6 +7,7 @@ import dispalyBox from "../Actions/displayChatbox"
 const initialState={  
     data_user:' ',
     display:'block',
+    data_edit:' ',
      }
 
 
@@ -20,8 +21,11 @@ export function settingReducer(state=initialState,action)  {
         case 'displayBox':
         if(action.payload.display == 'block')
         return { ...state , display:'none'}
-    else if(action.payload.display == 'none')        
+        else if(action.payload.display == 'none')        
         return {...state , display:'block',}
+
+        case 'edit_group':
+        return {...state , data_edit:action.payload.data_edit}
 
     }
 

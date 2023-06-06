@@ -1,6 +1,6 @@
 
 
-function RegisterUser(username,email,telphone,password,repassword){
+function RegisterUser(username,email,password,repassword){
     return{
      type:
         "register_user",

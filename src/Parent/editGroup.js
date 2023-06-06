@@ -1,24 +1,52 @@
 import React,{useState,useEffect} from "react";
 import { useActionData } from "react-router";
+import { Connect, connect } from "react-redux";
 import Select from 'react-select';
+import group_data from "./group_data";
+import editGroup from "../Actions/editGroupTable";
 
 
-
+/* 
+   
+    
+     console.log("here1111111111111111111111111"); */
 
 class EditGroup extends React.Component{
     constructor(props) {
-      super(props) 
+      super(props)
         this.state = {
-      //  group:group_data,
-    //    select_checked: [],
+      group:group_data,
+       select_checked: [],
       //  values: [''],
      //   users:user_options,
        // selectOption:''
          }  
-             }  
+               
 
+    this.id_ref = React.createRef();    
+    this.group_ref = React.createRef();
+    this.username_ref = React.createRef();
+    this.data_ref = React.createRef();
+    this.status_ref = React.createRef();
+}
 
+ Edit=(event) =>{
+  event.preventDefault(); 
+  let id = this.id_ref.value;
+  let group_name = this.group_ref.value;
+  let user_name = this.username_ref.value;
+  let data_create = this.data_ref.value;
+  let status_group = this.status_ref.value;
 
+  const data={id,group_name,user_name,data_create,status_group};
+
+  this.props.dispatch(editGroup(data)); 
+  this.setState({data:this.state.group})
+console.log('111111111111111111111111111111111')
+console.log(data)
+ }
+
+ 
 
 
       
@@ -54,7 +82,7 @@ class EditGroup extends React.Component{
              <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
              <br/>
 
-             <input type='button' value='تایید' className="btnoky" onClick={''} />
+             <input type='button' value='تایید' className="btnoky" onClick={this.Edit} />
              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
 
              </div>
@@ -71,19 +99,10 @@ class EditGroup extends React.Component{
 
 
 
-    
-/*
-  editGroup =(e) =>{
-    const { name, value } = e.target
-    console.log('name', name)
-    console.log('value', value)
-    this.state.group.map((item) =>
-    item.id === id && name ?{ ...item, [name]: value}: item
-    this.setState({ group: this.state.group })
-       )}
-     */
-             
-  
-          
-  export default EditGroup;
+function mapStateToProps(state) {
+  return{data_edit:state.data_edit}
+          }
+
+
+export default  connect(mapStateToProps)(EditGroup);
   
