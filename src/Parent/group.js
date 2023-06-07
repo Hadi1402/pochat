@@ -7,9 +7,10 @@ import { Avatar } from "@material-ui/core";
 import Select from 'react-select';
 import user_data from "./user_data";
 //import editGroup from "./editGroup"
-import { NavLink } from "react-router-dom";
+import { NavLink, navigate } from "react-router-dom";
+import editGroup from "../Actions/editGroupTable";
+import { Connect, connect } from "react-redux";
 import onChange_edit from "./editGroup"
-import { connect } from "react-redux";
 //const data = [[group_data] , [user_data]]
 
 class Group extends React.Component{
@@ -43,8 +44,8 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
-//this.saveEdit = this.saveEdit.bind(this)
-
+this.saveEdit = this.saveEdit.bind(this)
+this.edit_transfer = this.edit_transfer.bind(this)
         }
 
  onClick = (event) => {
@@ -70,24 +71,6 @@ this.handleChange = this.handleChange.bind(this)
 
 
     createGroup = (event) => {
-      /*
-      event.preventDefault();
-      const fieldName = event.target.getAttribute('name');
-      const fieldValue = event.target.value;
-      
-      const Newgroup = { ...newdata} 
-       Newgroup[fieldName] = fieldValue
-       this.setState({newdata:this.state.newdata})
-
-       const newgroupadd = {
-        id:this.state.newdata.id,
-        group_name:this.state.newdata.group_name,
-        data_create:this.state.newdata.data_create,
-        status_group:this.state.newdata.status_group
-       };
-      this.state.group = newgroupadd;
-      this.setState({group:this.state.group}) **/
-      
       this.state.group.forEach(element => {
         element['id'] = this.id_ref.current.value;
         element["group_name"]=this.group_ref.current.value;
@@ -134,23 +117,38 @@ this.handleChange = this.handleChange.bind(this)
     onChange_edit = (e) =>{
       <NavLink exact to={'editGroup'}  />
      this.state.group.forEach(element => {
-    if (this.state.select_checked.includes(element["id"].toString())) {
-     this.id_ref.current.value = element['id']
-     this.group_ref.current.value = element['group_name'] 
+        if (this.state.select_checked.includes(element["id"].toString())) {
+           this.id_ref.current.value = element['id']
+          this.group_ref.current.value = element['group_name'] 
      this.data_ref.current.value = element['data_create']
      this.status_ref.current.value =  element["status_group"]}
                        });
         }
-   /**********************
+   
      saveEdit = (e) =>{
       this.state.group.map(element => {
        element['id'] = this.id_ref.current.value
        element['group_name'] = this.group_ref.current.value
        element['data_create'] = this.data_ref.current.value
-       element["status_group"] = this.status_ref.current.value
-         });           
+        element["status_group"] = this.status_ref.current.value
+        });           
      this.setState({ group: this.state.group })
-        }  *////////////////////////////////////
+        }  
+
+        edit_transfer(){
+          this.state.group.forEach(element => {
+            console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
+            if (this.state.select_checked.includes(element["id"].toString())) {
+             var id = element['id']
+             var group = element['group_name'] 
+             var status =  element["status_group"]
+             console.log(id,group,status)
+             this.props.dispatch(editGroup(id,group,"","",status)); 
+             console.log(this.props.data_edit.group_name)
+             navigate("editGroup")
+            }
+            });
+        }
            
     render(){
         return(
@@ -158,7 +156,6 @@ this.handleChange = this.handleChange.bind(this)
             <h2>        *****************************************  مدیریت  گروه ها   ***********************************************</h2>
             <hr/>
             <div className="div_user">
-
             <table className="user_table">  
             
             <thead>
@@ -200,7 +197,7 @@ this.handleChange = this.handleChange.bind(this)
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
             <input className="dActive_site" type='button'  value='eeeddddiiitt' onClick={this.onChange_edit} />
             <input className="dActive_site" type='button'  value='Save' onClick={this.saveEdit} />
-
+            <button  onClick={this.edit_transfer}>  ویرایش گروه </button>
 
 
 
@@ -238,8 +235,11 @@ this.handleChange = this.handleChange.bind(this)
     }
 }
 
+function mapStateToProps(state) {
+  return{data_edit:state.data_edit}
+          }
 
-export default Group;
 
+export default  connect(mapStateToProps)(Group);
 
     

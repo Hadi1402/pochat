@@ -13,7 +13,7 @@ import ChatBox from "./chatBox";
 import User from "./user"
 import webSite from "./webSite";
 import Group from "./group";
-import editGroup from "./editGroup";
+import EditGroup from "./editGroup";
 
 
 
@@ -34,7 +34,7 @@ function App() {
    <Route exact path='/user' component={User}/>
    <Route exact path='/website' component={webSite}/>
    <Route exact path='/group' component={Group}/>
-   <Route exact path='/editgroup' component={editGroup}/>
+   <Route exact path='/editgroup' component={EditGroup}/>
 
    
    </Switch>

@@ -32,18 +32,18 @@ class EditGroup extends React.Component{
 
  Edit=(event) =>{
   event.preventDefault(); 
-  let id = this.id_ref.value;
-  let group_name = this.group_ref.value;
-  let user_name = this.username_ref.value;
-  let data_create = this.data_ref.value;
-  let status_group = this.status_ref.value;
 
-  const data={id,group_name,user_name,data_create,status_group};
+  const id = this.id_ref.value;
+  const group_name = this.group_ref.value;
+  const user_name = this.username_ref.value;
+  const data_create = this.data_ref.value;
+  const status_group = this.status_ref.value;
 
-  this.props.dispatch(editGroup(data)); 
-  this.setState({data:this.state.group})
+ 
+
+this.props.dispatch(editGroup(id,group_name,user_name,data_create,status_group)); 
 console.log('111111111111111111111111111111111')
-console.log(data)
+console.log(id,group_name,user_name,data_create,status_group)
  }
 
  
@@ -59,13 +59,12 @@ console.log(data)
             <div>
 
       
-                         
            
             <div className="panel">
               
             <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
             <br/>
-            <input type='text' name='group_name'  className="" ref={this.group_ref} placeholder="نام گروه" required/>
+            <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
             <br/>
             <br/>
 
