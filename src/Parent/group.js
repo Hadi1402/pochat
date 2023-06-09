@@ -9,8 +9,7 @@ import user_data from "./user_data";
 //import editGroup from "./editGroup"
 import { NavLink, navigate } from "react-router-dom";
 import editGroup from "../Actions/editGroupTable";
-import { Connect, connect } from "react-redux";
-import onChange_edit from "./editGroup"
+import { connect } from "react-redux";
 //const data = [[group_data] , [user_data]]
 
 class Group extends React.Component{
@@ -30,7 +29,7 @@ class Group extends React.Component{
         users:user_options,
         selectOption:'',
          }  
-               
+
 this.id_ref = createRef();    
 this.group_ref = createRef();
 this.username_ref = createRef();
@@ -44,7 +43,7 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
-this.saveEdit = this.saveEdit.bind(this)
+//this.saveEdit = this.saveEdit.bind(this)
 this.edit_transfer = this.edit_transfer.bind(this)
         }
 
@@ -114,7 +113,7 @@ this.edit_transfer = this.edit_transfer.bind(this)
       console.log(`Option selected:`, selectOption);
             };
      
-    onChange_edit = (e) =>{
+   /* onChange_edit = (e) =>{
       <NavLink exact to={'editGroup'}  />
      this.state.group.forEach(element => {
         if (this.state.select_checked.includes(element["id"].toString())) {
@@ -125,7 +124,7 @@ this.edit_transfer = this.edit_transfer.bind(this)
                        });
         }
    
-     saveEdit = (e) =>{
+     /*saveEdit = (e) =>{
       this.state.group.map(element => {
        element['id'] = this.id_ref.current.value
        element['group_name'] = this.group_ref.current.value
@@ -133,23 +132,26 @@ this.edit_transfer = this.edit_transfer.bind(this)
         element["status_group"] = this.status_ref.current.value
         });           
      this.setState({ group: this.state.group })
-        }  
-
-        edit_transfer(){
-          this.state.group.forEach(element => {
+        }  */
+           edit_transfer(){
+          this.state.group.map(element => {
             console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
             if (this.state.select_checked.includes(element["id"].toString())) {
              var id = element['id']
              var group = element['group_name'] 
              var status =  element["status_group"]
-             console.log(id,group,status)
-             this.props.dispatch(editGroup(id,group,"","",status)); 
-             console.log(this.props.data_edit.group_name)
-             navigate("editGroup")
-            }
-            });
-        }
-           
+             console.log(id,group,status) 
+             this.props.dispatch(editGroup(id,group,"","",status));}
+            console.log(this.props.data_edit) 
+            window.location.href="http://localhost:3000/editGroup" 
+            // redirect("/editGroup")
+            console.log("redirect")
+
+       
+     
+        });
+      }
+    
     render(){
         return(
             <div>

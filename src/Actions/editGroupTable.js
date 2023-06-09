@@ -5,15 +5,15 @@ function editGroup(id,group_name,status_group,user_name){
         "edit_group",
 
         payload:{
-            data_edit:{
+
+            data_edit:
+                {
                 id:id,
                 group_name:group_name,
                 status_group:status_group,
-                user_name:user_name
-               }
-
-
-    }
+                user_name:user_name,
+                }
+        }
    
 }
 }

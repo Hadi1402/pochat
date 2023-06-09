@@ -4,8 +4,8 @@ import dispalyBox from "../Actions/displayChatbox"
 
 const initialState={  
     data_user:' ',
-    display:'block',
     data_edit:' ',
+    display:'block',
 
 
      }

@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { useActionData } from "react-router";
-import { Connect, connect } from "react-redux";
+import { connect } from "react-redux";
 import Select from 'react-select';
-import group_data from "./group_data";
 import editGroup from "../Actions/editGroupTable";
 
 
@@ -15,8 +14,6 @@ class EditGroup extends React.Component{
     constructor(props) {
       super(props)
         this.state = {
-      group:group_data,
-       select_checked: [],
       //  values: [''],
      //   users:user_options,
        // selectOption:''
@@ -41,13 +38,11 @@ class EditGroup extends React.Component{
 
  
 
-this.props.dispatch(editGroup(id,group_name,user_name,data_create,status_group)); 
-console.log('111111111111111111111111111111111')
-console.log(id,group_name,user_name,data_create,status_group)
+
  }
 
  
-
+    
 
       
            
@@ -62,9 +57,9 @@ console.log(id,group_name,user_name,data_create,status_group)
            
             <div className="panel">
               
-            <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
+            <input type='text' name='id' value={this.props.data_edit.id} placeholder="id" required/>
             <br/>
-            <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
+            <input type='text' name='group_name' value={this.props.data_edit.group_name} placeholder="نام گروه" required/>
             <br/>
             <br/>
 
@@ -75,10 +70,10 @@ console.log(id,group_name,user_name,data_create,status_group)
 
         
           <br/>
-             <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
+             <input type='text' name='data_create'  value={''}ref={this.data_ref} placeholder="تاریخ ایجاد "/>
              <br/>
 
-             <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
+             <input type='text' name='status_group'   value={this.props.data_edit.status_group} ref={this.status_ref} placeholder="وضعیت"/>
              <br/>
 
              <input type='button' value='تایید' className="btnoky" onClick={this.Edit} />
@@ -97,10 +92,9 @@ console.log(id,group_name,user_name,data_create,status_group)
       }
 
 
-
-function mapStateToProps(state) {
+ function mapStateToProps(state) {
   return{data_edit:state.data_edit}
-          }
+         }
 
 
 export default  connect(mapStateToProps)(EditGroup);
