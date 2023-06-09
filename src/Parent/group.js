@@ -43,7 +43,6 @@ this.onChange_enable = this.onChange_enable.bind(this)
 this.onChange_disable = this.onChange_disable.bind(this) 
 this.onClick = this.onClick.bind(this)
 this.handleChange = this.handleChange.bind(this)
-//this.saveEdit = this.saveEdit.bind(this)
 this.edit_transfer = this.edit_transfer.bind(this)
         }
 
@@ -123,18 +122,10 @@ this.edit_transfer = this.edit_transfer.bind(this)
      this.status_ref.current.value =  element["status_group"]}
                        });
         }
-   
-     /*saveEdit = (e) =>{
-      this.state.group.map(element => {
-       element['id'] = this.id_ref.current.value
-       element['group_name'] = this.group_ref.current.value
-       element['data_create'] = this.data_ref.current.value
-        element["status_group"] = this.status_ref.current.value
-        });           
-     this.setState({ group: this.state.group })
-        }  */
+    *///////////
+
            edit_transfer(){
-          this.state.group.map(element => {
+          this.state.group.forEach(element => {
             console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
             if (this.state.select_checked.includes(element["id"].toString())) {
              var id = element['id']

@@ -3,6 +3,7 @@ import { useActionData } from "react-router";
 import { connect } from "react-redux";
 import Select from 'react-select';
 import editGroup from "../Actions/editGroupTable";
+import group_data from "./group_data";
 
 
 /* 
@@ -14,7 +15,8 @@ class EditGroup extends React.Component{
     constructor(props) {
       super(props)
         this.state = {
-      //  values: [''],
+          group:group_data,
+          //  values: [''],
      //   users:user_options,
        // selectOption:''
          }  
@@ -25,21 +27,21 @@ class EditGroup extends React.Component{
     this.username_ref = React.createRef();
     this.data_ref = React.createRef();
     this.status_ref = React.createRef();
+    this.saveEdit = this.saveEdit.bind(this)
 }
 
- Edit=(event) =>{
-  event.preventDefault(); 
 
-  const id = this.id_ref.value;
-  const group_name = this.group_ref.value;
-  const user_name = this.username_ref.value;
-  const data_create = this.data_ref.value;
-  const status_group = this.status_ref.value;
+  saveEdit = (e) =>{
+      this.state.group.forEach(element => {
+       element['id'] = this.id_ref.current.value
+       element['group_name'] = this.group_ref.current.value
+        element["status_group"] = this.status_ref.current.value
+     this.setState({ group: this.state.group }) });
+     console.log({group:this.state.group})
 
- 
+     window.location.href="http://localhost:3000/group"
 
-
- }
+        }  
 
  
     
@@ -57,9 +59,9 @@ class EditGroup extends React.Component{
            
             <div className="panel">
               
-            <input type='text' name='id' value={this.props.data_edit.id} placeholder="id" required/>
+            <input type='text' name='id' value={this.props.data_edit.id}  ref={this.id_ref}placeholder="id" required/>
             <br/>
-            <input type='text' name='group_name' value={this.props.data_edit.group_name} placeholder="نام گروه" required/>
+            <input type='text' name='group_name' value={this.props.data_edit.group_name}  ref={this.group_ref}placeholder="نام گروه" required/>
             <br/>
             <br/>
 
@@ -76,7 +78,7 @@ class EditGroup extends React.Component{
              <input type='text' name='status_group'   value={this.props.data_edit.status_group} ref={this.status_ref} placeholder="وضعیت"/>
              <br/>
 
-             <input type='button' value='تایید' className="btnoky" onClick={this.Edit} />
+             <input type='button' value='تایید' className="btnoky" onClick={this.saveEdit} />
              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
 
              </div>
