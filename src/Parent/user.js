@@ -32,18 +32,18 @@ class User extends React.Component {
   onChange_disable = (e) => {
     this.state.data.forEach(element => {
     console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-    if (this.state.select_checked.includes(element["id"].toString())){
-        element["status user"] = "غیر فعال" }
+     if (this.state.select_checked.includes(element["id"].toString())){
+      element["status user"] = "غیر فعال" }
         });
-    this.setState({ data: this.state.data })
+      this.setState({ data: this.state.data })
            }
 
 
   onChange_enable = (e) => {
     this.state.data.forEach(element => {
     console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-    if (this.state.select_checked.includes(element["id"].toString())) {
-        element["status user"] = " فعال"}
+     if (this.state.select_checked.includes(element["id"].toString())) {
+      element["status user"] = " فعال"}
       this.setState({ data: this.state.data })
     });
   }
@@ -52,8 +52,8 @@ class User extends React.Component {
   onChange_delete = (e) => {
     this.state.data.forEach(element => {
     if (this.state.select_checked.includes(element["id"].toString())) {
-        //this.state.row_display = "none"
-        element["display"] = "none";
+     //this.state.row_display = "none"
+      element["display"] = "none";
         // call backend
       }
     });

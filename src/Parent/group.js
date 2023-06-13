@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import  "../static/css/chat.css";
 import group_data from "./group_data";
 import { createRef } from "react";
-import { Avatar } from "@material-ui/core";
+import { Avatar, easing } from "@material-ui/core";
 import Select from 'react-select';
 import user_data from "./user_data";
 //import editGroup from "./editGroup"
@@ -11,6 +11,7 @@ import { NavLink, navigate } from "react-router-dom";
 import editGroup from "../Actions/editGroupTable";
 import { connect } from "react-redux";
 //const data = [[group_data] , [user_data]]
+import { useDispatch } from 'react-redux' // <-- add this 
 
 class Group extends React.Component{
     constructor(props) {
@@ -124,24 +125,27 @@ this.edit_transfer = this.edit_transfer.bind(this)
         }
     *///////////
 
-           edit_transfer(){
-          this.state.group.forEach(element => {
-            console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
-            if (this.state.select_checked.includes(element["id"].toString())) {
-             var id = element['id']
-             var group = element['group_name'] 
-             var status =  element["status_group"]
-             console.log(id,group,status) 
-             this.props.dispatch(editGroup(id,group,"","",status));}
-            console.log(this.props.data_edit) 
-            window.location.href="http://localhost:3000/editGroup" 
-            // redirect("/editGroup")
-            console.log("redirect")
 
-       
-     
-        });
-      }
+
+      edit_transfer = () => {
+        this.state.group.forEach(element => {
+          console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
+          if (this.state.select_checked.includes(element["id"].toString())) {
+           var id = element['id']
+           var group = element['group_name'] 
+           var status =  element["status_group"]
+           // console.log(id,group,status) 
+           this.props.dispatch(editGroup({id,group,"","",status}))}
+           console.log(this.props.data_edit) 
+          // redirect("/editGroup")
+        //  console.log("redirect")
+        
+      });
+   
+    }
+  //   window.location.href="http://localhost:3000/editGroup"
+
+           
     
     render(){
         return(
@@ -184,14 +188,13 @@ this.edit_transfer = this.edit_transfer.bind(this)
            
 
              </table>
-                         
             <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
             <input className="dActive_site" type='button'  value='eeeddddiiitt' onClick={this.onChange_edit} />
             <input className="dActive_site" type='button'  value='Save' onClick={this.saveEdit} />
-            <button  onClick={this.edit_transfer}>  ویرایش گروه </button>
-
+            <input type="button"  onClick={this.edit_transfer} value='ویرایش گروه ' />
+        
 
 
             <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
@@ -228,11 +231,18 @@ this.edit_transfer = this.edit_transfer.bind(this)
     }
 }
 
-function mapStateToProps(state) {
-  return{data_edit:state.data_edit}
-          }
+ function  mapDispatchToProps (state) {
+   return{data_edit:state.data_edit}
+         }
+
+    //function mapStateToProps (state){
+    //  return{data_edit:state.data_edit}
+    //   };
+           
 
 
-export default  connect(mapStateToProps)(Group);
+
+
+export default connect(mapDispatchToProps)(Group);
 
     

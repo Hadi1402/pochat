@@ -6,20 +6,19 @@ import "../static/css/chat.css"
 
 class WebSite extends React.Component{
     constructor(props) {
-        super(props)   
+      super(props)   
         this.state = {
-            data:website_data,
-            display_panel:"none",
-            display_list:"block",
-            select_checked: [],
-                     }
+          data:website_data,
+          display_panel:"none",
+          display_list:"block",
+          select_checked: [],
+            }
     this.company_ref = createRef();
     this.domain_ref = createRef();
     this.type_ref = createRef();
     this.data_ref = createRef();
     this.status_ref = createRef();
     this.panel_ref = createRef();
-   
      this.onChange_disable = this.onChange_disable.bind(this)
      this.displayPanel = this.displayPanel.bind(this)
      this.Cancel = this.Cancel.bind(this)
@@ -27,8 +26,6 @@ class WebSite extends React.Component{
      this.onChange_enable = this.onChange_enable.bind(this)
      this.onChange_delete = this.onChange_delete.bind(this) 
      this.onClick = this.onClick.bind(this)
-
-
       }
 
       onClick = (event) => {
@@ -41,12 +38,12 @@ class WebSite extends React.Component{
         this.state.display_panel="block"
         this.state.display_list="none"
         this.setState({style:this.state.display_panel})
-      }
+         }
     
     Cancel = e =>{
-        this.state.display_panel="none"
-        this.setState({style:this.state.display_panel})
-    }
+      this.state.display_panel="none"
+      this.setState({style:this.state.display_panel})
+      }
 
    /* ref={this.domain_ref} placeholder="نام سایت" required/>
     <br/>
@@ -59,7 +56,7 @@ class WebSite extends React.Component{
  <input type='text' name='status'  className="input_status" ref={this.status_ref}*/
 
        addInputSite = e => {
-        this.state.data.forEach(element => {
+          this.state.data.forEach(element => {
             element["domain_name"]=this.domain_ref.current.value;
             console.log("domain name is:" ,element["domain_name"])
             element["type"]=this.type_ref.current.value;
@@ -70,46 +67,40 @@ class WebSite extends React.Component{
             console.log("data create is:", element["data_create"])
             element["status"]=this.status_ref.current.value;
             console.log("status is:" ,  element["status"])
-       
-        this.state.display_list = "block"
-        this.setState({style:this.state.display_list}) 
-       })
-      }
+            this.state.display_list = "block"
+            this.setState({style:this.state.display_list}) 
+                })
+              }
    
     onChange_disable = (e) => {
-        this.state.data.forEach(element => {
+      this.state.data.forEach(element => {
         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
         if (this.state.select_checked.includes(element["id"].toString())){
-            element["status"] = "غیر فعال" }
+          element["status"] = "غیر فعال" }
             });
-        this.setState({ data: this.state.data })
-               }
+          this.setState({ data: this.state.data })
+             }
     
     
       onChange_enable = (e) => {
         this.state.data.forEach(element => {
-        console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-        if (this.state.select_checked.includes(element["id"].toString())) {
-            element["status"] = " فعال"}
+         console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
+         if (this.state.select_checked.includes(element["id"].toString())) {
+          element["status"] = " فعال"}
           this.setState({ data: this.state.data })
-        });
-      }
+            });
+        }
     
-   
-
-
-
-
    onChange_delete = (e) => {
     this.state.data.forEach(element => {
     if (this.state.select_checked.includes(element["id"].toString())) {
-        //this.state.row_display = "none"
-        element["display"] = "none";
+      //this.state.row_display = "none"
+      element["display"] = "none";
         // call backend
-      }
-    });
+        }
+      });
     this.setState({ data: this.state.data })
-  }
+    }
   
   
     render(){
@@ -161,26 +152,23 @@ class WebSite extends React.Component{
 
 
               <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
-            <input type='text' name='domain_name'  className="input_domain" ref={this.domain_ref} placeholder="نام سایت" required/>
+                <input type='text' name='domain_name'  className="input_domain" ref={this.domain_ref} placeholder="نام سایت" required/>
                 <br/>
                 <input type='text' name='domain_name'  className="input_type" ref={this.type_ref} placeholder="نوع سایت " required/>
                 <br/>    
-             <input type='text' name='company_name'  className="input_company_name" ref={this.company_ref} placeholder="نام شرکت"/>
-             <br/>
-             <input type='text' name='data_create'  className="input_data_create" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
-             <br/>
-             <input type='text' name='status'  className="input_status" ref={this.status_ref} placeholder="وضعیت"/>
-             <br/>
-             <input type='button' value='تایید' className="btnoky" onClick={this.addInputSite} />
-             <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
-
-             </div>
+                <input type='text' name='company_name'  className="input_company_name" ref={this.company_ref} placeholder="نام شرکت"/>
+                <br/>
+                <input type='text' name='data_create'  className="input_data_create" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
+                <br/>
+                <input type='text' name='status'  className="input_status" ref={this.status_ref} placeholder="وضعیت"/>
+                <br/>
+                <input type='button' value='تایید' className="btnoky" onClick={this.addInputSite} />
+                <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
+              </div>
             </div>
-
         ) 
-
     }
-}
+    }
 
 export default WebSite;
 

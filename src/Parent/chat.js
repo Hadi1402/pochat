@@ -8,9 +8,7 @@ import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { InsertEmoticon } from '@material-ui/icons';
 import { MicNone } from '@material-ui/icons';
-import { useState } from 'react';
-import { useRef } from 'react';
-import {findDOMNode} from 'react-dom';
+
 
 
 
@@ -19,19 +17,18 @@ import {findDOMNode} from 'react-dom';
 class Chat extends React.Component {
   constructor(props) {
     super(props)
-    this.inputRef = React.createRef();
-    this.btn_send = React.createRef();
-    this.MicNone = React.createRef();
+     this.inputRef = React.createRef();
+     this.btn_send = React.createRef();
+     this.MicNone = React.createRef();
     this.state = {
       input:"",
       btn_send_display:"none",
       MicNone :"block",
       p_display:"none"
+       }
+  this.sendMessage = this.sendMessage.bind(this)
+  this.onChange = this.onChange.bind(this)
     }
-    this.sendMessage = this.sendMessage.bind(this)
-    this.onChange = this.onChange.bind(this)
-
-  }
     
 
   sendMessage(e){
@@ -58,22 +55,23 @@ class Chat extends React.Component {
   
   onChange (e){
     console.log("inja")
-
     const inputt = this.inputRef.current.value;
     const btn_send = this.btn_send.current;
     const MicNone = this.MicNone.current;
     console.log(inputt,btn_send)
     if(inputt != "") {
       this.setState({btn_send_display:'block'})
-       this.setState({MicNone:'none'})
-      }
+      this.setState({MicNone:'none'})
+       }
        else
-       {
-      this.setState({btn_send_display:'none'})
-      this.setState({MicNone:'block'})
-    }
+         {
+        this.setState({btn_send_display:'none'})
+        this.setState({MicNone:'block'})
+         }
     }
  
+
+
   render(){
 
   return(
@@ -104,18 +102,18 @@ class Chat extends React.Component {
 
 
       <div className='chat_body'>
-
-      <p className='chat_message'  style={{"display":this.state.p_display}}>  </p>
+       <p className='chat_message'  style={{"display":this.state.p_display}}>  </p>
       </div>
 
       <div className='chat_footer'>
         <form>
-      <button  ref={this.btn_send} onClick={this.sendMessage} style={{ "display": this.state.btn_send_display}}
-      type="submit">  ارسال  </button>
-        <MicNone className='MicNone' style={{"display": this.state.MicNone}} />
-         <input ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
-     
-
+          <button  ref={this.btn_send}
+           onClick={this.sendMessage} 
+           style={{ "display": this.state.btn_send_display}}
+           type="submit">  ارسال  
+          </button>
+          <MicNone className='MicNone' style={{"display": this.state.MicNone}} />
+          <input ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
         </form>
 
           <InsertEmoticon />

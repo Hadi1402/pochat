@@ -11,7 +11,7 @@ class HomeChat extends React.Component {
     super(props);
     this.click = this.click.bind(this)
     // this.click1 = this.click1.bind(this)
-  }
+     }
 
   click()
    {
@@ -19,30 +19,28 @@ class HomeChat extends React.Component {
     //this.display = this.display.dispalyBox
     this.props.dispatch(dispalyBox(this.props.display))
     // <ChatBox />
-
   }
 
   render() {
     var chat = undefined
-    if (this.props.display == "none") {
+     if (this.props.display == "none") {
       chat = <ChatBox> </ChatBox>
-    }
-    return (
-      <div>
-        <img className="homeimg" src={img1} onClick={this.click} style={{ display: this.props.display }} />
+      }
+  return (
+    <div>
+      <img className="homeimg" src={img1} onClick={this.click} style={{ display: this.props.display }} />
         {chat}
-      </div>
-    )
+    </div>
+     )
   }
-
-}
+   }
 
 
 
 function mapDispatchToProps(state) {
   console.log(state.display, "gjhjkgtg")
   return { display: state.display }
-}
+    }
 
 
 export default connect(mapDispatchToProps)(HomeChat);

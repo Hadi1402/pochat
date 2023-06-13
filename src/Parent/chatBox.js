@@ -27,9 +27,6 @@ class ChatBox extends React.Component {
         var  maseeg=document.getElementsByClassName('maseg')[0]
         ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value);
         ReactDOM.findDOMNode(inputtext).value= ' ';
-
-
-
       }
     };
     
@@ -46,17 +43,15 @@ class ChatBox extends React.Component {
       if (this.props.display == "block") {
         chatHome = <HomeChat> </HomeChat>
         sideBar = <Sidebar></Sidebar>
-
       }
 
 
-        return(
-           
-    <div className="box">  
-     <div className="boxtop"> 
-     </div>
-      <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
-      <snap className="maseg">    </snap>
+    return(
+      <div className="box">  
+       <div className="boxtop"> 
+      </div>
+        <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
+        <snap className="maseg">    </snap>
       </div> 
 /*
       <div className="dashbord_user_app"> 
@@ -77,7 +72,7 @@ class ChatBox extends React.Component {
 
 function mapDispatchToProps(state) {
   return {display:state.display}
-}
+  }
 
 
 export default connect(mapDispatchToProps)(ChatBox);
