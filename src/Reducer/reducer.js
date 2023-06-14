@@ -1,13 +1,12 @@
 
 //import RegisterUser from "../Actions/RegisterUser"
 import dispalyBox from "../Actions/displayChatbox"
+import editGroup from "../Actions/editGroupTable"
 
 const initialState={  
     data_user:' ',
-    data_edit:' ',
+    data_edit:'',
     display:'block',
-
-
      }
 
 
@@ -19,16 +18,14 @@ export function settingReducer(state=initialState,action)  {
 
           
         case 'displayBox':
-        if(action.payload.display == 'block')
-        return { ...state , display:'none'}
-        else if(action.payload.display == 'none')        
-        return {...state , display:'block',}
+            if(action.payload.display == 'block')
+            return { ...state , display:'none'}
+            else if(action.payload.display == 'none')        
+            return {...state , display:'block',}
 
         case 'edit_group':
             console.log("here",action.payload.data_edit )
-            var a =  {...state , data_edit:action.payload.data_edit}
-            console.log(a)
-        return a
+            return {...state , data_edit:action.payload.data_edit}
 
     }
 

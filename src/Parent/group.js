@@ -10,8 +10,7 @@ import user_data from "./user_data";
 import { NavLink, navigate } from "react-router-dom";
 import editGroup from "../Actions/editGroupTable";
 import { connect } from "react-redux";
-//const data = [[group_data] , [user_data]]
-import { useDispatch } from 'react-redux' // <-- add this 
+import groupProfile from "./groupProfile"
 
 class Group extends React.Component{
     constructor(props) {
@@ -131,20 +130,22 @@ this.edit_transfer = this.edit_transfer.bind(this)
         this.state.group.forEach(element => {
           console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
           if (this.state.select_checked.includes(element["id"].toString())) {
-           var id = element['id']
-           var group = element['group_name'] 
-           var status =  element["status_group"]
-           // console.log(id,group,status) 
-           this.props.dispatch(editGroup({id,group,"","",status}))}
-           console.log(this.props.data_edit) 
+           // groupProfile.setId(element['id'])
+           // groupProfile.setName(element['group_name'])
+          //  groupProfile.setStatus(element["status_group"])
           // redirect("/editGroup")
         //  console.log("redirect")
-        
+          // console.log(groupProfile.getId())
+         //  console.log(groupProfile.getName())
+         //  console.log(groupProfile.getStatus())
+         
+           window.location.href="http://localhost:3000/editGroup"+"?id="+ element['id']
+
+        }
       });
    
     }
-  //   window.location.href="http://localhost:3000/editGroup"
-
+  //   
            
     
     render(){

@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import Select from 'react-select';
 import editGroup from "../Actions/editGroupTable";
 import group_data from "./group_data";
+import groupProfile from "./groupProfile";
+import group from "./group";
+
 
 
 /* 
@@ -33,13 +36,13 @@ class EditGroup extends React.Component{
 
   saveEdit = (e) =>{
       this.state.group.forEach(element => {
-       element['id'] = this.id_ref.current.value
+       this.id_ref.current.value = groupProfile.getId()
+       console.log(groupProfile.getId())
        element['group_name'] = this.group_ref.current.value
         element["status_group"] = this.status_ref.current.value
      this.setState({ group: this.state.group }) });
      console.log({group:this.state.group})
 
-     window.location.href="http://localhost:3000/group"
 
         }  
 
@@ -49,6 +52,20 @@ class EditGroup extends React.Component{
       
            
     render(){
+      var params  = new URL(window.location).searchParams
+      console.log(params)
+      var id_rec = params.get("id")
+      console.log(id_rec)
+      var id, group
+      this.state.group.forEach(element => {
+        console.log(id_rec, element["id"])
+        if(id_rec == element['id']){
+          console.log()
+          id = element['id']
+          group = element['group_name'] }
+          
+      });
+
        return(
             <div>
             <h2>        ***********************************************  ویرایش  گروه ها ***********************************************</h2>
@@ -59,9 +76,9 @@ class EditGroup extends React.Component{
            
             <div className="panel">
               
-            <input type='text' name='id' value={this.props.data_edit.id}  ref={this.id_ref}placeholder="id" required/>
+            <input type='text'  placeholder={id} name='id'  ref={this.id_ref} required/>
             <br/>
-            <input type='text' name='group_name' value={this.props.data_edit.group_name}  ref={this.group_ref}placeholder="نام گروه" required/>
+            <input type='text' name='group_name' placeholder={group}  ref={this.group_ref} required/>
             <br/>
             <br/>
 
@@ -95,8 +112,9 @@ class EditGroup extends React.Component{
 
 
  function mapStateToProps(state) {
-  return{data_edit:state.data_edit}
-         }
+    console.log(state)
+    return{data_edit:state.data_edit}
+ }
 
 
 export default  connect(mapStateToProps)(EditGroup);

@@ -5,7 +5,6 @@ function editGroup(id,group_name,status_group,user_name){
         "edit_group",
 
         payload:{
-
             data_edit:
                 {
                 id:id,
