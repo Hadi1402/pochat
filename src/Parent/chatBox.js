@@ -15,6 +15,9 @@ import Chat from "./chat"
 class ChatBox extends React.Component {
     constructor(){
        super(); 
+
+  this.click1 = this.click1.bind(this)
+   
     }
 
 
@@ -31,7 +34,7 @@ class ChatBox extends React.Component {
     };
     
 
-    click()
+    click1()
       {
      this.props.dispatch(dispalyBox(this.props.display))
       }
@@ -49,6 +52,8 @@ class ChatBox extends React.Component {
     return(
       <div className="box">  
        <div className="boxtop"> 
+       <img className="imgclose" src={close} onClick={this.click1} />
+     
       </div>
         <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
         <snap className="maseg">    </snap>

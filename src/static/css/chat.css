@@ -62,7 +62,7 @@ input[type='password']{
     }
 
 .boxtop {
-    background-color:#4d6868;
+    background-color:#335e5e;
         height: 90px;
         width: 447px;
         margin-top:0px;
@@ -103,7 +103,6 @@ input[type='password']{
 }
 
 .imgclose {
-
     height: 30px;
     width: 30px;
     position: fixed;
