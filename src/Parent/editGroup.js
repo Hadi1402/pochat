@@ -49,6 +49,7 @@ class EditGroup extends React.Component{
       
            
     render(){
+      
       var params  = new URL(window.location).searchParams
       console.log(params)
       var id_rec = params.get("id")
@@ -62,7 +63,6 @@ class EditGroup extends React.Component{
           group = element['group_name'] 
           date = element['data_create']
           status = element['status_group']}
-          
       });
 
        return(
