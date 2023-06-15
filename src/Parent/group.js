@@ -10,7 +10,6 @@ import user_data from "./user_data";
 import { NavLink, navigate } from "react-router-dom";
 import editGroup from "../Actions/editGroupTable";
 import { connect } from "react-redux";
-import groupProfile from "./groupProfile"
 
 class Group extends React.Component{
     constructor(props) {
@@ -46,10 +45,10 @@ this.handleChange = this.handleChange.bind(this)
 this.edit_transfer = this.edit_transfer.bind(this)
         }
 
- onClick = (event) => {
-   this.state.select_checked.push(event.target.getAttribute("data_value"))
+  onClick = (event) => {
+    this.state.select_checked.push(event.target.getAttribute("data_value"))
     this.setState({ select_checked: this.state.select_checked });
-   console.log(this.state.select_checked) 
+    console.log(this.state.select_checked) 
      //this.check_ref.current.checked.push(event.target.getAttribute("data_value"))
           }
 
@@ -77,12 +76,11 @@ this.edit_transfer = this.edit_transfer.bind(this)
         console.log('selecttt uaers:', element["user_name"])
         element["data_create"]=this.data_ref.current.value;
         element["status_group"]=this.status_ref.current.value;
-     console.log({group:this.state.group})
-
-   })
-   this.setState({group:this.state.group})
-
+        console.log({group:this.state.group})
+          })
+       this.setState({group:this.state.group})
   }
+
 
   onChange_disable = (e) => {
     this.state.group.forEach(element => {
@@ -138,7 +136,6 @@ this.edit_transfer = this.edit_transfer.bind(this)
           // console.log(groupProfile.getId())
          //  console.log(groupProfile.getName())
          //  console.log(groupProfile.getStatus())
-         
            window.location.href="http://localhost:3000/editGroup"+"?id="+ element['id']
 
         }
