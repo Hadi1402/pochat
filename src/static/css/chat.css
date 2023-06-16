@@ -91,17 +91,20 @@ input[type='password']{
 }
 
 
-.homeimg {margin-top: 850px; margin-left: 1900px; width: 90px; height: 90px;}
+.homeimg {margin-top: 1150px; margin-left: 2600px; width: 90px; height: 90px;}
 
 
 
 .maseg {
     position: fixed;
     margin-top: 100px;
-    left:1630px;
-
+    left:2300px;
+    background-color: #acbae0;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%
 }
-
 .imgclose {
     height: 30px;
     width: 30px;

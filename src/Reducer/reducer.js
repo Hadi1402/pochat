@@ -23,9 +23,9 @@ export function settingReducer(state=initialState,action)  {
             else if(action.payload.display == 'none')        
             return {...state , display:'block',}
 
-        case 'edit_group':
-            console.log("here",action.payload.data_edit )
-            return {...state , data_edit:action.payload.data_edit}
+       // case 'edit_group':
+         //   console.log("here",action.payload.data_edit )
+           // return {...state , data_edit:action.payload.data_edit}
 
     }
 
