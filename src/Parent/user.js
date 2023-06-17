@@ -35,7 +35,7 @@ class User extends React.Component {
      if (this.state.select_checked.includes(element["id"].toString())){
       element["status user"] = "غیر فعال" }
         });
-      this.setState({ data: this.state.data })
+    this.setState({ data: this.state.data })
            }
 
 
@@ -48,7 +48,6 @@ class User extends React.Component {
     });
   }
 
-
   onChange_delete = (e) => {
     this.state.data.forEach(element => {
     if (this.state.select_checked.includes(element["id"].toString())) {
@@ -59,10 +58,6 @@ class User extends React.Component {
     });
     this.setState({ data: this.state.data })
   }
-
-
-
-
 
 
   render() {
@@ -107,7 +102,6 @@ class User extends React.Component {
               </tbody>
 
             ))}
-
           </table>
 
         </div>

@@ -9,7 +9,7 @@ function SidebarChat(){
  const[seed , setSeed] = useState("");
   useEffect(() =>{
     setSeed(Math.floor(Math.random() * 50));
-   }, [] ) ;
+     }, [] ) ;
   
 
     return(

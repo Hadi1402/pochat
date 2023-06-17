@@ -29,7 +29,6 @@ class SupportUser extends React.Component {
                     <IconButton> 
                     <DonutLargeIcon />
                     </IconButton>
-                    
                     <IconButton> 
                     <ChatIcon /> 
                     </IconButton>

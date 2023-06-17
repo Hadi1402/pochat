@@ -1,15 +1,13 @@
 import img1 from "../static/img/img1.jpg"
-//import "../static/css/chatbox.css"
 import React from "react";
 import { connect } from "react-redux";
 import dispalyBox from "../Actions/displayChatbox";
-import SupportDashbord from "./chatBox";
 import ChatBox from "./chatBox";
 
 class HomeChat extends React.Component {
   constructor(props) {
     super(props);
-    this.click = this.click.bind(this)
+     this.click = this.click.bind(this)
     // this.click1 = this.click1.bind(this)
      }
 

@@ -1,9 +1,7 @@
 import React,{useState} from 'react';
 import {NavLink,Redirect} from "react-router-dom";
 import axios from 'axios';
-import Sidebar from './supportUser';
 
-//import {UseAuth} from "../context/auth";
 
   export default function LoginSet(props) {
     const [isloggedIn, setLoggedIn] = useState(false);
@@ -18,24 +16,24 @@ import Sidebar from './supportUser';
             userName,
             password
         }).then(result => {
-            if (result.status === 200) {
-                //setAuthTokens(result.data);
-                setLoggedIn(true);
-            } else {
-                setIsError(true);
+         if (result.status === 200) {
+          //setAuthTokens(result.data);
+          setLoggedIn(true);
+            } 
+         else {
+           setIsError(true);
             }
-        }).catch(e => {
-            setIsError(true);
+         }).catch(e => {
+          setIsError(true);
         });
     }
 
-    if (isloggedIn) {
-         //  ba hamkari bakend user be yeki az sfahate admin va ya support hedyat khahad shod.
-        return <Redirect to={" "} replace={true} />;
-    }
+     if (isloggedIn) {
+      //  ba hamkari bakend user be yeki az sfahate admin va ya support hedyat khahad shod.
+      return <Redirect to={" "} replace={true} />;
+         }
 
         return (
-
             <div>
                 <form>
                     <input type='text'
@@ -53,18 +51,11 @@ import Sidebar from './supportUser';
                            placeholder={'کلمه عبور'}/> <br/>
 
                  <NavLink exact to={'/SupportUser'}>   ورود    </NavLink>
-
-
-                  
                     <br/> <br/>
                     <NavLink exact to={'/registeruser'}>  ثبت نام نکرده ام </NavLink>
-
                 </form>
-
                 <br/><br/><br/><br/><br/>
-            
             </div>
-
         )
 
 }

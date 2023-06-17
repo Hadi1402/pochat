@@ -19,13 +19,13 @@ class WebSite extends React.Component{
     this.data_ref = createRef();
     this.status_ref = createRef();
     this.panel_ref = createRef();
-     this.onChange_disable = this.onChange_disable.bind(this)
-     this.displayPanel = this.displayPanel.bind(this)
-     this.Cancel = this.Cancel.bind(this)
-     this.addInputSite = this.addInputSite.bind(this)
-     this.onChange_enable = this.onChange_enable.bind(this)
-     this.onChange_delete = this.onChange_delete.bind(this) 
-     this.onClick = this.onClick.bind(this)
+    this.onChange_disable = this.onChange_disable.bind(this)
+    this.displayPanel = this.displayPanel.bind(this)
+    this.Cancel = this.Cancel.bind(this)
+    this.addInputSite = this.addInputSite.bind(this)
+    this.onChange_enable = this.onChange_enable.bind(this)
+    this.onChange_delete = this.onChange_delete.bind(this) 
+    this.onClick = this.onClick.bind(this)
       }
 
       onClick = (event) => {
@@ -45,15 +45,6 @@ class WebSite extends React.Component{
       this.setState({style:this.state.display_panel})
       }
 
-   /* ref={this.domain_ref} placeholder="نام سایت" required/>
-    <br/>
-    <input type='text' name='domain_name'  className="input_type" ref={this.type_ref} placeholder="نوع سایت " required/>
-    <br/>    
- <input type='text' name='company_name'  className="input_company_name" ref={this.company_ref} placeholder="نام شرکت"/>
- <br/>
- <input type='text' name='data_create'  className="input_data_create" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
- <br/>
- <input type='text' name='status'  className="input_status" ref={this.status_ref}*/
 
        addInputSite = e => {
           this.state.data.forEach(element => {
@@ -78,7 +69,7 @@ class WebSite extends React.Component{
         if (this.state.select_checked.includes(element["id"].toString())){
           element["status"] = "غیر فعال" }
             });
-          this.setState({ data: this.state.data })
+        this.setState({ data: this.state.data })
              }
     
     
@@ -87,7 +78,7 @@ class WebSite extends React.Component{
          console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
          if (this.state.select_checked.includes(element["id"].toString())) {
           element["status"] = " فعال"}
-          this.setState({ data: this.state.data })
+         this.setState({ data: this.state.data })
             });
         }
     
@@ -147,9 +138,7 @@ class WebSite extends React.Component{
               <input className="Add_site" type='button' value='افزودن سایت' onClick={this.displayPanel} />
               <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
               <input className="Active_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-
               <input className="del_site" type='button' value='حذف سایت' onClick={this.onChange_delete} />
-
 
               <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
                 <input type='text' name='domain_name'  className="input_domain" ref={this.domain_ref} placeholder="نام سایت" required/>
@@ -171,10 +160,3 @@ class WebSite extends React.Component{
     }
 
 export default WebSite;
-
-
-/** <input type='text' name='domain_name' site_value={u["domain_name"]} className="input_domain" ref={this.domain_ref} placeholder="نام سایت" required/>
-                <br/>
-                <input type='text' name='company_name' company_value={u["company_name"]} className="input_company_name"  ref={this.company_ref} placeholder="نام شرکت"/>
-                 <br/>
-                 <br/> */
