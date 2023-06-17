@@ -4,14 +4,8 @@ import { connect } from "react-redux";
 import Select from 'react-select';
 import editGroup from "../Actions/editGroupTable";
 import group_data from "./group_data";
-import group from "./group";
 
 
-
-/* 
-   
-    
-     console.log("here1111111111111111111111111"); */
 
 class EditGroup extends React.Component{
     constructor(props) {
@@ -19,18 +13,17 @@ class EditGroup extends React.Component{
         this.state = {
           group:group_data,
           //  values: [''],
-     //   users:user_options,
-       // selectOption:''
+          //users:user_options,
+         // selectOption:''
          }  
-               
-
+              
     this.id_ref = React.createRef();    
     this.group_ref = React.createRef();
     this.username_ref = React.createRef();
     this.data_ref = React.createRef();
     this.status_ref = React.createRef();
   //  this.saveEdit = this.saveEdit.bind(this)
-}
+  }
 
 
  /* saveEdit = (e) =>{
@@ -44,9 +37,6 @@ class EditGroup extends React.Component{
         }  */
 
  
-    
-
-      
            
     render(){
       
@@ -66,40 +56,28 @@ class EditGroup extends React.Component{
       });
 
        return(
-            <div>
+        <div>
             <h2>        ***********************************************  ویرایش  گروه ها ***********************************************</h2>
             <hr/>
-            <div>
-
-      
-           
-            <div className="panel">
-              
-            <input type='text'  defaultValue={id} name='id'  ref={this.id_ref} required/>
-            <br/>
-            <input type='text' name='group_name' defaultValue={group}  ref={this.group_ref} required/>
-            <br/>
-            <br/>
-
+          <div>
+            <div className="panel"> 
+              <input type='text'  defaultValue={id} name='id'  ref={this.id_ref} required/>
+               <br/>
+              <input type='text' name='group_name' defaultValue={group}  ref={this.group_ref} required/>
+              <br/>
+              <br/>
           <Select>
-        
-          
           </Select>
-
-        
           <br/>
-
              <input type='text' name='data_create' defaultValue={date} ref={this.data_ref} />
              <br/>
              <input type='text' name='status_group' ref={this.status_ref} defaultValue={status}/>
              <br/>
              <input type='button' value='تایید' className="btnoky" onClick={this.saveEdit} />
              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
-             </div>
-
-             </div>
-
-             </div> 
+            </div>
+          </div>
+        </div> 
       )
        } 
         

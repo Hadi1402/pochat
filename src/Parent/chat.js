@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "../static/css/chat.css";
@@ -10,24 +9,22 @@ import { InsertEmoticon } from '@material-ui/icons';
 import { MicNone } from '@material-ui/icons';
 
 
-
-
-
-
 class Chat extends React.Component {
   constructor(props) {
     super(props)
      this.inputRef = React.createRef();
      this.btn_send = React.createRef();
      this.MicNone = React.createRef();
-    this.state = {
+     this.state = {
       input:"",
       btn_send_display:"none",
       MicNone :"block",
       p_display:"none"
-       }
+           }
+
   this.sendMessage = this.sendMessage.bind(this)
   this.onChange = this.onChange.bind(this)
+
     }
     
 
@@ -42,15 +39,12 @@ class Chat extends React.Component {
     ReactDOM.findDOMNode(mass).append(inputt);
     ReactDOM.findDOMNode(mass).append(time_system);
     ReactDOM.findDOMNode(mass).append(br);
-
-  
 /*
    const new_p = document.createElement("p");
    ReactDOM.findDOMNode(mass).appendChild(new_p);
    new_p.className = "chat_message";
   */
-    
-  }
+        }
 
   
   onChange (e){
@@ -62,13 +56,13 @@ class Chat extends React.Component {
     if(inputt != "") {
       this.setState({btn_send_display:'block'})
       this.setState({MicNone:'none'})
-       }
-       else
-         {
-        this.setState({btn_send_display:'none'})
-        this.setState({MicNone:'block'})
          }
-    }
+       else
+        {
+         this.setState({btn_send_display:'none'})
+         this.setState({MicNone:'block'})
+         }
+     }
  
 
 
@@ -78,28 +72,24 @@ class Chat extends React.Component {
     <div className='chat'>
       <div className='chat_header'>
         <Avatar/>
-
-        <div className='chat_headerInfo'>
-          <h3> user name ... </h3>
-          <p> last visit .... </p>
-        </div>
+         <div className='chat_headerInfo'>
+           <h3> user name ... </h3>
+            <p> last visit .... </p>
+         </div>
 
         <div className='chat_headerRight'>
                     <IconButton> 
                     <DonutLargeIcon />
                     </IconButton>
-                    
                     <IconButton> 
                     <ChatIcon /> 
                     </IconButton>
-
                     <IconButton> 
                     <MoreVertIcon />
                     </IconButton>
         </div>
 
       </div>
-
 
       <div className='chat_body'>
        <p className='chat_message'  style={{"display":this.state.p_display}}>  </p>
@@ -111,19 +101,17 @@ class Chat extends React.Component {
            onClick={this.sendMessage} 
            style={{ "display": this.state.btn_send_display}}
            type="submit">  ارسال  
-          </button>
-          <MicNone className='MicNone' style={{"display": this.state.MicNone}} />
-          <input ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
+           </button>
+           <MicNone className='MicNone' style={{"display": this.state.MicNone}} />
+           <input ref={this.inputRef} style={{'value':this.state.input}} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text"/>
         </form>
-
           <InsertEmoticon />
-       
-    </div>
-
-
+      </div>
     </div>
   )
 
+  }
       }
-      }
+
+      
   export default Chat;

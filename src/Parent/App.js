@@ -50,10 +50,3 @@ function App() {
 export default App;
 
 
-/*
-<Switch>
-<Route exact path="/"  component={Home} />
-<Route exact path="/login" component={LoginSet}  />
-<Route exact path='/RegisterUser'  component={RegisterUserPage} />
-</Switch> */
-

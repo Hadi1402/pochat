@@ -15,41 +15,38 @@ import { BrandingWatermark } from "@material-ui/icons";
 
 class ChatBox extends React.Component {
     constructor(){
-       super(); 
-
+      super(); 
   this.click1 = this.click1.bind(this)
-   
     }
 
        
 
-   // var id  = 1
-    //var e = $("<div><p data-id="+ id +">"+ inputtext + "</p></div>")
-  
-    //$('#maseg').append(e);
-    
-  //  $('#maseg').append($("</br>"));
 
     HandleKeyDown = (event) => {  
       if (event.key === 'Enter') {
-
         var inputtext=document.getElementById("inputt");
         var  maseeg=document.getElementsByClassName('maseg')[0]
-        ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value)
+       /// ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value)
+        const p_mas = document.createElement("p")
+        p_mas.className = 'mass'
         const br = document.createElement("br")
-       ReactDOM.findDOMNode(maseeg).append(br)
+       // p_mas.style =
+        p_mas.setAttribute("style",'position: fixed;  margin-top: 100px;left:2300px;background-color:#acbae0; border-top-left-radius:5%;border-top-right-radius:5%;border-bottom-left-radius:5%;border-bottom-right-radius:5%' )
+        console.log(p_mas.className)
+        var  msg = p_mas.innerHTML
+        msg = ReactDOM.findDOMNode(inputtext).value
+        ReactDOM.findDOMNode(maseeg).append(msg)
+        ReactDOM.findDOMNode(maseeg).append(br)
+     //  p_mas.innerHTML = ReactDOM.findDOMNode(inputtext).value 
+        console.log(msg)
         ReactDOM.findDOMNode(inputtext).value= ' ';
-
-
-
-        
       }
     };
     
 
     click1()
       {
-     this.props.dispatch(dispalyBox(this.props.display))
+       this.props.dispatch(dispalyBox(this.props.display))
       }
 
 
@@ -67,27 +64,18 @@ render() {
     return(
       <div className="box">  
        <div className="boxtop"> 
-       <img className="imgclose" src={close} onClick={this.click1} />
-     
-      </div>
+        <img className="imgclose" src={close} onClick={this.click1} />
+       </div>
         <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
         <snap className="maseg">    </snap> 
       </div> 
-/*
-      <div className="dashbord_user_app"> 
-       
-        <div className="dashbord_user_body">
-      //   {sideBar}
-       //   {Chat}
 
-      //  </div>   
-      
-    //  </div>
-*/
         )
     }
 
 }
+
+
 
 
 function mapDispatchToProps(state) {
