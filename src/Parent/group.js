@@ -71,14 +71,14 @@ class Group extends React.Component{
       this.state.group.forEach(element => {
         element['id'] = this.id_ref.current.value;
         element["group_name"]=this.group_ref.current.value;
-        element["user_name"]=this.state.selectOption
+        element["user_name"]=this.username_ref
         console.log(this.username_ref.value)
         console.log('selecttt uaers:', element["user_name"])
         element["data_create"]=this.data_ref.current.value;
         element["status_group"]=this.status_ref.current.value;
         console.log({group:this.state.group})
           })
-       this.setState({group:this.state.group})
+      this.setState({group:this.state.group})
       }
 
 
@@ -168,23 +168,20 @@ class Group extends React.Component{
             <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-            <input className="dActive_site" type='button'  value='eeeddddiiitt' onClick={this.onChange_edit} />
-            <input className="dActive_site" type='button'  value='Save' onClick={this.saveEdit} />
-            <input type="button"  onClick={this.edit_transfer} value='ویرایش گروه ' />
+            <input className="dActive_site" type="button"  onClick={this.edit_transfer} value='ویرایش گروه ' />
               <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
                <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
                <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
-          <Select 
-          onChange={this.handleChange}
-          value={this.state.selectOption}
-          ref={this.username_ref} 
-          isMulti 
-           options={this.state.users}>
-          </Select>
+               <Select 
+                onChange={this.handleChange}
+                value={this.state.selectOption}
+                ref={this.username_ref} 
+                isMulti 
+                options={this.state.users}>
+               </Select>
               <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
               <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
               <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
-              <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
              </div>
 
           </div>
