@@ -70,12 +70,13 @@ class Group extends React.Component{
     createGroup = (event) => {
       this.state.group.forEach(element => {
         element['id'] = this.id_ref.current.value;
-        element["group_name"]=this.group_ref.current.value;
-        element["user_name"]=this.username_ref
-        console.log(this.username_ref.value)
+        element["group_name"] = this.group_ref.current.value;
+        //for(let j=0 ; j<this.state.selectOption.length; j++){}
+        element["user_name"] = this.state.selectOption[0].label
+        console.log(this.username_ref.current.value)
         console.log('selecttt uaers:', element["user_name"])
-        element["data_create"]=this.data_ref.current.value;
-        element["status_group"]=this.status_ref.current.value;
+        element["data_create"] = this.data_ref.current.value;
+        element["status_group"] = this.status_ref.current.value;
         console.log({group:this.state.group})
           })
       this.setState({group:this.state.group})
