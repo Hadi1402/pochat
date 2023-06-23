@@ -1,14 +1,14 @@
 import React, { createRef } from "react";
 import website_data from "./website_data";
 import "../static/css/chat.css"
-
+import axios from "axios"
 
 
 class WebSite extends React.Component{
     constructor(props) {
       super(props)   
         this.state = {
-          data:website_data,
+          data:[],
           display_panel:"none",
           display_list:"block",
           select_checked: [],
@@ -27,6 +27,14 @@ class WebSite extends React.Component{
     this.onChange_delete = this.onChange_delete.bind(this) 
     this.onClick = this.onClick.bind(this)
       }
+
+    componentDidMount = () =>{
+      axios.get('http://localhost/data/website_data.js').then(res =>{
+      console.log(res.data);
+      this.setState({data:res.data})
+      console.log(this.state.data)
+               });                 
+          }      
 
       onClick = (event) => {
         this.state.select_checked.push(event.target.getAttribute("data_value"))

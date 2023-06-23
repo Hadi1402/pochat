@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import {settingReducer} from "./Reducer/reducer"
 import { legacy_createStore as createStore } from 'redux';
 
+
+
 const store =createStore(settingReducer)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

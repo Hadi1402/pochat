@@ -23,22 +23,13 @@ class ChatBox extends React.Component {
 
 
     HandleKeyDown = (event) => {  
-      if (event.key === 'Enter') {
-        var inputtext=document.getElementById("inputt");
+      if (event.key === 'Enter'){
+      
+      var inputtext=document.getElementById("inputt");
         var  maseeg=document.getElementsByClassName('maseg')[0]
-       /// ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value)
-        const p_mas = document.createElement("p")
-        p_mas.className = 'mass'
+        ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value);
         const br = document.createElement("br")
-       // p_mas.style =
-        p_mas.setAttribute("style",'position: fixed;  margin-top: 100px;left:2300px;background-color:#acbae0; border-top-left-radius:5%;border-top-right-radius:5%;border-bottom-left-radius:5%;border-bottom-right-radius:5%' )
-        console.log(p_mas.className)
-        var  msg = p_mas.innerHTML
-        msg = ReactDOM.findDOMNode(inputtext).value
-        ReactDOM.findDOMNode(maseeg).append(msg)
-        ReactDOM.findDOMNode(maseeg).append(br)
-     //  p_mas.innerHTML = ReactDOM.findDOMNode(inputtext).value 
-        console.log(msg)
+       ReactDOM.findDOMNode(maseeg).append(br)
         ReactDOM.findDOMNode(inputtext).value= ' ';
       }
     };
@@ -66,8 +57,10 @@ render() {
        <div className="boxtop"> 
         <img className="imgclose" src={close} onClick={this.click1} />
        </div>
+       <div>
         <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
-        <snap className="maseg">    </snap> 
+       <snap className="maseg">    </snap> 
+       </div>
       </div> 
 
         )

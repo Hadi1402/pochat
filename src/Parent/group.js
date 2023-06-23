@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{ Component } from "react";
 import ReactDOM from 'react-dom';
 import  "../static/css/chat.css";
 import group_data from "./group_data";
@@ -10,6 +10,8 @@ import user_data from "./user_data";
 import { NavLink, navigate } from "react-router-dom";
 import editGroup from "../Actions/editGroupTable";
 import { connect } from "react-redux";
+import axios from "axios"
+
 
 class Group extends React.Component{
     constructor(props) {
@@ -20,14 +22,15 @@ class Group extends React.Component{
             {value:user_data[i].id, label:user_data[i].user_name}
           )
         }
+
         console.log(user_options)
         this.state = {
-        group:group_data,
+        group:[],
         select_checked: [],
         values: [''],
         users:user_options,
         selectOption:'',
-         }  
+       }
 
     this.id_ref = createRef();    
     this.group_ref = createRef();
@@ -35,7 +38,7 @@ class Group extends React.Component{
     this.data_ref = createRef();
     this.status_ref = createRef();
     this.check_ref = createRef();
-//***********************************************************/
+//**********************************************************/
 
     this.createGroup = this.createGroup.bind(this)
     this.onChange_enable = this.onChange_enable.bind(this)
@@ -43,7 +46,18 @@ class Group extends React.Component{
     this.onClick = this.onClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.edit_transfer = this.edit_transfer.bind(this)
-        }
+    }
+
+
+  componentDidMount = () =>{
+    axios.get('http://localhost/data/group_data.js').then(res =>{
+     console.log(res.data);
+     this.setState({group:res.data})
+     console.log(this.state.group)
+                     });                 
+      }
+ 
+
 
   onClick = (event) => {
     this.state.select_checked.push(event.target.getAttribute("data_value"))
@@ -112,23 +126,18 @@ class Group extends React.Component{
         this.state.group.forEach(element => {
           console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
           if (this.state.select_checked.includes(element["id"].toString())) {
-           // groupProfile.setId(element['id'])
-           // groupProfile.setName(element['group_name'])
-          //  groupProfile.setStatus(element["status_group"])
-          // redirect("/editGroup")
-        //  console.log("redirect")
-          // console.log(groupProfile.getId())
-         //  console.log(groupProfile.getName())
-         //  console.log(groupProfile.getStatus())
            window.location.href="http://localhost:3000/editGroup"+"?id="+ element['id']
            }
       });
-   
+
+
+
     }
-  //   
+    
            
     
     render(){
+      //console.log(this.state.group)
       return(
         <div>
           <h2>        *****************************************  مدیریت  گروه ها   ***********************************************</h2>
@@ -146,14 +155,14 @@ class Group extends React.Component{
                 </tr>
              </thead>
 
-               {this.state.group.map(q =>( 
+               {this.state.group.map(q => ( 
                 <tbody>
                   <tr ref={this.tr_ref}>
                    <td colspan="2">   {q['id']} </td>
                    <td colspan="2">   {q['group_name']} </td>
-                   <td colspan="2" >  {q["user_name"]}   </td>
-                   <td colspan="2" >  {q['data_create']} </td>
-                   <td colspan="2"  > {q['status_group']}    </td>
+                   <td colspan="2">  {q["user_name"]}   </td>
+                   <td colspan="2">  {q['data_create']} </td>
+                   <td colspan="2" > {q['status_group']}    </td>
                    <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
                     data_value={q["id"]}
