@@ -39,7 +39,6 @@ class EditGroup extends React.Component{
  
            
     render(){
-      
       var params  = new URL(window.location).searchParams
       console.log(params)
       var id_rec = params.get("id")
