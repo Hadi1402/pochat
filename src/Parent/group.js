@@ -50,11 +50,11 @@ class Group extends React.Component{
 
 
   componentDidMount = () =>{
-    axios.get('http://localhost/data/group_data.js').then(res =>{
-     console.log(res.data);
-     this.setState({group:res.data})
-     console.log(this.state.group)
-                     });                 
+    axios.get('http://localhost/data/group_data.json').then(res =>{
+            console.log(res.data)
+            this.setState({group:res.data})
+            console.log(this.state.group)
+        });                 
       }
  
 
@@ -63,10 +63,14 @@ class Group extends React.Component{
     this.state.select_checked.push(event.target.getAttribute("data_value"))
     this.setState({ select_checked: this.state.select_checked });
     console.log(this.state.select_checked) 
+  //  axios.post("sdfsdf/dsdfs", {
+    //  "group_name": input_ref.current.value(),
+   //   "dhvscjk":
+   // })
      //this.check_ref.current.checked.push(event.target.getAttribute("data_value"))
           }
 
-      /*showTableGroup = (e) => {
+     /* showTableGroup = (e) => {
         this.state.group.forEach((g) =>{
           this.state.user.forEach((u) =>{
             this.state.website.forEach((w) =>{
@@ -137,7 +141,6 @@ class Group extends React.Component{
            
     
     render(){
-      //console.log(this.state.group)
       return(
         <div>
           <h2>        *****************************************  مدیریت  گروه ها   ***********************************************</h2>

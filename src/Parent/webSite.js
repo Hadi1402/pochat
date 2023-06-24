@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import website_data from "./website_data";
+//import website_data from "./website_data";
 import "../static/css/chat.css"
 import axios from "axios"
 
@@ -12,7 +12,7 @@ class WebSite extends React.Component{
           display_panel:"none",
           display_list:"block",
           select_checked: [],
-            }
+            };
     this.company_ref = createRef();
     this.domain_ref = createRef();
     this.type_ref = createRef();
@@ -29,12 +29,16 @@ class WebSite extends React.Component{
       }
 
     componentDidMount = () =>{
-      axios.get('http://localhost/data/website_data.js').then(res =>{
-      console.log(res.data);
-      this.setState({data:res.data})
-      console.log(this.state.data)
+      axios.get('http://localhost/data/website_data.json').then(res =>{
+       console.log(res.data);
+       //var myArray = res.data.split(',');
+      // console.log(myArray)
+       this.setState({data:res.data})
+       console.log(this.state.data)
                });                 
           }      
+
+
 
       onClick = (event) => {
         this.state.select_checked.push(event.target.getAttribute("data_value"))
@@ -106,7 +110,7 @@ class WebSite extends React.Component{
         return(
    
             <div>
-           <h2>        ***********************************************        مدیریت  سایت         ***********************************************</h2>
+           <h2> *********************************************** مدیریت  سایت ***********************************************</h2>
            <hr/>
            <div className="div_site" style={{display:this.state.display_list}}>
            <table className="user_table">

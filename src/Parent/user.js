@@ -23,11 +23,11 @@ class User extends React.Component {
          }
 
     componentDidMount = () =>{
-     axios.get('http://localhost/data/user_data.js').then(res =>{
+     axios.get('http://localhost/data/user_data.json').then(res =>{
        console.log(res.data);
        this.setState({data:res.data})
        console.log(this.state.data)
-                           });                 
+              });                 
             }     
 
   onClick = (event) => {
