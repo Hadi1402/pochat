@@ -73,7 +73,21 @@ class WebSite extends React.Component{
             this.state.display_list = "block"
             this.setState({style:this.state.display_list}) 
                 })
+                axios.post('http://localhost/data/website_data.json',{
+                  "domain_name":this.domain_ref.current.value,
+                  "company_name":this.company_ref.current.value,
+                  "data_create":this.data_ref.current.value,
+                  "type":this.type_ref.current.value,
+                  "status":this.status_ref.current.value
+                   }).then(res =>{console.log(res.data)})
               }
+
+             // "id":1,
+            //  "domain_name": "www.test.com",
+           //   "company_name": "tesco",
+           //   "data_create": "اردیبهشت 15, 1402",
+           //   "type":"fanni",
+            //"status":"فعال"
    
     onChange_disable = (e) => {
       this.state.data.forEach(element => {

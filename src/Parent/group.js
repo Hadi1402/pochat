@@ -96,9 +96,16 @@ class Group extends React.Component{
         console.log({group:this.state.group})
           })
       this.setState({group:this.state.group})
+      axios.post('http://localhost/data/group_data.json',{
+       "id":this.id_ref.current.value,
+       "group_name":this.group_ref.current.value,
+       "data_create":this.data_ref.current.value,
+       "status_group":this.status_ref.current.value,
+       "user_name":this.username_ref.current.value,
+        }).then(res =>{console.log(res.data)})
       }
-
-
+     
+ 
   onChange_disable = (e) => {
     this.state.group.forEach(element => {
     console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
@@ -135,9 +142,7 @@ class Group extends React.Component{
 
 
     }
-    
-           
-    
+  
     render(){
       return(
         <div>
@@ -183,15 +188,17 @@ class Group extends React.Component{
            
              <div style={{display:this.state.display_create}}>
                  <div className="panel" ref={this.panel_ref} onClick={this.showTableGroup}>
-                 <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
+                 <input type='text' name='id' className="" ref={this.id_ref} placeholder="id " required/>
                  <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
+                
                  <Select 
-                  onChange={this.handleChange}
-                  value={this.state.selectOption}
-                  ref={this.username_ref} 
-                  isMulti 
-                 options={this.state.users}>
+                    onChange={this.handleChange}
+                    value={this.state.selectOption}
+                    ref={this.username_ref} 
+                    isMulti 
+                    options={this.state.users}>
                  </Select>
+
                  <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
                  <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
                  <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />

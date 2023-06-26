@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Select from 'react-select';
 import editGroup from "../Actions/editGroupTable";
 import group_data from "./group_data";
-
+import axios from "axios";
 
 
 class EditGroup extends React.Component{
@@ -26,15 +26,24 @@ class EditGroup extends React.Component{
   }
 
 
- /* saveEdit = (e) =>{
-      this.state.group.forEach(element => {
-       this.id_ref.current.value = groupProfile.getId()
-       console.log(groupProfile.getId())
-       element['group_name'] = this.group_ref.current.value
-        element["status_group"] = this.status_ref.current.value
-     this.setState({ group: this.state.group }) });
-     console.log({group:this.state.group})
-        }  */
+  saveEdit = (e) =>{
+      //this.state.group.forEach(element => {
+     //  this.id_ref.current.value = groupProfile.getId()
+    //   console.log(groupProfile.getId())
+    //   element['group_name'] = this.group_ref.current.value
+     //   element["status_group"] = this.status_ref.current.value
+    // this.setState({ group: this.state.group }) });
+    // console.log({group:this.state.group}) 
+     axios.post('http://localhost/data/group_data.json',{
+       "id":this.id_ref.current.value,
+       "group_name":this.group_ref.current.value,
+       "data_create":this.data_ref.current.value,
+       "status_group":this.status_ref.current.value,
+       "user_name":this.username_ref.current.value,
+        }).then(res =>{console.log(res.data)})
+      }
+
+          
 
  
            
@@ -65,9 +74,9 @@ class EditGroup extends React.Component{
               <input type='text' name='group_name' defaultValue={group}  ref={this.group_ref} required/>
               <br/>
               <br/>
-          <Select>
-          </Select>
-          <br/>
+             <Select ref={this.username_ref} >
+             </Select>
+             <br/>
              <input type='text' name='data_create' defaultValue={date} ref={this.data_ref} />
              <br/>
              <input type='text' name='status_group' ref={this.status_ref} defaultValue={status}/>
