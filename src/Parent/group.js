@@ -41,9 +41,9 @@ class Group extends React.Component{
     this.check_ref = createRef();
 //**********************************************************/
 
-    this.createGroup = this.createGroup.bind(this)
-    this.showTableGroup = this.showTableGroup.bind(this)
-    this.close = this.close.bind(this)
+    this.create_transfer = this.create_transfer.bind(this)
+    //this.showTableGroup = this.showTableGroup.bind(this)
+    //this.close = this.close.bind(this)
     this.onChange_enable = this.onChange_enable.bind(this)
     this.onChange_disable = this.onChange_disable.bind(this) 
     this.onClick = this.onClick.bind(this)
@@ -73,7 +73,7 @@ class Group extends React.Component{
      //this.check_ref.current.checked.push(event.target.getAttribute("data_value"))
           }
 
-     showTableGroup = () => {
+    /*/ showTableGroup = () => {
         this.state.display_create = 'block'
        this.setState({data_create:this.state.display_create})
         }
@@ -81,29 +81,9 @@ class Group extends React.Component{
      close = (e) =>{
         this.state.display_create ='none'
         this.setState({data_create:this.state.display_create})
-        }
+        }*/
 
-    createGroup = (event) => {
-      this.state.group.forEach(element => {
-        element['id'] = this.id_ref.current.value;
-        element["group_name"] = this.group_ref.current.value;
-        //for(let j=0 ; j<this.state.selectOption.length; j++){}
-        element["user_name"] = this.state.selectOption[0].label
-        console.log(this.username_ref.current.value)
-        console.log('selecttt uaers:', element["user_name"])
-        element["data_create"] = this.data_ref.current.value;
-        element["status_group"] = this.status_ref.current.value;
-        console.log({group:this.state.group})
-          })
-      this.setState({group:this.state.group})
-      axios.post('http://localhost/data/group_data.json',{
-       "id":this.id_ref.current.value,
-       "group_name":this.group_ref.current.value,
-       "data_create":this.data_ref.current.value,
-       "status_group":this.status_ref.current.value,
-       "user_name":this.username_ref.current.value,
-        }).then(res =>{console.log(res.data)})
-      }
+ 
      
  
   onChange_disable = (e) => {
@@ -131,18 +111,19 @@ class Group extends React.Component{
             };
      
 
-      edit_transfer = () => {
-        this.state.group.forEach(element => {
-          console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
-          if (this.state.select_checked.includes(element["id"].toString())) {
+    edit_transfer = () => {
+      this.state.group.forEach(element => {
+        console.log(element["id"].toString(),this.state.select_checked, this.state.select_checked.includes(element["id"].toString()) )
+        if (this.state.select_checked.includes(element["id"].toString())) {
            window.location.href="http://localhost:3000/editGroup"+"?id="+ element['id']
            }
       });
 
-
-
     }
+
+    create_transfer = () =>{window.location.href="http://localhost:3000/createGroup"}
   
+    
     render(){
       return(
         <div>
@@ -181,7 +162,7 @@ class Group extends React.Component{
             ))}
           </table>
 
-            <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
+            <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.create_transfer}/>
             <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
             <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
             <input className="dActive_site" type="button"  onClick={this.edit_transfer} value='ویرایش گروه ' />
@@ -212,13 +193,13 @@ class Group extends React.Component{
     }
 }
 
- function  mapDispatchToProps (state) {
-   return{data_edit:state.data_edit}
-         }
+ //function  mapDispatchToProps (state) {
+ //  return{data_edit:state.data_edit}
+  //       }
 
   
 
 
-export default connect(mapDispatchToProps)(Group);
+export default Group;
 
     

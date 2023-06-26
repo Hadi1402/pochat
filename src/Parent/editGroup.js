@@ -92,11 +92,11 @@ class EditGroup extends React.Component{
       }
 
 
- function mapStateToProps(state) {
-    console.log(state)
-    return{data_edit:state.data_edit}
- }
+// function mapStateToProps(state) {
+  //  console.log(state)
+  //  return{data_edit:state.data_edit}
+ //}
 
 
-export default  connect(mapStateToProps)(EditGroup);
+export default EditGroup;
   
