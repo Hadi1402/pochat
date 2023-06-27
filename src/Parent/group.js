@@ -41,8 +41,6 @@ class Group extends React.Component {
     //**********************************************************/
 
     this.create_transfer = this.create_transfer.bind(this)
-    //this.showTableGroup = this.showTableGroup.bind(this)
-    //this.close = this.close.bind(this)
     this.onChange_enable = this.onChange_enable.bind(this)
     this.onChange_disable = this.onChange_disable.bind(this)
     this.onClick = this.onClick.bind(this)
@@ -65,10 +63,6 @@ class Group extends React.Component {
     this.state.select_checked.push(event.target.getAttribute("data_value"))
     this.setState({ select_checked: this.state.select_checked });
     console.log(this.state.select_checked)
-    //  axios.post("sdfsdf/dsdfs", {
-    //  "group_name": input_ref.current.value(),
-    //   "dhvscjk":
-    // })
     //this.check_ref.current.checked.push(event.target.getAttribute("data_value"))
   }
 
@@ -194,10 +188,6 @@ class Group extends React.Component {
 
   }
 }
-
-//function  mapDispatchToProps (state) {
-//  return{data_edit:state.data_edit}
-//       }
 
 
 

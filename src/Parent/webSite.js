@@ -86,13 +86,6 @@ class WebSite extends React.Component {
       })
   }
 
-  // "id":1,
-  //  "domain_name": "www.test.com",
-  //   "company_name": "tesco",
-  //   "data_create": "اردیبهشت 15, 1402",
-  //   "type":"fanni",
-  //"status":"فعال"
-
   onChange_disable = (e) => {
     this.state.data.forEach(element => {
       console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
