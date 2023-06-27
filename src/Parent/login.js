@@ -1,14 +1,14 @@
-import React,{useState} from 'react';
-import {NavLink,Redirect} from "react-router-dom";
+import React, { useState } from 'react';
+import { NavLink, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 
-  export default function LoginSet(props) {
+export default function LoginSet(props) {
     const [isloggedIn, setLoggedIn] = useState(false);
     const [isError, setIsError] = useState(false);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
-   // const {setAuthTokens} = UseAuth();
+    // const {setAuthTokens} = UseAuth();
 
 
     function PostLogin() {
@@ -16,47 +16,47 @@ import axios from 'axios';
             userName,
             password
         }).then(result => {
-         if (result.status === 200) {
-          //setAuthTokens(result.data);
-          setLoggedIn(true);
-            } 
-         else {
-           setIsError(true);
+            if (result.status === 200) {
+                //setAuthTokens(result.data);
+                setLoggedIn(true);
             }
-         }).catch(e => {
-          setIsError(true);
+            else {
+                setIsError(true);
+            }
+        }).catch(e => {
+            setIsError(true);
         });
     }
 
-     if (isloggedIn) {
-      //  ba hamkari bakend user be yeki az sfahate admin va ya support hedyat khahad shod.
-      return <Redirect to={" "} replace={true} />;
-         }
+    if (isloggedIn) {
+        //  ba hamkari bakend user be yeki az sfahate admin va ya support hedyat khahad shod.
+        return <Redirect to={" "} replace={true} />;
+    }
 
-        return (
-            <div>
-                <form>
-                    <input type='text'
-                           value={userName}
-                           onChange={e => {
-                               setUserName(e.target.value);
-                           }}
-                           placeholder={'نام کاربری'}/> <br/>
+    return (
+        <div>
+            <form>
+                <input type='text'
+                    value={userName}
+                    onChange={e => {
+                        setUserName(e.target.value);
+                    }}
+                    placeholder={'نام کاربری'} /> <br />
 
-                    <input type='password'
-                           value={password}
-                           onChange={e => {
-                               setPassword(e.target.value);
-                           }}
-                           placeholder={'کلمه عبور'}/> <br/>
+                <input type='password'
+                    value={password}
+                    onChange={e => {
+                        setPassword(e.target.value);
+                    }}
+                    placeholder={'کلمه عبور'} /> <br />
 
-                 <NavLink exact to={'/SupportUser'}>   ورود    </NavLink>
-                    <br/> <br/>
-                    <NavLink exact to={'/registeruser'}>  ثبت نام نکرده ام </NavLink>
-                </form>
-                <br/><br/><br/><br/><br/>
-            </div>
-        )
+                <NavLink exact to={'/SupportUser'}>   ورود    </NavLink>
+                <br /> <br />
+                <NavLink exact to={'/registeruser'}>  ثبت نام نکرده ام </NavLink>
+            </form>
+            <br /><br /><br /><br /><br />
+        </div>
+    )
 
 }
 

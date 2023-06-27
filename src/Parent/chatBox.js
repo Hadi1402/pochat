@@ -24,15 +24,14 @@ class ChatBox extends React.Component {
 
     HandleKeyDown = (event) => {  
       if (event.key === 'Enter'){
-      
-      var inputtext=document.getElementById("inputt");
+        var inputtext=document.getElementById("inputt");
         var  maseeg=document.getElementsByClassName('maseg')[0]
         ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value);
         const br = document.createElement("br")
-       ReactDOM.findDOMNode(maseeg).append(br)
+        ReactDOM.findDOMNode(maseeg).append(br)
         ReactDOM.findDOMNode(inputtext).value= ' ';
-      }
-    };
+       }
+      };
     
 
     click1()
@@ -53,13 +52,14 @@ render() {
 
 
     return(
+      
       <div className="box">  
        <div className="boxtop"> 
         <img className="imgclose" src={close} onClick={this.click1} />
        </div>
        <div>
         <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
-       <snap className="maseg">    </snap> 
+        <snap className="maseg">    </snap>  
        </div>
       </div> 
 
