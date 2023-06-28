@@ -15,15 +15,21 @@ import axios from "axios"
 class CreateGroup extends React.Component {
   constructor(props) {
     super(props)
+    var user_options = []
+    for (let i = 0; i < user_data.length; i++) {
+      user_options.push(
+        { value: user_data[i].id, label: user_data[i].user_name }
+      )
+    }
+
     this.state = {
       group: [],
-      //  select_checked: [],
+      select_checked: [],
       //  values: [''],
-      //  users:user_options,
+      users: user_options,
       selectOption: '',
       //  display_create:'none'
     }
-
     this.id_ref = createRef();
     this.group_ref = createRef();
     this.username_ref = createRef();
@@ -31,7 +37,6 @@ class CreateGroup extends React.Component {
     this.status_ref = createRef();
     this.check_ref = createRef();
     //**********************************************************/
-
     this.Gogroup = this.Gogroup.bind(this);
     this.create = this.create.bind(this);
   }
@@ -45,13 +50,18 @@ class CreateGroup extends React.Component {
     });
   }
 
+  handleChange = selectOption => {
+    this.setState({ selectOption });
+    console.log(`Option selected:`, selectOption);
+  };
+
   create = (event) => {
     this.state.group.forEach(element => {
       element['id'] = this.id_ref.current.value;
       element["group_name"] = this.group_ref.current.value;
-      //for(let j=0 ; j<this.state.selectOption.length; j++){}
-      // element["user_name"] = this.state.selectOption[0].label
-      console.log(this.username_ref.current.value)
+      //  for(let j=0 ; j<this.state.selectOption.length; j++){}
+      element["user_name"] = this.state.users
+      console.log(this.username_ref.value)
       console.log('selecttt uaers:', element["user_name"])
       element["data_create"] = this.data_ref.current.value;
       element["status_group"] = this.status_ref.current.value;
