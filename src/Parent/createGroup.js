@@ -60,8 +60,8 @@ class CreateGroup extends React.Component {
       element['id'] = this.id_ref.current.value;
       element["group_name"] = this.group_ref.current.value;
       //  for(let j=0 ; j<this.state.selectOption.length; j++){}
-      element["user_name"] = this.state.users
-      console.log(this.username_ref.value)
+      element["user_name"] = this.state.selectOption
+      console.log(this.state.selectOption)
       console.log('selecttt uaers:', element["user_name"])
       element["data_create"] = this.data_ref.current.value;
       element["status_group"] = this.status_ref.current.value;
