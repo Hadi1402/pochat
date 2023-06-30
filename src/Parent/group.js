@@ -15,20 +15,10 @@ import axios from "axios"
 class Group extends React.Component {
   constructor(props) {
     super(props)
-    var user_options = []
-    for (let i = 0; i < user_data.length; i++) {
-      user_options.push(
-        { value: user_data[i].id, label: user_data[i].user_name }
-      )
-    }
-
-    console.log(user_options)
     this.state = {
       group: [],
       select_checked: [],
       values: [''],
-      users: user_options,
-      selectOption: '',
       display_create: 'none'
     }
 
@@ -63,19 +53,7 @@ class Group extends React.Component {
     this.state.select_checked.push(event.target.getAttribute("data_value"))
     this.setState({ select_checked: this.state.select_checked });
     console.log(this.state.select_checked)
-    //this.check_ref.current.checked.push(event.target.getAttribute("data_value"))
   }
-
-  /*/ showTableGroup = () => {
-      this.state.display_create = 'block'
-     this.setState({data_create:this.state.display_create})
-      }
-    
-   close = (e) =>{
-      this.state.display_create ='none'
-      this.setState({data_create:this.state.display_create})
-      }*/
-
 
 
 
@@ -181,12 +159,16 @@ class Group extends React.Component {
               <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
             </div>
             <input type='button' value='انصراف' className="btnoky" onClick={this.close} />
+            
           </div>
         </div>
       </div>
     )
 
+
+    
   }
+  
 }
 
 

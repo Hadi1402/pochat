@@ -25,10 +25,8 @@ class CreateGroup extends React.Component {
     this.state = {
       group: [],
       select_checked: [],
-      //  values: [''],
       users: user_options,
       selectOption: '',
-      //  display_create:'none'
     }
     this.id_ref = createRef();
     this.group_ref = createRef();
