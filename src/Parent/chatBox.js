@@ -14,66 +14,66 @@ import { BrandingWatermark } from "@material-ui/icons";
 
 
 class ChatBox extends React.Component {
-    constructor(){
-      super(); 
-  this.click1 = this.click1.bind(this)
+  constructor() {
+    super();
+    this.click1 = this.click1.bind(this)
+  }
+
+
+
+
+  HandleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      var inputtext = document.getElementById("inputt");
+      var maseeg = document.getElementsByClassName('maseg')[0]
+      ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value);
+     // document.getElementsByClassName('maseg').innerHTML = document.getElementById('inputt').value
+     const br = document.createElement("br")
+      ReactDOM.findDOMNode(maseeg).append(br)
+      ReactDOM.findDOMNode(inputtext).value = ' ';
+    // document.getElementById('inputt').value = ' ';
+    }
+    console.log(maseeg)
+  };
+
+
+  click1() {
+    this.props.dispatch(dispalyBox(this.props.display))
+  }
+
+
+
+
+  render() {
+    var chatHome = undefined
+    var sideBar = undefined
+    if (this.props.display == "block") {
+      chatHome = <HomeChat> </HomeChat>
+      sideBar = <Sidebar></Sidebar>
     }
 
-       
 
+    return (
 
-    HandleKeyDown = (event) => {  
-      if (event.key === 'Enter'){
-        var inputtext=document.getElementById("inputt");
-        var  maseeg=document.getElementsByClassName('maseg')[0]
-        ReactDOM.findDOMNode(maseeg).append(ReactDOM.findDOMNode(inputtext).value);
-        const br = document.createElement("br")
-        ReactDOM.findDOMNode(maseeg).append(br)
-        ReactDOM.findDOMNode(inputtext).value= ' ';
-       }
-      };
-    
-
-    click1()
-      {
-       this.props.dispatch(dispalyBox(this.props.display))
-      }
-
-
-
-
-render() {
-      var chatHome = undefined
-      var sideBar = undefined
-      if (this.props.display == "block") {
-        chatHome = <HomeChat> </HomeChat>
-        sideBar = <Sidebar></Sidebar>
-      }
-
-
-    return(
-      
-      <div className="box">  
-       <div className="boxtop"> 
-        <img className="imgclose" src={close} onClick={this.click1} />
-       </div>
-       <div>
-        <input id='inputt' type={Text}  onKeyDown={this.HandleKeyDown} /> 
-        <snap className="maseg">    </snap>  
-       </div>
-      </div> 
-
-        )
-    }
+      <div className="box">
+        <div className="boxtop">
+          <img className="imgclose" src={close} onClick={this.click1} />
+        </div>
+        <div className="mseg">
+          <input id='inputt' type={Text} onKeyDown={this.HandleKeyDown} />
+          <snap className="maseg">    </snap>
+        </div>
+      </div>
+    )
+  }
 
 }
 
 
 
-
 function mapDispatchToProps(state) {
-  return {display:state.display}
-  }
+  return { display: state.display }
+}
 
 
 export default connect(mapDispatchToProps)(ChatBox);
@@ -83,6 +83,6 @@ export default connect(mapDispatchToProps)(ChatBox);
 
 
 
-// div.box 
-//<img className="imgclose" src={close} onClick={this.click} style={{display:this.props.display}}  /> 
+// div.box
+//<img className="imgclose" src={close} onClick={this.click} style={{display:this.props.display}}  />
 // {chatHome}

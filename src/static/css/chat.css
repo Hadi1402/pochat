@@ -1,87 +1,104 @@
-input[type='text'],[type='tel']{
-    width:30%;
+input[type='text'],
+[type='tel'] {
+    width: 30%;
     padding: 10px;
-    margin-top:10px;
+    margin-top: 10px;
     box-sizing: border-box;
     background-color: rgba(146, 145, 145, 0.23);
     border-radius: 5px;
     direction: rtl;
 }
 
-input[type='email']{
-    width:30%;
+input[type='email'] {
+    width: 30%;
     padding: 10px;
-    margin-top:10px;
+    margin-top: 10px;
     box-sizing: border-box;
     background-color: rgba(146, 145, 145, 0.23);
     border-radius: 5px;
     direction: ltr;
 }
 
-input[type='submit']{
-    width:30%;
-    font-family:'B Traffic';
+input[type='submit'] {
+    width: 30%;
+    font-family: 'B Traffic';
 }
 
 
-input[type='password']{
-    width:30%;
-    margin-top:10px;
+input[type='password'] {
+    width: 30%;
+    margin-top: 10px;
     padding: 8px;
     box-sizing: border-box;
     background-color: rgba(146, 145, 145, 0.23);
-    border-radius: 5px;}
-/***************************** admin dashbord css  *****************************/
-.dashbord{ 
-    background-color: rgb(226, 206, 150);
-    position: fixed;
-    top:100px;
-    height: 25%;
-    width: 10%;
-    
+    border-radius: 5px;
 }
 
-.dashbord li{  
+/***************************** admin dashbord css  *****************************/
+.dashbord {
+    background-color: rgb(226, 206, 150);
+    position: fixed;
+    top: 100px;
+    height: 25%;
+    width: 10%;
+
+}
+
+.dashbord li {
     list-style-type: none;
     top: 5px;
-     }
- .dashbord hr{width: 120px; right: 0px;}    
+}
 
- .dashbord ul {left: 0px;}
- 
+.dashbord hr {
+    width: 120px;
+    right: 0px;
+}
+
+.dashbord ul {
+    left: 0px;
+}
+
 
 .box {
-    background-color:#aee9be;
-        height: 700px;
-        width: 450px;
-        bottom:10px;
-        right: 10px;
-        position:fixed;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
+    background-color: #aee9be;
+    height: 500px;
+    width: 300px;
+    bottom: 10px;
+    right: 10px;
+    position: fixed;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 .boxtop {
-    background-color:#335e5e;
-        height: 90px;
-        width: 447px;
-        margin-top:0px;
-        position:fixed;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }    
+    background-color: #335e5e;
+    height: 70px;
+    width: 300px;
+    margin-top: 0px;
+    position: fixed;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 
 
-.box input {margin-top: 663px;  width: 441px; height: 30px;
+.box input {
+    margin-top: 463px;
+    width: 291px;
+    height: 30px;
     border-top-left-radius: 0px;
-    border-top-right-radius: 0px;}    
+    border-top-right-radius: 0px;
+}
 
 
 
-.box h6{ margin-left: 100px; margin-top: 30px; color: #fcf5f5;}
+.box h6 {
+    margin-left: 100px;
+    margin-top: 30px;
+    color: #fcf5f5;
+}
 
-.boxuser { 
+.boxuser {
     width: 260px;
     height: 540px;
     background-color: #f8f2f2;
@@ -91,14 +108,19 @@ input[type='password']{
 }
 
 
-.homeimg {margin-top: 1150px; margin-left: 2600px; width: 90px; height: 90px;}
+.homeimg {
+    margin-top: 500px;
+    margin-left: 1200px;
+    width: 90px;
+    height: 90px;
+}
 
 
 
 .maseg {
     position: fixed;
     margin-top: 100px;
-    left:2300px;
+    left: 1050px;
     background-color: #acbae0;
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;
@@ -106,7 +128,12 @@ input[type='password']{
     border-bottom-right-radius: 5%
 }
 
-.divmaseg{ position: fixed; left: 2300px; margin-top: 100px;}
+
+.divmaseg {
+    position: fixed;
+    left: 2300px;
+    margin-top: 100px;
+}
 
 .imgclose {
     height: 30px;
@@ -120,14 +147,33 @@ input[type='password']{
     border-bottom-right-radius: 60%;
 }
 
-.home {height:900px; width: 1100px; }
+.home {
+    height: 800px;
+    width: 700px;
+}
 
-.heder { background-color: #466bd3; height: 60px; width: 100;top:10px;}
+.heder {
+    background-color: #466bd3;
+    height: 60px;
+    width: 100;
+    top: 10px;
+}
 
-.logo { height: 200px; width: 370px; position: fixed; right: 100px; top:40px;}
+.logo {
+    height: 200px;
+    width: 370px;
+    position: fixed;
+    right: 100px;
+    top: 40px;
+}
 
 
-.welcome { position: fixed; top:280px; right: 50px; height: 400px;}
+.welcome {
+    position: fixed;
+    top: 280px;
+    right: 50px;
+    height: 400px;
+}
 
 
 /**************************** Start CSS for sidebar similator wattsap ***************************/
@@ -135,18 +181,19 @@ input[type='password']{
 .sidebar {
     display: flex;
     flex-direction: column;
-    flex: 0.2;}
+    flex: 0.2;
+}
 
 
-.sidebar_header{
-    display:flex;
+.sidebar_header {
+    display: flex;
     justify-content: space-between;
     padding: 2px;
     margin-left: 5px;
     border-right: 1px solid lightgray;
 }
 
-.sidebar_headerRight{
+.sidebar_headerRight {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -171,28 +218,33 @@ input[type='password']{
     border-radius: 20px;
 }
 
-.sidedar_searchContainer input{border: 0px; margin-left: 20px;}
+.sidedar_searchContainer input {
+    border: 0px;
+    margin-left: 20px;
+}
 
 
-.sidebar_chats{
+.sidebar_chats {
     flex: 1;
     background-color: white;
     overflow: scroll;
 
 }
 
-.sidebarchat{
+.sidebarchat {
     padding: 20px;
     display: flex;
     cursor: pointer;
     border-bottom: 1px solid #f6f6f6;
 }
 
-.sidebarchat:hover{ background-color: #ebebeb;}
+.sidebarchat:hover {
+    background-color: #ebebeb;
+}
 
 .app {
-    display:grid;
-    place-items:center;
+    display: grid;
+    place-items: center;
     background-color: #dadbd3;
     height: 100vw;
 }
@@ -203,7 +255,7 @@ input[type='password']{
     margin-top: -50px;
     height: 90vh;
     width: 90vw;
-    box-shadow: -1px 4px 20px -6px rgba(0,0,0);
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0);
 }
 
 
@@ -215,13 +267,24 @@ input[type='password']{
     flex-direction: column;
 }
 
-.chat_header {display: flex; padding: 15px; align-items: center; border-bottom: 1px solid lightgray;
- margin-bottom: 0px;}
+.chat_header {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 0px;
+}
 
-.chat_headerInfo {flex: 1; padding-left: 20px;}
+.chat_headerInfo {
+    flex: 1;
+    padding-left: 20px;
+}
 
 
-.chat_headerInfo h3{ margin-bottom: 3px; font-weight: 500;}
+.chat_headerInfo h3 {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
 
 
 .chat_headerRight {
@@ -229,6 +292,7 @@ input[type='password']{
     justify-content: space-between;
     min-width: 100px;
 }
+
 .chat_footer {
     display: flex;
     justify-content: space-between;
@@ -238,13 +302,13 @@ input[type='password']{
 }
 
 
-.chat_footer form{
-    flex:1;
+.chat_footer form {
+    flex: 1;
     display: flex;
 }
 
-.chat_footer form input{
-    flex:1;
+.chat_footer form input {
+    flex: 1;
     border-radius: 30px;
     padding: 10px;
     border: none;
@@ -252,7 +316,7 @@ input[type='password']{
 }
 
 
-.chat_footer form  button{
+.chat_footer form button {
     background-color: #d3c2ce;
     width: 40px;
     height: 30px;
@@ -260,16 +324,20 @@ input[type='password']{
     border-radius: 30px;
 }
 
-.MicNone {margin: auto; background-color:#d3c2ce ; border-radius: 30px;}
+.MicNone {
+    margin: auto;
+    background-color: #d3c2ce;
+    border-radius: 30px;
+}
 
-.chat_body{
+.chat_body {
     flex: 1;
     background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
     background-repeat: repeat;
     background-position: center;
     padding: 30px;
-    overflow:'';
-}   
+    overflow: '';
+}
 
 
 .chat_message {
@@ -314,139 +382,174 @@ input[type='password']{
 
 
 
-.search_user input { width: 300px; height: 30px;}
+.search_user input {
+    width: 300px;
+    height: 30px;
+}
 
 
 
-.div_user{
+.div_user {
     background-color: #e4e4e4;
     height: 500px;
     width: 1180px;
-    position:fixed;
+    position: fixed;
     top: 150px;
     left: 350px;
 }
 
 
-.user_table{
-    direction:rtl;
+.user_table {
+    direction: rtl;
     border: 0px solid #865e5e;
-    border-collapse:separate;
+    border-collapse: separate;
     width: 1180px;
-    height:40px;
+    height: 40px;
     font-size: larger;
     font-family: '2  Homa';
-    
+
 }
 
 .td_user_table {
-    background-color: #cce; 
+    background-color: #cce;
     border-bottom: 3px solid #091453;
     margin-right: 10px;
-     }
+}
 
 
 
- .Active_user{
+.Active_user {
     position: fixed;
-     margin-top: 650px;
-     margin-left:600px ;
+    margin-top: 650px;
+    margin-left: 600px;
     width: 150px;
     height: 50px;
-    
-}  
-     
-.dActive_user{
+
+}
+
+.dActive_user {
     position: fixed;
-     margin-top: 650px;
-     margin-left:800px ;
+    margin-top: 650px;
+    margin-left: 800px;
     width: 150px;
     height: 50px;
-    
-}  
-  
-     
- .del_user{ 
+
+}
+
+
+.del_user {
     position: fixed;
-     margin-top: 650px;
-     margin-left:1000px ;
-     width: 150px;
-     height: 50px;
- }    
+    margin-top: 650px;
+    margin-left: 1000px;
+    width: 150px;
+    height: 50px;
+}
 
 
 
- .img_user{
-    
+.img_user {
+
     border-radius: 30px;
- }
+}
 
 /*******************  start website css *******************/
 
-.website{
+.website {
     margin-top: 200px;
-    margin-left:35%;
+    margin-left: 35%;
 }
 
- .Add_site {height: 40px; width: 120px; margin-top: 500px; margin-left: 650px; background-color:cornflowerblue ;}
- .Active_site {height: 40px; width: 120px; background-color:rgb(9, 194, 34) ;}
- .dActive_site {height: 40px; width: 120px; background-color:rgb(201, 109, 55) ;}
- .del_site {height: 40px; width: 120px; background-color:rgb(255, 18, 10) ;}
+.Add_site {
+    height: 40px;
+    width: 120px;
+    margin-top: 500px;
+    margin-left: 650px;
+    background-color: cornflowerblue;
+}
+
+.Active_site {
+    height: 40px;
+    width: 120px;
+    background-color: rgb(9, 194, 34);
+}
+
+.dActive_site {
+    height: 40px;
+    width: 120px;
+    background-color: rgb(201, 109, 55);
+}
+
+.del_site {
+    height: 40px;
+    width: 120px;
+    background-color: rgb(255, 18, 10);
+}
 
 
 
-.input_domain {margin-left: 600px;}
+.input_domain {
+    margin-left: 600px;
+}
 
-.input_company_name {margin-left: 600px;}
+.input_company_name {
+    margin-left: 600px;
+}
 
-.input_data_create {margin-left: 600px;}
+.input_data_create {
+    margin-left: 600px;
+}
 
-.input_status {margin-left: 600px;}
+.input_status {
+    margin-left: 600px;
+}
 
-.input_type {margin-left:600px}
+.input_type {
+    margin-left: 600px
+}
 
-.btnoky{
-    height: 40px; 
-    font-size:large; 
+.btnoky {
+    height: 40px;
+    font-size: large;
     width: 160px;
     margin-left: 750px;
     margin-top: -20px;
-    background-color:rgb(218, 197, 196) ;
-    }
+    background-color: rgb(218, 197, 196);
+}
 
-.panle{
-   margin-top: -400px;
+.panle {
+    margin-top: -400px;
 }
 
 
-.btncancel{
-    height: 40px; 
-    font-size:large; 
+.btncancel {
+    height: 40px;
+    font-size: large;
     width: 160px;
     margin-left: 50px;
-    background-color:rgb(218, 197, 196) ;
+    background-color: rgb(218, 197, 196);
 }
 
 
-.div_site{
+.div_site {
     background-color: #e4e4e4;
     height: 400px;
     width: 1180px;
-    position:fixed;
+    position: fixed;
     top: 150px;
     left: 350px;
 }
 
-.groupbtn{ 
-    height: 40px; 
-    font-size:large; 
+.groupbtn {
+    height: 40px;
+    font-size: large;
     width: 120px;
     margin-left: 50px;
-    margin-top:370PX;
-    background-color:rgb(143, 140, 197) ;
+    margin-top: 370PX;
+    background-color: rgb(143, 140, 197);
 }
 
-.select_user { width: 100px; height: 100px; margin-left: 150px;}
-
-
-
+.select_user {
+    width: 100px;
+    height: 100px;
+    margin-left: 150px;
+}

@@ -19,7 +19,8 @@ class Chat extends React.Component {
       input: "",
       btn_send_display: "none",
       MicNone: "block",
-      p_display: "none"
+      p_display: "none",
+      msgs : []
     }
 
     this.sendMessage = this.sendMessage.bind(this)
@@ -35,15 +36,25 @@ class Chat extends React.Component {
     this.setState({ p_display: "block" })
     const inputt = this.inputRef.current.value;
     const br = document.createElement("br")
-    var mass = document.getElementsByClassName('chat_message')[0];
-    ReactDOM.findDOMNode(mass).append(inputt);
-    ReactDOM.findDOMNode(mass).append(time_system);
-    ReactDOM.findDOMNode(mass).append(br);
+    var mass = document.getElementsByClassName('chat_body')[0];
+    // ReactDOM.findDOMNode(mass).innerHTML += m;
+    var messages = this.state.msgs
+    messages.push(
+      { 
+      "msg":inputt ,
+      "time":time_system,
+      "type": "output"
+    }
+      )
+    this.setState({"msgs": messages})
+    // ReactDOM.findDOMNode(mass).append(time_system);
+    // ReactDOM.findDOMNode(mass).append(br);
     /*
        const new_p = document.createElement("p");
        ReactDOM.findDOMNode(mass).appendChild(new_p);
        new_p.className = "chat_message";
       */
+     this.inputRef.current.value = '';
   }
 
 
@@ -91,7 +102,12 @@ class Chat extends React.Component {
         </div>
 
         <div className='chat_body'>
-          <p className='chat_message' style={{ "display": this.state.p_display }}>  </p>
+          {/* <p className='chat_message' style={{ "display": this.state.p_display }}>  </p> */}
+          {this.state.msgs.map(q => (
+            <p className='chat_message' style={{ "display": this.state.p_display }}> <span>{q.msg}</span>
+            <span className='time'>{q.time}</span>
+             </p>
+          ))}
         </div>
 
         <div className='chat_footer'>

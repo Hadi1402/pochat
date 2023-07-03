@@ -159,16 +159,16 @@ class Group extends React.Component {
               <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
             </div>
             <input type='button' value='انصراف' className="btnoky" onClick={this.close} />
-            
+
           </div>
         </div>
       </div>
     )
 
 
-    
+
   }
-  
+
 }
 
 
