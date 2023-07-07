@@ -9,6 +9,7 @@ import { InsertEmoticon } from '@material-ui/icons';
 import { MicNone } from '@material-ui/icons';
 import EmojiPicker from 'emoji-picker-react';
 import { EmojiStyle } from 'emoji-picker-react';
+import * as emoji from "https://cdn.jsdelivr.net/npm/emoji-js@3.7.0/lib/emoji.js";
 
 
 
@@ -34,13 +35,14 @@ class Chat extends React.Component {
   }
 
   handleEmojeClick =(code,emoji) => {
-   // let emojipic = jsemoji.replace_clone
-   {
+   let emojipic = jsemoji.replace_colons(':${emoji.name}:')
+   this.setState({"msgs":emojipic})
+   /*{
     name: "flushed";
     unified: "1f633";
     order: 55;
     category: "people"
-   }
+   }*/
   }
 
   sendMessage(e) {
