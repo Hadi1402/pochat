@@ -362,7 +362,10 @@ input[type='password'] {
     font-size: xx-small;
 }
 
-
+.time {
+    display: inherit;
+    font-size: small;
+}
 
 /**************************** End CSS for sidebar similator wattsap ***************************/
 

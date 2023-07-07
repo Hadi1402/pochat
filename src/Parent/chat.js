@@ -7,6 +7,9 @@ import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { InsertEmoticon } from '@material-ui/icons';
 import { MicNone } from '@material-ui/icons';
+import EmojiPicker from 'emoji-picker-react';
+import { EmojiStyle } from 'emoji-picker-react';
+
 
 
 class Chat extends React.Component {
@@ -20,41 +23,43 @@ class Chat extends React.Component {
       btn_send_display: "none",
       MicNone: "block",
       p_display: "none",
-      msgs : []
+      msgs: [],
+      emoj: "none"
     }
 
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
+    this.handleEmojeClick = this.handleEmojeClick.bind(this)
 
   }
 
+  handleEmojeClick =(code,emoji) => {
+   // let emojipic = jsemoji.replace_clone
+   {
+    name: "flushed";
+    unified: "1f633";
+    order: 55;
+    category: "people"
+   }
+  }
 
   sendMessage(e) {
     e.preventDefault();
-    console.log(" your message:", this.state.input)
     const time_system = new Date().toLocaleString()
     this.setState({ p_display: "block" })
     const inputt = this.inputRef.current.value;
     const br = document.createElement("br")
     var mass = document.getElementsByClassName('chat_body')[0];
-    // ReactDOM.findDOMNode(mass).innerHTML += m;
     var messages = this.state.msgs
     messages.push(
-      { 
-      "msg":inputt ,
-      "time":time_system,
-      "type": "output"
-    }
-      )
-    this.setState({"msgs": messages})
-    // ReactDOM.findDOMNode(mass).append(time_system);
-    // ReactDOM.findDOMNode(mass).append(br);
-    /*
-       const new_p = document.createElement("p");
-       ReactDOM.findDOMNode(mass).appendChild(new_p);
-       new_p.className = "chat_message";
-      */
-     this.inputRef.current.value = '';
+      {
+        "msg": inputt,
+        "time": time_system,
+        "type": "output",
+      }
+    )
+    this.setState({ "msgs": messages })
+    this.inputRef.current.value = '';
   }
 
 
@@ -102,16 +107,16 @@ class Chat extends React.Component {
         </div>
 
         <div className='chat_body'>
-          {/* <p className='chat_message' style={{ "display": this.state.p_display }}>  </p> */}
           {this.state.msgs.map(q => (
             <p className='chat_message' style={{ "display": this.state.p_display }}> <span>{q.msg}</span>
-            <span className='time'>{q.time}</span>
-             </p>
+              <span className='time'> {q.time} </span>
+            </p>
           ))}
         </div>
 
         <div className='chat_footer'>
           <form>
+
             <button ref={this.btn_send}
               onClick={this.sendMessage}
               style={{ "display": this.state.btn_send_display }}
@@ -120,7 +125,7 @@ class Chat extends React.Component {
             <MicNone className='MicNone' style={{ "display": this.state.MicNone }} />
             <input ref={this.inputRef} style={{ 'value': this.state.input }} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text" />
           </form>
-          <InsertEmoticon />
+          <EmojiPicker onEmojiClick={this.handleEmojeClick} /> 
         </div>
       </div>
     )
