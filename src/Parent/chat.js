@@ -10,6 +10,7 @@ import { MicNone } from '@material-ui/icons';
 import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
+import { Select } from '@mui/material';
 
 
 class Chat extends React.Component {
@@ -84,6 +85,10 @@ class Chat extends React.Component {
       this.setState({ MicNone: 'block' })
     }
   }
+  /* sendEmoji(e) {
+     this.setState({ select_emoj: e.target.value })
+     console.log(this.state.select_emoj)
+   }*/
 
 
 
@@ -138,9 +143,9 @@ class Chat extends React.Component {
               searchDisabled="true"
               previewConfig={{ showPreview: false }}
               emojiStyle="google"
-              onEmojiClick={(e) => this.setState(({ msg: this.inputRef.current.value + e.emoji }))}
-              height={400}
-              width="40%"
+              onEmojiClick={(e) => console.log(e)}
+              height={300}
+              width="100%"
             />
           </div>
 
