@@ -96,7 +96,7 @@ class Chat extends React.Component {
      console.log(this.state.select_emoj)
    }*/
 
-    handleFileUpload = async (acceptedFiles) => {
+  handleFileUpload = async (acceptedFiles) => {
     const formData = new FormData();
     formData.append('file', acceptedFiles[0]);
 
@@ -168,13 +168,13 @@ class Chat extends React.Component {
           </div>
 
           <Dropzone onDrop={this.handleFileUpload}>
-         {({ getRootProps, getInputProps }) => (
-           <div {...getRootProps()}>
-             <input {...getInputProps()} />
-             <img src={file}  width="35" height="40"/> 
-           </div>
-         )}
-       </Dropzone>
+            {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <img src={file} width="35" height="40" />
+              </div>
+            )}
+          </Dropzone>
 
 
         </div>
