@@ -24,18 +24,22 @@ class Chat extends React.Component {
       MicNone: "block",
       p_display: "none",
       msgs: [],
-      select_emoj: ''
+      select_emoj: '',
+      emoji_display: "none"
     }
 
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
-    this.handleEmojeClick = this.handleEmojeClick.bind(this)
+    this.handleEmojeShow = this.handleEmojeShow.bind(this)
 
   }
 
-  handleEmojeClick = (event, emojiObject) => {
-    this.setState({ select_emoj: emojiObject })
-    console.log(emojiObject)
+  handleEmojeShow = () => {
+    if (this.state.emoji_display == "none")
+      this.setState({ emoji_display: "block" })
+    else
+      this.setState({ emoji_display: "none" })
+
 
     /*{
      name: "flushed";
@@ -84,7 +88,7 @@ class Chat extends React.Component {
 
 
   render() {
-    <Picker onSelect={(emoji) => this.setState({ select_emoj: emoji })} />
+    // <Picker onSelect={(emoji) => this.setState({ select_emoj: emoji })} />
 
     return (
       <div className='chat'>
@@ -106,7 +110,6 @@ class Chat extends React.Component {
               <MoreVertIcon />
             </IconButton>
           </div>
-
         </div>
 
         <div className='chat_body'>
@@ -128,20 +131,20 @@ class Chat extends React.Component {
             <MicNone className='MicNone' style={{ "display": this.state.MicNone }} />
             <input ref={this.inputRef} style={{ 'value': this.state.input }} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text" />
           </form>
-          
-            <InsertEmoticonIcon onClick={this.handleEmojeClick} />
-          
+
+          <InsertEmoticonIcon onClick={this.handleEmojeShow} />
+          <div style={{ "display": this.state.emoji_display }}>
             <EmojiPicker
-                searchDisabled="true"
-                previewConfig={{ showPreview: false }}
-                emojiStyle="google"
-                onEmojiClick={(e) => this.setState(({msg:this.inputRef.current.value + e.emoji})}
-                height={400}
-                width="40%"
-              />
-            
-  
-        
+              searchDisabled="true"
+              previewConfig={{ showPreview: false }}
+              emojiStyle="google"
+              onEmojiClick={(e) => this.setState(({ msg: this.inputRef.current.value + e.emoji }))}
+              height={400}
+              width="40%"
+            />
+          </div>
+
+
         </div>
       </div>
     )
