@@ -11,6 +11,10 @@ import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import { Select } from '@mui/material';
+import Dropzone from 'react-dropzone';
+import axios from 'axios';
+import file from "../static/img/file.jpg"
+
 
 
 class Chat extends React.Component {
@@ -26,12 +30,14 @@ class Chat extends React.Component {
       p_display: "none",
       msgs: [],
       select_emoj: '',
-      emoji_display: "none"
+      emoji_display: "none",
+      file: ''
     }
 
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
+    this.handleFileUpload = this.handleFileUpload.bind(this)
 
   }
 
@@ -90,7 +96,19 @@ class Chat extends React.Component {
      console.log(this.state.select_emoj)
    }*/
 
+    handleFileUpload = async (acceptedFiles) => {
+    const formData = new FormData();
+    formData.append('file', acceptedFiles[0]);
 
+    try {
+      const response = await axios.post('/upload', formData);
+      // Handle the response from the server (e.g., update chat messages)
+      console.log(response.data);
+    } catch (error) {
+      // Handle error if any
+      console.error(error);
+    }
+  };
 
   render() {
     // <Picker onSelect={(emoji) => this.setState({ select_emoj: emoji })} />
@@ -148,6 +166,15 @@ class Chat extends React.Component {
               width="100%"
             />
           </div>
+
+          <Dropzone onDrop={this.handleFileUpload}>
+         {({ getRootProps, getInputProps }) => (
+           <div {...getRootProps()}>
+             <input {...getInputProps()} />
+             <img src={file}  width="35" height="40"/> 
+           </div>
+         )}
+       </Dropzone>
 
 
         </div>
