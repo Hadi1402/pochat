@@ -3,16 +3,7 @@
 }
 
 
-.menu{
-  height:92%;
-  width: 50px;
-  float: right;
-  margin-right: 0px;
-  background-color:var(--menu-color);
-  /* border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px; */
-  /* position:fixed; */
-}
+
 
 .menu-btn{
   margin-top: 10px;

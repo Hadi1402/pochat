@@ -18,8 +18,6 @@ function RegisterUser(username,email,password,repassword){
 
   export  default RegisterUser;
 
-  
-
 
 
 

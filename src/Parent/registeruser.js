@@ -34,8 +34,9 @@ class RegisterUserPage extends Component {
      console.log("here1111111111111111111111111");
         
    }
-      
   
+
+
 render() {
   return(
     <div className="registerform">
@@ -79,8 +80,10 @@ render() {
             required="" 
             type="password" 
             class="input"
+            id="pass"
             name="password"  
-            placeholder={''} 
+            placeholder={''}
+            // value={"abc"}
             ref={this.password}/>
             <span>کلمه عبور</span>
         </label>
@@ -89,9 +92,13 @@ render() {
             required="" 
             type="password" 
             class="input"
+            id="rePass"
             name="repassword"  
             placeholder={''} 
-            ref={this.repassword}/>
+            ref={this.repassword}
+            // value={"abc"}
+            // onChange={notSame()}
+            />
             <span>تکرار کلمه عبور</span>
         </label>
         console.log(code , username , email , password , repassword)
@@ -107,6 +114,16 @@ function mapStateToProps (state){
   return {data_user:state.data_user}
 }
 
+// function notSame() {
+//   var pass = document.getElementById("pass").value
+//   var rePass = document.getElementById("rePass").value
 
+//   if (rePass != pass) {
+//     console.log("is not same")
+//     return false
+//   } else {
+//     return true
+//   }
+// }
 
 export default connect(mapStateToProps )(RegisterUserPage);
