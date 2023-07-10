@@ -3,8 +3,6 @@ import "../static/css/chat.css";
 import {logo} from "../static/img/Pochat-Logo.png"
 import welcome from "../static/img/Welcome-Pochat.jpg"
 import {NavLink} from "react-router-dom";
-import ChatBox from "../Parent/chatBox";
-import HomeChat from "../Parent/homeChat"
 
 
 
@@ -29,7 +27,6 @@ class Home extends React.Component {
           <img className="welcome" src={''}/>
         </div>
         
-<HomeChat/>
 
     </div>
     

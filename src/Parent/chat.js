@@ -152,7 +152,12 @@ class Chat extends React.Component {
               type="submit">  ارسال
             </button>
             <MicNone className='MicNone' style={{ "display": this.state.MicNone }} />
-            <input ref={this.inputRef} style={{ 'value': this.state.input }} onChange={this.onChange} placeholder="پیام خود را تایپ کنید " type="text" />
+            <input ref={this.inputRef}
+             style={{ 'value': this.state.input }}
+              onChange={this.onChange} 
+             
+              placeholder="پیام خود را تایپ کنید " 
+              type="text" />
           </form>
 
           <InsertEmoticonIcon onClick={this.handleEmojeShow} />
@@ -166,6 +171,7 @@ class Chat extends React.Component {
               width="100%"
             />
           </div>
+          
 
           <Dropzone onDrop={this.handleFileUpload}>
             {({ getRootProps, getInputProps }) => (
