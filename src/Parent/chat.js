@@ -14,6 +14,8 @@ import { Select } from '@mui/material';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import file from "../static/img/file.jpg"
+import { useDropzone } from 'react-dropzone';
+
 
 
 
@@ -31,12 +33,13 @@ class Chat extends React.Component {
       msgs: [],
       select_emoj: '',
       emoji_display: "none",
-      file: ''
+      newfile: []
     }
 
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
+    //this.DropzoneFile = this.DropzoneFile.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
 
   }
@@ -96,19 +99,32 @@ class Chat extends React.Component {
      console.log(this.state.select_emoj)
    }*/
 
-  handleFileUpload = async (acceptedFiles) => {
-    const formData = new FormData();
-    formData.append('file', acceptedFiles[0]);
+  handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const newMessage = {
+      content: '',
+      file: {
+        "name": file.name,
+        "size": file.size,
+        "type": file.type,
+        "url": URL.createObjectURL(file)
+      }
+    };
+    this.setState({ newfile: newMessage })
+  }
 
-    try {
-      const response = await axios.post('/upload', formData);
-      // Handle the response from the server (e.g., update chat messages)
-      console.log(response.data);
-    } catch (error) {
-      // Handle error if any
-      console.error(error);
-    }
-  };
+  /*DropzoneFile(acceptedFiles) {
+    // const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
+    // Disable click and keydown behavior
+    // noClick: true,
+    // noKeyboard: true
+
+    const files = acceptedFiles.map(file => (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    ));
+  }*/
 
   render() {
     // <Picker onSelect={(emoji) => this.setState({ select_emoj: emoji })} />
@@ -153,10 +169,9 @@ class Chat extends React.Component {
             </button>
             <MicNone className='MicNone' style={{ "display": this.state.MicNone }} />
             <input ref={this.inputRef}
-             style={{ 'value': this.state.input }}
-              onChange={this.onChange} 
-             
-              placeholder="پیام خود را تایپ کنید " 
+              style={{ 'value': this.state.input }}
+              onChange={this.onChange}
+              placeholder="پیام خود را تایپ کنید "
               type="text" />
           </form>
 
@@ -172,19 +187,22 @@ class Chat extends React.Component {
             />
           </div>
           
-
-          <Dropzone onDrop={this.handleFileUpload}>
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <img src={file} width="35" height="40" />
-              </div>
-            )}
-          </Dropzone>
-
+          {this.state.newfile.map((newfiles,index) => (
+            <div key={index}>
+              {newfiles.content}
+              {newfiles[file] && (
+                <a href={newfiles[file.url]} target="_blank" rel="noopener noreferrer">
+                  {newfiles[file.name]}
+                </a>
+              )}
+            </div>
+          ))}
+          <input type="file" onChange={this.handleFileUpload} />
 
         </div>
+
       </div>
+
     )
 
   }
