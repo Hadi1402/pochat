@@ -14,9 +14,6 @@ import { Select } from '@mui/material';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import file from "../static/img/file.jpg"
-import { useDropzone } from 'react-dropzone';
-
-
 
 
 class Chat extends React.Component {
@@ -50,13 +47,6 @@ class Chat extends React.Component {
     else
       this.setState({ emoji_display: "none" })
 
-
-    /*{
-     name: "flushed";
-     unified: "1f633";
-     order: 55;
-     category: "people"
-    }*/
   }
 
   sendMessage(e) {
@@ -110,24 +100,11 @@ class Chat extends React.Component {
         "url": URL.createObjectURL(file)
       }
     };
-    this.setState({ newfile: newMessage })
+    this.setState({ 'newfile': newMessage })
   }
 
-  /*DropzoneFile(acceptedFiles) {
-    // const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
-    // Disable click and keydown behavior
-    // noClick: true,
-    // noKeyboard: true
-
-    const files = acceptedFiles.map(file => (
-      <li key={file.path}>
-        {file.path} - {file.size} bytes
-      </li>
-    ));
-  }*/
 
   render() {
-    // <Picker onSelect={(emoji) => this.setState({ select_emoj: emoji })} />
 
     return (
       <div className='chat'>
@@ -186,11 +163,11 @@ class Chat extends React.Component {
               width="100%"
             />
           </div>
-          
-          {this.state.newfile.map((newfiles,index) => (
+
+          {this.state.newfile.map((newfiles, index) => (
             <div key={index}>
               {newfiles.content}
-              {newfiles[file] && (
+              {newfiles.file && (
                 <a href={newfiles[file.url]} target="_blank" rel="noopener noreferrer">
                   {newfiles[file.name]}
                 </a>
