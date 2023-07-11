@@ -23,15 +23,15 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Switch>
-      <Route exact path="/"  component={Home} />
-      <Route exact path="/login" component={LoginSet}  />
-      <Route exact path='/RegisterUser'  component={RegisterUserPage} />
-      <Route exact path='/supportuser' component={SupportUser}/>
-      <Route exact path='/adminDashbord' component={AdminDashbord}/>
-      <Route exact path='/user' component={User}/>
-      <Route exact path='/website' component={webSite}/>
-      <Route exact path='/group' component={Group}/>
-      <Route exact path='/editgroup' component={EditGroup}/>
+      <Route exact path="/"  component={Home} />                           {/* working on it */}
+      <Route exact path="/login" component={LoginSet}  />                  {/* finished */}
+      <Route exact path='/RegisterUser'  component={RegisterUserPage} />   {/* finished */}
+      <Route exact path='/supportuser' component={SupportUser}/>           {/* need a little bit work */}
+      <Route exact path='/adminDashbord' component={AdminDashbord}/>       {/* no */}
+      <Route exact path='/user' component={User}/>                         {/* no */}
+      <Route exact path='/website' component={webSite}/>                   {/* no */}
+      <Route exact path='/group' component={Group}/>                       {/* no */}
+      <Route exact path='/editgroup' component={EditGroup}/>               {/* no */}
 
       </Switch>
       </BrowserRouter>

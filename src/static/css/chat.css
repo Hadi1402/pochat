@@ -186,15 +186,14 @@ input[type='password']{
     display:grid;
     place-items:center;
     background-color: #dadbd3;
-    height: 100vw;
+    height: 100%;
 }
 
 .app_body {
     display: flex;
     background-color: #dadbde;
-    margin-top: -50px;
-    height: 90vh;
-    width: 90vw;
+    height: 100%;
+    width: 100%;
     box-shadow: -1px 4px 20px -6px rgba(0,0,0);
 }
 
@@ -207,8 +206,13 @@ input[type='password']{
     flex-direction: column;
 }
 
-.chat_header {display: flex; padding: 15px; align-items: center; border-bottom: 1px solid lightgray;
- margin-bottom: 0px;}
+.chat_header {
+    display: flex; 
+    padding: 15px; 
+    align-items: center; 
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 0px;
+}
 
 .chat_headerInfo {flex: 1; padding-left: 20px;}
 
@@ -219,8 +223,10 @@ input[type='password']{
 .chat_headerRight {
     display: flex;
     justify-content: space-between;
-    min-width: 100px;
+    min-width: 200px;
 }
+/* .MuiSvgIcon-root{} */
+/* .MuiButtonBase-root MuiIconButton-root */
 .chat_footer {
     display: flex;
     justify-content: space-between;
@@ -260,7 +266,7 @@ input[type='password']{
     background-repeat: repeat;
     background-position: center;
     padding: 30px;
-    overflow:'';
+    overflow-y: auto;
 }   
 
 

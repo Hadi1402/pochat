@@ -49,7 +49,7 @@ render() {
               type="text" 
               class="input"
               name="code"  
-              placeholder={''} 
+              placeholder={'کد دعوت '} 
               ref={this.code}/>
               <span>کد دعوت </span>
           </label>
@@ -60,7 +60,7 @@ render() {
               type="text"
               class="input"
               name="username"  
-              placeholder={''} 
+              placeholder={'username'} 
               ref={this.username}/>
               <span>نام کاربری</span>
           </label>
@@ -70,7 +70,7 @@ render() {
             type="email" 
             class="input"
             name="email"  
-            placeholder={''} 
+            placeholder={'email'} 
             ref={this.email}/>
             <span>ایمیل</span>
         </label> 
@@ -82,7 +82,7 @@ render() {
             class="input"
             id="pass"
             name="password"  
-            placeholder={''}
+            placeholder={'pass'}
             // value={"abc"}
             ref={this.password}/>
             <span>کلمه عبور</span>
@@ -94,14 +94,13 @@ render() {
             class="input"
             id="rePass"
             name="repassword"  
-            placeholder={''} 
+            placeholder={'repass'} 
             ref={this.repassword}
             // value={"abc"}
             // onChange={notSame()}
             />
             <span>تکرار کلمه عبور</span>
         </label>
-        console.log(code , username , email , password , repassword)
         <button class="submit" value = 'عضویت' onClick={this.onHandleRegistration} >Submit</button>
         <p class="signin">قبلاً ثبت نام کرده ام <NavLink exact to={'/login'}> ورود </NavLink></p>
     </form>
