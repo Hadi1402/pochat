@@ -10,10 +10,9 @@ import { MicNone } from '@material-ui/icons';
 import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
-import { Select } from '@mui/material';
-import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import file from "../static/img/file.jpg"
+import foo from "../static/music/foo.mp3"
 
 
 class Chat extends React.Component {
@@ -21,6 +20,7 @@ class Chat extends React.Component {
     super(props)
     this.inputRef = React.createRef();
     this.btn_send = React.createRef();
+    this.filerRef = React.createRef();
     this.MicNone = React.createRef();
     this.state = {
       input: "",
@@ -38,6 +38,7 @@ class Chat extends React.Component {
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
     //this.DropzoneFile = this.DropzoneFile.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
+    this.handleAduio = this.handleAduio.bind(this)
 
   }
 
@@ -91,20 +92,68 @@ class Chat extends React.Component {
 
   handleFileUpload = (event) => {
     const file = event.target.files[0];
-    const newMessage = {
+    var newfiles = this.state.newfile
+    newfiles.push({
       content: '',
       file: {
         "name": file.name,
         "size": file.size,
         "type": file.type,
+        "length": file.length,
         "url": URL.createObjectURL(file)
       }
-    };
-    this.setState({ 'newfile': newMessage })
+    })
+    var files = this.state.newfile
+    this.setState({ "msgs": files });
+    this.inputRef.current.value = file.name;
+    this.setState({ 'newfile': newfiles });
+    this.onChange()
+
+    console.log(this.state.newfile);
+    console.log(newfiles);
+    // getExtension(file["name"]).toLowerCase()
+    console.log(file.type);
   }
 
+  handleAduio = (e) => {
+    <audio src={foo} controls autoPlay />
+    //  (async () => {
+    // const play_yes = await foo.Sound.createAsync(
+    //  require('../static/music/foo.mp3'),
+    //               { shouldPlay: true }
+    //                );
+    //        })();
+
+
+  }
 
   render() {
+    var newfiles = this.state.newfile
+    var ms = this.state.msgs
+    for (var i = 0; i < newfiles.length; i++) {
+      //let filetype= file.type
+      var file = newfiles[i].file
+      if (file) {
+        const type = file.name.split('.')
+        let t = type[type.length - 1]
+        if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
+          this.state.msgs.push({"msg":<img src={file.url}/>})
+           // this.setState({'msgs':msgs})
+        }
+        else {
+          if (["mp3"].includes((t).toLowerCase())) {
+            this.state.msgs.push({"msg":<audio controls src={file.url} />})
+            //  this.setState({'newfile':newfile})
+          }
+        }
+        else {
+          this.state.msgs.push({"msg":<img src={file}/>})
+        }
+       
+      }
+
+    }
+
 
     return (
       <div className='chat'>
@@ -144,12 +193,12 @@ class Chat extends React.Component {
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-            <MicNone className='MicNone' style={{ "display": this.state.MicNone }} />
+            <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onClick={this.handleAduio} />
             <input ref={this.inputRef}
-              style={{ 'value': this.state.input }}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "
-              type="text" />
+              type="text"
+            />
           </form>
 
           <InsertEmoticonIcon onClick={this.handleEmojeShow} />
@@ -158,22 +207,26 @@ class Chat extends React.Component {
               searchDisabled="true"
               previewConfig={{ showPreview: false }}
               emojiStyle="google"
-              onEmojiClick={(e) => console.log(e)}
+              onEmojiClick={(e) =>
+                this.setState({ "msgs": e })
+              }
               height={300}
               width="100%"
             />
           </div>
+          {/*           
+          <div ref={this.filerRef} >
+            {this.state.newfile.map((newfiles, index) => (
+              <div key={index}>
+                {newfiles.file && (
+                  <a href={newfiles[file.url]} target="_blank" rel="noopener noreferrer">
+                    {newfiles[file.name]}
+                  </a>
+                )}
+              </div>
+            ))} 
 
-          {this.state.newfile.map((newfiles, index) => (
-            <div key={index}>
-              {newfiles.content}
-              {newfiles.file && (
-                <a href={newfiles[file.url]} target="_blank" rel="noopener noreferrer">
-                  {newfiles[file.name]}
-                </a>
-              )}
-            </div>
-          ))}
+          </div>*/}
           <input type="file" onChange={this.handleFileUpload} />
 
         </div>
