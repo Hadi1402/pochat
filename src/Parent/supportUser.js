@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../static/css/chat.css"
-import {Avatar, IconButton} from "@material-ui/core";
-import DonutLargeIcon  from "@material-ui/icons/DonutLarge"
+import { Avatar, IconButton } from "@material-ui/core";
+import DonutLargeIcon from "@material-ui/icons/DonutLarge"
 import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { SearchOutlined } from "@material-ui/icons";
@@ -13,50 +13,50 @@ class SupportUser extends React.Component {
 
     constructor(props) {
         super();
-      }
-    
-    render(){
-        return(
-          <div className="app">
-           <div className="app_body"> 
-            <div className="sidebar">
+    }
 
-                <div className="sidebar_header">
-                </div>
+    render() {
+        return (
+            <div className="app">
+                <div className="app_body">
+                    <div className="sidebar">
 
-                <div className="sidebar_headerRight">
-                    <Avatar/>
-                    <IconButton> 
-                    <DonutLargeIcon />
-                    </IconButton>
-                    <IconButton> 
-                    <ChatIcon /> 
-                    </IconButton>
+                        <div className="sidebar_header">
+                        </div>
 
-                    <IconButton> 
-                    <MoreVertIcon />
-                    </IconButton>
+                        <div className="sidebar_headerRight">
+                            <Avatar />
+                            <IconButton>
+                                <DonutLargeIcon />
+                            </IconButton>
+                            <IconButton>
+                                <ChatIcon />
+                            </IconButton>
 
-                </div>
+                            <IconButton>
+                                <MoreVertIcon />
+                            </IconButton>
 
-                <div className="sidebar_search">
-                    <div className="sidedar_searchContainer">
-                    <SearchOutlined/>
-                    <input placeholder=" search ... " />
+                        </div>
+
+                        <div className="sidebar_search">
+                            <div className="sidedar_searchContainer">
+                                <SearchOutlined />
+                                <input placeholder=" search ... " />
+                            </div>
+                        </div>
+
+                        <div className="sidebar_chats">
+                            <SidebarChat />
+                            <SidebarChat />
+                            <SidebarChat />
+                        </div>
+
+
                     </div>
+                    <Chat />
                 </div>
-
-                <div className="sidebar_chats">
-                    <SidebarChat />
-                    <SidebarChat />                    
-                    <SidebarChat />                    
-                </div>
-           
-
             </div>
-            <Chat/>
-          </div>
-          </div>
 
         )
 

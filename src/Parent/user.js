@@ -3,7 +3,7 @@ import "../static/css/chat.css";
 import { Avatar } from "@material-ui/core";
 import { SearchOutlined, Style } from "@material-ui/icons";
 import user_data from "./user_data";
-
+import axios from 'axios';
 
 
 class User extends React.Component {
@@ -13,7 +13,7 @@ class User extends React.Component {
     this.status_Ref = React.createRef();
     this.check_Ref = React.createRef();
     this.state = {
-      data: user_data,
+      data:[],
       select_checked: [],
                  }
     this.onChange_disable = this.onChange_disable.bind(this)
@@ -21,6 +21,14 @@ class User extends React.Component {
     this.onChange_enable = this.onChange_enable.bind(this)
     this.onChange_delete = this.onChange_delete.bind(this)
          }
+
+    componentDidMount = () =>{
+     axios.get('http://localhost/data/user_data.json').then(res =>{
+       console.log(res.data);
+       this.setState({data:res.data})
+       console.log(this.state.data)
+              });                 
+            }     
 
   onClick = (event) => {
     this.state.select_checked.push(event.target.getAttribute("data_value"))
