@@ -5,4 +5,12 @@
   --menu-them-p:#3E2F5B;
   --menu-them-o:#F28500;
   --menu-them-w:#F3EFE0;
+
+
+
+
+  --scrollbar-track-bc:rgb(212, 212, 212);
+  --scrollbar-border:5px;
+  --scrollbar-thumb-bc:rgb(124, 124, 124);
+  --webkit-scrollbar-thumb-hover-bc:rgb(102, 102, 102);
 }

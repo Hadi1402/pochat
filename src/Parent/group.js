@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import ReactDOM from 'react-dom';
-import  "../static/css/chat.css";
+import  "../static/css/group.css";
 import group_data from "./group_data";
 import { createRef } from "react";
 import { Avatar, easing } from "@material-ui/core";
@@ -130,63 +130,61 @@ class Group extends React.Component{
     
     render(){
       return(
-        <div>
-          <h2>        *****************************************  مدیریت  گروه ها   ***********************************************</h2>
-            <hr/>
+        <div className="App">
+          <div id="container_group">
             <div className="div_user">
-             <table className="user_table">  
-               <thead>
-                 <tr>
-                  <th className="td_user_table" colspan="2"> ID </th>
-                  <th className="td_user_table" colspan="2"> نام گروه </th>
-                  <th className="td_user_table" colspan="2"> کاربران  </th>
-                  <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
-                  <th className="td_user_table" colspan="2">  وضعیت  </th>
-                  <th className="td_user_table" colspan="2">  انتخاب</th>
-                </tr>
-             </thead>
+              <table className="user_table">  
+                <thead>
+                  <tr>
+                    <th className="td_user_table" colspan="2"> ID            </th>
+                    <th className="td_user_table" colspan="2"> نام گروه     </th>
+                    <th className="td_user_table" colspan="2"> کاربران      </th>
+                    <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
+                    <th className="td_user_table" colspan="2">  وضعیت       </th>
+                    <th className="td_user_table" colspan="2">  انتخاب      </th>
+                  </tr>
+                </thead>
 
-               {this.state.group.map(q =>( 
+                {this.state.group.map(q =>( 
                 <tbody>
-                  <tr ref={this.tr_ref}>
-                   <td colspan="2">   {q['id']} </td>
-                   <td colspan="2">   {q['group_name']} </td>
-                   <td colspan="2" >  {q["user_name"]}   </td>
-                   <td colspan="2" >  {q['data_create']} </td>
-                   <td colspan="2"  > {q['status_group']}    </td>
-                   <td className="check_box" colspan="2">  <input
-                    type="checkbox" ref={this.check_ref}
-                    data_value={q["id"]}
-                    onChange={this.onClick}
-                    id='checkbox'
-                  />                 
-                   </td>
-                 </tr>
-              </tbody>
-            ))}
-          </table>
-
-            <input type="button" value='ایجاد گروه' className="groupbtn" onClick={this.showTableGroup}/>
-            <input className="Active_site" type='button' value='فعال کردن' onClick={this.onChange_enable} />
-            <input className="dActive_site" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-            <input className="dActive_site" type="button"  onClick={this.edit_transfer} value='ویرایش گروه ' />
+                  <tr ref={this.tr_ref} id="group_info">
+                    <td colspan="2">   {q['id']}              </td>
+                    <td colspan="2">   {q['group_name']}      </td>
+                    <td colspan="2">   {q["user_name"]}       </td>
+                    <td colspan="2">   {q['data_create']}     </td>
+                    <td colspan="2">   {q['status_group']}    </td>
+                    <td className="check_box" colspan="2">  
+                      <input type="checkbox" ref={this.check_ref} data_value={q["id"]} onChange={this.onClick} id='checkbox'/>
+                    </td>
+                  </tr>
+                </tbody>
+              ))}
+              </table>
               <div className="panel" ref={this.panel_ref} style={{display:this.state.display_panel}}>
-               <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
-               <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
-               <Select 
-                onChange={this.handleChange}
-                value={this.state.selectOption}
-                ref={this.username_ref} 
-                isMulti 
-                options={this.state.users}>
-               </Select>
-              <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
-              <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
-              <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
-             </div>
+                <input type='text' name='id'  className="" ref={this.id_ref} placeholder="id " required/>
+                <input type='text' name='group_name' className="" ref={this.group_ref} placeholder="نام گروه" required/>
+                <Select 
+                  onChange={this.handleChange}
+                  value={this.state.selectOption}
+                  ref={this.username_ref} 
+                  isMulti 
+                  options={this.state.users}>
+                </Select>
+                <input type='text' name='data_create'  className="" ref={this.data_ref} placeholder="تاریخ ایجاد "/>
+                <input type='text' name='status_group'  className="" ref={this.status_ref} placeholder="وضعیت"/>
+                <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
+              </div>
 
+
+            </div>
+            <div className="group_editGroup_panel">
+              <input className="group_editGroup_panel_btns" type="button"   onClick={this.showTableGroup}   value='ایجاد گروه'    />
+              <input className="group_editGroup_panel_btns" type="button"   onClick={this.onChange_enable}  value='فعال کردن'     />
+              <input className="group_editGroup_panel_btns" type="button"   onClick={this.onChange_disable} value='غیر فعال کردن' />
+              <input className="group_editGroup_panel_btns" type="button"   onClick={this.edit_transfer}    value='ویرایش گروه '  />
+            </div>
           </div>
-      </div> 
+        </div> 
         )
         
     }
