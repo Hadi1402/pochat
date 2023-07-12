@@ -31,15 +31,19 @@ class Chat extends React.Component {
       select_emoj: '',
       emoji_display: "none",
       newfile: [],
-      audio: null
+      audio: null,
+
     }
 
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
-    //this.DropzoneFile = this.DropzoneFile.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
     this.handleAduio = this.handleAduio.bind(this)
+    this.startRecording = this.startRecording.bind(this)
+    this.stopRecording = this.stopRecording.bind(this)
+    this.onData = this.onData.bind(this)
+    this.onStop = this.onStop.bind(this)
 
   }
 
@@ -48,7 +52,6 @@ class Chat extends React.Component {
       this.setState({ emoji_display: "block" })
     else
       this.setState({ emoji_display: "none" })
-
   }
 
   sendMessage(e) {
@@ -56,8 +59,6 @@ class Chat extends React.Component {
     const time_system = new Date().toLocaleString()
     this.setState({ p_display: "block" })
     const inputt = this.inputRef.current.value;
-    const br = document.createElement("br")
-    var mass = document.getElementsByClassName('chat_body')[0];
     var messages = this.state.msgs
     messages.push(
       {
@@ -69,7 +70,6 @@ class Chat extends React.Component {
     this.setState({ "msgs": messages })
     this.inputRef.current.value = '';
   }
-
 
   onChange(e) {
     console.log("inja")
@@ -95,40 +95,44 @@ class Chat extends React.Component {
     const file = event.target.files[0];
     var newfiles = this.state.newfile
     newfiles.push({
-      content: '',
       file: {
         "name": file.name,
         "size": file.size,
         "type": file.type,
-        "length": file.length,
         "url": URL.createObjectURL(file)
       }
     })
-    var files = this.state.newfile
-    this.setState({ "msgs": files });
-    this.inputRef.current.value = file.name;
     this.setState({ 'newfile': newfiles });
+    var files = this.state.newfile
+     this.setState({ "msgs": files });
+    this.inputRef.current.value = file.name;
     this.onChange()
-
-    console.log(this.state.newfile);
-    console.log(newfiles);
-    // getExtension(file["name"]).toLowerCase()
-    console.log(file.type);
+    // console.log(this.state.newfile);
+    // console.log(newfiles);
+    // console.log(file.type);
   }
 
   handleAduio = (e) => {
     var au = this.state.audio
-     au = < audio controls src = { foo }  autoPlay />
+    au = < audio controls src={foo} autoPlay />
     this.setState({ 'audio': au })
     console.log('55555555555555')
-    //  (async () => {
-    // const play_yes = await foo.Sound.createAsync(
-    //  require('../static/music/foo.mp3'),
-    //               { shouldPlay: true }
-    //                );
-    //        })();
+  }
 
-
+  startRecording = () => {
+    this.setState({ record: true });
+  }
+ 
+  stopRecording = () => {
+    this.setState({ record: false });
+  }
+ 
+  onData(recordedBlob) {
+    console.log('chunk of real-time data is: ', recordedBlob);
+  }
+ 
+  onStop(recordedBlob) {
+    console.log('recordedBlob is: ', recordedBlob);
   }
 
   render() {
@@ -142,24 +146,17 @@ class Chat extends React.Component {
         let t = type[type.length - 1]
         if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
           this.state.msgs.push({ "msg": <img src={file.url} /> })
-          // this.setState({'msgs':msgs})
         }
         else {
           if (["mp3"].includes((t).toLowerCase())) {
             this.state.msgs.push({ "msg": <audio controls src={file.url} /> })
-            //  this.setState({'newfile':newfile})
           }
           else {
             this.state.msgs.push({ "msg": <img src={file} /> })
           }
         }
-
-
       }
-
     }
-
-
     return (
       <div className='chat'>
         <div className='chat_header'>
@@ -191,14 +188,24 @@ class Chat extends React.Component {
         </div>
 
         <div className='chat_footer'>
-        {this.state.audio}
+          {this.state.audio}
           <form>
             <button ref={this.btn_send}
               onClick={this.sendMessage}
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-            <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onClick={this.handleAduio} />
+            <MicNone className='MicNone' style={{ "display": this.state.MicNone }} 
+             record={this.state.record}
+             onStop={this.onStop}
+             onData={this.onData}
+             strokeColor="#000000"
+             backgroundColor="#FF4081" 
+            // onClick={this.handleAduio} 
+             />
+           <button onClick={this.startRecording} type="button">Start</button>
+           <button onClick={this.stopRecording} type="button">Stop</button> 
+           
             <input ref={this.inputRef}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "
