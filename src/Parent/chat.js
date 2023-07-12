@@ -30,7 +30,8 @@ class Chat extends React.Component {
       msgs: [],
       select_emoj: '',
       emoji_display: "none",
-      newfile: []
+      newfile: [],
+      audio: null
     }
 
     this.sendMessage = this.sendMessage.bind(this)
@@ -116,7 +117,10 @@ class Chat extends React.Component {
   }
 
   handleAduio = (e) => {
-    <audio src={foo} controls autoPlay />
+    var au = this.state.audio
+     au = < audio controls src = { foo }  autoPlay />
+    this.setState({ 'audio': au })
+    console.log('55555555555555')
     //  (async () => {
     // const play_yes = await foo.Sound.createAsync(
     //  require('../static/music/foo.mp3'),
@@ -137,19 +141,20 @@ class Chat extends React.Component {
         const type = file.name.split('.')
         let t = type[type.length - 1]
         if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
-          this.state.msgs.push({"msg":<img src={file.url}/>})
-           // this.setState({'msgs':msgs})
+          this.state.msgs.push({ "msg": <img src={file.url} /> })
+          // this.setState({'msgs':msgs})
         }
         else {
           if (["mp3"].includes((t).toLowerCase())) {
-            this.state.msgs.push({"msg":<audio controls src={file.url} />})
+            this.state.msgs.push({ "msg": <audio controls src={file.url} /> })
             //  this.setState({'newfile':newfile})
           }
+          else {
+            this.state.msgs.push({ "msg": <img src={file} /> })
+          }
         }
-        else {
-          this.state.msgs.push({"msg":<img src={file}/>})
-        }
-       
+
+
       }
 
     }
@@ -186,8 +191,8 @@ class Chat extends React.Component {
         </div>
 
         <div className='chat_footer'>
+        {this.state.audio}
           <form>
-
             <button ref={this.btn_send}
               onClick={this.sendMessage}
               style={{ "display": this.state.btn_send_display }}
