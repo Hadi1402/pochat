@@ -13,6 +13,7 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import axios from 'axios';
 import file from "../static/img/file.jpg"
 import foo from "../static/music/foo.mp3"
+import AddAudioElement from "./audio.js"
 
 
 class Chat extends React.Component {
@@ -31,20 +32,13 @@ class Chat extends React.Component {
       select_emoj: '',
       emoji_display: "none",
       newfile: [],
-      audio: null,
-
+      audio: null
     }
-
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
     this.handleAduio = this.handleAduio.bind(this)
-    this.startRecording = this.startRecording.bind(this)
-    this.stopRecording = this.stopRecording.bind(this)
-    this.onData = this.onData.bind(this)
-    this.onStop = this.onStop.bind(this)
-
   }
 
   handleEmojeShow = () => {
@@ -104,7 +98,7 @@ class Chat extends React.Component {
     })
     this.setState({ 'newfile': newfiles });
     var files = this.state.newfile
-     this.setState({ "msgs": files });
+    this.setState({ "msgs": files });
     this.inputRef.current.value = file.name;
     this.onChange()
     // console.log(this.state.newfile);
@@ -117,22 +111,6 @@ class Chat extends React.Component {
     au = < audio controls src={foo} autoPlay />
     this.setState({ 'audio': au })
     console.log('55555555555555')
-  }
-
-  startRecording = () => {
-    this.setState({ record: true });
-  }
- 
-  stopRecording = () => {
-    this.setState({ record: false });
-  }
- 
-  onData(recordedBlob) {
-    console.log('chunk of real-time data is: ', recordedBlob);
-  }
- 
-  onStop(recordedBlob) {
-    console.log('recordedBlob is: ', recordedBlob);
   }
 
   render() {
@@ -195,24 +173,14 @@ class Chat extends React.Component {
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-            <MicNone className='MicNone' style={{ "display": this.state.MicNone }} 
-             record={this.state.record}
-             onStop={this.onStop}
-             onData={this.onData}
-             strokeColor="#000000"
-             backgroundColor="#FF4081" 
-            // onClick={this.handleAduio} 
-             />
-           <button onClick={this.startRecording} type="button">Start</button>
-           <button onClick={this.stopRecording} type="button">Stop</button> 
-           
+            {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onClick={this.handleAduio} /> */}
+            <AddAudioElement/>
             <input ref={this.inputRef}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "
               type="text"
             />
           </form>
-
           <InsertEmoticonIcon onClick={this.handleEmojeShow} />
           <div style={{ "display": this.state.emoji_display }}>
             <EmojiPicker
@@ -226,19 +194,6 @@ class Chat extends React.Component {
               width="100%"
             />
           </div>
-          {/*           
-          <div ref={this.filerRef} >
-            {this.state.newfile.map((newfiles, index) => (
-              <div key={index}>
-                {newfiles.file && (
-                  <a href={newfiles[file.url]} target="_blank" rel="noopener noreferrer">
-                    {newfiles[file.name]}
-                  </a>
-                )}
-              </div>
-            ))} 
-
-          </div>*/}
           <input type="file" onChange={this.handleFileUpload} />
 
         </div>
