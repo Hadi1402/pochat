@@ -38,7 +38,6 @@ class Chat extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
-    this.handleAduio = this.handleAduio.bind(this)
   }
 
   handleEmojeShow = () => {
@@ -106,12 +105,7 @@ class Chat extends React.Component {
     // console.log(file.type);
   }
 
-  handleAduio = (e) => {
-    var au = this.state.audio
-    au = < audio controls src={foo} autoPlay />
-    this.setState({ 'audio': au })
-    console.log('55555555555555')
-  }
+
 
   render() {
     var newfiles = this.state.newfile
@@ -126,7 +120,7 @@ class Chat extends React.Component {
           this.state.msgs.push({ "msg": <img src={file.url} /> })
         }
         else {
-          if (["mp3"].includes((t).toLowerCase())) {
+          if (["mp3", "webm"].includes((t).toLowerCase())) {
             this.state.msgs.push({ "msg": <audio controls src={file.url} /> })
           }
           else {
@@ -174,7 +168,7 @@ class Chat extends React.Component {
               type="submit">  ارسال
             </button>
             {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onClick={this.handleAduio} /> */}
-            <AddAudioElement/>
+            <div style={{ "display": this.state.MicNone }}> <AddAudioElement /> </div>
             <input ref={this.inputRef}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "
