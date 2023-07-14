@@ -131,6 +131,14 @@ handelAudio = (event) =>{
 
 
   render() {
+
+    var newaudio = this.state.audio
+    for(var a=0; a<newaudio.length;a++){
+     var file = newaudio[i].file
+     if (file) {
+     this.state.msgs.push({"msg":file.name})}
+    }
+  ///////////////************************/////////////////////
     var newfiles = this.state.newfile
     var ms = this.state.msgs
     for (var i = 0; i < newfiles.length; i++) {
@@ -190,10 +198,10 @@ handelAudio = (event) =>{
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-           <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} />
-            {/* <button onClick={<AddAudioElement/>}>  </button> */}
+           {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} /> */}
+           <button  onclick={this.handelAudio}>  </button>
              <div style={{ "display": this.state.MicNone }}>
-              <VoiceMessageSender/>
+              {/* <VoiceMessageSender/> */}
                {/* <AddAudioElement> */}
               {/* {this.inputRef.current.value = AddAudioElement.url} */}
              {/* </AddAudioElement> */}
