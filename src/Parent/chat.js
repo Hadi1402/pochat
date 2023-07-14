@@ -13,7 +13,8 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import axios from 'axios';
 import file from "../static/img/file.jpg"
 import foo from "../static/music/foo.mp3"
-import AddAudioElement from "./audio.js"
+//import AddAudioElement from "./audio.js"
+import VoiceMessageSender from './audio.js'
 
 
 class Chat extends React.Component {
@@ -32,12 +33,13 @@ class Chat extends React.Component {
       select_emoj: '',
       emoji_display: "none",
       newfile: [],
-      audio: null
+      audio: []
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
+    this.handelAudio = this.handelAudio.bind(this)
   }
 
   handleEmojeShow = () => {
@@ -104,7 +106,28 @@ class Chat extends React.Component {
     // console.log(newfiles);
     // console.log(file.type);
   }
+handelAudio = (event) =>{
+  const voice = event.target.file[0]
+  const audio = document.createElement("audio");
+  document.body.appendChild(audio);
+  var newaudio = this.state.audio
+ // audio.src = url;
+  audio.controls = true;
+   newaudio.push({
+    voice:{
+    "url": URL.createObjectURL(voice),
+    "name":voice.name,
+    "type":voice.type
+    }
+   })
+ this.setState({"audio":newaudio})  
+ var voices =this.state.audio
+ this.setState({'msgs':voices})
+ this.inputRef.current.value = voice.name;
+ this.onChange()
+ console.log(this.state.audio)
 
+}
 
 
   render() {
@@ -167,8 +190,15 @@ class Chat extends React.Component {
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-            {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onClick={this.handleAduio} /> */}
-            <div style={{ "display": this.state.MicNone }}> <AddAudioElement /> </div>
+           <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} />
+            {/* <button onClick={<AddAudioElement/>}>  </button> */}
+             <div style={{ "display": this.state.MicNone }}>
+              <VoiceMessageSender/>
+               {/* <AddAudioElement> */}
+              {/* {this.inputRef.current.value = AddAudioElement.url} */}
+             {/* </AddAudioElement> */}
+             {/* <button onclick={this.handelAudio}></button> */}
+             </div>
             <input ref={this.inputRef}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "
