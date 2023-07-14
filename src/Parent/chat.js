@@ -13,8 +13,7 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import axios from 'axios';
 import file from "../static/img/file.jpg"
 import foo from "../static/music/foo.mp3"
-//import AddAudioElement from "./audio.js"
-import VoiceMessageSender from './audio.js'
+import AddAudioElement from "./audio.js"
 
 
 class Chat extends React.Component {
@@ -39,7 +38,7 @@ class Chat extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
-    this.handelAudio = this.handelAudio.bind(this)
+    this.handelAudioUser = this.handelAudioUser.bind(this)
   }
 
   handleEmojeShow = () => {
@@ -106,13 +105,14 @@ class Chat extends React.Component {
     // console.log(newfiles);
     // console.log(file.type);
   }
-handelAudio = (event) =>{
+handelAudioUser = (event) =>{
   const voice = event.target.file[0]
   const audio = document.createElement("audio");
   document.body.appendChild(audio);
+  audio.controls = true;
+  console.log('Audioooooooooooooooooooo')
   var newaudio = this.state.audio
  // audio.src = url;
-  audio.controls = true;
    newaudio.push({
     voice:{
     "url": URL.createObjectURL(voice),
@@ -125,7 +125,7 @@ handelAudio = (event) =>{
  this.setState({'msgs':voices})
  this.inputRef.current.value = voice.name;
  this.onChange()
- console.log(this.state.audio)
+ console.log('this.state.audio000000000000000000')
 
 }
 
@@ -199,13 +199,9 @@ handelAudio = (event) =>{
               type="submit">  ارسال
             </button>
            {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} /> */}
-           <button  onclick={this.handelAudio}>  </button>
              <div style={{ "display": this.state.MicNone }}>
-              {/* <VoiceMessageSender/> */}
-               {/* <AddAudioElement> */}
-              {/* {this.inputRef.current.value = AddAudioElement.url} */}
-             {/* </AddAudioElement> */}
-             {/* <button onclick={this.handelAudio}></button> */}
+                <AddAudioElement /> 
+             <button onclick={this.handelAudioUser}></button> 
              </div>
             <input ref={this.inputRef}
               onChange={this.onChange}
@@ -227,6 +223,7 @@ handelAudio = (event) =>{
             />
           </div>
           <input type="file" onChange={this.handleFileUpload} />
+
 
         </div>
 
