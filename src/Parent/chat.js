@@ -5,7 +5,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge"
 import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { InsertEmoticon } from '@material-ui/icons';
+import { InsertEmoticon, ThreeSixty } from '@material-ui/icons';
 import { MicNone } from '@material-ui/icons';
 import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
@@ -14,6 +14,9 @@ import axios from 'axios';
 import file from "../static/img/file.jpg"
 import foo from "../static/music/foo.mp3"
 import AddAudioElement from "./audio.js"
+import { AudioRecorder, AudioUtils } from "react"
+import RNFetchBlob from 'react';
+import base64 from 'react-native-base64';
 
 
 class Chat extends React.Component {
@@ -32,7 +35,7 @@ class Chat extends React.Component {
       select_emoj: '',
       emoji_display: "none",
       newfile: [],
-      audio: []
+      base64Audio: ''
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -105,40 +108,48 @@ class Chat extends React.Component {
     // console.log(newfiles);
     // console.log(file.type);
   }
-handelAudioUser = (event) =>{
-  const voice = event.target.file[0]
-  const audio = document.createElement("audio");
-  document.body.appendChild(audio);
-  audio.controls = true;
-  console.log('Audioooooooooooooooooooo')
-  var newaudio = this.state.audio
- // audio.src = url;
-   newaudio.push({
-    voice:{
-    "url": URL.createObjectURL(voice),
-    "name":voice.name,
-    "type":voice.type
-    }
-   })
- this.setState({"audio":newaudio})  
- var voices =this.state.audio
- this.setState({'msgs':voices})
- this.inputRef.current.value = voice.name;
- this.onChange()
- console.log('this.state.audio000000000000000000')
+  handelAudioUser = (event) => {
+    console.log('Audioooooooooooooooooooo')
+    //     const audio = document.createElement("audio");
+    //     //  document.body.appendChild(audio);
+    //     // <audio controls src="data:audio/ogg;base64...
+    //     audio.controls = true;
+    //      var newaudio = this.state.audio
+    //     audio.src = '../src/static/music';base64
+    //     // newaudio.push({
+    //     //   file:{
+    //     //   "name":file.name,
+    //     //   "type":file.type
+    //       // }
+    //  //  })
+    //  this.setState({"audio":newaudio})  
+    //  var files =this.state.audio
+    //  this.setState({'msgs':files})
+    //  this.inputRef.current.value = this.state.msgs;
+    // const reader = new FileReader();
 
-}
+    // reader.onloadend = () => {
+    //   const base64Data = reader.result;
+    //   this.setState({base64Audio:base64Data});
+    // };
+
+   // if (file) {
+   //   reader.readAsDataURL(file);
+    //}
+  };
+  //  this.onChange()
+  // console.log('this.state.audio000000000000000000')
 
 
   render() {
 
-    var newaudio = this.state.audio
-    for(var a=0; a<newaudio.length;a++){
-     var file = newaudio[i].file
-     if (file) {
-     this.state.msgs.push({"msg":file.name})}
-    }
-  ///////////////************************/////////////////////
+    // var newaudio = this.state.audio
+    // for(var a=0; a<newaudio.length;a++){
+    //  var file = newaudio[a].file
+    //   if (file) {
+    //    this.state.msgs.push({"msg":file.name})}
+    //    }
+    ///////////////************************/////////////////////
     var newfiles = this.state.newfile
     var ms = this.state.msgs
     for (var i = 0; i < newfiles.length; i++) {
@@ -198,11 +209,17 @@ handelAudioUser = (event) =>{
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-           {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} /> */}
-             <div style={{ "display": this.state.MicNone }}>
-                <AddAudioElement /> 
-             <button onclick={this.handelAudioUser}></button> 
-             </div>
+            {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} /> */}
+            <div style={{ "display": this.state.MicNone }}>
+              {/* <button onclick={this.handelAudioUser}> audioo</button>  */}
+              <AddAudioElement />
+              {/* <input type="file" accept="audio/*" onClick={this.handelAudioUser} /> */}
+              {/* {this.statoe.base64Audio && (
+                <audio cntrols>
+                  <source src={this.state.base64Audio} type="audio/mp3" />
+                </audio>
+              )} */}
+            </div>
             <input ref={this.inputRef}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "

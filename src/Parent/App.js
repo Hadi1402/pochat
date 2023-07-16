@@ -13,7 +13,7 @@ import webSite from "./webSite";
 import Group from "./group";
 import EditGroup from "./editGroup";
 import CreateGroup from "./createGroup";
-
+import AddAudioElement from "./audio"
 
 
 
@@ -35,6 +35,7 @@ function App() {
    <Route exact path='/group' component={Group}/>
    <Route exact path='/editgroup' component={EditGroup}/>
    <Route exact path='/creategroup' component={CreateGroup}/>
+   <Route exact path='/audio' component={AddAudioElement}/>
 
 
 
