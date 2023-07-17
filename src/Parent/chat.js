@@ -17,7 +17,6 @@ class Chat extends React.Component {
     this.btn_send = React.createRef();
     this.filerRef = React.createRef();
     this.MicNone = React.createRef();
-    // const  input_emoji =  this.inputRef.current.value
     this.state = {
       input: "",
       btn_send_display: "none",
@@ -31,18 +30,10 @@ class Chat extends React.Component {
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
-    // this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
     this.total_event = this.total_event.bind(this)
 
   }
-
-  // handleEmojeShow = () => {
-  //   if (this.state.emoji_display == "none")
-  //     this.setState({ emoji_display: "block" })
-  //   else
-  //     this.setState({ emoji_display: "none" })
-  // }
 
   sendMessage(e) {
     e.preventDefault();
@@ -79,33 +70,33 @@ class Chat extends React.Component {
     }
   }
 
-  handleFileUpload = (event) => {
-    const file1 = event.target.files[0];
-    var file = {
-      "name": file1.name,
-      "size": file1.size,
-      "type": file1.type,
-      "url": URL.createObjectURL(file1)
-    }
-    console.log("here")
-    var messages = this.state.msgs
-    if (file) {
-      const type = file.name.split('.')
-      let t = type[type.length - 1]
-      if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
-        messages.push({ "msg": <img src={file.url} /> })
-      }
-      else {
-        if (["mp3", "webm"].includes((t).toLowerCase())) {
-          messages.push({ "msg": <audio controls src={file.url} /> })
-        }
-        else {
-          messages.push({ "msg": <img src={file} /> })
-        }
-      }
-    }
-    this.setState({ "msgs": messages })
-  }
+  // handleFileUpload = (event) => {
+  //   const file1 = event.target.files[0];
+  //   var file = {
+  //     "name": file1.name,
+  //     "size": file1.size,
+  //     "type": file1.type,
+  //     "url": URL.createObjectURL(file1)
+  //   }
+  //   console.log("here")
+  //   var messages = this.state.msgs
+  //   if (file) {
+  //     const type = file.name.split('.')
+  //     let t = type[type.length - 1]
+  //     if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
+  //       messages.push({ "msg": <img src={file.url} /> })
+  //     }
+  //     else {
+  //       if (["mp3", "webm"].includes((t).toLowerCase())) {
+  //         messages.push({ "msg": <audio controls src={file.url} /> })
+  //       }
+  //       else {
+  //         messages.push({ "msg": <img src={file} /> })
+  //       }
+  //     }
+  //   }
+  //   this.setState({ "msgs": messages })
+  // }
 
   total_event() {
     console.log("")
@@ -118,6 +109,7 @@ class Chat extends React.Component {
     else
       this.setState({ emoji_display: "none" })
   }
+
   render() {
     return (
       <div className='chat'>
@@ -166,23 +158,6 @@ class Chat extends React.Component {
               type="text"
             />
           </form>
-          {/* <InsertEmoticonIcon onClick={this.handleEmojeShow} />
-          <div style={{ "display": this.state.emoji_display }}>
-            <EmojiPicker
-              searchDisabled="true"
-              previewConfig={{ showPreview: false }}
-              emojiStyle="google"
-              onEmojiClick={(e) => {
-                this.inputRef.current.value = this.inputRef.current.value + e.emoji;
-                console.log(e)
-                this.onChange();
-
-              }
-              }
-              height={300}
-              width="100%"
-            />
-          </div> */}
           <Emoje input={this.inputRef} emoji_display={this.state.emoji_display} handle_click={this.handleEmojeShow} />
           <input type="file" onChange={this.handleFileUpload} />
 
