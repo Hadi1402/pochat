@@ -42,6 +42,8 @@ class Chat extends React.Component {
     this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
     this.handelAudioUser = this.handelAudioUser.bind(this)
+    this.total_event = this.total_event.bind(this)
+
   }
 
   handleEmojeShow = () => {
@@ -66,6 +68,8 @@ class Chat extends React.Component {
     )
     this.setState({ "msgs": messages })
     this.inputRef.current.value = '';
+    this.setState({ btn_send_display: 'none' })
+    this.setState({ MicNone: 'block' })
   }
 
   onChange(e) {
@@ -89,21 +93,41 @@ class Chat extends React.Component {
    }*/
 
   handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    var newfiles = this.state.newfile
-    newfiles.push({
-      file: {
-        "name": file.name,
-        "size": file.size,
-        "type": file.type,
-        "url": URL.createObjectURL(file)
+    const file1 = event.target.files[0];
+    // var newfiles = this.state.newfile
+    // newfiles.push({
+      
+    // })
+    var file= {
+      "name": file1.name,
+      "size": file1.size,
+      "type": file1.type,
+      "url": URL.createObjectURL(file1)
+    }
+    console.log("here")
+    var messages = this.state.msgs
+    // this.setState({ 'newfile': newfiles });
+    if (file) {
+      const type = file.name.split('.')
+      let t = type[type.length - 1]
+      if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
+        messages.push({ "msg": <img src={file.url} /> })
       }
-    })
-    this.setState({ 'newfile': newfiles });
-    var files = this.state.newfile
-    this.setState({ "msgs": files });
-    this.inputRef.current.value = file.name;
-    this.onChange()
+      else {
+        if (["mp3", "webm"].includes((t).toLowerCase())) {
+          messages.push({ "msg": <audio controls src={file.url} /> })
+        }
+        else {
+          messages.push({ "msg": <img src={file} /> })
+        }
+      }
+    }
+    this.setState({ "msgs": messages })
+
+    // var files = this.state.newfile
+    // this.setState({ "msgs": files });
+    // this.inputRef.current.value = file.name;
+    // this.onChange()
     // console.log(this.state.newfile);
     // console.log(newfiles);
     // console.log(file.type);
@@ -139,7 +163,10 @@ class Chat extends React.Component {
   };
   //  this.onChange()
   // console.log('this.state.audio000000000000000000')
-
+  total_event(){
+    console.log("")
+    this.setState({"emoji_display":"none"})
+  }
 
   render() {
 
@@ -150,27 +177,28 @@ class Chat extends React.Component {
     //    this.state.msgs.push({"msg":file.name})}
     //    }
     ///////////////************************/////////////////////
-    var newfiles = this.state.newfile
-    var ms = this.state.msgs
-    for (var i = 0; i < newfiles.length; i++) {
-      //let filetype= file.type
-      var file = newfiles[i].file
-      if (file) {
-        const type = file.name.split('.')
-        let t = type[type.length - 1]
-        if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
-          this.state.msgs.push({ "msg": <img src={file.url} /> })
-        }
-        else {
-          if (["mp3", "webm"].includes((t).toLowerCase())) {
-            this.state.msgs.push({ "msg": <audio controls src={file.url} /> })
-          }
-          else {
-            this.state.msgs.push({ "msg": <img src={file} /> })
-          }
-        }
-      }
-    }
+    // var newfiles = this.state.newfile
+    // var ms = this.state.msgs
+    // var msg_contents = []
+    // for (var i = 0; i < newfiles.length; i++) {
+    //   //let filetype= file.type
+    //   var file = newfiles[i].file
+    //   if (file) {
+    //     const type = file.name.split('.')
+    //     let t = type[type.length - 1]
+    //     if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
+    //       msg_contents.push({ "msg": <img src={file.url} /> })
+    //     }
+    //     else {
+    //       if (["mp3", "webm"].includes((t).toLowerCase())) {
+    //         msg_contents.push({ "msg": <audio controls src={file.url} /> })
+    //       }
+    //       else {
+    //         msg_contents.push({ "msg": <img src={file} /> })
+    //       }
+    //     }
+    //   }
+    // }
     return (
       <div className='chat'>
         <div className='chat_header'>
@@ -193,7 +221,7 @@ class Chat extends React.Component {
           </div>
         </div>
 
-        <div className='chat_body'>
+        <div className='chat_body'  onClick={this.total_event}>
           {this.state.msgs.map(q => (
             <p className='chat_message' style={{ "display": this.state.p_display }}> <span>{q.msg}</span>
               <span className='time'> {q.time} </span>
@@ -232,8 +260,12 @@ class Chat extends React.Component {
               searchDisabled="true"
               previewConfig={{ showPreview: false }}
               emojiStyle="google"
-              onEmojiClick={(e) =>
-                this.setState({ "msgs": e })
+              onEmojiClick={(e) => {
+                this.inputRef.current.value = this.inputRef.current.value + e.emoji;
+                console.log(e)
+                this.onChange();
+
+              }
               }
               height={300}
               width="100%"
