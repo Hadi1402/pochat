@@ -4,11 +4,10 @@ import { Avatar, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge"
 import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import EmojiPicker from 'emoji-picker-react';
-import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import axios from 'axios';
 import AddAudioElement from "./audio.js"
 import Emoje from "./emoje.js"
+import HandleFileUpload from "./load_file.js"
 
 class Chat extends React.Component {
   constructor(props) {
@@ -30,7 +29,6 @@ class Chat extends React.Component {
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
-    this.handleFileUpload = this.handleFileUpload.bind(this)
     this.total_event = this.total_event.bind(this)
 
   }
@@ -70,33 +68,7 @@ class Chat extends React.Component {
     }
   }
 
-  // handleFileUpload = (event) => {
-  //   const file1 = event.target.files[0];
-  //   var file = {
-  //     "name": file1.name,
-  //     "size": file1.size,
-  //     "type": file1.type,
-  //     "url": URL.createObjectURL(file1)
-  //   }
-  //   console.log("here")
-  //   var messages = this.state.msgs
-  //   if (file) {
-  //     const type = file.name.split('.')
-  //     let t = type[type.length - 1]
-  //     if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
-  //       messages.push({ "msg": <img src={file.url} /> })
-  //     }
-  //     else {
-  //       if (["mp3", "webm"].includes((t).toLowerCase())) {
-  //         messages.push({ "msg": <audio controls src={file.url} /> })
-  //       }
-  //       else {
-  //         messages.push({ "msg": <img src={file} /> })
-  //       }
-  //     }
-  //   }
-  //   this.setState({ "msgs": messages })
-  // }
+  
 
   total_event() {
     console.log("")
@@ -159,7 +131,7 @@ class Chat extends React.Component {
             />
           </form>
           <Emoje input={this.inputRef} emoji_display={this.state.emoji_display} handle_click={this.handleEmojeShow} />
-          <input type="file" onChange={this.handleFileUpload} />
+         <HandleFileUpload  />
 
 
         </div>
