@@ -76,8 +76,11 @@ class Chat extends React.Component {
   }
 
   handleEmojeShow = () => {
-    if (this.state.emoji_display == "none")
+    if (this.state.emoji_display == "none"){
       this.setState({ emoji_display: "block" })
+      this.setState({ btn_send_display: 'block' })
+      this.setState({ MicNone: 'none' })
+    }
     else
       this.setState({ emoji_display: "none" })
   }
