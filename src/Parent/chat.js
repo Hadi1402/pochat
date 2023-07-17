@@ -8,7 +8,7 @@ import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import axios from 'axios';
 import AddAudioElement from "./audio.js"
-
+import Emoje from "./emoje.js"
 
 class Chat extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class Chat extends React.Component {
     this.btn_send = React.createRef();
     this.filerRef = React.createRef();
     this.MicNone = React.createRef();
+    // const  input_emoji =  this.inputRef.current.value
     this.state = {
       input: "",
       btn_send_display: "none",
@@ -30,19 +31,18 @@ class Chat extends React.Component {
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
-    this.handleEmojeShow = this.handleEmojeShow.bind(this)
+    // this.handleEmojeShow = this.handleEmojeShow.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
-    this.handelAudioUser = this.handelAudioUser.bind(this)
     this.total_event = this.total_event.bind(this)
 
   }
 
-  handleEmojeShow = () => {
-    if (this.state.emoji_display == "none")
-      this.setState({ emoji_display: "block" })
-    else
-      this.setState({ emoji_display: "none" })
-  }
+  // handleEmojeShow = () => {
+  //   if (this.state.emoji_display == "none")
+  //     this.setState({ emoji_display: "block" })
+  //   else
+  //     this.setState({ emoji_display: "none" })
+  // }
 
   sendMessage(e) {
     e.preventDefault();
@@ -81,7 +81,7 @@ class Chat extends React.Component {
 
   handleFileUpload = (event) => {
     const file1 = event.target.files[0];
-    var file= {
+    var file = {
       "name": file1.name,
       "size": file1.size,
       "type": file1.type,
@@ -106,12 +106,18 @@ class Chat extends React.Component {
     }
     this.setState({ "msgs": messages })
   }
- 
-  total_event(){
+
+  total_event() {
     console.log("")
-    this.setState({"emoji_display":"none"})
+    this.setState({ "emoji_display": "none" })
   }
 
+  handleEmojeShow = () => {
+    if (this.state.emoji_display == "none")
+      this.setState({ emoji_display: "block" })
+    else
+      this.setState({ emoji_display: "none" })
+  }
   render() {
     return (
       <div className='chat'>
@@ -121,7 +127,6 @@ class Chat extends React.Component {
             <h3> user name ... </h3>
             <p> last visit .... </p>
           </div>
-
           <div className='chat_headerRight'>
             <IconButton>
               <DonutLargeIcon />
@@ -135,7 +140,7 @@ class Chat extends React.Component {
           </div>
         </div>
 
-        <div className='chat_body'  onClick={this.total_event}>
+        <div className='chat_body' onClick={this.total_event}>
           {this.state.msgs.map(q => (
             <p className='chat_message' style={{ "display": this.state.p_display }}> <span>{q.msg}</span>
               <span className='time'> {q.time} </span>
@@ -153,7 +158,7 @@ class Chat extends React.Component {
             </button>
             <div style={{ "display": this.state.MicNone }}>
               <AddAudioElement />
-             
+
             </div>
             <input ref={this.inputRef}
               onChange={this.onChange}
@@ -161,7 +166,7 @@ class Chat extends React.Component {
               type="text"
             />
           </form>
-          <InsertEmoticonIcon onClick={this.handleEmojeShow} />
+          {/* <InsertEmoticonIcon onClick={this.handleEmojeShow} />
           <div style={{ "display": this.state.emoji_display }}>
             <EmojiPicker
               searchDisabled="true"
@@ -177,7 +182,8 @@ class Chat extends React.Component {
               height={300}
               width="100%"
             />
-          </div>
+          </div> */}
+          <Emoje input={this.inputRef} emoji_display={this.state.emoji_display} handle_click={this.handleEmojeShow} />
           <input type="file" onChange={this.handleFileUpload} />
 
 
