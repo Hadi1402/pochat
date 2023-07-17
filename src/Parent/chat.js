@@ -1,22 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import "../static/css/chat.css";
 import { Avatar, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge"
 import ChatIcon from "@material-ui/icons/Chat"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { InsertEmoticon, ThreeSixty } from '@material-ui/icons';
-import { MicNone } from '@material-ui/icons';
-import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import axios from 'axios';
-import file from "../static/img/file.jpg"
-import foo from "../static/music/foo.mp3"
 import AddAudioElement from "./audio.js"
-import { AudioRecorder, AudioUtils } from "react"
-import RNFetchBlob from 'react';
-import base64 from 'react-native-base64';
 
 
 class Chat extends React.Component {
@@ -87,17 +78,9 @@ class Chat extends React.Component {
       this.setState({ MicNone: 'block' })
     }
   }
-  /* sendEmoji(e) {
-     this.setState({ select_emoj: e.target.value })
-     console.log(this.state.select_emoj)
-   }*/
 
   handleFileUpload = (event) => {
     const file1 = event.target.files[0];
-    // var newfiles = this.state.newfile
-    // newfiles.push({
-      
-    // })
     var file= {
       "name": file1.name,
       "size": file1.size,
@@ -106,7 +89,6 @@ class Chat extends React.Component {
     }
     console.log("here")
     var messages = this.state.msgs
-    // this.setState({ 'newfile': newfiles });
     if (file) {
       const type = file.name.split('.')
       let t = type[type.length - 1]
@@ -123,82 +105,14 @@ class Chat extends React.Component {
       }
     }
     this.setState({ "msgs": messages })
-
-    // var files = this.state.newfile
-    // this.setState({ "msgs": files });
-    // this.inputRef.current.value = file.name;
-    // this.onChange()
-    // console.log(this.state.newfile);
-    // console.log(newfiles);
-    // console.log(file.type);
   }
-  handelAudioUser = (event) => {
-    console.log('Audioooooooooooooooooooo')
-    //     const audio = document.createElement("audio");
-    //     //  document.body.appendChild(audio);
-    //     // <audio controls src="data:audio/ogg;base64...
-    //     audio.controls = true;
-    //      var newaudio = this.state.audio
-    //     audio.src = '../src/static/music';base64
-    //     // newaudio.push({
-    //     //   file:{
-    //     //   "name":file.name,
-    //     //   "type":file.type
-    //       // }
-    //  //  })
-    //  this.setState({"audio":newaudio})  
-    //  var files =this.state.audio
-    //  this.setState({'msgs':files})
-    //  this.inputRef.current.value = this.state.msgs;
-    // const reader = new FileReader();
-
-    // reader.onloadend = () => {
-    //   const base64Data = reader.result;
-    //   this.setState({base64Audio:base64Data});
-    // };
-
-   // if (file) {
-   //   reader.readAsDataURL(file);
-    //}
-  };
-  //  this.onChange()
-  // console.log('this.state.audio000000000000000000')
+ 
   total_event(){
     console.log("")
     this.setState({"emoji_display":"none"})
   }
 
   render() {
-
-    // var newaudio = this.state.audio
-    // for(var a=0; a<newaudio.length;a++){
-    //  var file = newaudio[a].file
-    //   if (file) {
-    //    this.state.msgs.push({"msg":file.name})}
-    //    }
-    ///////////////************************/////////////////////
-    // var newfiles = this.state.newfile
-    // var ms = this.state.msgs
-    // var msg_contents = []
-    // for (var i = 0; i < newfiles.length; i++) {
-    //   //let filetype= file.type
-    //   var file = newfiles[i].file
-    //   if (file) {
-    //     const type = file.name.split('.')
-    //     let t = type[type.length - 1]
-    //     if (["jpg", "png", "gif"].includes((t).toLowerCase())) {
-    //       msg_contents.push({ "msg": <img src={file.url} /> })
-    //     }
-    //     else {
-    //       if (["mp3", "webm"].includes((t).toLowerCase())) {
-    //         msg_contents.push({ "msg": <audio controls src={file.url} /> })
-    //       }
-    //       else {
-    //         msg_contents.push({ "msg": <img src={file} /> })
-    //       }
-    //     }
-    //   }
-    // }
     return (
       <div className='chat'>
         <div className='chat_header'>
@@ -237,16 +151,9 @@ class Chat extends React.Component {
               style={{ "display": this.state.btn_send_display }}
               type="submit">  ارسال
             </button>
-            {/* <MicNone className='MicNone' style={{ "display": this.state.MicNone }} onclick={this.handelAudio} /> */}
             <div style={{ "display": this.state.MicNone }}>
-              {/* <button onclick={this.handelAudioUser}> audioo</button>  */}
               <AddAudioElement />
-              {/* <input type="file" accept="audio/*" onClick={this.handelAudioUser} /> */}
-              {/* {this.statoe.base64Audio && (
-                <audio cntrols>
-                  <source src={this.state.base64Audio} type="audio/mp3" />
-                </audio>
-              )} */}
+             
             </div>
             <input ref={this.inputRef}
               onChange={this.onChange}
