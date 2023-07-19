@@ -20,10 +20,8 @@ class SupportUser extends React.Component {
             <div className="app">
                 <div className="app_body">
                     <div className="sidebar">
-
                         <div className="sidebar_header">
                         </div>
-
                         <div className="sidebar_headerRight">
                             <Avatar />
                             <IconButton>
@@ -32,13 +30,10 @@ class SupportUser extends React.Component {
                             <IconButton>
                                 <ChatIcon />
                             </IconButton>
-
                             <IconButton>
                                 <MoreVertIcon />
                             </IconButton>
-
                         </div>
-
                         <div className="sidebar_search">
                             <div className="sidedar_searchContainer">
                                 <SearchOutlined />
@@ -51,8 +46,6 @@ class SupportUser extends React.Component {
                             <SidebarChat />
                             <SidebarChat />
                         </div>
-
-
                     </div>
                     <Chat />
                 </div>

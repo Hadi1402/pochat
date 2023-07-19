@@ -2,31 +2,49 @@
   --bc-color:rgb(255, 255, 255);
   --menu-color:rgb(36,178,76);
 }
-html , body , #root , .App , .home {
+html , body , #root , .App , .home , .app{
   height:100%;
   width:100%;
   margin: 0;
 }
 .home{
-  height:110%;
+  height:100%;
   /* width: (current screen width)-();
   height: (current screen height)-(); */
   background-color: var(--bc-color-home-page);
 }
-header{
+#content{
+  width: 100%;
+  background-color:whitesmoke;
+  margin-top: 150px;
+}
+#homepageheader{
+  transition: 0.5s, transform 0.5s;
+  position: fixed;
   width: 100%;
   height: 150px;
   background-color: #dddddd;
   display: grid;
+  top: 0;
   /* font-family:jadid; */
 }
+header b {
+  position: fixed;
+}
 #signup_user_btn{
-  width:100px
+  width:100px;
+  display: none;
+
 }
 #home_page_menu_button{
   width: 100px;
+  display: none;
+}
+#home_page_menu{
+  height:40px;
 }
 #logo_name_div{
+  transition: 0.5s,transform 0.5s;
   width: 220px;
   height:100px;
   float: left;
@@ -39,7 +57,7 @@ header{
   float:right;
   font-size: xx-large;
   font-weight: 900;
-  /* margin:auto; */
+  margin:auto;
 }
 #logo_div{
   width:100px;
@@ -57,29 +75,36 @@ header #menu{
   width: 100%;
   height: 40px;
   background-color:rgb(34,178,80);
-  display:grid;
+  display:flex;
+  justify-content: center;
 }
 header #menu .menu_item{
   width:60px;
-  height: 100%;
+  height: 40px;
   background-color: #ff0000;
   border-style: groove;
-  margin: auto;
+  border-width: 3px;
+  border-left-width:1px ;
+  border-right-width:1px ;
+  text-align: center;
+  text-align: justify;
+
 }
-@media (max-width: 721px){
+
+/* @media (max-width: 721px){
   header{
     width: 100%;
     height: 100px;
     background-color: var(--menu-them-w);
     display: flex;
-    /* justify-content: center; */
+    justify-content: center; 
     align-items: center;
   }
   #signup_user_btn{
     width:150px;
     height: 70px;
     float: right;
-    /* position: absolute; */
+    /* position: absolute; 
     right: 10px;
     background-color: #ff0000;
     font-size: xx-large;
@@ -90,7 +115,7 @@ header #menu .menu_item{
     height:100px;
     float: left;
     display: flex;
-    /* margin: auto; */
+    /* margin: auto; 
 
     text-align: center;
     background-color: #02ee0e;
@@ -99,12 +124,12 @@ header #menu .menu_item{
     float:right;
     font-size: xx-large;
     font-weight: 900;
-    /* margin:auto; */
+    /* margin:auto; 
   }
   #logo_div{
     width:100px;
     height: 100px;
-    /* margin: auto; */
+    /* margin: auto; 
     float: right;
     background-color: #e0050500;
   }
@@ -126,11 +151,11 @@ header #menu .menu_item{
     background-color: #ff5100;
     border-style: groove;
     float: left;
-    /* margin: auto; */
+    /* margin: auto; 
   }
   .menu_item.active {
     background-color: blue;
   }
 
 
-}
+}  */

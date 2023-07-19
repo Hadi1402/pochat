@@ -5,7 +5,7 @@ import RegisterUserPage from "../Parent/registeruser.js"
 import {Switch, Route , Router, BrowserRouter } from "react-router-dom";
 import LoginSet from "./login.js";
 import AdminDashbord from "./admin_dashbord";
-import Home from "../Componnet/pochat";
+import Home from "../Component/pochat";
 import SupportUser from "./supportUser"
 import Sidebar from "./supportUser";
 import User from "./user"
@@ -19,33 +19,25 @@ import CreateGroup from "./createGroup";
 
 function App() {
   return (
+    <div className="App">
+      <BrowserRouter>
+        <Switch>
 
-     
-     <div className="App">
+          <Route exact path="/"              component={Home}             />{/* no */}
+          <Route exact path="/login"         component={LoginSet}         />{/* finish */}
+          <Route exact path='/RegisterUser'  component={RegisterUserPage} />{/* finish */}
+          <Route exact path='/supportuser'   component={SupportUser}      />{/* almost finish */}
+          <Route exact path='/adminDashbord' component={AdminDashbord}    />{/* no idea */}
+          <Route exact path='/user'          component={User}             />{/* finished */}
+          <Route exact path='/website'       component={webSite}          />{/* finished */}
+          <Route exact path='/group'         component={Group}            />{/* finished */}
+          <Route exact path='/editgroup'     component={EditGroup}        />{/* no */}
+          <Route exact path='/creategroup'   component={CreateGroup}      />{/* finished */}
 
-   <BrowserRouter>   
-   <Switch>
-   <Route exact path="/"  component={Home} />
-   <Route exact path="/login" component={LoginSet}  />
-   <Route exact path='/RegisterUser'  component={RegisterUserPage} />
-   <Route exact path='/supportuser' component={SupportUser}/>
-   <Route exact path='/adminDashbord' component={AdminDashbord}/>
-   <Route exact path='/user' component={User}/>
-   <Route exact path='/website' component={webSite}/>
-   <Route exact path='/group' component={Group}/>
-   <Route exact path='/editgroup' component={EditGroup}/>
-   <Route exact path='/creategroup' component={CreateGroup}/>
-
-
-   
-   </Switch>
-   </BrowserRouter>
-
+        </Switch>
+      </BrowserRouter>
     </div>
-     
-  
-     
-     );
+  );
 }
 
 export default App;

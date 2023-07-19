@@ -181,39 +181,51 @@ input[type='password']{
 }
 
 .sidebarchat:hover{ background-color: #ebebeb;}
-
 .app {
     display:grid;
     place-items:center;
     background-color: #dadbd3;
     height: 100%;
-}
+ }
 
 .app_body {
     display: flex;
     background-color: #dadbde;
     height: 100%;
     width: 100%;
-    box-shadow: -1px 4px 20px -6px rgba(0,0,0);
 }
-
-
-
-
 .chat {
+    height: 100%;
     flex: 0.80;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
-
 .chat_header {
+    height: 66px;
     display: flex; 
     padding: 15px; 
     align-items: center; 
     border-bottom: 1px solid lightgray;
     margin-bottom: 0px;
 }
-
+.chat_body{
+    height: calc(100% - 170px);
+    flex: 1;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    background-repeat: repeat;
+    background-position: center;
+    padding: 30px;
+    overflow-y: auto;
+}   
+.chat_footer {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
 .chat_headerInfo {flex: 1; padding-left: 20px;}
 
 
@@ -227,13 +239,6 @@ input[type='password']{
 }
 /* .MuiSvgIcon-root{} */
 /* .MuiButtonBase-root MuiIconButton-root */
-.chat_footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 62px;
-    border-top: 1px solid lightgray;
-}
 
 
 .chat_footer form{
@@ -260,14 +265,6 @@ input[type='password']{
 
 .MicNone {margin: auto; background-color:#d3c2ce ; border-radius: 30px;}
 
-.chat_body{
-    flex: 1;
-    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
-    background-repeat: repeat;
-    background-position: center;
-    padding: 30px;
-    overflow-y: auto;
-}   
 
 
 .chat_message {

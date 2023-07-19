@@ -5,6 +5,7 @@ import Select from 'react-select';
 import editGroup from "../Actions/editGroupTable";
 import group_data from "./group_data";
 import axios from "axios";
+import '../static/css/editGroup.css'
 
 
 class EditGroup extends React.Component {
@@ -47,11 +48,13 @@ class EditGroup extends React.Component {
   }
 
   render() {
+
     var params = new URL(window.location).searchParams
     console.log(params)
     var id_rec = params.get("id")
     console.log(id_rec)
     var id, group, date, status, user
+
     this.state.group.forEach(element => {
       console.log(id_rec, element["id"])
       if (id_rec == element['id']) {
@@ -65,10 +68,11 @@ class EditGroup extends React.Component {
     });
 
     return (
-      <div>
-        <h2>        ***********************************************  ویرایش  گروه ها ***********************************************</h2>
-        <hr />
-        <div>
+      <div className="App">
+        <header id="edit_group_header">
+          <h2>اضافه کردن گروه</h2>
+        </header>
+        <tbody>
           <div className="panel">
             <input type='text' defaultValue={id} name='id' ref={this.id_ref} required />
             <br />
@@ -85,7 +89,7 @@ class EditGroup extends React.Component {
             <input type='button' value='تایید' className="btnoky" onClick={this.saveEdit} />
             <input type='button' value='بستن' className="btncancel" onClick={this.Cancel} />
           </div>
-        </div>
+        </tbody>
       </div>
     )
   }

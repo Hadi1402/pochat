@@ -1,0 +1,52 @@
+/* Replace the styles below with your own CSS */
+
+.div_site {
+  margin: 10px;
+  padding: 10px;
+}
+
+.user_table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td_user_table {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  font-weight: bold;
+  padding: 8px;
+  text-align: center;
+}
+
+.check_box {
+  text-align: center;
+}
+
+.add_site_panel {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 10px;
+}
+
+.add_site_panel h3 {
+  margin-top: 0;
+}
+
+.add_site_panel label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add_site_panel input[type="text"] {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.add_site_panel input[type="button"] {
+  margin-right: 5px;
+  padding: 5px 10px;
+}
+
+/* End of CSS template */

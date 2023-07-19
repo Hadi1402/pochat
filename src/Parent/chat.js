@@ -11,7 +11,7 @@ import Picker from 'emoji-picker-react';
 import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 import { Select } from '@mui/material';
-import Dropzone from 'react-dropzone';
+// import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import file from "../static/img/file.jpg"
 

@@ -1,131 +1,110 @@
-import React, { useState, useRef } from 'react';
-import "../static/css/chat.css";
-import { Avatar } from "@material-ui/core";
-import { SearchOutlined, Style } from "@material-ui/icons";
-import user_data from "./user_data";
-import axios from 'axios';
+import React, { useState } from "react";
+import user_data from "./user_data.json";
+import "../static/css/user.css";
 
+function User() {
+  const [selectedIds, setSelectedIds] = useState([]);
 
-class User extends React.Component {
+  function handleRowClick(event) {
+    const id = parseInt(event.currentTarget.dataset.id, 10);
+    const isSelected = selectedIds.includes(id);
 
-  constructor(props) {
-    super(props)
-    this.status_Ref = React.createRef();
-    this.check_Ref = React.createRef();
-    this.state = {
-      data:[],
-      select_checked: [],
-                 }
-    this.onChange_disable = this.onChange_disable.bind(this)
-    this.onClick = this.onClick.bind(this)
-    this.onChange_enable = this.onChange_enable.bind(this)
-    this.onChange_delete = this.onChange_delete.bind(this)
-         }
-
-    componentDidMount = () =>{
-     axios.get('http://localhost/data/user_data.json').then(res =>{
-       console.log(res.data);
-       this.setState({data:res.data})
-       console.log(this.state.data)
-              });                 
-            }     
-
-  onClick = (event) => {
-    this.state.select_checked.push(event.target.getAttribute("data_value"))
-    this.setState({ select_checked: this.state.select_checked });
-    console.log(this.state.select_checked)
-           }
-
-
-  onChange_disable = (e) => {
-    this.state.data.forEach(element => {
-    console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-     if (this.state.select_checked.includes(element["id"].toString())){
-      element["status user"] = "غیر فعال" }
-        });
-    this.setState({ data: this.state.data })
-           }
-
-
-  onChange_enable = (e) => {
-    this.state.data.forEach(element => {
-    console.log(element, this.state.select_checked, this.state.select_checked.includes(element["id"].toString()));
-     if (this.state.select_checked.includes(element["id"].toString())) {
-      element["status user"] = " فعال"}
-      this.setState({ data: this.state.data })
-    });
+    if (isSelected) {
+      setSelectedIds(selectedIds.filter((selectedId) => selectedId !== id));
+    } else {
+      setSelectedIds([...selectedIds, id]);
+    }
   }
 
-  onChange_delete = (e) => {
-    this.state.data.forEach(element => {
-    if (this.state.select_checked.includes(element["id"].toString())) {
-     //this.state.row_display = "none"
-      element["display"] = "none";
-        // call backend
+  function handleDisableClick() {
+    const newData = user_data.map((user) => {
+      if (selectedIds.includes(user.id)) {
+        return { ...user, "status user": "غیر فعال" };
+      } else {
+        return user;
       }
     });
-    this.setState({ data: this.state.data })
+
+    user_data = newData;
+    setSelectedIds([]);
   }
 
+  function handleEnableClick() {
+    const newData = user_data.map((user) => {
+      if (selectedIds.includes(user.id)) {
+        return { ...user, "status user": "فعال" };
+      } else {
+        return user;
+      }
+    });
 
-  render() {
-    return (
+    user_data = newData;
+    setSelectedIds([]);
+  }
 
-      <div>
-        <div className="div_user">
-          <div className="search_user">
-            <SearchOutlined />
-            <input placeholder=" search ... " />
-          </div>
+  function handleDeleteClick() {
+    const newData = user_data.filter((user) => !selectedIds.includes(user.id));
 
-          <table className="user_table">
-            <thead>
-              <tr>
-                <th className="td_user_table" colspan="2"> ID </th>
-                <th className="td_user_table" colspan="2"> نام کاربری </th>
-                <th className="td_user_table" colspan="2">  ایمیل </th>
-                <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
-                <th className="td_user_table" colspan="2">  وضعیت کاربر </th>
-                <th className="td_user_table" colspan="2">  زمینه فعالیت  </th>
-                <th className="td_user_table" colspan="2">  انتخاب</th>
-              </tr>
-            </thead>
-            
-            {this.state.data.map(u => (
-              <tbody>
-                <tr className="info_table" style={ {display:u["display"]} }>
-                  <td colspan="2">  {u["id"]} </td>
-                  <td colspan="2"> <img className="img_user" src={u.img} /> <span> {u["user_name"]} </span> </td>
-                  <td colspan="2"> {u["email"]} </td>
-                  <td colspan="2">  {u["data create"]} </td>
-                  <td ref={this.status_Ref} className="td_status" colspan="2"> {u["status user"]}  </td>
-                  <td colspan="2">  {u["field"]} </td>
-                  <td className="check_box" colspan="2">  <input
-                    type="checkbox"
-                    data_value={u["id"]}
-                    onChange={this.onClick}
-                  />
-                  </td>
-                </tr>
-              </tbody>
+    user_data = newData;
+    setSelectedIds([]);
+  }
 
-            ))}
-          </table>
-
-        </div>
-        <br></br>
-        <input className="Active_user" type='button' value='فعال کردن' onClick={this.onChange_enable} />
-        <input className="dActive_user" type='button' value='غیر فعال کردن' onClick={this.onChange_disable} />
-        <input className="del_user" type='button' value='حذف کاربر' onClick={this.onChange_delete} />
-
+  return (
+    <div>
+      <div className="search_user">
+        <input type="text" placeholder="جستجو" />
+        <button>
+          <i className="fa fa-search"></i>
+        </button>
       </div>
 
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>عکس پروفایل</th>
+              <th>نام کاربری</th>
+              <th>ایمیل</th>
+              <th>زمینه فعالیت</th>
+              <th>تاریخ ایجاد</th>
+              <th>وضعیت کاربر</th>
+            </tr>
+          </thead>
+          <tbody>
+            {user_data.map((user) => (
+              <tr
+                key={user.id}
+                data-id={user.id}
+                className={selectedIds.includes(user.id) ? "selected" : ""}
+                onClick={handleRowClick}
+              >
+                <td>{user.id}</td>
+                <td><img src={user.img} alt={user["user_name"]} /></td>
+                <td>{user["user_name"]}</td>
+                <td>{user.email}</td>
+                <td>{user.field}</td>
+                <td>{user["data create"]}</td>
+                <td>{user["status user"]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-
-
-    )
-  }
+      <div className="user_buttons">
+        <button onClick={handleDisableClick} disabled={selectedIds.length === 0}>
+          غیر فعال کردن
+        </button>
+        <button onClick={handleEnableClick} disabled={selectedIds.length === 0}>
+          فعال کردن
+        </button>
+        <button onClick={handleDeleteClick} disabled={selectedIds.length === 0}>
+          حذف کاربر
+        </button>
+      </div>
+    </div>
+  );
 }
 
-
-export default User;   
+export default User;
