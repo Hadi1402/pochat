@@ -1,14 +1,9 @@
 
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import React from "react";
 import "../static/css/chat.css";
 import { createRef } from "react";
-import { Avatar, easing } from "@material-ui/core";
 import Select from 'react-select';
 import user_data from "./user_data";
-//import editGroup from "./editGroup"
-//import { NavLink, navigate } from "react-router-dom";
-//import { connect } from "react-redux";
 import axios from "axios"
 
 
@@ -57,7 +52,6 @@ class CreateGroup extends React.Component {
     this.state.group.forEach(element => {
       element['id'] = this.id_ref.current.value;
       element["group_name"] = this.group_ref.current.value;
-      //  for(let j=0 ; j<this.state.selectOption.length; j++){}
       element["user_name"] = this.state.selectOption
       console.log(this.state.selectOption)
       console.log('selecttt uaers:', element["user_name"])

@@ -1,14 +1,7 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import React from "react";
 import "../static/css/chat.css";
 import { createRef } from "react";
-import { Avatar, easing } from "@material-ui/core";
 import Select from 'react-select';
-import user_data from "./user_data";
-//import editGroup from "./editGroup"
-import { NavLink, navigate } from "react-router-dom";
-import editGroup from "../Actions/editGroupTable";
-import { connect } from "react-redux";
 import axios from "axios"
 
 

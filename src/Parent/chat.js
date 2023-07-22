@@ -25,7 +25,6 @@ class Chat extends React.Component {
       select_emoj: '',
       emoji_display: "none",
       newfile: [],
-      base64Audio: ''
     }
     this.sendMessage = this.sendMessage.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -68,15 +67,13 @@ class Chat extends React.Component {
     }
   }
 
-  
-
   total_event() {
     console.log("")
     this.setState({ "emoji_display": "none" })
   }
 
   handleEmojeShow = () => {
-    if (this.state.emoji_display == "none"){
+    if (this.state.emoji_display == "none") {
       this.setState({ emoji_display: "block" })
       this.setState({ btn_send_display: 'block' })
       this.setState({ MicNone: 'none' })
@@ -125,18 +122,18 @@ class Chat extends React.Component {
             </button>
             <div style={{ "display": this.state.MicNone }}>
               <AddAudioElement />
-
             </div>
+
             <input ref={this.inputRef}
               onChange={this.onChange}
               placeholder="پیام خود را تایپ کنید "
               type="text"
             />
           </form>
+
           <Emoje input={this.inputRef} emoji_display={this.state.emoji_display} handle_click={this.handleEmojeShow} />
-         <HandleFileUpload  />
-
-
+          <HandleFileUpload />
+          
         </div>
 
       </div>

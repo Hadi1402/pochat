@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import "../static/css/chat.css";
-import { Avatar } from "@material-ui/core";
 import { SearchOutlined, Style } from "@material-ui/icons";
 import user_data from "./user_data";
 import axios from 'axios';

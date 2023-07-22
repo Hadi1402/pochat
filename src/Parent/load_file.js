@@ -3,12 +3,10 @@ import "../static/css/chat.css";
 import axios from 'axios';
 
 class HandleFileUpload extends React.Component {
-
     constructor(props) {
         super(props)
         this.handle_file_upload = this.handle_file_upload.bind(this)
     }
-
 
     handle_file_upload(event) {
         const file1 = event.target.files[0];
@@ -47,11 +45,8 @@ class HandleFileUpload extends React.Component {
     render() {
         return (
             <div>
-
                 <input type="file" onChange={this.handle_file_upload} />
-
             </div>
-
         )
 
     }

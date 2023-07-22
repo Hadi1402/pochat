@@ -1,14 +1,11 @@
 import React from 'react';
 import "../static/css/chat.css";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EmojiPicker from 'emoji-picker-react';
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon"
 
 
 
 class Emoje extends React.Component {
-
-
   render() {
     console.log("this.props.input:", this.props.input)
     return (
