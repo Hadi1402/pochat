@@ -339,6 +339,15 @@ input[type='password'] {
     overflow: '';
 }
 
+.chat_body video{
+    height: 250px;
+    width: 300px;
+}
+
+.chat_body img{
+    height: 200px;
+    width: 300px;
+}
 
 .chat_message {
     position: relative;
