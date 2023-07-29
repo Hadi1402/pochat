@@ -1,61 +1,63 @@
-#create_group_header {
-  background-color: #f4f4f4;
-  padding: 10px;
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.create_group_header {
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
 #create_group_header_text {
   text-align: center;
 }
 
-.create_group_tbody {
-  padding: 10px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
 #create_group_form {
-  max-width: 350px;
   display: flex;
-  justify-content:center;
-  margin-bottom: 10px;
-  background-color: red;
-  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
-#create_group_name {
-  padding: 5px;
+#create_group_form input[type="text"],
+#create_group_form button {
+  margin-top: 10px;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
-  outline: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  font-size: 16px;
 }
-#add_user_list{
-  display: none;
-}
-#create_group_select_users {
-  padding: 5px;
-  background-color: #ffca28;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+
+#create_group_form input[type="text"] {
+  width: 100%;
+  max-width: 500px;
 }
 
 #create_group_create {
-  padding: 5px;
-  background-color: #388e3c;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
   cursor: pointer;
 }
 
-.btnoky {
-  margin-right: 10px;
-  background-color: #388e3c;
-  border: none;
-  color: #fff;
-  padding: 5px 20px;
-  border-radius: 4px;
+#create_group_create:hover {
+  background-color: #3e8e41;
+}
+
+#create_group_select_users {
+  background-color: #008CBA;
+  color: white;
   cursor: pointer;
+}
+
+#create_group_select_users:hover {
+  background-color: #006380;
+}
+
+.create_group_tbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
