@@ -5,6 +5,7 @@ import "../static/css/home.css";
 import "../static/css/varriables.css";
 import logo from "../static/icons/logo porya-01.svg"
 import menu_logo from "../static/icons/logo.svg"
+import background_img from "../static/img/home_page_background.png"
 // import {Link, NavLink} from "react-router-dom";
 // import HomeSideBar from "../Parent/home-sidebar";
 
@@ -40,25 +41,24 @@ class Home extends Component {
     }
   }
 
-  handleHeaderHide(){
-    console.log("reached to moe than 150")
-    
-    const header = document.getElementById('homepageheader');
-    const logo = document.querySelector('#logo_name_div')
-
-
-    header.style.height = 100 + 'px';
-    logo.style.margin = 'auto 100% auto 0'
-
-  }
-  handleHeaderShow(){
-    console.log("reached to less than 150")
-    
+  handleHeaderHide() {
+    console.log("reached to more than 150");
+  
     const header = document.getElementById('homepageheader');
     const logo = document.querySelector('#logo_name_div');
-
-    header.style.height = 150 + 'px';
-    logo.style.margin = 'auto'
+  
+    header.style.height = '100px';
+    logo.style.margin = '0 0 0 0';
+  }
+  
+  handleHeaderShow() {
+    console.log("reached to less than 150");
+  
+    const header = document.getElementById('homepageheader');
+    const logo = document.querySelector('#logo_name_div');
+  
+    header.style.height = '100px';
+    logo.style.margin = '0 0 0 calc(50% - 110px)';
 
   }
 
@@ -86,6 +86,12 @@ class Home extends Component {
           </div>
 
         </header>
+
+        <tbody>
+          <div id="homepage_background_img_div">
+            <img id="homepage_bakground_img" src={background_img} alt='background'></img>
+          </div>
+        </tbody>
 
         <div id='content'>
           <p>1</p>

@@ -30,7 +30,7 @@ tbody .selected {
   background-color: #e6e6e6;
 }
 
-img {
+.user_logo {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;

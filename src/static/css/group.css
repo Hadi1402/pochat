@@ -81,7 +81,7 @@
 }
 
 .group .edit_button {
-  background-color: #337ab7;
+  background-color: var(--button-color-b);
 }
 
 .group .create_group_form {

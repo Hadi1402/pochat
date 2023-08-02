@@ -80,7 +80,7 @@ function User() {
                 onClick={handleRowClick}
               >
                 <td>{user.id}</td>
-                <td><img src={user.img} alt={user["user_name"]} /></td>
+                <td><img className="user_logo" src={user.img} alt={user["user_name"]} /></td>
                 <td>{user["user_name"]}</td>
                 <td>{user.email}</td>
                 <td>{user.field}</td>
