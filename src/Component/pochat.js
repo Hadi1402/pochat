@@ -25,6 +25,8 @@ class Home extends Component {
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
+    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
+    window.addEventListener('resize', this.onWindowSizeChanged);
     
   }
 
@@ -34,6 +36,13 @@ class Home extends Component {
     window.addEventListener('mousemove', this.onMouseMove);
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
 
+    const displayWidth = window.innerWidth || window.clientWidth;
+    const displayHeight = window.innerHeight || window.clientHeight;
+
+    this.setState({
+      displayWidth,
+      displayHeight,
+    });   
   }
 
   componentWillUnmount() {
@@ -44,13 +53,19 @@ class Home extends Component {
 
   }
 
-  onWindowSizeChanged() {
-    console.log("your screen width is : ","x:",this.state.screenSize.width)
-    console.log("and your screen height is : ","y:",this.state.screenSize.height)
-    const windowWidth = window.innerWidth || window.clientWidth;
-    const windowHeight = window.innerHeight || window.clientHeight;
+  onWindowSizeChanged = () => {
+    const displayWidth = window.innerWidth || window.clientWidth;
+    const displayHeight = window.innerHeight || window.clientHeight;
 
-    this.setState({ width: windowWidth, height: windowHeight });
+    this.setState({
+      displayWidth,
+      displayHeight,
+    });
+
+    const background = document.querySelector('#homepage_background_img_div');
+
+    background.style.height = displayHeight
+    background.style.width = displayWidth
   }
 
   onMouseMove(event) {
@@ -102,8 +117,7 @@ class Home extends Component {
 
   render() {
 
-    const { mousePos } = this.state;
-    const { width, height } = this.state;
+    const { mousePos, width, height, displayWidth, displayHeight } = this.state;
 
 
     return (
@@ -114,6 +128,8 @@ class Home extends Component {
             <h5> position from top is : {this.state.scrollTop}</h5>
             <h5> position mouse x is : {this.state.mousePos.x}</h5>
             <h5> position mouse y is : {this.state.mousePos.y}</h5>
+            <h5> width of your window is : {this.state.displayWidth}</h5>
+            <h5> height of your window is : {this.state.displayHeight}</h5>
           </div>
 
           <div id="logo_name_div">
