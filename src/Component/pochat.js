@@ -14,19 +14,51 @@ class Home extends Component {
     super(props);
     this.state = {
       scrollTop: 0,
+      screenSize:{
+        width: 0,
+        height: 0
+      },
+      mousePos: {
+        x: 0,
+        y: 0
+      }
     };
     this.handleScroll = this.handleScroll.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    
   }
 
   componentDidMount() {
-    console.log(this.state.scrollTop);
+    console.log("componentDidMount")
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('mousemove', this.onMouseMove);
+    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
+
   }
 
   componentWillUnmount() {
-    console.log(this.state.scrollTop);
+    console.log("componentWillUnMount")
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('resize', this.onWindowSizeChanged);
+
   }
+
+  onWindowSizeChanged() {
+    console.log("your screen width is : ","x:",this.state.screenSize.width)
+    console.log("and your screen height is : ","y:",this.state.screenSize.height)
+    const windowWidth = window.innerWidth || window.clientWidth;
+    const windowHeight = window.innerHeight || window.clientHeight;
+
+    this.setState({ width: windowWidth, height: windowHeight });
+  }
+
+  onMouseMove(event) {
+    console.log("your mouse position is : " , "x :",this.state.mousePos.x," y : ",this.state.mousePos.y)
+    const mousePos = { ...this.state.mousePos, x: event.clientX, y: event.clientY };
+    this.setState({ mousePos });
+  }
+
 
   handleScroll(event) {
     const scrollTop = window.scrollY;
@@ -46,9 +78,12 @@ class Home extends Component {
   
     const header = document.getElementById('homepageheader');
     const logo = document.querySelector('#logo_name_div');
+    const menu = document.querySelector('#menu');
   
     header.style.height = '100px';
     logo.style.margin = '0 0 0 0';
+    menu.style.margin = '30px calc(50% - 125px) auto calc(50% - 125px)'
+
   }
   
   handleHeaderShow() {
@@ -56,18 +91,30 @@ class Home extends Component {
   
     const header = document.getElementById('homepageheader');
     const logo = document.querySelector('#logo_name_div');
+    const menu = document.querySelector('#menu');
   
     header.style.height = '100px';
     logo.style.margin = '0 0 0 calc(50% - 110px)';
+    menu.style.margin = '100px calc(50% - 125px) auto calc(50% - 125px)'
 
   }
 
 
   render() {
+
+    const { mousePos } = this.state;
+    const { width, height } = this.state;
+
+
     return (
       <div className="home" ref={this.myElementRef}>
         <header id='homepageheader'>
-          <b>{this.state.scrollTop}</b>
+
+          <div id='status'>
+            <h5> position from top is : {this.state.scrollTop}</h5>
+            <h5> position mouse x is : {this.state.mousePos.x}</h5>
+            <h5> position mouse y is : {this.state.mousePos.y}</h5>
+          </div>
 
           <div id="logo_name_div">
             <div id="logo_div">
@@ -89,7 +136,7 @@ class Home extends Component {
 
         <tbody>
           <div id="homepage_background_img_div">
-            <img id="homepage_bakground_img" src={background_img} alt='background'></img>
+            <img id="homepage_bakground_img" src={background_img} alt='background' draggable="false"></img>
           </div>
         </tbody>
 

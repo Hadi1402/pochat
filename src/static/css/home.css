@@ -7,6 +7,22 @@ html , body , #root , .App , .home , .app{
   width:100%;
   margin: 0;
 }
+/* //////////////////////////////////////////////////////////// scrollbar -> */
+::-webkit-scrollbar {
+  width: 5px; /* width of the scrollbar */
+}
+::-webkit-scrollbar:hover {
+  width: 10px; /* width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #f1f1f1; /* color of the track*/ 
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888; /* color of the thumb */
+}
+/* //////////////////////////////////////////////////////////// scrollbar <- */
 .home{
   height:100%;
   /* width: (current screen width)-();
@@ -31,6 +47,12 @@ html , body , #root , .App , .home , .app{
 header b {
   position: fixed;
 }
+#status{
+  position: fixed;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
 #signup_user_btn{
   width:100px;
   display: none;
@@ -44,7 +66,10 @@ header b {
   height:40px;
 }
 #logo_name_div{
-  transition: 0.5s,transform 0.5s;
+  /* transition: 0.5s,transform 0.5s; */
+  transition: all 0.3s cubic-bezier(0.1 , 0.3 , 0.8 , 0.4);
+  /* transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; */
+
   width: 220px;
   height:100px;
   float: left;
@@ -72,24 +97,33 @@ header b {
   float: right;
 }
 #menu{
+  /* transition: 0.5s, transform 0.5s; */
+  transition: all 0.5s cubic-bezier(0.1, 0.2, 0.6, 1.5);
+
   width: 250px;
   height: 40px;
-  background-color:rgb(34,178,80);
+  background-color:rgba(34, 178, 80, 0);
   position: fixed;
   display:flex;
-  margin:auto;
+  margin: 100px calc(50% - 125px) auto calc(50% - 125px);
   justify-content: center;
 }
 header #menu .menu_item{
   width:60px;
   height: 40px;
-  background-color: #ff0000;
-  border-style: groove;
-  border-width: 3px;
-  border-left-width:1px ;
-  border-right-width:1px ;
+  background-color: #ff000000;
+  padding: 10px;
   text-align: center;
   text-align: justify;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 1px;
+  border-color: black;
+  border-style: groove;
+}
+header #menu .menu_item:last-child {
+  border-right-width: 0px;
 }
 
 #homepage_bakground_img_div{
