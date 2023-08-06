@@ -1,11 +1,16 @@
 :root{
-  --bc-color-home-page:#ffffff;
-  --bc-color-register-user-page:#ffffff;
-  --bc-color-login-user-page:#fff;
+  
   --menu-them-p:#3E2F5B;
   --menu-them-o:#F28500;
   --menu-them-w:#F3EFE0;
+  --manu-them-w2:#E9ECF0;
+  --menu-them-gray:#B6BDC9;
 
+
+
+  --bc-color-home-page:#ffffff;
+  --bc-color-register-user-page:#ffffff;
+  --bc-color-login-user-page:#fff;
 
 
 
@@ -13,4 +18,9 @@
   --scrollbar-border:5px;
   --scrollbar-thumb-bc:rgb(124, 124, 124);
   --webkit-scrollbar-thumb-hover-bc:rgb(102, 102, 102);
+
+
+
+
+  --button-color-b:#1859c9;
 }

@@ -5,6 +5,7 @@ import "../static/css/home.css";
 import "../static/css/varriables.css";
 import logo from "../static/icons/logo porya-01.svg"
 import menu_logo from "../static/icons/logo.svg"
+import background_img from "../static/img/home_page_background.png"
 // import {Link, NavLink} from "react-router-dom";
 // import HomeSideBar from "../Parent/home-sidebar";
 
@@ -13,19 +14,66 @@ class Home extends Component {
     super(props);
     this.state = {
       scrollTop: 0,
+      screenSize:{
+        width: 0,
+        height: 0
+      },
+      mousePos: {
+        x: 0,
+        y: 0
+      }
     };
     this.handleScroll = this.handleScroll.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
+    window.addEventListener('resize', this.onWindowSizeChanged);
+    
   }
 
   componentDidMount() {
-    console.log(this.state.scrollTop);
+    console.log("componentDidMount")
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('mousemove', this.onMouseMove);
+    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
+
+    const displayWidth = window.innerWidth || window.clientWidth;
+    const displayHeight = window.innerHeight || window.clientHeight;
+
+    this.setState({
+      displayWidth,
+      displayHeight,
+    });   
   }
 
   componentWillUnmount() {
-    console.log(this.state.scrollTop);
+    console.log("componentWillUnMount")
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('resize', this.onWindowSizeChanged);
+
   }
+
+  onWindowSizeChanged = () => {
+    const displayWidth = window.innerWidth || window.clientWidth;
+    const displayHeight = window.innerHeight || window.clientHeight;
+
+    this.setState({
+      displayWidth,
+      displayHeight,
+    });
+
+    const background = document.querySelector('#homepage_background_img_div');
+
+    background.style.height = displayHeight
+    background.style.width = displayWidth
+  }
+
+  onMouseMove(event) {
+    console.log("your mouse position is : " , "x :",this.state.mousePos.x," y : ",this.state.mousePos.y)
+    const mousePos = { ...this.state.mousePos, x: event.clientX, y: event.clientY };
+    this.setState({ mousePos });
+  }
+
 
   handleScroll(event) {
     const scrollTop = window.scrollY;
@@ -40,34 +88,49 @@ class Home extends Component {
     }
   }
 
-  handleHeaderHide(){
-    console.log("reached to moe than 150")
-    
-    const header = document.getElementById('homepageheader');
-    const logo = document.querySelector('#logo_name_div')
-
-
-    header.style.height = 100 + 'px';
-    logo.style.margin = 'auto 100% auto 0'
-
-  }
-  handleHeaderShow(){
-    console.log("reached to less than 150")
-    
+  handleHeaderHide() {
+    console.log("reached to more than 150");
+  
     const header = document.getElementById('homepageheader');
     const logo = document.querySelector('#logo_name_div');
+    const menu = document.querySelector('#menu');
+  
+    header.style.height = '100px';
+    logo.style.margin = '0 0 0 0';
+    menu.style.margin = '30px calc(50% - 125px) auto calc(50% - 125px)'
 
-    header.style.height = 150 + 'px';
-    logo.style.margin = 'auto'
+  }
+  
+  handleHeaderShow() {
+    console.log("reached to less than 150");
+  
+    const header = document.getElementById('homepageheader');
+    const logo = document.querySelector('#logo_name_div');
+    const menu = document.querySelector('#menu');
+  
+    header.style.height = '100px';
+    logo.style.margin = '0 0 0 calc(50% - 110px)';
+    menu.style.margin = '100px calc(50% - 125px) auto calc(50% - 125px)'
 
   }
 
 
   render() {
+
+    const { mousePos, width, height, displayWidth, displayHeight } = this.state;
+
+
     return (
       <div className="home" ref={this.myElementRef}>
         <header id='homepageheader'>
-          <b>{this.state.scrollTop}</b>
+
+          <div id='status'>
+            <h5> position from top is : {this.state.scrollTop}</h5>
+            <h5> position mouse x is : {this.state.mousePos.x}</h5>
+            <h5> position mouse y is : {this.state.mousePos.y}</h5>
+            <h5> width of your window is : {this.state.displayWidth}</h5>
+            <h5> height of your window is : {this.state.displayHeight}</h5>
+          </div>
 
           <div id="logo_name_div">
             <div id="logo_div">
@@ -86,6 +149,12 @@ class Home extends Component {
           </div>
 
         </header>
+
+        <tbody>
+          <div id="homepage_background_img_div">
+            <img id="homepage_bakground_img" src={background_img} alt='background' draggable="false"></img>
+          </div>
+        </tbody>
 
         <div id='content'>
           <p>1</p>
