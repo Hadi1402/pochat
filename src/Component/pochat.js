@@ -62,10 +62,6 @@ class Home extends Component {
       displayHeight,
     });
 
-    const background = document.querySelector('#homepage_background_img_div');
-
-    background.style.height = displayHeight
-    background.style.width = displayWidth
   }
 
   onMouseMove(event) {
@@ -91,7 +87,7 @@ class Home extends Component {
   handleHeaderHide() {
     console.log("reached to more than 150");
   
-    const header = document.getElementById('homepageheader');
+    const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
     const menu = document.querySelector('#menu');
   
@@ -104,7 +100,7 @@ class Home extends Component {
   handleHeaderShow() {
     console.log("reached to less than 150");
   
-    const header = document.getElementById('homepageheader');
+    const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
     const menu = document.querySelector('#menu');
   
@@ -122,38 +118,45 @@ class Home extends Component {
 
     return (
       <div className="home" ref={this.myElementRef}>
-        <header id='homepageheader'>
+        
+        <header id='head_of_home_page'>
 
-          <div id='status'>
-            <h5> position from top is : {this.state.scrollTop}</h5>
-            <h5> position mouse x is : {this.state.mousePos.x}</h5>
-            <h5> position mouse y is : {this.state.mousePos.y}</h5>
-            <h5> width of your window is : {this.state.displayWidth}</h5>
-            <h5> height of your window is : {this.state.displayHeight}</h5>
-          </div>
+          <header id='home_page_header'>
 
-          <div id="logo_name_div">
-            <div id="logo_div">
-              <img className="logo" alt="pochat logo" src={logo} draggable="false" onContextMenu={this.handleContextMenu}/>
+            <div id='status'>
+              <h5> position from top is : {this.state.scrollTop}</h5>
+              <h5> position mouse x is : {this.state.mousePos.x}</h5>
+              <h5> position mouse y is : {this.state.mousePos.y}</h5>
+              <h5> width of your window is : {this.state.displayWidth}</h5>
+              <h5> height of your window is : {this.state.displayHeight}</h5>
             </div>
-            <p id="logo_name">Po chat</p>
-          </div>
-          <button id="signup_user_btn">signup</button>
-          <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
-          <div id="menu">
-            <div className="menu_item" id="item_1">menu_1</div>
-            <div className="menu_item" id="item_2">menu_2</div>
-            <div className="menu_item" id="item_3">menu_3</div>
-            <div className="menu_item" id="item_4">menu_4</div>
-          </div>
+            <div id="logo_name_div">
+              <div id="logo_div">
+                <img className="logo" alt="pochat logo" src={logo} draggable="false" onContextMenu={this.handleContextMenu}/>
+              </div>
+              <p id="logo_name">Po chat</p>
+            </div>
+            <button id="signup_user_btn">signup</button>
+            <button id="home_page_menu_button"><img src={menu_logo}/></button>
+
+            <div id="menu">
+              <div className="menu_item" id="item_1">menu_1</div>
+              <div className="menu_item" id="item_2">menu_2</div>
+              <div className="menu_item" id="item_3">menu_3</div>
+              <div className="menu_item" id="item_4">menu_4</div>
+            </div>
+
+          </header>
+
+          {/* <div id="homepage_background_img_div">
+            <img id="homepage_bakground_img" src={background_img} alt='background' draggable="false"></img>
+          </div> */}
 
         </header>
 
         <tbody>
-          <div id="homepage_background_img_div">
-            <img id="homepage_bakground_img" src={background_img} alt='background' draggable="false"></img>
-          </div>
+
         </tbody>
 
         <div id='content'>

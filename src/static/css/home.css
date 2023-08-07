@@ -29,12 +29,19 @@ html , body , #root , .App , .home , .app{
   height: (current screen height)-(); */
   background-color: var(--bc-color-home-page);
 }
+#head_of_home_page{
+  width: 100%;
+  height:100%;
+  background-image: url('../img/home_page_background.png');
+  background-size: cover;
+  background-position: center center;
+}
 #content{
   width: 100%;
   background-color:whitesmoke;
   margin-top: 150px;
 }
-#homepageheader{
+#home_page_header{
   transition: 0.5s, transform 0.5s;
   position: fixed;
   width: 100%;
@@ -136,7 +143,6 @@ header #menu .menu_item:last-child {
   height: 100%;
   object-fit: contain;
 }
-
 
 
 
