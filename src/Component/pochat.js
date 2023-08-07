@@ -31,10 +31,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount")
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousemove', this.onMouseMove);
-    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
+    window.addEventListener('resize', this.onWindowSizeChanged);
+
+
+    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this)
 
     const displayWidth = window.innerWidth || window.clientWidth;
     const displayHeight = window.innerHeight || window.clientHeight;
@@ -46,7 +48,6 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnMount")
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('resize', this.onWindowSizeChanged);
