@@ -91,10 +91,12 @@ class Home extends Component {
     const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
     const menu = document.querySelector('#menu');
-  
+    const topBar = document.querySelector('#home_page_top_bar');
+    
     header.style.height = '100px';
     logo.style.margin = '0 0 0 0';
-    menu.style.margin = '30px calc(50% - 125px) auto calc(50% - 125px)'
+    menu.style.margin = '15px calc(50% - 125px) auto calc(50% - 125px)'
+    topBar.style.marginTop = '0px'
 
   }
   
@@ -104,10 +106,12 @@ class Home extends Component {
     const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
     const menu = document.querySelector('#menu');
-  
+    const topBar = document.querySelector('#home_page_top_bar');
+    
     header.style.height = '100px';
     logo.style.margin = '0 0 0 calc(50% - 110px)';
     menu.style.margin = '100px calc(50% - 125px) auto calc(50% - 125px)'
+    topBar.style.marginTop = '-150px'  
 
   }
 
@@ -130,6 +134,10 @@ class Home extends Component {
               <h5> position mouse y is : {this.state.mousePos.y}</h5>
               <h5> width of your window is : {this.state.displayWidth}</h5>
               <h5> height of your window is : {this.state.displayHeight}</h5>
+            </div>
+
+            <div id='home_page_top_bar'>
+
             </div>
 
             <div id="logo_name_div">
