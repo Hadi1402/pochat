@@ -51,18 +51,18 @@ class Home extends Component {
     
   }
 
-  // handleClickToScroll() {
-  //   console.log("clicked")
+  handleClickToScroll() {
+    console.log("clicked")
 
-  //   const content = document.querySelector('#content');
+    const content = document.querySelector('#content');
 
-  //   window.scrollTo({
-  //     top: content.offsetTop, 
-  //     left: content.offsetLeft, 
-  //     behavior: 'smooth' 
-  //   });
+    window.scrollTo({
+      top: content.offsetTop, 
+      left: content.offsetLeft, 
+      behavior: 'smooth' 
+    });
 
-  // }
+  }
     
   onWindowSizeChanged = () => {
     const displayWidth = window.innerWidth || window.clientWidth;
@@ -164,7 +164,7 @@ class Home extends Component {
             <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
             <div id="menu">
-              <div className="menu_item" id="item_1">menu_1</div>
+              <div className="menu_item" id="item_1" onClick={this.handleClickToScroll}>menu_1</div>
               <div className="menu_item" id="item_2">menu_2</div>
               <div className="menu_item" id="item_3">menu_3</div>
               <div className="menu_item" id="item_4">menu_4</div>
