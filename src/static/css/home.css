@@ -140,6 +140,15 @@ header #menu .menu_item{
 header #menu .menu_item:last-child {
   border-right-width: 0px;
 }
+.horizontal_line_betwin_menu_items{
+  width: 1px;
+  height: 40px;
+  background-color: black;
+  /* border-width: 5px; */
+  /* border-color: black; */
+  /* border-style: groove; */
+}
+
 
 #homepage_bakground_img_div{
   background-image: url("../img/home_page_background.png");

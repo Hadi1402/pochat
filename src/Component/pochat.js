@@ -8,6 +8,8 @@ import menu_logo from "../static/icons/logo.svg"
 import background_img from "../static/img/home_page_background.png"
 // import {Link, NavLink} from "react-router-dom";
 // import HomeSideBar from "../Parent/home-sidebar";
+// import Animate from 'animate.css';
+
 
 class Home extends Component {
   constructor(props) {
@@ -37,23 +39,31 @@ class Home extends Component {
 
 
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this)
+    this.onWindowSizeChanged()
 
-    const displayWidth = window.innerWidth || window.clientWidth;
-    const displayHeight = window.innerHeight || window.clientHeight;
 
-    this.setState({
-      displayWidth,
-      displayHeight,
-    });   
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('resize', this.onWindowSizeChanged);
-
+    
   }
 
+  // handleClickToScroll() {
+  //   console.log("clicked")
+
+  //   const content = document.querySelector('#content');
+
+  //   window.scrollTo({
+  //     top: content.offsetTop, 
+  //     left: content.offsetLeft, 
+  //     behavior: 'smooth' 
+  //   });
+
+  // }
+    
   onWindowSizeChanged = () => {
     const displayWidth = window.innerWidth || window.clientWidth;
     const displayHeight = window.innerHeight || window.clientHeight;
@@ -96,17 +106,22 @@ class Home extends Component {
     header.style.height = '100px';
     logo.style.margin = '0 0 0 0';
     menu.style.margin = '15px calc(50% - 125px) auto calc(50% - 125px)'
-    topBar.style.marginTop = '0px'
+    topBar.style.marginTop = '0px'    
 
+    
+    
   }
   
   handleHeaderShow() {
     console.log("reached to less than 150");
-  
+    
     const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
     const menu = document.querySelector('#menu');
     const topBar = document.querySelector('#home_page_top_bar');
+
+  
+    
     
     header.style.height = '100px';
     logo.style.margin = '0 0 0 calc(50% - 110px)';
@@ -125,7 +140,6 @@ class Home extends Component {
       <div className="home" ref={this.myElementRef}>
         
         <header id='head_of_home_page'>
-
           <header id='home_page_header'>
 
             <div id='status'>
@@ -137,7 +151,6 @@ class Home extends Component {
             </div>
 
             <div id='home_page_top_bar'>
-
             </div>
 
             <div id="logo_name_div">
@@ -146,6 +159,7 @@ class Home extends Component {
               </div>
               <p id="logo_name">Po chat</p>
             </div>
+
             <button id="signup_user_btn">signup</button>
             <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
@@ -157,596 +171,32 @@ class Home extends Component {
             </div>
 
           </header>
-
-          {/* <div id="homepage_background_img_div">
-            <img id="homepage_bakground_img" src={background_img} alt='background' draggable="false"></img>
-          </div> */}
-
         </header>
 
         <tbody>
 
         </tbody>
 
-        <div id='content'>
-          <p>1</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-          <p>Content</p>
-        </div>
 
+        <div id='content'>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+        </div>
 
       </div>
     );
