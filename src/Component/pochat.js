@@ -31,7 +31,6 @@ class Home extends Component {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
     window.addEventListener('resize', this.onWindowSizeChanged);
-    
   }
 
   componentDidMount() {
@@ -41,10 +40,6 @@ class Home extends Component {
 
 
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this)
-    this.onWindowSizeChanged()
-    this.onHeightOfHomePage = this.onHeightOfHomePage.bind(this)
-    this.onHeightOfHomePage()
-
   }
 
   componentWillUnmount() {
@@ -67,7 +62,7 @@ class Home extends Component {
 
   }
     
-  onWindowSizeChanged = () => {
+  onWindowSizeChanged() {
     const displayWidth = window.innerWidth || window.clientWidth;
     const displayHeight = window.innerHeight || window.clientHeight;
     
@@ -79,7 +74,7 @@ class Home extends Component {
     this.onHeightOfHomePage()
   }
 
-  onHeightOfHomePage = () => {
+  onHeightOfHomePage() {
     const home = document.querySelector('.home');
     const header = document.querySelector('#head_of_home_page');
     
