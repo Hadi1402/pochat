@@ -23,7 +23,9 @@ class Home extends Component {
       mousePos: {
         x: 0,
         y: 0
-      }
+      },
+      displayHeight: 0,
+      displayWidth: 0,
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -40,7 +42,8 @@ class Home extends Component {
 
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this)
     this.onWindowSizeChanged()
-
+    this.onHeightOfHomePage = this.onHeightOfHomePage.bind(this)
+    this.onHeightOfHomePage()
 
   }
 
@@ -67,16 +70,26 @@ class Home extends Component {
   onWindowSizeChanged = () => {
     const displayWidth = window.innerWidth || window.clientWidth;
     const displayHeight = window.innerHeight || window.clientHeight;
-
+    
     this.setState({
       displayWidth,
       displayHeight,
     });
+    
+    this.onHeightOfHomePage()
+  }
 
+  onHeightOfHomePage = () => {
+    const home = document.querySelector('.home');
+    const header = document.querySelector('#head_of_home_page');
+    
+
+    header.style.height = this.state.displayHeight + 'px'
+    home.style.height = this.state.displayHeight * 6 + 'px'
   }
 
   onMouseMove(event) {
-    console.log("your mouse position is : " , "x :",this.state.mousePos.x," y : ",this.state.mousePos.y)
+    // console.log("your mouse position is : " , "x :",this.state.mousePos.x," y : ",this.state.mousePos.y)
     const mousePos = { ...this.state.mousePos, x: event.clientX, y: event.clientY };
     this.setState({ mousePos });
   }
@@ -96,7 +109,7 @@ class Home extends Component {
   }
 
   handleHeaderHide() {
-    console.log("reached to more than 150");
+    // console.log("reached to more than 150");
   
     const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
@@ -113,7 +126,7 @@ class Home extends Component {
   }
   
   handleHeaderShow() {
-    console.log("reached to less than 150");
+    // console.log("reached to less than 150");
     
     const header = document.getElementById('home_page_header');
     const logo = document.querySelector('#logo_name_div');
@@ -173,8 +186,11 @@ class Home extends Component {
           </header>
         </header>
 
-        <tbody>
-
+        <tbody id='body_of_home_page'>
+          <h1>this is tbody</h1>
+          <h1>this is tbody</h1>
+          <h1>this is tbody</h1>
+          <h1>this is tbody</h1>
         </tbody>
 
 

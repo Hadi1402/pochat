@@ -2,7 +2,11 @@
   --bc-color:rgb(255, 255, 255);
   --menu-color:rgb(36,178,76);
 }
-html , body , #root , .App , .home , .app{
+.home{
+  width: 100%;
+  margin: 0;
+}
+html , body , #root , .App , .app{
   height: 100%;
   width:100%;
   margin: 0;
@@ -160,7 +164,10 @@ header #menu .menu_item:last-child {
   height: 100%;
   object-fit: contain;
 }
-
+#body_of_home_page{
+  width: 100%;
+  background-color: #df0000;
+}
 
 
 
