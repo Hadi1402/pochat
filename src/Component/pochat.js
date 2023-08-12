@@ -34,6 +34,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    console.log("here is didmount")
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('resize', this.onWindowSizeChanged);
@@ -61,7 +62,7 @@ class Home extends Component {
     });
 
   }
-    
+
   onWindowSizeChanged() {
     const displayWidth = window.innerWidth || window.clientWidth;
     const displayHeight = window.innerHeight || window.clientHeight;
@@ -77,10 +78,14 @@ class Home extends Component {
   onHeightOfHomePage() {
     const home = document.querySelector('.home');
     const header = document.querySelector('#head_of_home_page');
+    const body = document.querySelector('#body_of_home_page');
+    const footer = document.querySelector('#footer_of_home_page');
     
 
-    header.style.height = this.state.displayHeight + 'px'
     home.style.height = this.state.displayHeight * 6 + 'px'
+    header.style.height = this.state.displayHeight + 'px'
+    body.style.height = this.state.displayHeight * 4 + 'px'
+    footer.style.height = this.state.displayHeight + 'px'
   }
 
   onMouseMove(event) {
@@ -181,33 +186,44 @@ class Home extends Component {
           </header>
         </header>
 
-        <tbody id='body_of_home_page'>
-          <h1>this is tbody</h1>
-          <h1>this is tbody</h1>
-          <h1>this is tbody</h1>
-          <h1>this is tbody</h1>
-        </tbody>
-
-
-        <div id='content'>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
+        <div id='body_of_home_page'>
+          <h1>ths is body_of_home_page</h1>
         </div>
+
+        <div id='footer_home_page'>
+          <h1>ths is footer_of_home_page</h1>
+        </div>
+
+
+
+
+        {/* <tbody id='body_of_home_page'>
+          <h1>this is tbody</h1>
+          <h1>this is tbody</h1>
+          <h1>this is tbody</h1>
+          <h1>this is tbody</h1>
+        </tbody> */}
+
+
+        {/* <div id='content'>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+          <h1>content</h1>
+        </div> */}
 
       </div>
     );
