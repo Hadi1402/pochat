@@ -24,8 +24,8 @@ class Home extends Component {
         x: 0,
         y: 0
       },
-      displayHeight: 0,
-      displayWidth: 0,
+      displayHeight: 10,
+      displayWidth: 10,
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -38,8 +38,9 @@ class Home extends Component {
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('resize', this.onWindowSizeChanged);
 
-
-    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this)
+    console.log("here is didmount")
+    this.onWindowSizeChanged()
+  
   }
 
   componentWillUnmount() {
@@ -63,15 +64,27 @@ class Home extends Component {
   }
     
   onWindowSizeChanged() {
+    console.log("شروع فانکشن")
+    console.log(this.state.displayHeight)
+    console.log(this.state.displayWidth)
     const displayWidth = window.innerWidth || window.clientWidth;
     const displayHeight = window.innerHeight || window.clientHeight;
     
+    console.log("اینجا اندازه ی صفحه رو پیدا میکنیم")
+    console.log(this.state.displayHeight)
+    console.log(this.state.displayWidth)
     this.setState({
       displayWidth,
       displayHeight,
     });
     
+    console.log("اینجا اندازه رو به استیت منتقل میکنیم")
+    console.log(this.state.displayHeight)
+    console.log(this.state.displayWidth)
     this.onHeightOfHomePage()
+    console.log("اینجا از استیت اندازه رو روی المنت اعمال میکنیم")
+    console.log(this.state.displayHeight)
+    console.log(this.state.displayWidth)
   }
 
   onHeightOfHomePage() {
@@ -79,8 +92,8 @@ class Home extends Component {
     const header = document.querySelector('#head_of_home_page');
     
 
-    header.style.height = this.state.displayHeight + 'px'
-    home.style.height = this.state.displayHeight * 6 + 'px'
+    home.style.height = this.state.displayHeight * 6 + 'px';
+    header.style.height = this.state.displayHeight + 'px';
   }
 
   onMouseMove(event) {
@@ -173,7 +186,7 @@ class Home extends Component {
 
             <div id="menu">
               <div className="menu_item" id="item_1" onClick={this.handleClickToScroll}>menu_1</div>
-              <div className="menu_item" id="item_2">menu_2</div>
+              <div className="menu_item" id="item_2" onClick={this.onWindowSizeChanged}>menu_2</div>
               <div className="menu_item" id="item_3">menu_3</div>
               <div className="menu_item" id="item_4">menu_4</div>
             </div>

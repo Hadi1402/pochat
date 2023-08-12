@@ -165,7 +165,7 @@ header #menu .menu_item:last-child {
   object-fit: contain;
 }
 #body_of_home_page{
-  width: 100%;
+  width: 600px;
   background-color: #df0000;
 }
 
