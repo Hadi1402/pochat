@@ -6,6 +6,7 @@ import "../static/css/varriables.css";
 import logo from "../static/icons/logo porya-01.svg"
 import menu_logo from "../static/icons/logo.svg"
 import background_img from "../static/img/home_page_background.png"
+import { Divider } from '@material-ui/core';
 // import {Link, NavLink} from "react-router-dom";
 // import HomeSideBar from "../Parent/home-sidebar";
 // import Animate from 'animate.css';
@@ -14,35 +15,33 @@ import background_img from "../static/img/home_page_background.png"
 class Home extends Component {
   constructor(props) {
     super(props);
+    // ///////////////////////////////////// state
     this.state = {
       scrollTop: 0,
       screenSize:{
-        width: 0,
-        height: 0
+        width: 1920,
+        height: 1001
       },
       mousePos: {
         x: 0,
         y: 0
       },
-      displayHeight: 0,
-      displayWidth: 0,
     };
+    // ///////////////////////////////////// state
     this.handleScroll = this.handleScroll.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
     window.addEventListener('resize', this.onWindowSizeChanged);
   }
-
   componentDidMount() {
-    console.log("here is didmount")
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('resize', this.onWindowSizeChanged);
 
-
-    this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this)
+    console.log("here is didmount")
+    this.onWindowSizeChanged()
+  
   }
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('mousemove', this.onMouseMove);
@@ -50,54 +49,88 @@ class Home extends Component {
     
   }
 
-  handleClickToScroll() {
+  handleClickToScroll(num) {
     console.log("clicked")
 
-    const content = document.querySelector('#content');
+    const content1 = document.querySelector('#content1');
+    const content2 = document.querySelector('#content1');
+    const content3 = document.querySelector('#content1');
+    const content4 = document.querySelector('#content1');
 
+    var target = 0
+
+    if ( num == 1 ){
+      var target = content1
+    } else if ( num == 2){
+      var target = content2
+    } else if ( num == 3){
+      var target = content3
+    } else if ( num == 4){
+      var target = content4
+    } 
+    
     window.scrollTo({
-      top: content.offsetTop, 
-      left: content.offsetLeft, 
+      top: target.offsetTop, 
+      left: target.offsetLeft, 
       behavior: 'smooth' 
     });
-
   }
-
   onWindowSizeChanged() {
-    const displayWidth = window.innerWidth || window.clientWidth;
-    const displayHeight = window.innerHeight || window.clientHeight;
+    var displayWidth = window.innerWidth || window.clientWidth;
+    var displayHeight = window.innerHeight || window.clientHeight;
     
     this.setState({
-      displayWidth,
-      displayHeight,
+      screenSize: {
+        width: displayWidth,
+        height: displayHeight
+      }
     });
     
     this.onHeightOfHomePage()
-  }
+    
+    this.setState({
+      screenSize: {
+        width: displayWidth,
+        height: displayHeight
+      }
+    });
 
+    console.log("display y : ",displayHeight)
+    console.log("display x : ",displayWidth)
+    console.log("state y : ",this.state.screenSize.height)
+    console.log("state x : ",this.state.screenSize.width)
+  }
   onHeightOfHomePage() {
     const home = document.querySelector('.home');
     const header = document.querySelector('#head_of_home_page');
     const body = document.querySelector('#body_of_home_page');
     const footer = document.querySelector('#footer_of_home_page');
+    const content = document.querySelector('.content_of_home_page');
+    const content1 = document.querySelector('#content1');
+    const content2 = document.querySelector('#content2');
+    const content3 = document.querySelector('#content3');
+    const content4 = document.querySelector('#content4');
     
 
-    home.style.height = this.state.displayHeight * 6 + 'px'
-    header.style.height = this.state.displayHeight + 'px'
-    body.style.height = this.state.displayHeight * 4 + 'px'
-    footer.style.height = this.state.displayHeight + 'px'
+    home.style.height = this.state.screenSize.height * 6 + 'px';
+    header.style.height = this.state.screenSize.height + 'px';
+    body.style.height = this.state.screenSize.height * 4 + 'px';
+    footer.style.height = this.state.screenSize.height + 'px';
+    content.style.height = this.state.screenSize.height + 'px';
+    content1.style.height = this.state.screenSize.height + 'px';
+    content2.style.height = this.state.screenSize.height + 'px';
+    content3.style.height = this.state.screenSize.height + 'px';
+    content4.style.height = this.state.screenSize.height + 'px';
   }
-
   onMouseMove(event) {
     // console.log("your mouse position is : " , "x :",this.state.mousePos.x," y : ",this.state.mousePos.y)
     const mousePos = { ...this.state.mousePos, x: event.clientX, y: event.clientY };
     this.setState({ mousePos });
   }
-
-
   handleScroll(event) {
     const scrollTop = window.scrollY;
-    this.setState({ scrollTop });
+
+    this.setState({ scrollTop:scrollTop });
   
     if (scrollTop > 150) {
       this.handleHeaderHide();
@@ -107,7 +140,6 @@ class Home extends Component {
       this.handleHeaderShow();
     }
   }
-
   handleHeaderHide() {
     // console.log("reached to more than 150");
   
@@ -123,8 +155,7 @@ class Home extends Component {
 
     
     
-  }
-  
+  } 
   handleHeaderShow() {
     // console.log("reached to less than 150");
     
@@ -142,13 +173,7 @@ class Home extends Component {
     topBar.style.marginTop = '-150px'  
 
   }
-
-
   render() {
-
-    const { mousePos, width, height, displayWidth, displayHeight } = this.state;
-
-
     return (
       <div className="home" ref={this.myElementRef}>
         
@@ -159,8 +184,8 @@ class Home extends Component {
               <h5> position from top is : {this.state.scrollTop}</h5>
               <h5> position mouse x is : {this.state.mousePos.x}</h5>
               <h5> position mouse y is : {this.state.mousePos.y}</h5>
-              <h5> width of your window is : {this.state.displayWidth}</h5>
-              <h5> height of your window is : {this.state.displayHeight}</h5>
+              <h5> width of your window is : {this.state.screenSize.width}</h5>
+              <h5> height of your window is : {this.state.screenSize.height}</h5>
             </div>
 
             <div id='home_page_top_bar'>
@@ -177,53 +202,31 @@ class Home extends Component {
             <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
             <div id="menu">
-              <div className="menu_item" id="item_1" onClick={this.handleClickToScroll}>menu_1</div>
-              <div className="menu_item" id="item_2">menu_2</div>
-              <div className="menu_item" id="item_3">menu_3</div>
-              <div className="menu_item" id="item_4">menu_4</div>
+              <div className="menu_item" id="item_1" onClick={this.handleClickToScroll()}>menu_1</div>
+              <div className="menu_item" id="item_2" onClick={this.handleClickToScroll()}>menu_2</div>
+              <div className="menu_item" id="item_3" onClick={this.handleClickToScroll()}>menu_3</div>
+              <div className="menu_item" id="item_4" onClick={this.handleClickToScroll()}>menu_4</div>
             </div>
-
+ 
           </header>
         </header>
-
         <div id='body_of_home_page'>
-          <h1>ths is body_of_home_page</h1>
+          <div id='content1' className='content_of_home_page'>
+            here is content 1
+          </div>
+          <div id='content2' className='content_of_home_page'>
+            here is content 2
+          </div>
+          <div id='content3' className='content_of_home_page'>
+            here is content 3
+          </div>
+          <div id='content4' className='content_of_home_page'>
+            here is content 4
+          </div>
         </div>
-
-        <div id='footer_home_page'>
-          <h1>ths is footer_of_home_page</h1>
+        <div id='footer_of_home_page'>
+          
         </div>
-
-
-
-
-        {/* <tbody id='body_of_home_page'>
-          <h1>this is tbody</h1>
-          <h1>this is tbody</h1>
-          <h1>this is tbody</h1>
-          <h1>this is tbody</h1>
-        </tbody> */}
-
-
-        {/* <div id='content'>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-          <h1>content</h1>
-        </div> */}
 
       </div>
     );

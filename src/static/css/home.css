@@ -44,10 +44,26 @@ html , body , #root , .App , .app{
   width: 100%;
   background-color: #f50d0d;
 }
-
-#content{
+#footer_of_home_page{
   width: 100%;
-  background-color:whitesmoke;
+  height: 10px;
+  background-color: #00ff22;
+}
+.content_of_home_page{
+  width: 100%;
+  background-color: #fff;
+}
+#content1{
+  background-color: #02e1ff;
+}
+#content2{
+  background-color: #fc01a8;
+}
+#content3{
+  background-color: #e4fd05;
+}
+#content4 {
+  background-color: #021af1;
 }
 #home_page_header{
   transition: 0.5s, transform 0.5s;
