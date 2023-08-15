@@ -32,6 +32,11 @@ class Home extends Component {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
     window.addEventListener('resize', this.onWindowSizeChanged);
+
+    this.content1Ref = React.createRef();
+    this.content2Ref = React.createRef();
+    this.content3Ref = React.createRef();
+    this.content4Ref = React.createRef();
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -48,14 +53,42 @@ class Home extends Component {
     window.removeEventListener('resize', this.onWindowSizeChanged);
     
   }
+  // handleClickToScroll(event, num) {
+  //   const content1 = document.querySelector('#content1');
+  //   const content2 = document.querySelector('#content1');
+  //   const content3 = document.querySelector('#content1');
+  //   const content4 = document.querySelector('#content1');
 
+  //   var target = 0;
+
+  //   if (num === 1) {
+  //     var target = content1
+  //     this.content1Ref.current.scrollIntoView();
+  //   } else if (num === 2) {
+  //     var target = content2
+  //     this.content2Ref.current.scrollIntoView();
+  //   } else if (num === 3) {
+  //     var target = content3
+  //     this.content3Ref.current.scrollIntoView();
+  //   } else if (num === 4) {
+  //     var target = content4
+  //     this.content4Ref.current.scrollIntoView();
+  //   }
+
+  //   window.scrollTo({
+  //     top: target.offsetTop, 
+  //     left: target.offsetLeft, 
+  //     behavior: 'smooth' 
+  //   });
+  // }
   handleClickToScroll(num) {
     console.log("clicked")
+    console.log(num)
 
     const content1 = document.querySelector('#content1');
-    const content2 = document.querySelector('#content1');
-    const content3 = document.querySelector('#content1');
-    const content4 = document.querySelector('#content1');
+    const content2 = document.querySelector('#content2');
+    const content3 = document.querySelector('#content3');
+    const content4 = document.querySelector('#content4');
 
     var target = 0
 
@@ -176,7 +209,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home" ref={this.myElementRef}>
-        
         <header id='head_of_home_page'>
           <header id='home_page_header'>
 
@@ -202,10 +234,10 @@ class Home extends Component {
             <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
             <div id="menu">
-              <div className="menu_item" id="item_1" onClick={this.handleClickToScroll()}>menu_1</div>
-              <div className="menu_item" id="item_2" onClick={this.handleClickToScroll()}>menu_2</div>
-              <div className="menu_item" id="item_3" onClick={this.handleClickToScroll()}>menu_3</div>
-              <div className="menu_item" id="item_4" onClick={this.handleClickToScroll()}>menu_4</div>
+              <div className="menu_item" id="item_1" onClick={() => this.handleClickToScroll(1)}>Menu 1</div>
+              <div className="menu_item" id="item_2" onClick={() => this.handleClickToScroll(2)}>Menu 2</div>
+              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(3)}>Menu 3</div>
+              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(4)}>Menu 4</div>
             </div>
  
           </header>
