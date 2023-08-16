@@ -47,7 +47,10 @@ html , body , #root , .App , .app{
 #footer_of_home_page{
   width: 100%;
   height: 10px;
+  display: flex;
   background-color: #00ff22;
+  justify-content: center;
+  align-items: center;
 }
 .content_of_home_page{
   width: 100%;
@@ -84,6 +87,25 @@ html , body , #root , .App , .app{
   background: linear-gradient(to top, transparent, #fff);
   z-index: -1;
   margin-top: -150px;
+}
+#footer_container{
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 50px;
+}
+#footer_design{
+  width: 50%;
+  height: 100%;
+  background-image: url('../designs/showcase.320248b8.svg');
+  background-position: center center;
+  background-size: cover;
+  float: left;
+}
+#footer_content{
+  width: 50%;
+  height: 100%;
+  float: right;
 }
 header b {
   position: fixed;

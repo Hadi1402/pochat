@@ -19,8 +19,8 @@ class Home extends Component {
     this.state = {
       scrollTop: 0,
       screenSize:{
-        width: 1920,
-        height: 1001
+        width: window.innerWidth,
+        height: window.innerHeight
       },
       mousePos: {
         x: 0,
@@ -37,13 +37,13 @@ class Home extends Component {
     this.content2Ref = React.createRef();
     this.content3Ref = React.createRef();
     this.content4Ref = React.createRef();
+
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('resize', this.onWindowSizeChanged);
 
-    console.log("here is didmount")
     this.onWindowSizeChanged()
   
   }
@@ -53,34 +53,6 @@ class Home extends Component {
     window.removeEventListener('resize', this.onWindowSizeChanged);
     
   }
-  // handleClickToScroll(event, num) {
-  //   const content1 = document.querySelector('#content1');
-  //   const content2 = document.querySelector('#content1');
-  //   const content3 = document.querySelector('#content1');
-  //   const content4 = document.querySelector('#content1');
-
-  //   var target = 0;
-
-  //   if (num === 1) {
-  //     var target = content1
-  //     this.content1Ref.current.scrollIntoView();
-  //   } else if (num === 2) {
-  //     var target = content2
-  //     this.content2Ref.current.scrollIntoView();
-  //   } else if (num === 3) {
-  //     var target = content3
-  //     this.content3Ref.current.scrollIntoView();
-  //   } else if (num === 4) {
-  //     var target = content4
-  //     this.content4Ref.current.scrollIntoView();
-  //   }
-
-  //   window.scrollTo({
-  //     top: target.offsetTop, 
-  //     left: target.offsetLeft, 
-  //     behavior: 'smooth' 
-  //   });
-  // }
   handleClickToScroll(num) {
     console.log("clicked")
     console.log(num)
@@ -119,7 +91,7 @@ class Home extends Component {
       }
     });
     
-    this.onHeightOfHomePage()
+    this.onSizeOfHomePage()
     
     this.setState({
       screenSize: {
@@ -127,18 +99,13 @@ class Home extends Component {
         height: displayHeight
       }
     });
-
-    console.log("display y : ",displayHeight)
-    console.log("display x : ",displayWidth)
-    console.log("state y : ",this.state.screenSize.height)
-    console.log("state x : ",this.state.screenSize.width)
   }
-  onHeightOfHomePage() {
+  onSizeOfHomePage() {
     const home = document.querySelector('.home');
     const header = document.querySelector('#head_of_home_page');
     const body = document.querySelector('#body_of_home_page');
     const footer = document.querySelector('#footer_of_home_page');
-    const content = document.querySelector('.content_of_home_page');
+    const contents = document.querySelector('.content_of_home_page');
     const content1 = document.querySelector('#content1');
     const content2 = document.querySelector('#content2');
     const content3 = document.querySelector('#content3');
@@ -149,7 +116,7 @@ class Home extends Component {
     header.style.height = this.state.screenSize.height + 'px';
     body.style.height = this.state.screenSize.height * 4 + 'px';
     footer.style.height = this.state.screenSize.height + 'px';
-    content.style.height = this.state.screenSize.height + 'px';
+    contents.style.height = this.state.screenSize.height + 'px';
     content1.style.height = this.state.screenSize.height + 'px';
     content2.style.height = this.state.screenSize.height + 'px';
     content3.style.height = this.state.screenSize.height + 'px';
@@ -234,10 +201,10 @@ class Home extends Component {
             <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
             <div id="menu">
-              <div className="menu_item" id="item_1" onClick={() => this.handleClickToScroll(1)}>Menu 1</div>
-              <div className="menu_item" id="item_2" onClick={() => this.handleClickToScroll(2)}>Menu 2</div>
-              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(3)}>Menu 3</div>
-              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(4)}>Menu 4</div>
+              <div className="menu_item" id="item_1" onClick={() => this.handleClickToScroll(1)}>content 1</div>
+              <div className="menu_item" id="item_2" onClick={() => this.handleClickToScroll(2)}>content 2</div>
+              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(3)}>content 3</div>
+              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(4)}>content 4</div>
             </div>
  
           </header>
@@ -257,7 +224,12 @@ class Home extends Component {
           </div>
         </div>
         <div id='footer_of_home_page'>
-          
+          <div id='footer_container'>
+            <div id='footer_design'></div>
+            <div id='footer_content'>
+              شما هم میتونین در کمتر از 10 دقیقه از پوچت برای کاربرانتان استفاده کنید 
+            </div>
+          </div>
         </div>
 
       </div>
