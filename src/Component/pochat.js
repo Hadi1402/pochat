@@ -211,7 +211,9 @@ class Home extends Component {
         </header>
         <div id='body_of_home_page'>
           <div id='content1' className='content_of_home_page'>
-            here is content 1
+            <div>
+              <h1>content1</h1>
+            </div>
           </div>
           <div id='content2' className='content_of_home_page'>
             here is content 2
@@ -227,7 +229,7 @@ class Home extends Component {
           <div id='footer_container'>
             <div id='footer_design'></div>
             <div id='footer_content'>
-              شما هم میتونین در کمتر از 10 دقیقه از پوچت برای کاربرانتان استفاده کنید 
+              <pre> ا هم میتونین در کمتر از 10 دقیقه از پوچت برای کاربرانتان استفاده کنید</pre>
             </div>
           </div>
         </div>
