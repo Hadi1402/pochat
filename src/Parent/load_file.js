@@ -1,6 +1,6 @@
 import React from 'react';
 import "../static/css/chat.css";
-import df from "../static/img/download.png";
+import Dw from "../static/img/download.png";
 
 class HandleFileUpload extends React.Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class HandleFileUpload extends React.Component {
                         // element.click();
                         p.appendChild(image)
                         image.class = 'img_file'
-                        image.src = {df}
+                        image.src = {Dw}
                         image.height = 25;
                         image.width = 30
                     }

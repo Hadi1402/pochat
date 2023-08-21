@@ -80,10 +80,8 @@ class WebSite extends React.Component {
       "type": this.type_ref.current.value,
       "status": this.status_ref.current.value
     }).then(res => { console.log("gasdfyf", res.data) })
-
       .catch(function (error) {
         console.log(error)
-
       })
   }
 
@@ -111,7 +109,6 @@ class WebSite extends React.Component {
   onChange_delete = (e) => {
     this.state.data.forEach(element => {
       if (this.state.select_checked.includes(element["id"].toString())) {
-        //this.state.row_display = "none"
         element["display"] = "none";
         // call backend
       }

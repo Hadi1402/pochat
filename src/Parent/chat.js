@@ -133,7 +133,7 @@ class Chat extends React.Component {
 
           <Emoje input={this.inputRef} emoji_display={this.state.emoji_display} handle_click={this.handleEmojeShow} />
           <HandleFileUpload />
-          
+
         </div>
 
       </div>

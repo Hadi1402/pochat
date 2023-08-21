@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import "../static/css/chat.css";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-
 import LoginSet from "../Parent/login.js"
 
 
@@ -19,12 +18,15 @@ class RegisterUserPage extends Component {
   }
   onHandleRegistration = (event) => {
     event.preventDefault();
-    let code = this.code.value;
-    let username = this.username.value;
-    let email = this.email.value;
-    let password = this.password.value;
-    let repassword = this.repassword.value;
-    axios.post('http://192.168.1.113:8000/auth/users', { 'username': username, 'email': email, 'password': password, 'code': code })
+   // let code = this.code.current.value;
+    let username = this.username.current.value;
+    let email = this.email.current.value;
+    let password = this.password.current.value;
+    let repassword = this.repassword.current.value;
+   axios.post('https://pochat.pypi.ir/auth/users',
+    {'username': username, 'email': email, 'password': password,
+  }).then(res => console.log(res.data))
+   .catch(err => console.log(err));
     const data = { username, email, password, repassword };
     this.props.dispatch(RegisterUser(data));
     console.log("here1111111111111111111111111");

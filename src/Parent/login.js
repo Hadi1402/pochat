@@ -8,14 +8,18 @@ export default function LoginSet(props) {
     const [isError, setIsError] = useState(false);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+   
     // const {setAuthTokens} = UseAuth();
 
 
     function PostLogin() {
-        axios.post("http://localhost:3000/", {
-            userName,
-            password
+        console.log('login login login............')
+        console.log("userName, password :",userName, password)
+        axios.post("https://pochat.pypi.ir/auth/token/login",
+        {
+       'username': userName, 'password':password
         }).then(result => {
+            console.log(result)
             if (result.status === 200) {
                 //setAuthTokens(result.data);
                 setLoggedIn(true);
@@ -25,12 +29,15 @@ export default function LoginSet(props) {
             }
         }).catch(e => {
             setIsError(true);
+            console.log('نام کاربری یا رمز اشتباه است!')
         });
-    }
 
+        
+    }
     if (isloggedIn) {
         //  ba hamkari bakend user be yeki az sfahate admin va ya support hedyat khahad shod.
-        return <Redirect to={" "} replace={true} />;
+        return <Redirect to={'/SupportUser'} replace={true} />;
+        
     }
 
     return (
@@ -49,9 +56,10 @@ export default function LoginSet(props) {
                         setPassword(e.target.value);
                     }}
                     placeholder={'کلمه عبور'} /> <br />
-
-                <NavLink exact to={'/SupportUser'}>   ورود    </NavLink>
-                <br /> <br />
+                    
+                 <input type='button' value='ورود' className="btnoky" onClick={PostLogin} />
+               <br />
+                
                 <NavLink exact to={'/registeruser'}>  ثبت نام نکرده ام </NavLink>
             </form>
             <br /><br /><br /><br /><br />
