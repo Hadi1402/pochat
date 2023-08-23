@@ -40,11 +40,63 @@ html , body , #root , .App , .app{
   background-size: cover;
   background-position: center center;
 }
-
-#content{
+#body_of_home_page{
   width: 100%;
-  background-color:whitesmoke;
+  background-color: #f50d0d;
 }
+#footer_of_home_page{
+  width: 100%;
+  height: 10px;
+  display: flex;
+  background-color: #00ff22;
+  justify-content: center;
+  align-items: center;
+}
+.content_of_home_page{
+  width: 100%;
+  background-color: #fff;
+}
+#content1,#content2,#content3,#content4{
+  background-color: #02e1ff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.content_container{
+  display: flex;
+  width: 95%;
+  height: 92.5%;
+  background-color: var(--bc-color);
+  border-radius: 40px;
+  padding: 2.5%;
+  margin: 2.5%;
+}
+#content1_pic,#content2_pic,#content3_pic,#content4_pic{
+  height: 100%;
+  width: 40%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+} 
+#content1_pic{
+  background-image: url('../designs/design2.png');  
+}
+#content2_pic{
+  background-image: url('../designs/design3.png');  
+}
+#content3_pic{
+  background-image: url('../designs/design4.png');  
+}
+#content4_pic{
+  background-image: url('../designs/design5.png');  
+}
+#content1_text, #content2_text, #content3_text, #content4_text{
+  width: 60%;
+  height: 100%;
+  direction: rtl;
+  font-family: iraniansans;
+  padding: 5px;
+} 
 #home_page_header{
   transition: 0.5s, transform 0.5s;
   position: fixed;
@@ -65,6 +117,26 @@ html , body , #root , .App , .app{
   z-index: -1;
   margin-top: -150px;
 }
+#footer_container{
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 50px;
+}
+#footer_design{
+  width: 50%;
+  height: 100%;
+  background-image: url('../designs/design1.png');
+  background-position: center center;
+  background-size:contain;
+  background-repeat: no-repeat;
+  float: left;
+}
+#footer_content{
+  width: 50%;
+  height: 100%;
+  float: right;
+}
 header b {
   position: fixed;
 }
@@ -77,7 +149,7 @@ h1,h2,h3,h4,h5,h6{
 #signup_user_btn{
   width:100px;
   display: none;
-
+  
 }
 #home_page_menu_button{
   width: 100px;
@@ -90,7 +162,7 @@ h1,h2,h3,h4,h5,h6{
   /* transition: 0.5s,transform 0.5s; */
   transition: all 0.3s cubic-bezier(0.1 , 0.3 , 0.8 , 0.4);
   /* transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; */
-
+  
   width: 220px;
   height:100px;
   float: left;
@@ -120,7 +192,7 @@ h1,h2,h3,h4,h5,h6{
 #menu{
   /* transition: 0.5s, transform 0.5s; */
   transition: all 0.5s cubic-bezier(0.1, 0.2, 0.6, 1.5);
-
+  
   width: 250px;
   height: 40px;
   background-color:rgba(34, 178, 80, 0);
@@ -152,8 +224,6 @@ header #menu .menu_item:last-child {
   /* border-color: black; */
   /* border-style: groove; */
 }
-
-
 #homepage_bakground_img_div{
   background-image: url("../img/home_page_background.png");
   width: 100%;
@@ -164,12 +234,3 @@ header #menu .menu_item:last-child {
   height: 100%;
   object-fit: contain;
 }
-#body_of_home_page{
-  width: 600px;
-  background-color: #df0000;
-}
-
-
-
-
-
