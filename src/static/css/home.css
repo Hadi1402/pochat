@@ -55,19 +55,50 @@ html , body , #root , .App , .app{
 .content_of_home_page{
   width: 100%;
   background-color: #fff;
-}
-#content1{
   background-color: #02e1ff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
-#content2{
-  background-color: #fc01a8;
+/* #content1,#content2,#content3,#content4{} */
+.content_container{
+  display: flex;
+  width: 95%;
+  height: 92.5%;
+  background-color: var(--bc-color);
+  border-radius: 40px;
+  /* padding: 2.5%; */
+  /* margin: 2.5%; */
 }
-#content3{
-  background-color: #e4fd05;
+.content_pic{
+  height: 100%;
+  width: 40%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-#content4 {
-  background-color: #021af1;
+/* #content1_pic,#content2_pic,#content3_pic,#content4_pic{} */
+#content1_pic{
+  background-image: url('../designs/design2.png');  
 }
+#content2_pic{
+  background-image: url('../designs/design3.png');  
+}
+#content3_pic{
+  background-image: url('../designs/design4.png');  
+}
+#content4_pic{
+  background-image: url('../designs/design5.jpg');  
+}
+.content_text{
+  width: 55%;
+  background-color: rgba(255, 0, 0, 0);
+  height: 90%;
+  direction: rtl;
+  font-family: iraniansans;
+  margin: 2.5%;
+} 
+/* #content1_text, #content2_text, #content3_text, #content4_text{}  */
 #home_page_header{
   transition: 0.5s, transform 0.5s;
   position: fixed;
@@ -97,9 +128,10 @@ html , body , #root , .App , .app{
 #footer_design{
   width: 50%;
   height: 100%;
-  background-image: url('../designs/showcase.320248b8.jpg');
+  background-image: url('../designs/design1.png');
   background-position: center center;
-  background-size: cover;
+  background-size:contain;
+  background-repeat: no-repeat;
   float: left;
 }
 #footer_content{
@@ -119,7 +151,7 @@ h1,h2,h3,h4,h5,h6{
 #signup_user_btn{
   width:100px;
   display: none;
-
+  
 }
 #home_page_menu_button{
   width: 100px;
@@ -132,7 +164,7 @@ h1,h2,h3,h4,h5,h6{
   /* transition: 0.5s,transform 0.5s; */
   transition: all 0.3s cubic-bezier(0.1 , 0.3 , 0.8 , 0.4);
   /* transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; */
-
+  
   width: 220px;
   height:100px;
   float: left;
@@ -162,7 +194,7 @@ h1,h2,h3,h4,h5,h6{
 #menu{
   /* transition: 0.5s, transform 0.5s; */
   transition: all 0.5s cubic-bezier(0.1, 0.2, 0.6, 1.5);
-
+  
   width: 250px;
   height: 40px;
   background-color:rgba(34, 178, 80, 0);
@@ -194,8 +226,6 @@ header #menu .menu_item:last-child {
   /* border-color: black; */
   /* border-style: groove; */
 }
-
-
 #homepage_bakground_img_div{
   background-image: url("../img/home_page_background.png");
   width: 100%;
@@ -206,4 +236,3 @@ header #menu .menu_item:last-child {
   height: 100%;
   object-fit: contain;
 }
-

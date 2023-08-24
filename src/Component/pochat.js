@@ -31,6 +31,8 @@ class Home extends Component {
     this.handleScroll = this.handleScroll.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onWindowSizeChanged = this.onWindowSizeChanged.bind(this);
+    this.handleContextMenu = this.handleContextMenu.bind(this);
+
     window.addEventListener('resize', this.onWindowSizeChanged);
 
     this.content1Ref = React.createRef();
@@ -43,6 +45,7 @@ class Home extends Component {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('resize', this.onWindowSizeChanged);
+    document.addEventListener('contextmenu', this.handleContextMenu);
 
     this.onWindowSizeChanged()
   
@@ -51,29 +54,32 @@ class Home extends Component {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('resize', this.onWindowSizeChanged);
-    
+    document.removeEventListener('contextmenu', this.handleContextMenu);
+
+  }
+  handleContextMenu(event) {// for block right click
+    // event.preventDefault();
+    // console.log('Right-Click event was blocked');
   }
   handleClickToScroll(num) {
-    console.log("clicked")
-    console.log(num)
-
     const content1 = document.querySelector('#content1');
     const content2 = document.querySelector('#content2');
     const content3 = document.querySelector('#content3');
     const content4 = document.querySelector('#content4');
 
+
     var target = 0
 
-    if ( num == 1 ){
+    if ( num === 1 ){
       var target = content1
-    } else if ( num == 2){
+    } else if ( num === 2){
       var target = content2
-    } else if ( num == 3){
+    } else if ( num === 3){
       var target = content3
-    } else if ( num == 4){
+    } else if ( num === 4){
       var target = content4
     } 
-    
+
     window.scrollTo({
       top: target.offsetTop, 
       left: target.offsetLeft, 
@@ -201,28 +207,50 @@ class Home extends Component {
             <button id="home_page_menu_button"><img src={menu_logo}/></button>
 
             <div id="menu">
-              <div className="menu_item" id="item_1" onClick={() => this.handleClickToScroll(1)}>content 1</div>
-              <div className="menu_item" id="item_2" onClick={() => this.handleClickToScroll(2)}>content 2</div>
-              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(3)}>content 3</div>
-              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(4)}>content 4</div>
+              <div className="menu_item" id="item_1" onClick={() => this.handleClickToScroll(1)}>پوچت چیست؟</div>
+              <div className="menu_item" id="item_2" onClick={() => this.handleClickToScroll(2)}>چرا پوچت؟</div>
+              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(3)}>امکانات</div>
+              <div className="menu_item" id="item_3" onClick={() => this.handleClickToScroll(4)}>رضایت مشتری</div>
             </div>
  
           </header>
         </header>
         <div id='body_of_home_page'>
           <div id='content1' className='content_of_home_page'>
-            <div>
-              <h1>content1</h1>
+            <div className='content_container'>
+              <div id='content1_pic' className='content_pic'>
+              </div>
+              <div id='content1_text' className='content_text'>
+                <h1 id='content1_h1' className='content_h1'>پوچت چیست ؟</h1>
+              </div>
             </div>
           </div>
           <div id='content2' className='content_of_home_page'>
-            here is content 2
+            <div className='content_container'>
+              <div id='content2_pic' className='content_pic'>
+              </div>
+              <div id='content2_text' className='content_text'>
+                <h1 id='content2_h1' className='content_h1'>چرا پوچت ؟</h1>
+              </div>
+            </div>
           </div>
           <div id='content3' className='content_of_home_page'>
-            here is content 3
+            <div className='content_container'>
+              <div id='content3_pic' className='content_pic'>
+              </div>
+              <div id='content3_text' className='content_text'>
+                <h1 id='content3_h1' className='content_h1'>ما برای شما چه امکاناتی داریم ؟</h1>
+              </div>
+            </div>
           </div>
           <div id='content4' className='content_of_home_page'>
-            here is content 4
+          <div className='content_container'>
+            <div id='content4_pic' className='content_pic'>
+              </div>
+              <div id='content4_text' className='content_text'>
+                <h1 id='content4_h1' className='content_h1'>از چه نظری پوت بهترین است ؟</h1>
+              </div>
+            </div>
           </div>
         </div>
         <div id='footer_of_home_page'>
