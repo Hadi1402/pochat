@@ -11,26 +11,19 @@ class ResetPassword extends Component {
     super(props)
    
   }
- 
-  
-
 
   render() {
     return (
       <div className="regiserform">
         <h3>بازیابی کلمه عبور </h3>
         <form>
-          
-
-        
-
           <div>
             <label>  پسورد جدید </label>
             <input type="password" name="password" placeholder={'کلمه عبور'} ref={this.password} />
           </div>
 
           <div>
-            <label>.......................... تکرار پسورد</label>
+            <label> تکرار پسورد</label>
             <input type="password" name="repassword" placeholder={'تکرار کلمه عبور'} ref={this.repassword} />
           </div>
 

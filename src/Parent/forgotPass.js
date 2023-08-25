@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Component } from "react";
+import ResetPassword from './resetPassword';
 
 class ForgotPassword extends Component {
     constructor() {
@@ -17,7 +18,7 @@ class ForgotPassword extends Component {
             console.log(result)
             if (result.status === 200) {
                 console.log('okyyyyyyy')
-                window.location.replace("/resetPassword")
+                window.location.replace("/resetpassword")
             }
         }).catch(err => console.log(err));
 
