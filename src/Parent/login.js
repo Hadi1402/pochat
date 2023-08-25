@@ -61,6 +61,8 @@ export default function LoginSet(props) {
                <br />
                 
                 <NavLink exact to={'/registeruser'}>  ثبت نام نکرده ام </NavLink>
+               <br/> <NavLink exact to={'/forgotpassword'}>  فراموشی رمز </NavLink>
+
             </form>
             <br /><br /><br /><br /><br />
         </div>

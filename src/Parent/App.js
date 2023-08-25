@@ -10,8 +10,8 @@ import webSite from "./webSite";
 import Group from "./group";
 import EditGroup from "./editGroup";
 import CreateGroup from "./createGroup";
-
-
+import ForgotPassword from "./forgotpassword";
+import ResetPassword from "./resetPassword";
 
 
 function App() {
@@ -32,6 +32,8 @@ function App() {
           <Route exact path='/group' component={Group} />
           <Route exact path='/editgroup' component={EditGroup} />
           <Route exact path='/creategroup' component={CreateGroup} />
+          <Route exact path='/forgotPassword' component={ForgotPassword} />
+          <Route exact path='/resetPassword' component={ResetPassword} />
         </Switch>
       </BrowserRouter>
 
