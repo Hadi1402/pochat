@@ -83,6 +83,8 @@ class Chat extends React.Component {
   }
 
   render() {
+
+
     return (
       <div className='chat'>
         <div className='chat_header'>
@@ -101,6 +103,7 @@ class Chat extends React.Component {
             <IconButton>
               <MoreVertIcon />
             </IconButton>
+
           </div>
         </div>
 

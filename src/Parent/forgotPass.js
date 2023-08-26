@@ -10,20 +10,35 @@ class ForgotPassword extends Component {
         this.handleReresetpassword = this.handleReresetpassword.bind(this)
                  }
     handleReresetpassword = (event) => {
-        let email = this.email.current.value;
-        axios.post("https://pochat.pypi.ir/auth/users/reset_password",
-             {
-            'email':email
-        }).then(result => {
-            console.log(result)
-            if (result.status === 200) {
-                console.log('okyyyyyyy')
-                window.location.replace("/resetpassword")
-            }
-        }).catch(err => console.log(err));
+   let data = ({
+    "email": "user@example.com"
+    });
+
+  let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://pochat.pypi.ir/auth/users/reset_password/',
+  headers: { 
+    'authorization': 'token 8f04c3912fccee76d28700a75366c2179b9bb24e', 
+    'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"', 
+    'Content-Type': 'application/json', 
+    'Cookie': 'sessionid=v5kdw1u088tkgvwchsb1flryy5imuh7s'
+  },
+  data : this.email
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(response.data);
+  console.log('reset okyyyyyyyyyyyyyy')
+
+})
+.catch((error) => {
+  console.log(error);
+});
+
 
     }       
-        
   render() {
     return (
         <div>
