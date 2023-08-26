@@ -12,7 +12,7 @@
     align-items: center;
     text-align: center;
 }
-.form {
+.register_form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
     transform: translate(-50%, -50%);
   }
   
-  .title {
+  .register_form_title {
     font-size: 28px;
     color: royalblue;
     font-weight: 600;
@@ -40,7 +40,7 @@
     padding-left: 30px;
   }
   
-  .title::before,.title::after {
+  .register_form_title::before,.register_form_title::after {
     position: absolute;
     content: "";
     height: 16px;
@@ -50,49 +50,50 @@
     background-color: royalblue;
   }
   
-  .title::before {
+  .register_form_title::before {
     width: 18px;
     height: 18px;
     background-color: royalblue;
   }
   
-  .title::after {
+  .register_form_title::after {
     width: 18px;
     height: 18px;
     animation: pulse 1s linear infinite;
   } */
 
-  .message, .signin {
+  .register_form_message, .register_form_signin {
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
   }
   
-  .signin {
+  .register_form_signin {
     text-align: center;
   }
   
-  .signin a {
+  .register_form_signin a {
     color: royalblue;
   }
   
-  .signin a:hover {
+  .register_form_signin a:hover {
     text-decoration: underline royalblue;
   }
   
-  .form label {
+  .register_form label {
     position: relative;
   }
   
-  .form label .input {
+  .register_form label .register_form_input {
     height:20px;
     width: 90%;
     padding: 10px 10px 20px 10px;
     outline: 0;
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 12px;
+    background-color: #fff;
   }
   
-  .form label .input + span {
+  .register_form label .register_form_input + span {
     position: absolute;
     left: 20px;
     top: 15px;
@@ -103,27 +104,27 @@
     display: none;
   }
   
-  .form label .input:placeholder-shown + span {
+  .register_form label .register_form_input:placeholder-shown + span {
     top: 15px;
     font-size: 0.9em;
   }
-  .form label .input:valid + span {
+  .register_form label .register_form_input:valid + span {
     top: 15px;
     font-size: 0.7em;
     font-weight: 600;
 
   } 
-  .form label .input:focus + span{
+  .register_form label .register_form_input:focus + span{
     top: 30px;
     font-size: 0.7em;
     font-weight: 600;
   }
    
-  .form label .input:valid + span {
+  .register_form label .register_form_input:valid + span {
     color: rgba(0, 0, 0, 0.534);
   }
   
-  .submit {
+  .register_form_submit {
     border: none;
     outline: none;
     background-color: royalblue;
@@ -134,7 +135,7 @@
     transform: 3s ease;
   }
   
-  .submit:hover {
+  .register_form_submit:hover {
     background-color: rgb(54, 85, 179);
   }
   
@@ -152,7 +153,7 @@
 
 
 
-  /* .form {
+  /* .register_form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -163,7 +164,7 @@
     position: relative;
   }
   
-  .title {
+  .register_form_title {
     font-size: 28px;
     color: royalblue;
     font-weight: 600;
@@ -174,7 +175,7 @@
     padding-left: 30px;
   }
   
-  .title::before,.title::after {
+  .register_form_title::before,.register_form_title::after {
     position: absolute;
     content: "";
     height: 16px;
@@ -184,32 +185,32 @@
     background-color: royalblue;
   }
   
-  .title::before {
+  .register_form_title::before {
     width: 18px;
     height: 18px;
     background-color: royalblue;
   }
   
-  .title::after {
+  .register_form_title::after {
     width: 18px;
     height: 18px;
     animation: pulse 1s linear infinite;
   }
   
-  .message, .signin {
+  .register_form_message, .register_form_signin {
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
   }
   
-  .signin {
+  .register_form_signin {
     text-align: center;
   }
   
-  .signin a {
+  .register_form_signin a {
     color: royalblue;
   }
   
-  .signin a:hover {
+  .register_form_signin a:hover {
     text-decoration: underline royalblue;
   }
   
@@ -219,11 +220,11 @@
     gap: 6px;
   }
   
-  .form label {
+  .register_form label {
     position: relative;
   }
   
-  .form label .input {
+  .register_form label .register_form_input {
     width: 100%;
     padding: 10px 10px 20px 10px;
     outline: 0;
@@ -231,7 +232,7 @@
     border-radius: 10px;
   }
   
-  .form label .input + span {
+  .register_form label .register_form_input + span {
     position: absolute;
     left: 10px;
     top: 15px;
@@ -241,22 +242,22 @@
     transition: 0.3s ease;
   }
   
-  .form label .input:placeholder-shown + span {
+  .register_form label .register_form_input:placeholder-shown + span {
     top: 15px;
     font-size: 0.9em;
   }
   
-  .form label .input:focus + span,.form label .input:valid + span {
+  .register_form label .register_form_input:focus + span,.register_form label .register_form_input:valid + span {
     top: 300px;
     font-size: 0.7em;
     font-weight: 600;
   }
   
-  .form label .input:valid + span {
+  .register_form label .register_form_input:valid + span {
     color: green;
   }
   
-  .submit {
+  .register_form_submit {
     border: none;
     outline: none;
     background-color: royalblue;
@@ -267,7 +268,7 @@
     transform: .3s ease;
   }
   
-  .submit:hover {
+  .register_form_submit:hover {
     background-color: rgb(56, 90, 194);
   }
   

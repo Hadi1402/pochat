@@ -5,125 +5,122 @@
   margin-left: -0px;
   align-items: center;
   text-align: center;
+  font-family: iraniansans;
+  background-image: url('../img/home_page_background.png');
+  background-position:center center;
+  background-size: cover;
 }
-#r2{
-  width:50%;
-  background-color: #fff;
-  align-items: center;
-  text-align: center;
-}
-.form {
+.login_form {
   width: 100%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 350px;
-  background-color: #dad9d9;
+  max-width: 500px;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 20px;
-  
 
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.title {
-  font-size: 28px;
-  color: royalblue;
+.login_form_title {
+  font-size: 50px;
+  color: var(--menu-them-p);
   font-weight: 600;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   position: relative;
   display: flex;
   align-items: center;
-  padding-left: 30px;
+  padding-left: 40px;
+  margin: 45px auto 60px auto;
 }
 
-.title::before,.title::after {
+.login_form_title::before,.login_form_title::after {
   position: absolute;
   content: "";
   height: 16px;
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: royalblue;
+  background-color: var(--menu-them-o);
 }
 
-.title::before {
-  width: 18px;
-  height: 18px;
-  background-color: rgb(0, 0, 0);
+.login_form_title::before {
+  width: 30px;
+  height: 30px;
+  background-color: var(--menu-them-o);
 }
 
-.title::after {
-  width: 18px;
-  height: 18px;
+.login_form_title::after {
+  width: 30px;
+  height: 30px;
   animation: pulse 1s linear infinite;
-} */
+}
 
-.message, .signin {
+.login_form_message, .login_form_signin {
   color: rgba(88, 87, 87, 0.822);
   font-size: 14px;
 }
 
-.signin {
+.login_form_signin {
   text-align: center;
 }
 
-.signin a {
+.login_form_signin a {
   color: royalblue;
 }
 
-.signin a:hover {
+.login_form_signin a:hover {
   text-decoration: underline royalblue;
 }
-
-.form label {
+.login_form label {
   position: relative;
 }
-
-.form label .input {
-  height:20px;
-  width: 90%;
+.login_form_input {
+  height:50px;
+  width: 90% !important;
   padding: 10px 10px 20px 10px;
   outline: 0;
   border: 1px solid rgba(105, 105, 105, 0.397);
-  border-radius: 12px;
+  border-radius: 15px !important;
 }
-
-.form label .input + span {
+.login_form .a1a1{
+  margin-top: 30px;
+}
+.login_form label .login_form_input + span {
   position: absolute;
-  left: 20px;
-  top: 15px;
+  right: 0;
+  top: 25px;
   color: grey;
   font-size: 0.9em;
   cursor: text;
   transition: 0.3s ease;
-  display: none;
 }
-
-.form label .input:placeholder-shown + span {
-  top: 15px;
+.login_form label .login_form_input:placeholder-shown + span {
+  top: 25px;
   font-size: 0.9em;
 }
-.form label .input:valid + span {
-  top: 15px;
+.login_form label .login_form_input:valid + span {
+  top: 25px;
+  right: 8%;
   font-size: 0.7em;
   font-weight: 600;
-
 } 
-.form label .input:focus + span{
-  top: 30px;
+.login_form label .login_form_input:focus + span{
+  top: 40px;
   font-size: 0.7em;
   font-weight: 600;
 }
  
-.form label .input:valid + span {
+.login_form label .login_form_input:valid + span {
   color: rgba(0, 0, 0, 0.534);
 }
-
-.submit {
+.login_form_submit {
+  height: 50px;
+  width: 60%;
   border: none;
   outline: none;
   background-color: royalblue;
@@ -132,9 +129,11 @@
   color: #fff;
   font-size: 16px;
   transform: 3s ease;
+  margin: 100px auto 10px auto;
+  font-size:x-large;
+  font-weight: 500;
 }
-
-.submit:hover {
+.login_form_submit:hover {
   background-color: rgb(54, 85, 179);
 }
 
@@ -152,7 +151,7 @@
 
 
 
-/* .form {
+/* .login_form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -163,7 +162,7 @@
   position: relative;
 }
 
-.title {
+.login_form_title {
   font-size: 28px;
   color: royalblue;
   font-weight: 600;
@@ -174,7 +173,7 @@
   padding-left: 30px;
 }
 
-.title::before,.title::after {
+.login_form_title::before,.login_form_title::after {
   position: absolute;
   content: "";
   height: 16px;
@@ -184,32 +183,32 @@
   background-color: royalblue;
 }
 
-.title::before {
+.login_form_title::before {
   width: 18px;
   height: 18px;
   background-color: royalblue;
 }
 
-.title::after {
+.login_form_title::after {
   width: 18px;
   height: 18px;
   animation: pulse 1s linear infinite;
 }
 
-.message, .signin {
+.login_form_message, .login_form_signin {
   color: rgba(88, 87, 87, 0.822);
   font-size: 14px;
 }
 
-.signin {
+.login_form_signin {
   text-align: center;
 }
 
-.signin a {
+.login_form_signin a {
   color: royalblue;
 }
 
-.signin a:hover {
+.login_form_signin a:hover {
   text-decoration: underline royalblue;
 }
 
@@ -219,11 +218,11 @@
   gap: 6px;
 }
 
-.form label {
+.login_form label {
   position: relative;
 }
 
-.form label .input {
+.login_form label .login_form_input {
   width: 100%;
   padding: 10px 10px 20px 10px;
   outline: 0;
@@ -231,7 +230,7 @@
   border-radius: 10px;
 }
 
-.form label .input + span {
+.login_form label .login_form_input + span {
   position: absolute;
   left: 10px;
   top: 15px;
@@ -241,22 +240,22 @@
   transition: 0.3s ease;
 }
 
-.form label .input:placeholder-shown + span {
+.login_form label .login_form_input:placeholder-shown + span {
   top: 15px;
   font-size: 0.9em;
 }
 
-.form label .input:focus + span,.form label .input:valid + span {
+.login_form label .login_form_input:focus + span,.login_form label .login_form_input:valid + span {
   top: 300px;
   font-size: 0.7em;
   font-weight: 600;
 }
 
-.form label .input:valid + span {
+.login_form label .login_form_input:valid + span {
   color: green;
 }
 
-.submit {
+.login_form_submit {
   border: none;
   outline: none;
   background-color: royalblue;
@@ -267,7 +266,7 @@
   transform: .3s ease;
 }
 
-.submit:hover {
+.login_form_submit:hover {
   background-color: rgb(56, 90, 194);
 }
 

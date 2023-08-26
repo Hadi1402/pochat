@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {NavLink,Redirect} from "react-router-dom";
 import axios from 'axios';
+import '../static/css/login.css'
 // import Sidebar from './supportUser';
 
 //import {UseAuth} from "../context/auth";
@@ -34,43 +35,61 @@ import axios from 'axios';
         return <Redirect to={"/supportuser"} replace={true} />;
     }
 
+    function inputs(num){
+        const input1 = document.querySelector('#login_form_input_username');
+        const input2 = document.querySelector('#login_form_input_password');
+        // const input2 = document.querySelector('#login_form_input_password');
+        const span = document.querySelector('#.login_form_input:valid + span');
+
+        if (num == 1){
+            
+        }
+
+        if (input1.value != ''){
+            span.style.top = 40 ;
+        }
+    }
+
         return (
-                <div className="registerform">
-                <form class="form">
-                  <p class="title">برای ورود فرم زیر را کامل کنید</p>
-                  <p class="message">ثبت نام کنید تا از قابلیت های بیشتر بهره مند شوید</p>
-                    <label>
+            <div className="registerform">
+                <form class="login_form">
+                    <p class="login_form_title">ورود</p>
+                    <p class="login_form_message">برای وارد شدن فرم زیر را پر کنید</p>
+
+                    <label className='a1a1'>
                         <input 
-                        required="" 
+                        required=""
                         type="text" 
-                        class="input"
+                        id='login_form_input_username'
+                        class="login_form_input"
                         name="username"
-                        placeholder={''} 
+                        // placeholder={''} 
                         value={userName}
                         onChange={e => {
                             setUserName(e.target.value);
                         }}/>
                         <span>نام کاربری</span>
                     </label>
-          
+            
                     <label>
                         <input 
                         required=""
-                        type="text"
-                        class="input"
+                        type="password"
+                        id='login_form_input_password'
+                        class="login_form_input"
                         name="password"  
-                        placeholder={''} 
+                        // placeholder={''} 
                         value={password}
                         onChange={e => {
                             setPassword(e.target.value);
                         }}/>
                         <span>رمز ورود</span>
                     </label>
-                    <button class="submit" value = 'عضویت' exact to={'/SupportUser'}>Submit</button>
+                    <button class="login_form_submit" value = 'عضویت' exact to={'/SupportUser'}>ورود</button>
                     <link to={'/supportuser'}></link>
-                    <p class="signin">ثبت نام نکرده ام<NavLink exact to={'/registeruser'}> ثبت نام </NavLink></p>
+                    <p class="login_form_signin">ثبت نام نکرده ام<NavLink exact to={'/registeruser'}> ثبت نام </NavLink></p>
                 </form>
-                </div>
+            </div>
         )
 
 }

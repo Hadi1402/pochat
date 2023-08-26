@@ -93,13 +93,13 @@ function User() {
       </div>
 
       <div className="user_buttons">
-        <button onClick={handleDisableClick} disabled={selectedIds.length === 0}>
+        <button className="user_page_button" onClick={handleDisableClick} disabled={selectedIds.length === 0}>
           غیر فعال کردن
         </button>
-        <button onClick={handleEnableClick} disabled={selectedIds.length === 0}>
+        <button className="user_page_button" onClick={handleEnableClick} disabled={selectedIds.length === 0}>
           فعال کردن
         </button>
-        <button onClick={handleDeleteClick} disabled={selectedIds.length === 0}>
+        <button className="user_page_button" onClick={handleDeleteClick} disabled={selectedIds.length === 0}>
           حذف کاربر
         </button>
       </div>
