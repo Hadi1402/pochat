@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useActionData } from "react-router";
-import { connect } from "react-redux";
+import React from "react";
 import Select from 'react-select';
-import editGroup from "../Actions/editGroupTable";
 import group_data from "./group_data";
 import axios from "axios";
 
@@ -12,9 +9,6 @@ class EditGroup extends React.Component {
     super(props)
     this.state = {
       group: group_data,
-      //  values: [''],
-      //users:user_options,
-      // selectOption:''
     }
 
     this.id_ref = React.createRef();
@@ -47,6 +41,7 @@ class EditGroup extends React.Component {
   }
 
   render() {
+    
     var params = new URL(window.location).searchParams
     console.log(params)
     var id_rec = params.get("id")
@@ -92,11 +87,6 @@ class EditGroup extends React.Component {
 
 }
 
-
-// function mapStateToProps(state) {
-//  console.log(state)
-//  return{data_edit:state.data_edit}
-//}
 
 
 export default EditGroup;

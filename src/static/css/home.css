@@ -2,6 +2,22 @@
   --bc-color:rgb(255, 255, 255);
   --menu-color:rgb(36,178,76);
 }
+
+.homeURLs{
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  background-color: #00ff88;
+  z-index: 4;
+}
+.URL{
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  background-color: #e4e4e4;
+}
+
 .home{
   width: 100%;
   margin: 0;
@@ -42,7 +58,7 @@ html , body , #root , .App , .app{
 }
 #body_of_home_page{
   width: 100%;
-  background-color: #f50d0d;
+  background-color: #f50d0d00;
 }
 #footer_of_home_page{
   width: 100%;
@@ -52,32 +68,37 @@ html , body , #root , .App , .app{
   justify-content: center;
   align-items: center;
 }
-.content_of_home_page{
+.content_of_home_page_odd, .content_of_home_page_even{
   width: 100%;
-  background-color: #fff;
-}
-#content1,#content2,#content3,#content4{
-  background-color: #02e1ff;
+  background-color: #e6e6e6;
   align-items: center;
   justify-content: center;
   display: flex;
 }
+.content_of_home_page_odd{
+  direction: ltr;
+}
+.content_of_home_page_even{
+  direction: rtl;
+}
+/* #content1,#content2,#content3,#content4{} */
 .content_container{
   display: flex;
   width: 95%;
   height: 92.5%;
   background-color: var(--bc-color);
   border-radius: 40px;
-  padding: 2.5%;
-  margin: 2.5%;
+  /* padding: 2.5%; */
+  /* margin: 2.5%; */
 }
-#content1_pic,#content2_pic,#content3_pic,#content4_pic{
+.content_pic{
   height: 100%;
   width: 40%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-} 
+}
+/* #content1_pic,#content2_pic,#content3_pic,#content4_pic{} */
 #content1_pic{
   background-image: url('../designs/design2.png');  
 }
@@ -88,15 +109,21 @@ html , body , #root , .App , .app{
   background-image: url('../designs/design4.png');  
 }
 #content4_pic{
-  background-image: url('../designs/design5.png');  
+  background-image: url('../designs/design5.jpg');  
 }
-#content1_text, #content2_text, #content3_text, #content4_text{
-  width: 60%;
-  height: 100%;
+.content_text{
+  width: 55%;
+  background-color: rgba(255, 0, 0, 0);
+  height: 90%;
   direction: rtl;
   font-family: iraniansans;
-  padding: 5px;
+  margin: 2.5%;
 } 
+/* #content1_text, #content2_text, #content3_text, #content4_text{}  */
+.content_p{
+  margin: 400px 10px 0 auto;
+  font-size: x-large;
+}
 #home_page_header{
   transition: 0.5s, transform 0.5s;
   position: fixed;
@@ -110,7 +137,7 @@ html , body , #root , .App , .app{
 #home_page_top_bar{
   transition: 0.5s, transform 0.5s;
   position: fixed;
-  background: #fff;
+  background: black;
   width: 100%;
   height: 150px;
   background: linear-gradient(to top, transparent, #fff);
@@ -146,10 +173,19 @@ header b {
 h1,h2,h3,h4,h5,h6{
   margin: 0;
 }
-#signup_user_btn{
+#signup_user_btn, #login_user_btn{
   width:100px;
-  display: none;
-  
+  height: 40px;
+  border-radius: 50px;
+  position: fixed;
+  right: 0;
+  top: 0; 
+}
+#signup_user_btn{
+  margin:30px 50px auto auto;
+}
+#login_user_btn{
+  margin:30px 155px auto auto;
 }
 #home_page_menu_button{
   width: 100px;
@@ -193,36 +229,39 @@ h1,h2,h3,h4,h5,h6{
   /* transition: 0.5s, transform 0.5s; */
   transition: all 0.5s cubic-bezier(0.1, 0.2, 0.6, 1.5);
   
-  width: 250px;
+  width: 230px;
   height: 40px;
   background-color:rgba(34, 178, 80, 0);
   position: fixed;
   display:flex;
   margin: 100px calc(50% - 125px) auto calc(50% - 125px);
   justify-content: center;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  cursor: pointer;
 }
 header #menu .menu_item{
-  width:60px;
+  text-align: center;
+  justify-content: center;
+  width:auto;
   height: 40px;
   background-color: #d1090900;
   padding: 10px;
   border-top-width: 0;
   border-bottom-width: 0;
   border-left-width: 0;
-  border-right-width: 1px;
-  border-color: black;
-  border-style: groove;
+  border-right-width: 2px;
+  border-image: linear-gradient(#ffffff00, #00000073, #ffffff00) 0.5;
+  border-style: solid;
+
+  white-space: nowrap;
 }
 header #menu .menu_item:last-child {
   border-right-width: 0px;
-}
-.horizontal_line_betwin_menu_items{
-  width: 1px;
-  height: 40px;
-  background-color: black;
-  /* border-width: 5px; */
-  /* border-color: black; */
-  /* border-style: groove; */
 }
 #homepage_bakground_img_div{
   background-image: url("../img/home_page_background.png");

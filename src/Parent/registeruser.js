@@ -8,7 +8,7 @@ import LoginSet from "./login.js"
 import '../static/css/register.css';
 //import { render } from "@testing-library/react";
 
-
+ 
 class RegisterUserPage extends Component {
   constructor(props){
    super(props)
@@ -40,14 +40,14 @@ class RegisterUserPage extends Component {
 render() {
   return(
     <div className="registerform">
-      <form class="form">
-        <p class="title">برای عضویت,فرم زیر را پر کنید</p>
-        <p class="message">ثبت نام کنید تا از قابلیت های بیشتر بهره مند شوید</p>
+      <form class="register_form">
+        <p class="register_form_title">برای عضویت,فرم زیر را پر کنید</p>
+        <p class="register_form_message">ثبت نام کنید تا از قابلیت های بیشتر بهره مند شوید</p>
           <label>
               <input 
               required="" 
               type="text" 
-              class="input"
+              class="register_form_input"
               name="code"  
               placeholder={'کد دعوت '} 
               ref={this.code}/>
@@ -58,7 +58,7 @@ render() {
               <input 
               required=""
               type="text"
-              class="input"
+              class="register_form_input"
               name="username"  
               placeholder={'username'} 
               ref={this.username}/>
@@ -68,7 +68,7 @@ render() {
             <input 
             required="" 
             type="email" 
-            class="input"
+            class="register_form_input"
             name="email"  
             placeholder={'email'} 
             ref={this.email}/>
@@ -79,7 +79,7 @@ render() {
             <input 
             required="" 
             type="password" 
-            class="input"
+            class="register_form_input"
             id="pass"
             name="password"  
             placeholder={'pass'}
@@ -91,7 +91,7 @@ render() {
             <input 
             required="" 
             type="password" 
-            class="input"
+            class="register_form_input"
             id="rePass"
             name="repassword"  
             placeholder={'repass'} 
@@ -101,8 +101,8 @@ render() {
             />
             <span>تکرار کلمه عبور</span>
         </label>
-        <button class="submit" value = 'عضویت' onClick={this.onHandleRegistration} >Submit</button>
-        <p class="signin">قبلاً ثبت نام کرده ام <NavLink exact to={'/login'}> ورود </NavLink></p>
+        <button class="register_form_submit" value = 'عضویت' onClick={this.onHandleRegistration} >Submit</button>
+        <p class="register_form_signin">قبلاً ثبت نام کرده ام <NavLink exact to={'/login'}> ورود </NavLink></p>
     </form>
     </div>
   )

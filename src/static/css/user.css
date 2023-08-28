@@ -42,9 +42,9 @@ tbody .selected {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
-}
+} 
 
-button {
+.user_page_button {
   margin-left: 1rem;
   padding: 0.5rem 1rem;
   border: none;
