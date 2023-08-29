@@ -34,7 +34,7 @@
   background-color: #ffffff;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.452);
   
   position: absolute;
   top: 50%;
@@ -104,6 +104,7 @@
   font-family: iraniansans , Arial, sans-serif;
   font-weight: 600;
   font-size: 20px;
+  color:rgba(0, 0, 0, 0.788);
 }
 .login_form .a1a1{
   margin-top: 30px;
@@ -130,11 +131,10 @@
   font-size: 1em;
   font-weight: 600;
 } 
-.login_form label .login_form_input:focus + span{
-  top: 45px;
-  font-size: 0.7em;
-  font-weight: 600;
-}
+/* .login_form label .login_form_input:focus + span{
+  top: 49px;
+  font-size: 0.6em;
+} */
  
 .login_form label .login_form_input:valid + span {
   color: rgba(0, 0, 0, 0.534);
@@ -154,7 +154,7 @@
   font-size:x-large;
   font-weight: 500;
   transition: 0.3s;
-
+  text-justify: auto;
 }
 .login_form_submit:hover {
   background-color: rgb(54, 85, 179);
