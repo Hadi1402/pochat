@@ -17,6 +17,7 @@ class RegisterUserPage extends Component {
    this.email = React.createRef();
    this.password = React.createRef();
    this.repassword = React.createRef();
+   this.onInputChange = this.onInputChange.bind(this);
   }
    onHandleRegistration = (event) => {
        event.preventDefault(); 
@@ -37,8 +38,15 @@ class RegisterUserPage extends Component {
     onInputChange(witch){
       const span1 = document.querySelector('#input_span_1');
       const span2 = document.querySelector('#input_span_2');
-      const username = document.querySelector('#login_form_input_username').value;
-      const password = document.querySelector('#login_form_input_password').value;
+      const span3 = document.querySelector('#input_span_3');
+      const span4 = document.querySelector('#input_span_4');
+      const span5 = document.querySelector('#input_span_5');
+
+      const username = document.querySelector('#register_form_input_username').value;
+      const email = document.querySelector('#register_form_input_email').value;
+      const pass = document.querySelector('#register_form_input_pass').value;
+      const repass = document.querySelector('#register_form_input_repass').value;
+      const code = document.querySelector('#register_form_input_code').value;
       
       if (witch == 1){
         console.log('1');
@@ -52,13 +60,43 @@ class RegisterUserPage extends Component {
         }
       }else if (witch == 2){
         console.log('2')
-        if (password != ''){
+        if (email != ''){
             span2.style.top = 49 + 'px'
             span2.style.fontSize = 0.6 + 'em'
             
-        } else if (password == ''){
+        } else if (email == ''){
             span2.style.top = 27.5 + 'px'
             span2.style.fontSize = 1 + 'em'
+        }
+      }else if (witch == 3){
+        console.log('3')
+        if (pass != ''){
+            span3.style.top = 49 + 'px'
+            span3.style.fontSize = 0.6 + 'em'
+            
+        } else if (pass == ''){
+            span3.style.top = 27.5 + 'px'
+            span3.style.fontSize = 1 + 'em'
+        }
+      }else if (witch == 4){
+        console.log('4')
+        if (repass != ''){
+            span4.style.top = 49 + 'px'
+            span4.style.fontSize = 0.6 + 'em'
+            
+        } else if (repass == ''){
+            span4.style.top = 27.5 + 'px'
+            span4.style.fontSize = 1 + 'em'
+        }
+      }else if (witch == 5){
+        console.log('5')
+        if (code != ''){
+            span5.style.top = 49 + 'px'
+            span5.style.fontSize = 0.6 + 'em'
+            
+        } else if (code == ''){
+            span5.style.top = 27.5 + 'px'
+            span5.style.fontSize = 1 + 'em'
         }
       }
     }
@@ -72,6 +110,79 @@ render() {
         <form class="register_form">
           <p class="register_form_title">ثبت نام </p>
           <p class="register_form_message">برای ثبت نام لازمه فرم زیر رو پر کنید</p>
+
+          <label>
+              <input 
+              required=""
+              type="text"
+              class="register_form_input"
+              id="register_form_input_username"
+              name="username"  
+              // placeholder={'username'} 
+              ref={this.username}
+              onChange={e => {
+                // setUserName(e.target.value);
+                this.onInputChange(1);
+              }} 
+              // onFocus={inputChange(1)}
+              />
+              <span id="input_span_1">نام کاربری</span>
+          </label>
+
+          <label>
+              <input 
+              required="" 
+              type="email" 
+              class="register_form_input"
+              id="register_form_input_email"
+              name="email"  
+              // placeholder={'email'} 
+              ref={this.email}
+              onChange={e => {
+                // setUserName(e.target.value);
+                this.onInputChange(2);
+              }} 
+              // onFocus={inputChange(1)}
+              />
+              <span id="input_span_2">ایمیل</span>
+          </label> 
+
+          <label>
+              <input 
+              required="" 
+              type="password" 
+              class="register_form_input"
+              id="register_form_input_pass"
+              name="password"  
+              // placeholder={'pass'}
+              // value={"abc"}
+              ref={this.password}
+              onChange={e => {
+                // setUserName(e.target.value);
+                this.onInputChange(3);
+              }} 
+              // onFocus={inputChange(1)}
+              />
+              <span id="input_span_3">کلمه عبور</span>
+          </label>
+
+          <label>
+              <input 
+              required="" 
+              type="password" 
+              class="register_form_input"
+              id="register_form_input_repass"
+              name="repassword"  
+              // placeholder={'repass'} 
+              ref={this.repassword}
+              onChange={e => {
+                // setUserName(e.target.value);
+                this.onInputChange(4);
+              }} 
+              // onFocus={inputChange(1)}
+              />
+              <span id="input_span_4">تکرار کلمه عبور</span>
+          </label>
           
           <label>
               <input 
@@ -84,61 +195,11 @@ render() {
               ref={this.code}
               onChange={e => {
                 // setUserName(e.target.value);
-                this.onInputChange(1);
+                this.onInputChange(5);
               }} 
               // onFocus={inputChange(1)}
               />
-              <span>کد دعوت </span>
-          </label>
-
-          <label>
-              <input 
-              required=""
-              type="text"
-              class="register_form_input"
-              name="username"  
-              placeholder={'username'} 
-              ref={this.username}/>
-              <span>نام کاربری</span>
-          </label>
-
-          <label>
-              <input 
-              required="" 
-              type="email" 
-              class="register_form_input"
-              name="email"  
-              placeholder={'email'} 
-              ref={this.email}/>
-              <span>ایمیل</span>
-          </label> 
-
-          <label>
-              <input 
-              required="" 
-              type="password" 
-              class="register_form_input"
-              id="pass"
-              name="password"  
-              placeholder={'pass'}
-              // value={"abc"}
-              ref={this.password}/>
-              <span>کلمه عبور</span>
-          </label>
-
-          <label>
-              <input 
-              required="" 
-              type="password" 
-              class="register_form_input"
-              id="rePass"
-              name="repassword"  
-              placeholder={'repass'} 
-              ref={this.repassword}
-              // value={"abc"}
-              // onChange={notSame()}
-              />
-              <span>تکرار کلمه عبور</span>
+              <span id="input_span_5">کد دعوت (اختیاری)</span>
           </label>
 
           <button class="register_form_submit" value = 'عضویت' onClick={this.onHandleRegistration} >Submit</button>
