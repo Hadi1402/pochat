@@ -30,8 +30,8 @@ class LoginSet extends Component {
       //  console.log("userName, password :",this.state.userName, this.state.password)
         axios.post("https://pochat.pypi.ir/auth/token/login",
         {
-        username, 
-        pass 
+        'username':username, 
+        'password':pass 
         }).then(result => {
             console.log(result)
             if (result.status === 200) {

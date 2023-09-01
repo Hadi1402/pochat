@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Component } from "react";
 import ResetPassword from './resetPassword';
+import {Redirect ,Navigate} from "react-router-dom";
 
 class ForgotPassword extends Component {
     constructor() {
@@ -9,7 +10,7 @@ class ForgotPassword extends Component {
         this.email = React.createRef();
         this.handleReresetpassword = this.handleReresetpassword.bind(this)
                  }
-    handleReresetpassword = (event) => {
+  handleReresetpassword = (event) => {
    let data = ({
     "email": this.email
     });
@@ -30,9 +31,10 @@ class ForgotPassword extends Component {
 axios.request(config)
 .then((response) => {
   console.log(response.data);
-  console.log('reset okyyyyyyyyyyyyyy')
-
+  console.log('reset okyyyyyyyyyyyyyy');
+  <Redirect replace to="/resetpassword" />
 })
+
 .catch((error) => {
   console.log(error);
 });
