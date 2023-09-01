@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import "../static/css/chat.css";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import LoginSet from "../Parent/login.js"
 
 
 class RegisterUserPage extends Component {

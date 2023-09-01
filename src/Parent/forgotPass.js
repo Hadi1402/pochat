@@ -11,7 +11,7 @@ class ForgotPassword extends Component {
                  }
     handleReresetpassword = (event) => {
    let data = ({
-    "email": "user@example.com"
+    "email": this.email
     });
 
   let config = {
@@ -19,12 +19,12 @@ class ForgotPassword extends Component {
   maxBodyLength: Infinity,
   url: 'https://pochat.pypi.ir/auth/users/reset_password/',
   headers: { 
-    'authorization': 'token 8f04c3912fccee76d28700a75366c2179b9bb24e', 
+    'authorization': '8f04c3912fccee76d28700a75366c2179b9bb24e', 
     'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"', 
     'Content-Type': 'application/json', 
     'Cookie': 'sessionid=v5kdw1u088tkgvwchsb1flryy5imuh7s'
   },
-  data : this.email
+  data : data
 };
 
 axios.request(config)
