@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Component } from "react";
 import ResetPassword from './resetPassword';
 import {Redirect ,Navigate} from "react-router-dom";
+import { connect } from 'react-redux';
+import GetToken from "../Actions/GetToken";
 
 class ForgotPassword extends Component {
     constructor() {
@@ -21,20 +23,27 @@ class ForgotPassword extends Component {
   url: 'https://pochat.pypi.ir/auth/users/reset_password/',
   headers: { 
     'authorization': '8f04c3912fccee76d28700a75366c2179b9bb24e', 
-    'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"', 
     'Content-Type': 'application/json', 
-    'Cookie': 'sessionid=v5kdw1u088tkgvwchsb1flryy5imuh7s'
   },
   data : data
 };
 
-axios.request(config)
-.then((response) => {
-  console.log(response.data);
-  console.log('reset okyyyyyyyyyyyyyy');
-  <Redirect replace to="/resetpassword" />
-})
+// axios.request(config)
+// .then((response) => {
+//   console.log(response.data);
+//   console.log('reset okyyyyyyyyyyyyyy');
+//   <Redirect replace to="/resetpassword" />
+// })
 
+axios.request(config).then(result => {
+  console.log(result)
+  if (result.status === 200) {
+     var token = result.data["auth_token"]
+     this.props.data_token(GetToken(token));
+      console.log("token is:" ,token)
+       window.location.replace("/resetpassword");
+  }
+})
 .catch((error) => {
   console.log(error);
 });
@@ -58,5 +67,10 @@ axios.request(config)
 }
 
 }
+
+function mapStateToProps(state) {
+  return { data_token: state.data_token }
+}
+
     
-export default ForgotPassword;
+export default connect(mapStateToProps)(ForgotPassword);
