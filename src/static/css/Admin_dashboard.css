@@ -1,0 +1,30 @@
+.Home{
+    width: 100%;
+    height:100%;
+}
+#Admin_dashboard{
+    width: 100%;
+    height:100%;
+}
+#Admin_dashboard_menu{
+    height: 100%;
+    width: 300px;
+    background-color: #acacac;
+    display: grid;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+#Admin_dashboard_menu_top_Admin{
+    margin: 10px auto 10px auto;
+    font-family: iraniansans, sans-serif;
+    font-weight:700;
+}
+#Admin_dashboard_menu_header{
+    width:100%;
+    height: 200px;
+    background-color: #fff;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
