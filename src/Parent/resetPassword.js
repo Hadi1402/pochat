@@ -17,6 +17,10 @@ class ResetPassword extends Component {
       <div className="regiserform">
         <h3>بازیابی کلمه عبور </h3>
         <form>
+        <div>
+            <label>  کد را وارد کنید </label>
+            <input type="text" name="code" placeholder={' کد ارسالی'} />
+          </div>
           <div>
             <label>  پسورد جدید </label>
             <input type="password" name="password" placeholder={'کلمه عبور'} ref={this.password} />

@@ -39,13 +39,13 @@ axios.request(config).then(result => {
   console.log(result)
   if (result.status === 200) {
      var token = result.data["auth_token"]
-     this.props.data_token(GetToken(token));
+     this.props.data_toke = GetToken(token);
       console.log("token is:" ,token)
        window.location.replace("/resetpassword");
   }
 })
-.catch((error) => {
-  console.log(error);
+.catch((e) => {
+  console.log(e);
 });
 
 
