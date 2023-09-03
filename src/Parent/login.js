@@ -14,24 +14,12 @@ class LoginSet extends Component {
         userName: '',
         password: '',
       }
-    // const [isloggedIn, setLoggedIn] = useState(false);
-    // const [isError, setIsError] = useState(false);
-    // const [userName, setUserName] = useState("");
-    // const [password, setPassword] = useState("");
-    // const {setAuthTokens} = UseAuth();
+   
          this.PostLogin = this.PostLogin.bind(this);
   }
      PostLogin() {
-        //var maintoken = this
         const username = this.state.userName ;
         const pass = this.state.password ;
-       // console.log('login login login............')
-      //  console.log("userName, password :",this.state.userName, this.state.password)
-        // axios.post("https://pochat.pypi.ir/auth/token/login",
-        // { 
-        // 'password':pass,
-        // 'username':username
-        // })
         
         let data = JSON.stringify({
             "password": pass,
@@ -46,7 +34,7 @@ class LoginSet extends Component {
             },
             data : data
           };
-          var isloggedIn=true
+
           axios.request(config).then(result => {
             console.log(result)
             if (result.status === 200) {
@@ -54,7 +42,6 @@ class LoginSet extends Component {
                var token = result.data["auth_token"]
                this.props.dispatch(GetToken(token));
                 console.log("token is:" ,token)
-                //setAuthTokens(result.data);
                 this.setState({ isloggedIn: true })
                  window.location.replace("/SupportUser");
             }
