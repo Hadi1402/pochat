@@ -35,23 +35,40 @@ import '../static/css/login.css'
         return <Redirect to={"/supportuser"} replace={true} />;
     }
 
-    function inputs(num){
-        const input1 = document.querySelector('#login_form_input_username');
-        const input2 = document.querySelector('#login_form_input_password');
-        // const input2 = document.querySelector('#login_form_input_password');
-        const span = document.querySelector('#.login_form_input:valid + span');
-
-        if (num == 1){
-            
-        }
-
-        if (input1.value != ''){
-            span.style.top = 40 ;
+    function inputChange(witch){
+        const span1 = document.querySelector('#input_span_1');
+        const span2 = document.querySelector('#input_span_2');
+        const username = document.querySelector('#login_form_input_username').value;
+        const password = document.querySelector('#login_form_input_password').value;
+        
+        if (witch == 1){
+            console.log('1');
+            if (username != ''){
+                span1.style.top = 49 + 'px'
+                span1.style.fontSize = 0.6 + 'em'
+                
+            } else if (username == ''){
+                span1.style.top = 27.5 + 'px'
+                span1.style.fontSize = 1 + 'em'
+            }
+        }else if (witch == 2){
+            console.log('2')
+            if (password != ''){
+                span2.style.top = 49 + 'px'
+                span2.style.fontSize = 0.6 + 'em'
+                
+            } else if (password == ''){
+                span2.style.top = 27.5 + 'px'
+                span2.style.fontSize = 1 + 'em'
+            }
         }
     }
+    
 
-        return (
-            <div className="registerform">
+
+    return (
+        <div className="loginform">
+            <div id='loginformbackgroundblur'>
                 <form class="login_form">
                     <p class="login_form_title">ورود</p>
                     <p class="login_form_message">برای وارد شدن فرم زیر را پر کنید</p>
@@ -67,8 +84,11 @@ import '../static/css/login.css'
                         value={userName}
                         onChange={e => {
                             setUserName(e.target.value);
-                        }}/>
-                        <span>نام کاربری</span>
+                            inputChange(1);
+                        }}
+                        // onFocus={inputChange(1)}
+                        />
+                        <span id='input_span_1'>نام کاربری</span>
                     </label>
             
                     <label>
@@ -82,15 +102,19 @@ import '../static/css/login.css'
                         value={password}
                         onChange={e => {
                             setPassword(e.target.value);
-                        }}/>
-                        <span>رمز ورود</span>
+                            inputChange(2);
+                        }}
+                        // onFocus={inputChange(2)}
+                        />
+                        <span id='input_span_2'>رمز ورود</span>
                     </label>
                     <button class="login_form_submit" value = 'عضویت' exact to={'/SupportUser'}>ورود</button>
                     <link to={'/supportuser'}></link>
-                    <p class="login_form_signin">ثبت نام نکرده ام<NavLink exact to={'/registeruser'}> ثبت نام </NavLink></p>
+                    <p class="login_form_signin">ثبت نام نکرده ام  <NavLink exact to={'/registeruser'}> ثبت نام </NavLink></p>
                 </form>
             </div>
-        )
+        </div>
+    )
 
 }
 
