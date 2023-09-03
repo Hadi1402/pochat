@@ -12,11 +12,22 @@ class AdminDashbord extends Component {
       <div className="Home">
         <div id="Admin_dashboard">
           <div id="Admin_dashboard_menu">
-            <h1 id="Admin_dashboard_menu_top_Admin">★ Admin</h1>
-            <div id="Admin_dashboard_menu_header">
-              <img  id="Admin_pfp" src="Admin_pfp"></img>
-              <h1 id="Admin_name">Admin name</h1>
-            </div>
+            <menu>
+
+              <h1 id="Admin_dashboard_menu_top_Admin">★ Admin</h1>
+
+              <div id="Admin_dashboard_menu_header">
+                <img  id="Admin_pfp" src={Admin_pfp}></img>
+                <h1 id="Admin_name">Admin name</h1>
+              </div>
+
+              <li> <Link to="/website" > website </Link> </li>
+              <li> <Link to="/user" > user </Link> </li>
+              <li> <Link to="group/">   groups </Link> </li>
+              <li> <Link to="/supportuser" > chat </Link> </li>
+
+            </menu>
+              
           </div>
         </div>
       </div>

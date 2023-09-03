@@ -1,18 +1,20 @@
-.Home{
-    width: 100%;
-    height:100%;
-}
 #Admin_dashboard{
     width: 100%;
-    height:100%;
+    height:100%; 
 }
 #Admin_dashboard_menu{
     height: 100%;
     width: 300px;
     background-color: #acacac;
     display: grid;
-    /* align-items: center; */
-    /* justify-content: center; */
+    padding: 0;
+    margin: 0;
+    position: fixed;
+}
+#Admin_dashboard_menu menu{
+    width: 100%;
+    height:100%;
+    padding: 0;
 }
 #Admin_dashboard_menu_top_Admin{
     margin: 10px auto 10px auto;
@@ -24,7 +26,20 @@
     height: 200px;
     background-color: #fff;
     display: grid;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
 }
-
+#Admin_pfp{
+    width: 20%;
+    height: auto;
+    margin: auto; 
+}
+#Admin_dashboard_menu menu li {
+    background-color: #ffffff;
+    padding: 10px;
+    border:2px groove rgba(0, 0, 0, 0.329);
+    border-radius: 10px;
+}
+#Admin_dashboard_menu menu li:focus{
+    background-color: #e0e0e0;
+}
