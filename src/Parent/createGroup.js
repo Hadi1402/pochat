@@ -4,7 +4,8 @@ import "../static/css/chat.css";
 import { createRef } from "react";
 import Select from 'react-select';
 import user_data from "./user_data";
-import axios from "axios"
+import axios from "axios";
+import { connect } from "react-redux";
 
 
 class CreateGroup extends React.Component {
@@ -26,7 +27,7 @@ class CreateGroup extends React.Component {
     this.id_ref = createRef();
     this.group_ref = createRef();
     this.username_ref = createRef();
-    this.data_ref = createRef();
+    this.admin_ref = createRef();
     this.status_ref = createRef();
     this.check_ref = createRef();
     //**********************************************************/
@@ -55,22 +56,42 @@ class CreateGroup extends React.Component {
       element["user_name"] = this.state.selectOption
       console.log(this.state.selectOption)
       console.log('selecttt uaers:', element["user_name"])
-      element["data_create"] = this.data_ref.current.value;
+      element["admin_ref"] = this.admin_ref.current.value;
       element["status_group"] = this.status_ref.current.value;
       console.log({ group: this.state.group })
     })
     this.setState({ group: this.state.group })
     console.log(this.state.group)
-    axios.post('http://localhost/data/group_data.json', {
-      "id": this.id_ref.current.value,
-      "group_name": this.group_ref.current.value,
-      "data_create": this.data_ref.current.value,
-      "status_group": this.status_ref.current.value,
-      "user_name": this.username_ref.current.value,
-    }).then(res => { console.log(res.data) })
-      .catch(function (error) {
-        console.log(error)
-      })
+
+    let data = JSON.stringify({
+      "name": this.group_ref.current.value,
+      "users" : this.username_ref.current.value,
+      "id" : this.id_ref.current.value,
+      "group_admin": this.admin_ref.current.value,
+       });
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://pochat.pypi.ir/auth/groups/',
+      headers: { 
+        'authorization':this.props.data_token, 
+        'Content-Type': 'application/json', 
+      },
+      data : data
+    };
+
+    axios.request(config).then(result => {
+      console.log(result)
+      if (result.status === 200) {
+        console.log('okyyyyyyyy')
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
+
   }
 
   Gogroup = () => {
@@ -96,7 +117,7 @@ class CreateGroup extends React.Component {
               options={this.state.users}>
             </Select>
 
-            <input type='text' name='data_create' className="" ref={this.data_ref} placeholder="تاریخ ایجاد " />
+            <input type='text' name='admin' className="" ref={this.admin_ref} placeholder=" نام آدمین" />
             <input type='text' name='status_group' className="" ref={this.status_ref} placeholder="وضعیت" />
             <input type='button' value='تایید' className="btnoky" onClick={this.create} />
             <input type='button' value=' برگشت /انصراف' className="btnoky" onClick={this.Gogroup} />
@@ -109,10 +130,14 @@ class CreateGroup extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {data_token: state.data_token
+   }
+}
 
 
 
-export default CreateGroup;
+export default connect(mapStateToProps)(CreateGroup);
 
 
 

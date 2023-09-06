@@ -22,7 +22,7 @@ class RegisterUserPage extends Component {
     "email": this.email_ref.current.value,
     "username" : this.username_ref.current.value,
     "password" : this.password_ref.current.value,
-   // "repassword" : this.repassword_ref.current.value
+    "repassword" : this.repassword_ref.current.value
      });
 
     let config = {
@@ -35,7 +35,6 @@ class RegisterUserPage extends Component {
       },
       data : data
     };
-     
 
     axios.request(config).then(result => {
       console.log(result)
@@ -94,7 +93,7 @@ class RegisterUserPage extends Component {
 
 
 function mapStateToProps(state) {
-  return { data_user: state.data_user, data_token: state.data_token
+  return { data_user: state.data_user,data_token: state.data_token
    }
 }
 
