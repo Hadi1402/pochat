@@ -32,7 +32,8 @@ class ForgotPassword extends Component {
 axios.request(config).then(result => {
   console.log(result)
   if (result.status === 204) {
-       window.location = "/resetpassword";
+    console.log('okyyyyyyyy')
+    window.location = "/resetpassword";
   }
 })
 .catch((e) => {
@@ -49,7 +50,7 @@ axios.request(config).then(result => {
             <br/><br/>
             <input type="email" name="email" placeholder={'ایمیل'} ref={this.email_ref} />
             <br/><br/>
-            <button onClick={this.handleReresetpassword} > بازیابی رمز</button>
+            <button onClick={this.handleReresetpassword} > بازیابی رمز </button>
           </div>
             <br /><br /><br /><br /><br />
         </div>

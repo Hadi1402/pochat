@@ -2,6 +2,7 @@ import React from 'react';
 import "../static/css/chat.css";
 import { SearchOutlined, Style } from "@material-ui/icons";
 import user_data from "./user_data";
+
 import axios from 'axios';
 
 
@@ -76,7 +77,6 @@ class User extends React.Component {
             <SearchOutlined />
             <input placeholder=" search ... " />
           </div>
-
           <table className="user_table">
             <thead>
               <tr>

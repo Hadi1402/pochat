@@ -10,28 +10,52 @@ import { NavLink } from "react-router-dom";
 class RegisterUserPage extends Component {
   constructor(props) {
     super(props)
-    this.username = React.createRef();
-    this.email = React.createRef();
-    this.password = React.createRef();
-    this.repassword = React.createRef();
+    this.username_ref = React.createRef();
+    this.email_ref = React.createRef();
+    this.password_ref = React.createRef();
+    this.repassword_ref = React.createRef();
+    this.onHandleRegistration = this.onHandleRegistration.bind(this)
   }
+
   onHandleRegistration = (event) => {
-    event.preventDefault();
-   // let code = this.code.current.value;
-    let username = this.username.current.value;
-    let email = this.email.current.value;
-    let password = this.password.current.value;
-    let repassword = this.repassword.current.value;
-   axios.post('https://pochat.pypi.ir/auth/users',
-    {'username': username, 'email': email, 'password': password,
-  }).then(res => console.log(res.data))
-   .catch(err => console.log(err));
-    const data = { username, email, password, repassword };
-    this.props.dispatch(RegisterUser(data));
-    console.log("here1111111111111111111111111");
-  }
+    let data = JSON.stringify({
+    "email": this.email_ref.current.value,
+    "username" : this.username_ref.current.value,
+    "password" : this.password_ref.current.value,
+   // "repassword" : this.repassword_ref.current.value
+     });
 
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://pochat.pypi.ir/auth/users/',
+      headers: { 
+        'authorization':this.props.data_token, 
+        'Content-Type': 'application/json', 
+      },
+      data : data
+    };
+     
 
+    axios.request(config).then(result => {
+      console.log(result)
+      if (result.status === 201) {
+        console.log('okyyyyyyyy')
+        this.props.dispatch(RegisterUser(data));
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
+  //  axios.post('https://pochat.pypi.ir/auth/users',
+  //   {'username': username, 'email': email, 'password': password,
+  // }).then(res => console.log(res.data))
+  //  .catch(err => console.log(err));
+  //   const data = { username, email, password, repassword };
+  //   console.log("here1111111111111111111111111");
+  
+}
   render() {
     return (
       <div className="regiserform">
@@ -39,27 +63,27 @@ class RegisterUserPage extends Component {
         <form>
           <div>
             <label> کد دعوت </label>
-            <input type="text" name="code" placeholder={'کد دعوت '} ref={this.code} />
+            <input type="text" name="code" placeholder={'کد دعوت '} ref={this.code_ref} />
           </div>
 
           <div>
             <label> نام کاربری </label>
-            <input type="text" name="username" placeholder={'نام کاربری'} ref={this.username} />
+            <input type="text" name="username" placeholder={'نام کاربری'} ref={this.username_ref} />
           </div>
 
           <div>
             <label> ایمیل </label>
-            <input type="email" name="email" placeholder={'ایمیل'} ref={this.email} />
+            <input type="email" name="email" placeholder={'ایمیل'} ref={this.email_ref} />
           </div>
 
           <div>
             <label> پسورد </label>
-            <input type="password" name="password" placeholder={'کلمه عبور'} ref={this.password} />
+            <input type="password" name="password" placeholder={'کلمه عبور'} ref={this.password_ref} />
           </div>
 
           <div>
             <label> تکرار پسورد</label>
-            <input type="password" name="repassword" placeholder={'تکرار کلمه عبور'} ref={this.repassword} />
+            <input type="password" name="repassword" placeholder={'تکرار کلمه عبور'} ref={this.repassword_ref} />
           </div>
 
           <div>
@@ -77,7 +101,8 @@ class RegisterUserPage extends Component {
 
 
 function mapStateToProps(state) {
-  return { data_user: state.data_user }
+  return { data_user: state.data_user, data_token: state.data_token
+   }
 }
 
 
