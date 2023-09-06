@@ -47,13 +47,6 @@ class RegisterUserPage extends Component {
     .catch((e) => {
       console.log(e);
     });
-
-  //  axios.post('https://pochat.pypi.ir/auth/users',
-  //   {'username': username, 'email': email, 'password': password,
-  // }).then(res => console.log(res.data))
-  //  .catch(err => console.log(err));
-  //   const data = { username, email, password, repassword };
-  //   console.log("here1111111111111111111111111");
   
 }
   render() {
