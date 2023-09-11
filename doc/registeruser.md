@@ -1,1 +1,1 @@
-این کامپوننت جهت ثبت نام می باشد که شامل یک فرم ثبت نامی است.
+این کامپوننت جهت ثبت نام می باشد که شامل یک فرم ثبت نامی است.[registeruser.js](https://github.com/Hadi1402/pochat/blob/1421/src/Parent/registeruser.js)

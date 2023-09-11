@@ -5,3 +5,5 @@
  * onChange_disable
  * onChange_enable
  که دو تای اول در بیرون از کامپوننت گروپ نوشته شده و در داخل این کامپوننت فراخوانی شده است.
+
+ [group.js](https://github.com/Hadi1402/pochat/blob/1421/src/Parent/group.js)
