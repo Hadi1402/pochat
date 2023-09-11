@@ -37,6 +37,7 @@ axios.request(config).then(result => {
   }
 })
 .catch((e) => {
+  console.log('ایمیل یافت نشد!')
   console.log(e);
 });
 

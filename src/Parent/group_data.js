@@ -5,7 +5,7 @@ export default [
     {
         "id":1,
         "group_name":"fanni",
-        "data_create":"ordi 1402",
+        "group_admin":"Hadi",
         "status_group":"فعال",
          "user_name":[
             'ali14012',
@@ -17,7 +17,7 @@ export default [
     {
         "id":2,
         "group_name":"software",
-        "data_create":"ordi 1402",
+        "group_admin":"farhad",
         "status_group":"فعال",
         "user_name":[
             'hamed',
@@ -29,7 +29,7 @@ export default [
     {
         "id":3,
         "group_name":"Archtect",
-        "data_create":"khordad 1402",
+        "group_admin":"shain 1402",
         "status_group":"فعال",
         "user_name":[
             'javid15',

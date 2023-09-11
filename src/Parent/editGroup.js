@@ -14,26 +14,19 @@ class EditGroup extends React.Component {
     this.id_ref = React.createRef();
     this.group_ref = React.createRef();
     this.username_ref = React.createRef();
-    this.data_ref = React.createRef();
+    this.admin_ref = React.createRef();
     this.status_ref = React.createRef();
     //  this.saveEdit = this.saveEdit.bind(this)
   }
 
 
   saveEdit = (e) => {
-    //this.state.group.forEach(element => {
-    //  this.id_ref.current.value = groupProfile.getId()
-    //   console.log(groupProfile.getId())
-    //   element['group_name'] = this.group_ref.current.value
-    //   element["status_group"] = this.status_ref.current.value
-    // this.setState({ group: this.state.group }) });
-    // console.log({group:this.state.group}) 
     axios.post('http://localhost/data/group_data.json', {
       "id": this.id_ref.current.value,
       "group_name": this.group_ref.current.value,
-      "data_create": this.data_ref.current.value,
+      "group_admin": this.admin_ref.current.value,
       "status_group": this.status_ref.current.value,
-      "user_name": this.username_ref.current.value,
+      "users": this.username_ref.current.value,
     }).then(res => { console.log(res.data) })
       .catch(function (error) {
         console.log(error)
@@ -53,8 +46,8 @@ class EditGroup extends React.Component {
         console.log()
         id = element['id']
         group = element['group_name']
-        date = element['data_create']
-        user = element['user_name']
+        date = element['group_admin']
+        user = element['users']
         status = element['status_group']
       }
     });
@@ -67,13 +60,13 @@ class EditGroup extends React.Component {
           <div className="panel">
             <input type='text' defaultValue={id} name='id' ref={this.id_ref} required />
             <br />
-            <input type='text' name='group_name' defaultValue={group} ref={this.group_ref} required />
+            <input type='text' name='group_admin' defaultValue={group} ref={this.group_ref} required />
             <br />
             <br />
-            <Select ref={this.username_ref} name='user_name'>
+            <Select ref={this.username_ref} name='users'>
             </Select>
             <br />
-            <input type='text' name='data_create' defaultValue={date} ref={this.data_ref} />
+            <input type='text' name='admin' defaultValue={date} ref={this.admin_ref} />
             <br />
             <input type='text' name='status_group' ref={this.status_ref} defaultValue={status} />
             <br />

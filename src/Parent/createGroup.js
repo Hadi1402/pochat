@@ -65,7 +65,7 @@ class CreateGroup extends React.Component {
 
     let data = JSON.stringify({
       "name": this.group_ref.current.value,
-      "users" : this.username_ref.current.value,
+      "users" : this.state.selectOption,
       "id" : this.id_ref.current.value,
       "group_admin": this.admin_ref.current.value,
        });
@@ -83,7 +83,7 @@ class CreateGroup extends React.Component {
 
     axios.request(config).then(result => {
       console.log(result)
-      if (result.status === 200) {
+      if (result.status === 201) {
         console.log('okyyyyyyyy')
       }
     })

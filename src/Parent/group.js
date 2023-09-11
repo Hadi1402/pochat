@@ -18,7 +18,7 @@ class Group extends React.Component {
     this.id_ref = createRef();
     this.group_ref = createRef();
     this.username_ref = createRef();
-    this.data_ref = createRef();
+    this.admin_ref = createRef();
     this.status_ref = createRef();
     this.check_ref = createRef();
     //**********************************************************/
@@ -103,7 +103,7 @@ class Group extends React.Component {
                 <th className="td_user_table" colspan="2"> ID </th>
                 <th className="td_user_table" colspan="2"> نام گروه </th>
                 <th className="td_user_table" colspan="2"> کاربران  </th>
-                <th className="td_user_table" colspan="2">  تاریخ ایجاد </th>
+                <th className="td_user_table" colspan="2"> نام ادمین </th>
                 <th className="td_user_table" colspan="2">  وضعیت  </th>
                 <th className="td_user_table" colspan="2">  انتخاب</th>
               </tr>
@@ -115,7 +115,7 @@ class Group extends React.Component {
                   <td colspan="2">   {q['id']} </td>
                   <td colspan="2">   {q['group_name']} </td>
                   <td colspan="2">  {q["user_name"]}   </td>
-                  <td colspan="2">  {q['data_create']} </td>
+                  <td colspan="2">  {q['group_admin']} </td>
                   <td colspan="2" > {q['status_group']}    </td>
                   <td className="check_box" colspan="2">  <input
                     type="checkbox" ref={this.check_ref}
@@ -147,7 +147,7 @@ class Group extends React.Component {
                 options={this.state.users}>
               </Select>
 
-              <input type='text' name='data_create' className="" ref={this.data_ref} placeholder="تاریخ ایجاد " />
+              <input type='text' name='admin' className="" ref={this.admin_ref} placeholder="نام ادمین" />
               <input type='text' name='status_group' className="" ref={this.status_ref} placeholder="وضعیت" />
               <input type='button' value='تایید' className="btnoky" onClick={this.createGroup} />
             </div>
