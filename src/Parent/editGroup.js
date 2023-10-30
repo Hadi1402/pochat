@@ -34,7 +34,6 @@ class EditGroup extends React.Component {
   }
 
   render() {
-    
     var params = new URL(window.location).searchParams
     console.log(params)
     var id_rec = params.get("id")
@@ -54,7 +53,7 @@ class EditGroup extends React.Component {
 
     return (
       <div>
-        <h2>        ***********************************************  ویرایش  گروه ها ***********************************************</h2>
+        <h2>  ***********************************************  ویرایش  گروه ها ***********************************************</h2>
         <hr />
         <div>
           <div className="panel">

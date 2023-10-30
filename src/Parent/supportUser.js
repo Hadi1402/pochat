@@ -50,6 +50,7 @@ class SupportUser extends React.Component {
                             <SidebarChat />
                             <SidebarChat />
                             <SidebarChat />
+                            <SidebarChat />
                         </div>
 
 

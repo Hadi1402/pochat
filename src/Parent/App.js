@@ -20,6 +20,8 @@ function App() {
 
 
     <div className="App">
+        <h1>  Header            webSite </h1>
+        <h2>  Header            webSite </h2>
 
       <BrowserRouter>
         <Switch>
@@ -39,6 +41,7 @@ function App() {
 
         </Switch>
       </BrowserRouter>
+      <h1>   Footer            webSite   </h1>
 
     </div>
 
